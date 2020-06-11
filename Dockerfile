@@ -12,6 +12,8 @@ USER root
 RUN rm -rf ${HOME}
 COPY index.ipynb ${HOME}/
 COPY tutorials ${HOME}/tutorials
+COPY .jupyter ${HOME}/.jupyter
+COPY images ${HOME}/images
 RUN chown -R ${NB_UID} ${HOME}
 
 USER ${NB_USER}
