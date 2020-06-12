@@ -1,4 +1,4 @@
-FROM fugueproject/fuguebase:latest
+FROM fugueproject/fuguebase:0.0.4
 
 ARG NB_USER=fugue
 ARG NB_UID=1000
