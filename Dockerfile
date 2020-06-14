@@ -1,4 +1,4 @@
-FROM fugueproject/fuguebase:0.0.4
+FROM fugueproject/fuguebase:0.0.7
 
 ARG NB_USER=fugue
 ARG NB_UID=1000
