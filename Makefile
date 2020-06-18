@@ -7,3 +7,19 @@ help:
 rundev:
 	docker build -t fuguetutorial:latest .
 	docker run -p 8888:8888 -v $(PWD):/home/jovyan/work fuguetutorial:latest jupyter notebook --allow-root
+
+dev:
+	pip3 install -r requirements.txt
+
+docs:
+	rm -rf docs/tutorials
+	rm -rf docs/images
+	rm -rf docs/build
+	rm docs/README.ipynb
+	cp README.ipynb docs/
+	cp -r tutorials/ docs/tutorials
+	cp -r images/ docs/images
+	rm -rf docs/tutorials/.ipynb_checkpoints
+	rm -rf docs/tutorials/dask-worker-space
+	rm -rf docs/tutorials/spark-warehouse
+	python -m sphinx docs/ docs/build
