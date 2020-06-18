@@ -11,5 +11,10 @@ pytest-spark
 sphinx
 sphinx-rtd-theme
 
+nbconvert
+nbsphinx
+pandoc
+ipython
+
 # fugue all packages
 fugue[all]

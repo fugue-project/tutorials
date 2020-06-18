@@ -70,6 +70,8 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/images/
+docs/tutorials/
 
 # PyBuilder
 target/
@@ -139,3 +141,4 @@ dask-worker-space
 
 # spark
 spark-warehourse
+=*
