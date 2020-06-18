@@ -11,7 +11,7 @@ rundev:
 dev:
 	pip3 install -r requirements.txt
 
-docs:
+olddocs:
 	rm -rf docs/tutorials
 	rm -rf docs/images
 	rm -rf docs/build
@@ -23,3 +23,10 @@ docs:
 	rm -rf docs/tutorials/dask-worker-space
 	rm -rf docs/tutorials/spark-warehouse
 	python -m sphinx docs/ docs/build
+
+docs:
+	rm -rf docs/build
+	rm -rf tutorials/.ipynb_checkpoints
+	rm -rf tutorials/dask-worker-space
+	rm -rf tutorials/spark-warehouse
+	python -m sphinx ./ docs/build
