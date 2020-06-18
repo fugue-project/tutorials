@@ -12,4 +12,4 @@ sphinx
 sphinx-rtd-theme
 
 # fugue all packages
-fugue[sql,spark,dask]
+fugue[all]
