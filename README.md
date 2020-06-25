@@ -2,11 +2,7 @@
 
 [![Documentation Status](https://readthedocs.org/projects/fugue-tutorials/badge/?version=latest)](https://fugue-tutorials.readthedocs.io/en/latest/?badge=latest) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fugue-project/tutorials/master)
 
-This environment has everything setup for you, you can run Fugue on native python, Spark and Dask, with Fugue SQL support. In order to setup your own environment, you can pip install the package:
-
-```bash
-pip install fugue[all]
-```
+[Join Fugue-Project on Slack](https://join.slack.com/t/fugue-project/shared_invite/zt-ffo2ik1d-maSsCykv_p7kXpnmIjKAug)
 
 The simplest way to run the tutorial is to use [mybinder](https://mybinder.org/v2/gh/fugue-project/tutorials/master)
 
