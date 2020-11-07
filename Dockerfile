@@ -8,8 +8,6 @@ ENV HOME /home/${NB_USER}
 
 WORKDIR ${HOME}
 
-ENV ARROW_PRE_0_15_IPC_FORMAT 1
-
 USER root
 RUN rm -rf ${HOME}
 COPY README.ipynb ${HOME}/
