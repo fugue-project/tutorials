@@ -1,4 +1,4 @@
-FROM fugueproject/devenv:0.1.6
+FROM fugueproject/devenv:0.1.7
 
 RUN pip install fugue[all]==0.4.6
 
