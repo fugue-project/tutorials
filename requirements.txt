@@ -15,3 +15,5 @@ nbconvert
 nbsphinx
 pandoc
 ipython
+
+fugue
