@@ -15,6 +15,3 @@ nbconvert
 nbsphinx
 pandoc
 ipython
-
-# fugue all packages
-fugue[all]
