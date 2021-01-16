@@ -11,4 +11,3 @@ Welcome to Fugue's documentation!
    :caption: Tutorials:
 
    README.ipynb
-
