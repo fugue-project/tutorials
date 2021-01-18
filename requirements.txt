@@ -16,4 +16,5 @@ nbsphinx
 pandoc
 ipython
 
+flask
 fugue
