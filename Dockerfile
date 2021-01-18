@@ -1,5 +1,7 @@
 FROM fugueproject/devenv:0.1.7
 
+RUN pip install matplotlib
+RUN pip install flask
 RUN pip install fugue[all]==0.5.0
 
 ARG NB_USER=root
