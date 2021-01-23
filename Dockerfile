@@ -18,8 +18,8 @@ COPY data ${HOME}/data
 COPY .jupyter ${HOME}/.jupyter
 COPY images ${HOME}/images
 
-RUN mkdir -p /home/vscode/.jupyter
-RUN cp -R /root/.jupyter/* /home/vscode/.jupyter
+RUN mkdir -p /home/${NB_USER}/.jupyter
+RUN cp -R /root/.jupyter/* /home/${NB_USER}/.jupyter
 
 USER root
 RUN chown -R ${NB_UID} ${HOME}
