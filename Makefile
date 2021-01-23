@@ -6,7 +6,7 @@ help:
 
 rundev:
 	docker build -t fuguetutorial:latest .
-	docker run -p 8888:8888 -v $(PWD):/home/root/work fuguetutorial:latest jupyter notebook --port=8888 --ip=0.0.0.0 --no-browser --allow-root 
+	docker run -p 8888:8888 -v $(PWD):/home/vscode/work fuguetutorial:latest jupyter notebook --port=8888 --ip=0.0.0.0 --no-browser --allow-root 
 
 dev:
 	pip3 install -r requirements.txt
