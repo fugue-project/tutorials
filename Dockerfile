@@ -1,6 +1,6 @@
-FROM fugueproject/devenv:0.1.8
+FROM fugueproject/devenv:0.2.0
 
-RUN pip install fugue[all]==0.5.1.dev0
+RUN pip install fugue[all]==0.5.1.dev4
 
 ARG NB_USER=vscode
 ARG NB_UID=1000
