@@ -2,7 +2,7 @@
 
 [![Documentation Status](https://readthedocs.org/projects/fugue-tutorials/badge/?version=latest)](https://fugue-tutorials.readthedocs.io/en/latest/?badge=latest) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fugue-project/tutorials/master)
 
-[Join Fugue-Project on Slack](https://join.slack.com/t/fugue-project/shared_invite/zt-ffo2ik1d-maSsCykv_p7kXpnmIjKAug)
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ)
 
 The simplest way to run the tutorial is to use [mybinder](https://mybinder.org/v2/gh/fugue-project/tutorials/master)
 
