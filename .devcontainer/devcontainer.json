@@ -23,7 +23,7 @@
 		8888
 	],
 	"postCreateCommand": [
-		"make devenv"
+		"make dev"
 	],
 	"mounts": [
 		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
