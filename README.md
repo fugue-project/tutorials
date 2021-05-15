@@ -16,6 +16,8 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 
 To run docker on your own machine, the performance should be a lot better.
 
-## [For Beginners](tutorials/beginner.ipynb)
+## [For Beginners](tutorials/beginner/index.ipynb)
 
 ## [For Advanced Users](tutorials/advanced.ipynb)
+
+## [Fugue-Sql](tutorials/fugue_sql/index.ipynb)
