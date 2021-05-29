@@ -33,7 +33,7 @@ author = "Han Wang"
 # ones.
 extensions = ["sphinx.ext.todo", "sphinx.ext.viewcode",
               "sphinx.ext.autodoc", "sphinx_rtd_theme",
-              "nbsphinx","sphinx.ext.mathjax"]
+              "nbsphinx","sphinx.ext.mathjax", "myst_parser"]
 
 nbsphinx_execute = 'never'
 
@@ -61,7 +61,6 @@ exclude_patterns = ["venv"]
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-#
 html_theme = "furo"
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -100,6 +99,6 @@ html_theme_options = {
     },
 }
 
-source_suffix = ['.ipynb']
+source_suffix = ['.md', '.ipynb']
 
-master_doc = "README"
+master_doc = 'index'
