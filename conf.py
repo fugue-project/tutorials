@@ -62,18 +62,44 @@ exclude_patterns = ["venv"]
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "sphinx_rtd_theme"
+html_theme = "furo"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["docs/_static"]
-html_logo = "docs/_static/logo_doc.svg"
+html_logo = "docs/_static/logo_blue.svg"
 html_theme_options = {
     'logo_only': True,
     'display_version': False,
-    'style_nav_header_background': '#264263'
+    'style_nav_header_background': '#264263', 
+    # "light_css_variables": {
+    #     "color-brand-primary": "red",
+    #     "color-brand-content": "#CC3333",
+    #     "color-admonition-background": "orange",
+    # },
+    "light_css_variables": {
+        "color-brand-primary": "#254262",
+        "color-brand-content": "#254262",
+        "color-api-highlight-on-target": "#6081a6",
+    },
+    # always use light theme, taken from Pandera
+    # https://github.com/pradyunsg/furo/blob/main/src/furo/assets/styles/variables/_index.scss
+    "dark_css_variables": {
+        "color-foreground-primary": "black",
+        "color-foreground-secondary": "#5a5c63",
+        "color-foreground-muted": "#72747e",
+        "color-foreground-border": "#878787",
+        "color-background-primary": "white",
+        "color-background-secondary": "#f8f9fb",
+        "color-background-hover": "#efeff4ff",
+        "color-background-hover--transparent": "#efeff400",
+        "color-background-border": "#eeebee",
+        "color-admonition-background": "transparent",
+        "color-api-highlight-on-target": "#e5fff5",
+    },
 }
+
 source_suffix = ['.ipynb']
 
 master_doc = "README"
