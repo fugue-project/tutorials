@@ -13,7 +13,7 @@ introduction
 interface
 joins
 beginner_extension
-distrbuted_compute
+distributed_compute
 beginner_sql
 ```
 
