@@ -19,4 +19,5 @@ pandoc
 ipython
 
 flask
-fugue
+fugue[spark]
+pandera
