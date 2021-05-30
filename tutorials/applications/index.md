@@ -1,4 +1,4 @@
-# Tutorial for Beginners
+# Fugue Applications
 
 This is a list of examples of Fugue applications. Any questions are welcome in the Slack channel.
 
