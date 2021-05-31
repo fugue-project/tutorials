@@ -26,10 +26,10 @@ Towards Data Science
 **Workshops**
 
 AI Camp
-[Distributed ML to Learn Causal Effect Using Fugue and Spark](https://www.youtube.com/watch?v=dafU1SZs4iw)
+* [Distributed ML to Learn Causal Effect Using Fugue and Spark](https://www.youtube.com/watch?v=dafU1SZs4iw)
 
 Orlando Python Meetup
-[Distributed Computing Workflows with Fugue-sql](https://www.youtube.com/watch?v=iROWlAVa2Kk)
+* [Distributed Computing Workflows with Fugue-sql](https://www.youtube.com/watch?v=iROWlAVa2Kk)
 
 **Conferences**
 
