@@ -26,7 +26,7 @@ x-like
 
 ## 1. Architecture & Hello World
 
-<img src="../images/architecture.svg" width="500">
+<img src="../_images/architecture.svg" width="500">
 
 Let's take a look at a [Hello World](hello.ipynb) example
 
