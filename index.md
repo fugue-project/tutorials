@@ -34,6 +34,10 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 
 ## [Fugue-Sql](tutorials/fugue_sql/index.ipynb)
 
+## [Applications](tutorials/applications/index.md)
+
+## [Resources](tutorials/resources.md)
+
 ```{toctree}
 :hidden:
 
