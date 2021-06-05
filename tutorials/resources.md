@@ -33,4 +33,4 @@ To be updated as videos become available
 Spark AI Summit 2020
 * [Unifying Spark and Non-Spark Ecosystems for Big Data Analytics](https://www.youtube.com/watch?v=BBd4b2pMk0c)
 
-This is an introduction to the Fugue open-source project and its motivation. It also includes a high-level architecture and overview.
+  * This is an introduction to the Fugue open-source project and its motivation. It also includes a high-level architecture and overview.
