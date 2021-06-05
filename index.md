@@ -46,5 +46,5 @@ tutorials/advanced
 tutorials/fugue_sql/index
 tutorials/applications/index
 tutorials/resources
-tutorials/appendix
+tutorials/appendix/index
 ```
