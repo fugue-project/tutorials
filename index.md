@@ -28,11 +28,13 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 
 # Tutorials
 
-## [Beginner Tutorial](tutorials/beginner/index.md)
+## [Getting Started](tutorials/beginner/index.md)
 
-## [Advanced Concepts](tutorials/advanced.index.md)
+## [Extensions](tutorials/extensions/index.md)
 
 ## [Fugue-Sql](tutorials/fugue_sql/index.md)
+
+## [Advanced Concepts](tutorials/advanced/index.md)
 
 ## [Examples](tutortials/examples/index.md)
 
@@ -47,6 +49,7 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 :caption: Fugue Tutorials
 :hidden:
 
+
 tutorials/beginner/index
 tutotials/extensions/index
 tutorials/fugue_sql/index
@@ -56,6 +59,8 @@ tutorials/advanced/index
 ```{toctree}
 :caption: Applications
 :hidden:
+
+
 tutorials/examples/index
 tutorials/applications/index
 ```
@@ -63,6 +68,8 @@ tutorials/applications/index
 ```{toctree}
 :caption: Further Information
 :hidden:
+
+
 tutorials/resources
 tutorials/appendix/index
 ```
