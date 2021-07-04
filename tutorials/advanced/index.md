@@ -22,7 +22,7 @@ x-like
 
 ## 1. Architecture
 
-![architecture](../../_images/architecure.svg)
+<img src="../../_images/architecture.svg" width="500">
 
 ## 2. [Execution Graph (DAG)](dag.ipynb)
 
