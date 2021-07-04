@@ -9,17 +9,14 @@ All questions are welcome in the Slack channel.
 ```{toctree}
 :hidden:
 
-hello
-example_covid19
-sql
-stock_sentiment
 dag
 extensions
 useful_config
+execution_engine
+validation
 schema_dataframes
 partition
 checkpoint
-execution_engine
 rpc
 x-like
 ```

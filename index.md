@@ -28,22 +28,27 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 
 # Tutorials
 
-## [For Beginners](tutorials/beginner/index.ipynb)
+## [Beginner Tutorial](tutorials/beginner/index.md)
 
-## [For Advanced Users](tutorials/advanced.ipynb)
+## [Advanced Concepts](tutorials/advanced.index.md)
 
-## [Fugue-Sql](tutorials/fugue_sql/index.ipynb)
+## [Fugue-Sql](tutorials/fugue_sql/index.md)
+
+## [Examples](tutortials/examples/index.md)
 
 ## [Applications](tutorials/applications/index.md)
 
 ## [Resources](tutorials/resources.md)
 
+## [Appendix](tutorials/appendix/index.md)
+
 ```{toctree}
 :hidden:
 
 tutorials/beginner/index
-tutorials/advanced
+tutorials/advanced/index
 tutorials/fugue_sql/index
+tutorials/examples/index
 tutorials/applications/index
 tutorials/resources
 tutorials/appendix/index

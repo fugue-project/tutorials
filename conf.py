@@ -72,6 +72,7 @@ html_theme_options = {
     'logo_only': True,
     'display_version': False,
     'style_nav_header_background': '#264263', 
+    'navigation_depth': 4,
     # "light_css_variables": {
     #     "color-brand-primary": "red",
     #     "color-brand-content": "#CC3333",
@@ -84,18 +85,23 @@ html_theme_options = {
     },
     # always use light theme, taken from Pandera
     # https://github.com/pradyunsg/furo/blob/main/src/furo/assets/styles/variables/_index.scss
+    # "dark_css_variables": {
+    #     "color-foreground-primary": "black",
+    #     "color-foreground-secondary": "#5a5c63",
+    #     "color-foreground-muted": "#72747e",
+    #     "color-foreground-border": "#878787",
+    #     "color-background-primary": "white",
+    #     "color-background-secondary": "#f8f9fb",
+    #     "color-background-hover": "#efeff4ff",
+    #     "color-background-hover--transparent": "#efeff400",
+    #     "color-background-border": "#eeebee",
+    #     "color-admonition-background": "transparent",
+    #     "color-api-highlight-on-target": "#e5fff5",
+    # },
     "dark_css_variables": {
-        "color-foreground-primary": "black",
-        "color-foreground-secondary": "#5a5c63",
-        "color-foreground-muted": "#72747e",
-        "color-foreground-border": "#878787",
-        "color-background-primary": "white",
-        "color-background-secondary": "#f8f9fb",
-        "color-background-hover": "#efeff4ff",
-        "color-background-hover--transparent": "#efeff400",
-        "color-background-border": "#eeebee",
-        "color-admonition-background": "transparent",
-        "color-api-highlight-on-target": "#e5fff5",
+        "color-brand-primary": "#254262",
+        "color-brand-content": "#254262",
+        "color-api-highlight-on-target": "#6081a6",
     },
 }
 
