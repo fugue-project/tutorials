@@ -22,7 +22,7 @@ x-like
 
 ## 1. Architecture
 
-<img src="../../_images/architecture.svg" width="500">
+<img src="../../_images/architecture1.svg" width="500">
 
 ## 2. [Execution Graph (DAG)](dag.ipynb)
 
