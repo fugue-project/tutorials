@@ -24,7 +24,9 @@ x-like
 
 <img src="../../_images/architecture.svg" width="500">
 
-## 2. Execution Graph (DAG)
+## 2. [Execution Graph (DAG)](dag.ipynb)
+
+Here we discuss the execution graph behind Fugue workflows.
 
 
 ## 3. [Fugue Configurations](useful_config.ipynb) (MUST READ)
