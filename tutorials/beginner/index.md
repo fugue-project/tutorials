@@ -1,4 +1,4 @@
-# Tutorial for Beginners
+# Getting Started
 
 Welcome to the Fugue tutorials. All questions are welcome in the Slack channel.
 

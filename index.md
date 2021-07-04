@@ -44,18 +44,22 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 
 ```{toctree}
 :maxdepth: 6
-:caption: Tutorial
+:caption: Tutorials
 :hidden:
 
 tutorials/beginner/index
-tutorials/advanced/index
 tutorials/fugue_sql/index
+tutorials/advanced/index
+```
 
+```{toctree}
 :caption: Applications
 :hidden:
 tutorials/examples/index
 tutorials/applications/index
+```
 
+```{toctree}
 :caption: Further Information
 :hidden:
 tutorials/resources
