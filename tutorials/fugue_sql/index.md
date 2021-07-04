@@ -45,7 +45,7 @@ Explore [Jinja templating](https://jinja.palletsprojects.com/) for variable pass
 
 ## [5. Using Other Fugue Extensions](extensions.ipynb)
 
-The [Transformer](../transformer.ipynb) is just one of many possible [Fugue extensions](../extensions.ipynb). In this section we'll explore the syntax of all the other Fugue extensions: [Creator](../creator.ipynb), [Processor](../processor.ipynb), [Outputter](../outputter.ipynb), and [CoTransformer](../cotransformer.ipynb).
+The [Transformer](../extensions/transformer.ipynb) is just one of many possible [Fugue extensions](../extensions/extensions.ipynb). In this section we'll explore the syntax of all the other Fugue extensions: [Creator](../extensions/creator.ipynb), [Processor](../extensions/processor.ipynb), [Outputter](../extensions/outputter.ipynb), and [CoTransformer](../extensions/cotransformer.ipynb).
 
 ## 6. Fugue-sql with Pandas
 
