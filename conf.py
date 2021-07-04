@@ -84,7 +84,7 @@ html_theme_options = {
         "color-api-highlight-on-target": "#6081a6",
     },
     "dark_css_variables": {
-        "color-foreground-primary": "white",
+        "color-foreground-primary": "black",
         "color-foreground-secondary": "#5a5c63",
         "color-foreground-muted": "#72747e",
         "color-foreground-border": "#878787",
