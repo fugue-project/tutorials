@@ -36,7 +36,7 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 
 ## [Advanced Concepts](tutorials/advanced/index.md)
 
-## [Examples](tutortials/examples/index.md)
+## [Examples](tutorials/examples/index.md)
 
 ## [Applications](tutorials/applications/index.md)
 
@@ -51,7 +51,7 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 
 
 tutorials/beginner/index
-tutotials/extensions/index
+tutorials/extensions/index
 tutorials/fugue_sql/index
 tutorials/advanced/index
 ```
