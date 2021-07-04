@@ -46,7 +46,7 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 
 ```{toctree}
 :maxdepth: 6
-:caption: Fugue Tutorials
+:caption: Tutorials
 :hidden:
 
 
