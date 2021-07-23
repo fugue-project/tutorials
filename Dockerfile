@@ -1,6 +1,6 @@
 FROM fugueproject/devenv:0.2.0
 
-RUN pip install fugue[all]==0.5.1.dev4
+RUN pip install fugue[all]==0.6.1.dev1
 
 ARG NB_USER=vscode
 ARG NB_UID=1000
@@ -12,7 +12,8 @@ WORKDIR ${HOME}
 
 USER root
 RUN rm -rf ${HOME}
-COPY README.ipynb ${HOME}/
+# COPY README.ipynb ${HOME}/
+COPY README.md ${HOME}/
 COPY tutorials ${HOME}/tutorials
 COPY data ${HOME}/data
 COPY .jupyter ${HOME}/.jupyter
