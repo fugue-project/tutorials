@@ -98,7 +98,7 @@ html_theme_options = {
     },
 
 }
-html_favicon = "docs/_static/favicon.jpg"
+html_favicon = "docs/_static/fugue_logo_trimmed.svg"
 
 source_suffix = ['.md', '.ipynb']
 
