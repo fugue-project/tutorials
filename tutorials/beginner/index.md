@@ -20,9 +20,10 @@ beginner_sql
 
 
 ## [1. Introduction](introduction.ipynb)
-We'll get started by introducing Fugue and the simplest way to get started with it in the `transform` function. The `transform` function can take in a Python or Pandas function and scale it out in Dask.
+We'll get started by introducing Fugue and the simplest way to get started with it in the `transform` function. The `transform` function can take in a Python or Pandas function and scale it out in Spark or Dask.
 
 ## [2. Decoupling Logic and Execution](decoupling_logic_and_execution.ipynb)
+Now that we have seen how the `transform` function allows use Python and Pandas code on Spark, we'll see how we can apply this same principle to entire workflows using FugueWorkflow. We'll show how Fugue allows users to decouple logic from execution.
 
 ## [3. Fugue Interface](interface.ipynb)
 In this section we'll start covering some concepts like the Directed Acyclic Graph (DAG) and the need for explicit schema in a distributed compute environment. We'll show how to pass parameters to `transformers`, as well as load and save data. With these, users will be able to start some basic work on data through Fugue.
