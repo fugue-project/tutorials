@@ -98,6 +98,7 @@ html_theme_options = {
     },
 
 }
+html_favicon = "docs/_static/favicon.jpg"
 
 source_suffix = ['.md', '.ipynb']
 
