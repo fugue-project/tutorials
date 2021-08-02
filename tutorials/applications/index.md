@@ -13,7 +13,7 @@ databricks_connect
 ```
 
 
-## [Data Validation](validation.ipynb)
+## [Data Validation](data_validation.ipynb)
 We'll get started with using Fugue and Pandera for data validation. Using Fugue, we can bring Pandas-based libraries into Spark, meaning we don't have to re-implement the same logic twice. Moreover, using Fugue allows us to achieve **validation by partition**, an operation missing in the current data validation frameworks.
 
 ## [Fugue and Databricks Connect](databricks_connect.ipynb)

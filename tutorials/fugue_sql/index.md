@@ -41,11 +41,11 @@ Go over the implemented operations that `Fugue` has on top of the ones provided 
 
 ## [4. Integrating Python](python.ipynb)
 
-Explore [Jinja templating](https://jinja.palletsprojects.com/) for variable passing, and using a Python functions as a [Transformer](../transformer.ipynb) in a `%%fsql` cell.
+Explore [Jinja templating](https://jinja.palletsprojects.com/) for variable passing, and using a Python functions as a [Transformer](../extensions/transformer.ipynb) in a `%%fsql` cell.
 
 ## [5. Using Other Fugue Extensions](extensions.ipynb)
 
-The [Transformer](../extensions/transformer.ipynb) is just one of many possible [Fugue extensions](../extensions/extensions.ipynb). In this section we'll explore the syntax of all the other Fugue extensions: [Creator](../extensions/creator.ipynb), [Processor](../extensions/processor.ipynb), [Outputter](../extensions/outputter.ipynb), and [CoTransformer](../extensions/cotransformer.ipynb).
+The [Transformer](../extensions/transformer.ipynb) is just one of many possible [Fugue extensions](../extensions/index.md). In this section we'll explore the syntax of all the other Fugue extensions: [Creator](../extensions/creator.ipynb), [Processor](../extensions/processor.ipynb), [Outputter](../extensions/outputter.ipynb), and [CoTransformer](../extensions/cotransformer.ipynb).
 
 ## 6. Fugue-sql with Pandas
 
@@ -53,7 +53,7 @@ The [Transformer](../extensions/transformer.ipynb) is just one of many possible 
 
 ## [7. Fugue-sql with Dask](dask.ipynb)
 
-`Fugue` and [dask-sql](https://dask-sql.readthedocs.io/en/latest/index.html) are collaborating to have our solutions converge and bring the SQL interface for [Dask](https://docs.dask.org/en/latest/). Currently, `dask-sql` is faster on average, while `fugue-sql` is more complete in terms of `SQL` keywords implemented. Conveniently, our solutions can be used together to bring the best of both worlds. This is done by using `dask-sql` as the underlying [execution engine](../execution_engine.ipynb) of the `FugueSQLWorkflow` context manager. 
+`Fugue` and [dask-sql](https://dask-sql.readthedocs.io/en/latest/index.html) are collaborating to have our solutions converge and bring the SQL interface for [Dask](https://docs.dask.org/en/latest/). Currently, `dask-sql` is faster on average, while `fugue-sql` is more complete in terms of `SQL` keywords implemented. Conveniently, our solutions can be used together to bring the best of both worlds. This is done by using `dask-sql` as the underlying [execution engine](../advanced/execution_engine.ipynb) of the `FugueSQLWorkflow` context manager. 
 
 ## 8. Fugue-sql with Spark
 

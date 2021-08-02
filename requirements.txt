@@ -20,5 +20,8 @@ ipython
 
 flask
 fugue[spark]
+
 pandera
 scikit-learn
+matplotlib
+seaborn
