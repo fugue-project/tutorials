@@ -100,6 +100,7 @@ html_theme_options = {
 }
 html_favicon = "docs/_static/fugue_logo_trimmed.svg"
 
-source_suffix = ['.md', '.ipynb']
+# Adding .ipynb here crashes nbsphinx
+source_suffix = {'.md': 'markdown'}
 
 master_doc = 'index'
