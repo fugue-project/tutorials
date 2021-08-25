@@ -22,8 +22,8 @@ import sphinx_rtd_theme
 
 project = "Fugue Tutorials"
 version = __version__
-copyright = "2021, Han Wang, Kevin Kho"  # noqa: A001
-author = "Han Wang, Kevin Kho"
+copyright = "2021, The Fugue Development Team"  # noqa: A001
+author = "The Fugue Development Team"
 
 
 # -- General configuration ---------------------------------------------------
