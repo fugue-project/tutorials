@@ -31,7 +31,7 @@ def add_transformer(df:pd.DataFrame) -> pd.DataFrame:
     return df
 ```
 
-This schema hint comment is read by Fugue to make the `add_transformer` an extension during runtime. In fact, the schema hint is not even required if the schema is provided during runtime as seen below. These approached that leave the code in native Python are called the [interfaceless](./interfaceless.ipynb) approach. 
+This schema hint comment is read by Fugue to make the `add_transformer` an extension during runtime. In fact, the schema hint is not even required if the schema is provided during runtime as seen below. These approaches that leave the code in native Python are called the [interfaceless](./interfaceless.ipynb) approach. 
 
 ```python
 from fugue import transform
@@ -50,8 +50,8 @@ df = transform(df, add_transformer, schema="*, c:int")
 extensions
 creator
 processor
-transformer
 outputter
+transformer
 cotransformer
 interfaceless
 ```
