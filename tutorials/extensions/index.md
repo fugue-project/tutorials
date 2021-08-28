@@ -45,6 +45,9 @@ def add_transformer(df:pd.DataFrame) -> pd.DataFrame:
 df = transform(df, add_transformer, schema="*, c:int")
 ```
 
+## Why Explicit on Output Schema?
+
+Normally computing frameworks can infer output schema, however, it is neither reliable nor efficient. To infer the schema, it has to go through at least one partition of data and figure out the possible schema. However, what if a transformer is producing inconsistent schemas on different data partitions? What if that partition takes a long time or fail? So to avoid potential correctness and performance issues, `Transformer` and `CoTransformer` output schemas are required in Fugue.
 
 ```{toctree}
 :hidden:
