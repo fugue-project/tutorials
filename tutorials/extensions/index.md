@@ -8,6 +8,8 @@ We have previously introduced extensions in the [Getting Started section](../beg
 
 <img src="../../_images/extensions.svg" width="700">
 
+## Primer on Driver and Workers
+
 ## Extension Types
 
 In the following descriptions, note the difference between `DataFrame` and `LocalDataFrame`. A `LocalDataFrame` is a dataframe that exists on a single machine. This would be something like `pd.DataFrame` or `List[List[Any]]`. On the other hand, the `DataFrame` is a dataframe that can exist on multiple machines. This would be like a Spark or Dask DataFrame.
