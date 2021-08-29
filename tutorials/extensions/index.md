@@ -8,8 +8,6 @@ We have previously introduced extensions in the [Getting Started section](../beg
 
 <img src="../../_images/extensions.svg" width="700">
 
-## Primer on Driver and Workers
-
 ## Extension Types
 
 In the following descriptions, note the difference between `DataFrame` and `LocalDataFrame`. A `LocalDataFrame` is a dataframe that exists on a single machine. This would be something like `pd.DataFrame` or `List[List[Any]]`. On the other hand, the `DataFrame` is a dataframe that can exist on multiple machines. This would be like a Spark or Dask DataFrame.
@@ -19,7 +17,9 @@ In the following descriptions, note the difference between `DataFrame` and `Loca
 * [**Outputter**](./outputter.ipynb): one or multiple input `DataFrames`, no input, it is to finalize the process of the input, for example save or print
 * [**Transformer**](./transformer.ipynb): single `LocalDataFrame` in, single `LocalDataFrame` out
 * [**CoTransformer**](./cotransformer.ipynb): one or multiple `LocalDataFrame` in, single `LocaDataFrame` out
-* [**OutputTransformer**](./transformer.ipynb#Output-Transformer): single `LocalDataFrame` in, no output
+
+**Advanced**
+* [**OutputTransformer**](./outtransformer.ipynb): single `LocalDataFrame` in, no output
 * [**OutputCoTransformer**](./cotransformer.ipynb#Output-CoTransformer): one or multiple `LocalDataFrame` in, no output
 
 ## [Interfaceless](./interfaceless.ipynb)
@@ -58,5 +58,6 @@ processor
 outputter
 transformer
 cotransformer
+outtransformer
 interfaceless
 ```
