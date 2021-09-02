@@ -10,7 +10,7 @@ We have previously introduced extensions in the [Getting Started section](../beg
 
 ## Extension Types
 
-In the following descriptions, note the difference between `DataFrame` and `LocalDataFrame`. A `LocalDataFrame` is a dataframe that exists on a single machine. This would be something like `pd.DataFrame` or `List[List[Any]]`. On the other hand, the `DataFrame` is a dataframe that can exist on multiple machines. This would be like a Spark or Dask DataFrame.
+In the following descriptions, note the difference between `DataFrame` and `LocalDataFrame`. A `LocalDataFrame` is a dataframe that exists on a single machine. The `LocalDataFrame` is an abstraction for structures like `pd.DataFrame` or `List[List[Any]]`. On the other hand, the `DataFrame` is a dataframe that can exist on multiple machines. Fugue's `DataFrame` class is a general version of Spark or Dask DataFrames.
 
 * [**Creator**](./creator.ipynb): no input, single output `DataFrame`, it is to produce `DataFrame` input for other types of nodes, for example load file or create mock data
 * [**Processor**](./processor.ipynb): one or multiple input `DataFrame`, single output `DataFrame`, it is to do certain transformation and pass to the next node
@@ -19,8 +19,8 @@ In the following descriptions, note the difference between `DataFrame` and `Loca
 * [**CoTransformer**](./cotransformer.ipynb): one or multiple `LocalDataFrame` in, single `LocaDataFrame` out
 
 **Advanced**
-* [**OutputTransformer**](./outtransformer.ipynb): single `LocalDataFrame` in, no output
-* [**OutputCoTransformer**](./cotransformer.ipynb#Output-CoTransformer): one or multiple `LocalDataFrame` in, no output
+* [**OutputTransformer**](./outputtransformer.ipynb): single `LocalDataFrame` in, no output
+* [**OutputCoTransformer**](./outputcotransformer.ipynb): one or multiple `LocalDataFrame` in, no output
 
 ## [Interfaceless](./interfaceless.ipynb)
 
@@ -58,6 +58,7 @@ processor
 outputter
 transformer
 cotransformer
-outtransformer
+outputtransformer
+outputcotransformer
 interfaceless
 ```

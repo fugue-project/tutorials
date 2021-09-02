@@ -41,7 +41,7 @@ Fugue applies input validation.
 ## Data Type, Schema & DataFrames](schema_dataframes.ipynb)
 Fugue data types and schema are strictly based on [Apache Arrow](https://arrow.apache.org/docs/index.html). Dataframe is an abstract concept with several built-in implementations to adapt to different dataframes. In this tutorial, we will go through the basic APIs and focus on the most common use cases.
 
-## Partition](partition.ipynb) (MUST READ)
+## [Partition](partition.ipynb) (MUST READ)
 This tutorial is more focused on explaining the basic ideas of data partitioning. It's less related with Fugue. To have a good understanding of partition is the key for writing high performance code.
 
 ## [Checkpoint](checkpoint.ipynb)

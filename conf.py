@@ -16,7 +16,6 @@ import sys
 sys.path.insert(0, os.path.abspath("./"))
 
 from fugue import __version__
-import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
@@ -44,9 +43,6 @@ nbsphinx_toctree = {
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["docs/_templates"]
 
-# Language is mainly needed for translation
-# language = "python"
-
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
@@ -58,6 +54,9 @@ exclude_patterns = ["venv"]
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 html_theme = "furo"
+
+# This is the sidebar title
+html_title = "Fugue Tutorials"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
