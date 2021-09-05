@@ -4,7 +4,9 @@ hide-toc: true
 
 # Welcome To Fugue Tutorials
 
-[Join Fugue-Project on Slack](https://join.slack.com/t/fugue-project/shared_invite/zt-ffo2ik1d-maSsCykv_p7kXpnmIjKAug)
+All questions are welcome in the Slack channel.
+
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ)
 
 This environment has everything setup for you, you can run Fugue on native python, Spark and Dask, with Fugue SQL support. In order to setup your own environment, you can pip install the package:
 
@@ -34,7 +36,7 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 
 ## [Fugue-Sql](tutorials/fugue_sql/index.md)
 
-## [Advanced Concepts](tutorials/advanced/index.md)
+## [Deep Dive](tutorials/advanced/index.md)
 
 ## [Examples](tutorials/examples/index.md)
 
