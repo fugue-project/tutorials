@@ -69,7 +69,6 @@ For the `worker`-side extensions, things need to be a bit more explicit. Normall
 ```{toctree}
 :hidden:
 
-extensions
 creator
 processor
 outputter
