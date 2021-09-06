@@ -34,7 +34,7 @@ Here we discuss the execution graph behind Fugue workflows.
 ## [Fugue Configurations](useful_config.ipynb) (MUST READ)
 These configurations can have significant impact on building and running the Fugue workflows.
 
-## Execution Engine](execution_engine.ipynb)
+## [Execution Engine](execution_engine.ipynb)
 The heart of Fugue. It is the layer that unifies many of the core concepts of distributed computing, and separates the underlying computing frameworks from user level logic. Normally you don't directly interact with execution engines. But it's good to understand some basics.
 
 ## [Validation](validation.ipynb)
