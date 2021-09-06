@@ -17,7 +17,7 @@ If you are new to Fugue or distributed compute, start with the [Getting Started]
 
 If you are specifally looking for FugueSQL to use a SQL interface on top of Spark and Dask, check the [FugueSQL](tutorials/fugue_sql/index.md) section.
 
-There are also multiple conference presentations and blog posts that can be found in the [Resources](tutorials/resources/index.md) section.
+There are also multiple conference presentations and blog posts that can be found in the [Resources](tutorials/resources.md) section.
 
 ## Installation
 
