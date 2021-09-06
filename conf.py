@@ -63,11 +63,9 @@ html_title = "Fugue Tutorials"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["docs/_static"]
 html_logo = "docs/_static/logo_blue.svg"
+
+# navigation_depth is supported in sphinx readthedocs theme but not furo
 html_theme_options = {
-    'logo_only': True,
-    'display_version': False,
-    'style_nav_header_background': '#264263', 
-    'navigation_depth': 4,
     # "light_css_variables": {
     #     "color-brand-primary": "red",
     #     "color-brand-content": "#CC3333",
