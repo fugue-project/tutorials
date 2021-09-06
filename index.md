@@ -39,10 +39,6 @@ Alternatively, you should get decent performance if running its docker image on 
 docker run -p 8888:8888 fugueproject/tutorials:latest
 ```
 
-# Tutorials
-
-
-
 
 ```{toctree}
 :maxdepth: 6
