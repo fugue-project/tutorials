@@ -41,6 +41,9 @@ AI Camp
 Orlando Python Meetup
 * [Distributed Computing Workflows with Fugue-sql](https://www.youtube.com/watch?v=iROWlAVa2Kk)
 
+DataOps DC Meetup
+* [Simplifying Testing of Spark Applications](https://www.youtube.com/watch?v=GYmk4x2NS3M)
+
 
 ## 2020
 
