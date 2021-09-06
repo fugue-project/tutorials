@@ -6,12 +6,29 @@ This is a collection of talks given at various Meetups and conferences. All ques
 
 ## 2021
 
+**Conferences**
+
+PyCon US 2021
+* [Large Scale Data Validation with Spark and Dask](https://www.youtube.com/watch?v=2AdvBgjO_3Q)
+
+Dask Summit 2021
+* [Dask SQL Query Engines](https://www.youtube.com/watch?v=bQDN41Bc3bw)
+
+  * FugueSQL is one of the engines introduced
+
+Spark AI Summit and Dremio Subsurface videos have not been uploaded yet.
+
 **Blogs**
 
 Towards Data Science
 * [Using Pandera on Spark for Data Validation through Fugue](https://towardsdatascience.com/using-pandera-on-spark-for-data-validation-through-fugue-72956f274793)
 * [Creating Pandas and Spark Compatible Functions with Fugue](https://towardsdatascience.com/creating-pandas-and-spark-compatible-functions-with-fugue-8617c0b3d3a8)
 * [Interoperable Python and SQL in Jupyter Notebooks](https://towardsdatascience.com/interoperable-python-and-sql-in-jupyter-notebooks-86245e711352)
+
+James Le's Blog
+* [Fugue - Reducing Spark Developer Friction](https://jameskle.com/writes/fugue)
+
+  * This is one of the most comprehensive pieces on Fugue to date.
 
 [Coiled](https://coiled.io/) Blog
 * [Data Analysis with FugueSQL on Coiled Dask Clusters](https://coiled.io/data-analysis-with-fuguesql-on-coiled-dask-clusters/)
@@ -24,13 +41,10 @@ AI Camp
 Orlando Python Meetup
 * [Distributed Computing Workflows with Fugue-sql](https://www.youtube.com/watch?v=iROWlAVa2Kk)
 
-**Conferences**
-
-To be updated as videos become available
 
 ## 2020
 
+**Conferences**
+
 Spark AI Summit 2020
 * [Unifying Spark and Non-Spark Ecosystems for Big Data Analytics](https://www.youtube.com/watch?v=BBd4b2pMk0c)
-
-  * This is an introduction to the Fugue open-source project and its motivation. It also includes a high-level architecture and overview.

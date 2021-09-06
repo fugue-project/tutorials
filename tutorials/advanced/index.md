@@ -1,10 +1,12 @@
 # Deep Dive
 
-Since you already have experience in Spark or distributed computing in general, you may be interested in the extra values Fugue can add.
-
 All questions are welcome in the Slack channel.
 
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ)
+
+This section is not needed to create end-to-end workflows with Fugue, but it will help give a better understanding of the features available. In some cases, applying these concepts may significantly improve performance.
+
+Since you already have experience in Spark or distributed computing in general, you may be interested in the extra values Fugue can add. 
 
 ```{toctree}
 :hidden:
@@ -38,7 +40,7 @@ The heart of Fugue. It is the layer that unifies many of the core concepts of di
 ## [Validation](validation.ipynb)
 Fugue applies input validation.
 
-## Data Type, Schema & DataFrames](schema_dataframes.ipynb)
+## [Data Type, Schema & DataFrames](schema_dataframes.ipynb)
 Fugue data types and schema are strictly based on [Apache Arrow](https://arrow.apache.org/docs/index.html). Dataframe is an abstract concept with several built-in implementations to adapt to different dataframes. In this tutorial, we will go through the basic APIs and focus on the most common use cases.
 
 ## [Partition](partition.ipynb) (MUST READ)
