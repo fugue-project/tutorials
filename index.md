@@ -13,7 +13,7 @@ All questions are welcome in the Slack channel.
 
 Fugue provides an easier interface to using distributed compute effectively and accelerates big data projects. It does this by minimizing the amount of code you need to write, in addition to taking care of tricks and optimizations that lead to more efficient execution.
 
-If you are new to Fugue or distributed computing, start with the [Getting Started](tutorials/beginner/index.md) section.
+If you are new to Fugue or distributed compute, start with the [Getting Started](tutorials/beginner/index.md) section.
 
 If you are specifically looking for FugueSQL to use a SQL interface on top of Spark and Dask, check the [FugueSQL](tutorials/fugue_sql/index.md) section.
 
