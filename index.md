@@ -2,25 +2,36 @@
 hide-toc: true
 ---
 
-# Welcome To Fugue Tutorials
+# Welcome to the Fugue Tutorials!
 
 All questions are welcome in the Slack channel.
 
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fugue-project/tutorials/master)
 
-This environment has everything setup for you, you can run Fugue on native python, Spark and Dask, with Fugue SQL support. In order to setup your own environment, you can pip install the package:
+# What Does Fugue Do?
+
+Fugue provides an easier interface to using distributed compute effectively and accelerates big data projects. It does this by minimizing the amount of code you need to write, in addition to taking care of tricks and optimizations that lead to more efficient execution.
+
+If you are new to Fugue or distributed compute, start with the [Getting Started](tutorials/beginner/index.md) section.
+
+If you are specifally looking for FugueSQL to use a SQL interface on top of Spark and Dask, check the [FugueSQL](tutorials/fugue_sql/index.md) section.
+
+There are also multiple conference presentations and blog posts that can be found in the [Resources](tutorials/resources/index.md) section.
+
+## Installation
+
+In order to setup your own environment, you can pip install the package. This includes Fugue on native python, Spark and Dask, with Fugue SQL support. Spark would need Java installed separately to run.
 
 ```bash
 pip install fugue[all]
 ```
 
-The simplest way to run the tutorial is to use [mybinder](https://mybinder.org/v2/gh/fugue-project/tutorials/master)
+## Running the Code
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fugue-project/tutorials/master)
+The simplest way to run the tutorial interactively is to use [mybinder](https://mybinder.org/v2/gh/fugue-project/tutorials/master). Binder spins up an environment using a container.
 
-**But it runs slow on binder**, the machine on binder isn't powerful enough for
-a distributed framework such as Spark. Parallel executions can become sequential, so some of the
-performance comparison examples will not give you the correct numbers.
+**Some code snippets run slow on binder**, the machine on binder isn't powerful enough for a distributed framework such as Spark. Parallel executions can become sequential, so some of the performance comparison examples will not give you the correct numbers.
 
 Alternatively, you should get decent performance if running its docker image on your own machine:
 
@@ -30,21 +41,8 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 
 # Tutorials
 
-## [Getting Started](tutorials/beginner/index.md)
 
-## [Extensions](tutorials/extensions/index.md)
 
-## [Fugue-Sql](tutorials/fugue_sql/index.md)
-
-## [Deep Dive](tutorials/advanced/index.md)
-
-## [Examples](tutorials/examples/index.md)
-
-## [Applications](tutorials/applications/index.md)
-
-## [Resources](tutorials/resources.md)
-
-## [Appendix](tutorials/appendix/index.md)
 
 ```{toctree}
 :maxdepth: 6
