@@ -36,7 +36,7 @@ This lets us import the `%%fsql` cell magic and use `FugueSQL` cells in Jupyter 
 
 ```{code-cell} ipython3
 from fugue_notebook import setup
-setup ()
+setup()
 ```
 
 ```{code-cell} ipython3
@@ -58,6 +58,7 @@ SELECT *
 Similar to the programming interface of Fugue, we can also bring it to Spark and Dask by specifying the SQL engine.
 
 ```{code-cell} ipython3
+:tags: [remove-stderr]
 %%fsql spark
 SELECT * 
   FROM df
