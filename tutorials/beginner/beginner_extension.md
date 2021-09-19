@@ -136,6 +136,7 @@ For those unfamiliar with distributed systems, the work is spread across multipl
 On the other hand, driver side extensions are ExecutionEngine aware. This means that these extensions can use code written with Spark or Dask specifically. All we need to do is to pass a first argument with the ExecutionEngine type annotation.
 
 ```{code-cell} ipython3
+:tags: [remove-stderr]
 from fugue import ExecutionEngine, DataFrame
 from fugue_spark import SparkExecutionEngine, SparkDataFrame
 
