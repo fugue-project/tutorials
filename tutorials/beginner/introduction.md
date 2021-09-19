@@ -61,6 +61,7 @@ Now we bring it to Spark using Fugue in the next code snippets. Fugue has a func
 Even if there is no cluster available, the `SparkExecutionEngine` will start a local Spark instance and parallelize the jobs with all cores of the machine
 
 ```{code-cell} ipython3
+:tags: [remove-stderr, remove-stdout]
 # create Spark session for next cells
 from pyspark.sql import SparkSession
 spark_session = SparkSession.builder.getOrCreate()
