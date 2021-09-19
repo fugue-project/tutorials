@@ -17,7 +17,12 @@ kernelspec:
 
 The FugueWorkflow object creates a Directed Acyclic Graph (DAG) where the nodes are DataFrames that are connected by extensions. Extensions are code that creates/modifies/outputs DataFrames. The `transformer` we have been using is an example of an extension. In this section, we'll cover the other types of extensions: `creator`, `processor`, `outputter`, and `cotransformer`. For all extensions, schema has to be defined. Below are the types of extensions.
 
-<img src="../../images/extensions.svg" width="700">
+``` {image} images/extensions.svg
+---
+width: 700
+name: Extensions
+---
+```
 
 `outputtransformer` and `outputcotransformer` will be covered in the Deep Dive section. 
 
