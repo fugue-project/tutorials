@@ -6,8 +6,12 @@ All questions are welcome in the Slack channel.
 
 We have previously introduced extensions in the [Getting Started section](../beginner/beginner_extension.ipynb). This section is a more comprehensive guide to extensions in Fugue. Extensions are user-created functions that perform operations on DataFrames. By converting these functions to the approriate extension, they can be brought into Fugue workflows. 
 
-<img src="../../_images/extensions.svg" width="700">
-
+``` {image} images/extensions.svg
+---
+width: 700
+name: Extensions
+---
+```
 ## Driver vs Worker
 
 To fully understand extensions, it is important to understand the basic distributed compute architecture. A compute cluster is comprised of one `driver`, and multiple `worker` nodes. The `driver` is the machine responsible for orchestrating the `worker` machines. Because the driver is responsible for communciating and distributing work, it has access to information that worker nodes don't have. For example, it keeps track of partition information.
