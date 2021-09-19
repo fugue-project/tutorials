@@ -51,6 +51,7 @@ map_phone_to_location(data.copy())
 Next we'll perform the same operation in Spark and see how different the syntax is.
 
 ```{code-cell} ipython3
+:tags: [remove-stderr, remove-stdout]
 # Setting up Spark session
 from pyspark.sql import SparkSession, DataFrame
 spark = SparkSession.builder.getOrCreate()
