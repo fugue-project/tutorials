@@ -17,6 +17,7 @@ nbconvert
 nbsphinx
 pandoc
 ipython
+jupyter-book
 
 flask
 fugue[spark]
