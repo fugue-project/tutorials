@@ -23,22 +23,23 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - uses: actions/checkout@v2
-    - name: Cache conda
-      uses: actions/cache@v2
-      env:
-        # Increase this value to reset cache if environment.yml has not changed
-        CACHE_NUMBER: 0
-      with:
-        path: ~/conda_pkgs_dir
-        key:
-          ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
-          hashFiles('environment.yml') }}
     - uses: conda-incubator/setup-miniconda@v2
       with:
         activate-environment: fugue-docs
-        channel-priority: strict
+        python-version: 3.8
+        mamba-version: "*"
         environment-file: environment.yml
+        auto-update-conda: true
         use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
+
+      - name: Setup miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: practical-omnitigs
+          python-version: 3.8
+          environment-file: environment.yml
+          auto-update-conda: true
+          use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
 
     # Build the book
     - name: Build the book
