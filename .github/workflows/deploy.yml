@@ -35,6 +35,7 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
+        conda activate fugue-docs
         jupyter-book build .
 
     # Deploy the book's HTML to gh-pages branch
