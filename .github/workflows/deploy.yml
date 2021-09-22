@@ -32,15 +32,6 @@ jobs:
         auto-update-conda: true
         use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
 
-      - name: Setup miniconda
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          activate-environment: practical-omnitigs
-          python-version: 3.8
-          environment-file: environment.yml
-          auto-update-conda: true
-          use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
-
     # Build the book
     - name: Build the book
       run: |
