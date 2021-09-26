@@ -22,7 +22,7 @@ beginner_sql
 ## [Introduction](introduction.md)
 We'll get started by introducing Fugue and the simplest way to use it with the `transform` function. The `transform` function can take in a Python or pandas function and scale it out in Spark or Dask without having to modify the function. This provides a very simple interface to parallelize Python and pandas code on distributed compute engines, such as Spark and Dask.
 
-## [Decoupling Logic and Execution](decoupling_logic_and_execution.ipynb)
+## [Decoupling Logic and Execution](decoupling_logic_and_execution.md)
 After seeing how the `transform` function enables the use of Python and pandas code on Spark, we'll see how we can apply this same principle to entire compute workflows using `FugueWorkflow`. We'll show how Fugue allows users to decouple logic from execution, and introduce some of the benefits this provides. We'll go one step further in showing how we use native Python to make our code truly independent of any framework.
 
 ## [Fugue Interface](interface.ipynb)
