@@ -25,7 +25,7 @@ We'll get started by introducing Fugue and the simplest way to use it with the `
 ## [Decoupling Logic and Execution](decoupling_logic_and_execution.md)
 After seeing how the `transform` function enables the use of Python and pandas code on Spark, we'll see how we can apply this same principle to entire compute workflows using `FugueWorkflow`. We'll show how Fugue allows users to decouple logic from execution, and introduce some of the benefits this provides. We'll go one step further in showing how we use native Python to make our code truly independent of any framework.
 
-## [Fugue Interface](interface.ipynb)
+## [Fugue Interface](interface.md)
 In this section we'll start covering some concepts like the Directed Acyclic Graph (DAG) and the need for explicit schema in a distributed compute environment. We'll show how to pass parameters to `transformers`, as well as load and save data. With these, users will be able to start some basic work on data through Fugue.
 
 ## [Joining Data](joins.ipynb)
