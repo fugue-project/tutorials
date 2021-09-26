@@ -34,7 +34,7 @@ Here we'll show the different ways to join DataFrames in Fugue along with union,
 ## [Extensions](beginner_extension.md)
 We already covered the `transformer`, the most commonly used Fugue extension. Extensions are Fugue operations on DataFrames that are used inside the DAG. Here we will cover the `creator`, `processor`, `cotransformer` and `outputter`.
 
-## [Distributed Compute](distributed_compute.ipynb)
+## [Distributed Compute](distributed_compute.md)
 The heart of Fugue is distributed compute. In this section we'll show the keywords and concepts that allow Fugue to fully utilize the power of distributed compute. This includes `partitions`, `persisting`, and `broadcasting`.
 
 ## [Fugue-SQL](beginner_sql.ipynb)
