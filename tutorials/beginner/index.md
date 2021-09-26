@@ -19,7 +19,7 @@ beginner_sql
 ```
 
 
-## [Introduction](introduction.ipynb)
+## [Introduction](introduction.md)
 We'll get started by introducing Fugue and the simplest way to use it with the `transform` function. The `transform` function can take in a Python or pandas function and scale it out in Spark or Dask without having to modify the function. This provides a very simple interface to parallelize Python and pandas code on distributed compute engines, such as Spark and Dask.
 
 ## [Decoupling Logic and Execution](decoupling_logic_and_execution.ipynb)
