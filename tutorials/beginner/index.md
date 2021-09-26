@@ -31,7 +31,7 @@ In this section we'll start covering some concepts like the Directed Acyclic Gra
 ## [Joining Data](joins.md)
 Here we'll show the different ways to join DataFrames in Fugue along with union, intersect, and except. SQL and Pandas also have some inconsistencies users have to be aware of when joining. Fugue maintains consistency with SQL (and Spark).
 
-## [Extensions](beginner_extension.ipynb)
+## [Extensions](beginner_extension.md)
 We already covered the `transformer`, the most commonly used Fugue extension. Extensions are Fugue operations on DataFrames that are used inside the DAG. Here we will cover the `creator`, `processor`, `cotransformer` and `outputter`.
 
 ## [Distributed Compute](distributed_compute.ipynb)
