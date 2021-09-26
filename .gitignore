@@ -145,3 +145,6 @@ spark-warehourse
 =*
 
 .DS_Store
+
+# jupyter-book
+_build/
