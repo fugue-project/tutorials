@@ -37,7 +37,7 @@ We already covered the `transformer`, the most commonly used Fugue extension. Ex
 ## [Distributed Compute](distributed_compute.md)
 The heart of Fugue is distributed compute. In this section we'll show the keywords and concepts that allow Fugue to fully utilize the power of distributed compute. This includes `partitions`, `persisting`, and `broadcasting`.
 
-## [Fugue-SQL](beginner_sql.ipynb)
+## [Fugue-SQL](beginner_sql.md)
 As a last note, we'll show a bit on Fugue-Sql, the SQL interface for using Fugue. This is targeted for heavy SQL users and SQL-lovers who want to use SQL on top of Spark and Dask, or even Pandas. This is SQL that is used on DataFrames in memory as opposed to data in databases.
 
 With that, you should be ready to implement data workflows using Fugue.
