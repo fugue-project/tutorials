@@ -28,7 +28,7 @@ After seeing how the `transform` function enables the use of Python and pandas c
 ## [Fugue Interface](interface.md)
 In this section we'll start covering some concepts like the Directed Acyclic Graph (DAG) and the need for explicit schema in a distributed compute environment. We'll show how to pass parameters to `transformers`, as well as load and save data. With these, users will be able to start some basic work on data through Fugue.
 
-## [Joining Data](joins.ipynb)
+## [Joining Data](joins.md)
 Here we'll show the different ways to join DataFrames in Fugue along with union, intersect, and except. SQL and Pandas also have some inconsistencies users have to be aware of when joining. Fugue maintains consistency with SQL (and Spark).
 
 ## [Extensions](beginner_extension.ipynb)
