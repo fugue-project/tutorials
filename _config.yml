@@ -1,0 +1,5 @@
+title: Fugue Tutorials
+logo: images/logo_blue.svg
+execute:
+  execute_notebooks: off
+  allow_errors: false
