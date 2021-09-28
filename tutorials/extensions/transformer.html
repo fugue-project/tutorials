@@ -1,0 +1,1013 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transformer &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CoTransformer" href="cotransformer.html" />
+    <link rel="prev" title="Outputter" href="outputter.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../beginner/index.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Extensions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../advanced/index.html">
+   Deep Dive
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using databricks-connect
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/extensions/transformer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tutorials/extensions/transformer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-use-cases">
+   Example Use Cases
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-notes-on-usage">
+   Quick Notes on Usage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#native-approach">
+   Native Approach
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#schema-hint">
+   Schema Hint
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schema-hint-syntax">
+     Schema Hint Syntax
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decorator-approach">
+   Decorator Approach
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interface-approach-advanced">
+   Interface Approach (Advanced)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fugue-transform">
+   Fugue transform
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="transformer">
+<h1>Transformer<a class="headerlink" href="#transformer" title="Permalink to this headline">¶</a></h1>
+<p>This is the most used extension in Fugue. The <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> represents the logic unit executing on partitions of the input dataframe. Because the <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> is concerned with the logic on a logical partition level, it is unaware of the <code class="docutils literal notranslate"><span class="pre">ExecutionEngine</span></code> and is executed on the workers as opposed to the driver. Partitioning logic is also not a concern of <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> and should be specified in a previous step.</p>
+<p>Fugue’s <code class="docutils literal notranslate"><span class="pre">partition-transform</span></code> semantic is similar to the <code class="docutils literal notranslate"><span class="pre">groupby-apply</span></code> semantic of Pandas. The main difference is that the <code class="docutils literal notranslate"><span class="pre">partition-transform</span></code> semantic is scalable to distributed compute as the distribution of logical groups across workers is accounted for. For more information, read about <a class="reference internal" href="../advanced/partition.html"><span class="doc std std-doc">partitioning</span></a> in Fugue.</p>
+<p>In this tutorial are the methods to define an <code class="docutils literal notranslate"><span class="pre">Transformer</span></code>. There is no preferred method and Fugue makes it flexible for users to choose whatever interface works for them. The four ways are native approach, schema hint, decorator, and the class interface in order of simplicity. All of these methods are also compatible with Fugue’s <code class="docutils literal notranslate"><span class="pre">transform</span></code> function.</p>
+<div class="section" id="example-use-cases">
+<h2>Example Use Cases<a class="headerlink" href="#example-use-cases" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Shift and diff for each group in a timeseries</strong></p></li>
+<li><p><strong>Training seperate ML models for each group of data</strong></p></li>
+<li><p><strong>Applying different validations for each partition</strong></p></li>
+</ul>
+</div>
+<div class="section" id="quick-notes-on-usage">
+<h2>Quick Notes on Usage<a class="headerlink" href="#quick-notes-on-usage" title="Permalink to this headline">¶</a></h2>
+<p><strong>ExecutionEngine unaware</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transformers</span></code> are executed on the workers, meaning that they are not unaware of the <code class="docutils literal notranslate"><span class="pre">ExecutionEngine</span></code>.</p></li>
+</ul>
+<p><strong>Acceptable input DataFrame types</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LocalDataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">List[List[Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">Iterable[List[Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">EmptyAwareIterable[List[Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">List[Dict[str,</span> <span class="pre">Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">Iterable[Dict[str,</span> <span class="pre">Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">EmptyAwareIterable[Dict[str,</span> <span class="pre">Any]]</span></code></p></li>
+</ul>
+<p><strong>Acceptable output DataFrame types</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LocalDataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">List[List[Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">Iterable[List[Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">EmptyAwareIterable[List[Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">List[Dict[str,</span> <span class="pre">Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">Iterable[Dict[str,</span> <span class="pre">Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">EmptyAwareIterable[Dict[str,</span> <span class="pre">Any]]</span></code></p></li>
+</ul>
+<p><strong>Further notes</strong></p>
+<ul class="simple">
+<li><p>Notice that <code class="docutils literal notranslate"><span class="pre">ArrayDataFrame</span></code> and other local dataframes can’t be used as annotation, you must use <code class="docutils literal notranslate"><span class="pre">LocalDataFrame</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transformer</span></code> requires more explicitness on the output schema compared to <code class="docutils literal notranslate"><span class="pre">Processor</span></code>. This is because schema inference on workers is expensive and unreliable. The schema can be specified through schema hint, decorator, or in the Fugue code.</p></li>
+<li><p>All valid transformers can be used with Fugue’s <code class="docutils literal notranslate"><span class="pre">transform</span></code> in cases where users just want to bring one function to Spark or Dask.</p></li>
+</ul>
+</div>
+<div class="section" id="native-approach">
+<h2>Native Approach<a class="headerlink" href="#native-approach" title="Permalink to this headline">¶</a></h2>
+<p>The native approach is using a regular function without any edits beyond type annotations for both the input dataframes and output. It is converted to a Fugue extension during runtime. Since schema needs to be explicit, the schema needs to be supplied when the <code class="docutils literal notranslate"><span class="pre">transformer</span></code> is used.</p>
+<p>The example below also shows how to <code class="docutils literal notranslate"><span class="pre">partition</span></code> a DataFrame before applying a <code class="docutils literal notranslate"><span class="pre">transformer</span></code> on it. This will apply the transformer on each partition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
+
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span><span class="o">+=</span><span class="n">n</span>
+    <span class="k">return</span> <span class="n">df</span>
+    
+<span class="k">def</span> <span class="nf">get_top</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]:</span>
+    <span class="k">yield</span> <span class="nb">next</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="k">return</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span><span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+    <span class="c1"># with out schema hint you have to specify schema in Fugue code</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="c1"># get smallest b of each partition</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="n">presort</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">get_top</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="c1"># get largest b of each partition</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="n">presort</span><span class="o">=</span><span class="s2">&quot;b DESC&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">get_top</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+a:int|b:int
+-----+-----
+0    |4    
+1    |4    
+Total count: 2
+
+PandasDataFrame
+a:int|b:int
+-----+-----
+0    |5    
+1    |6    
+Total count: 2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="schema-hint">
+<h2>Schema Hint<a class="headerlink" href="#schema-hint" title="Permalink to this headline">¶</a></h2>
+<p>The schema can also be provided during the function definition through the use of the schema hint comment. Providing it during definition means it does not need to be provided inside the <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># schema: *</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span><span class="o">+=</span><span class="n">n</span>
+    <span class="k">return</span> <span class="n">df</span>
+    
+<span class="c1"># schema: *</span>
+<span class="k">def</span> <span class="nf">get_top</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]:</span>
+    <span class="k">yield</span> <span class="nb">next</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="k">return</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span><span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+    <span class="c1"># syntax for setting parameters</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">add</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span> 
+    <span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="n">presort</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">get_top</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+a:int|b:int
+-----+-----
+0    |4    
+1    |4    
+Total count: 2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="schema-hint-syntax">
+<h3>Schema Hint Syntax<a class="headerlink" href="#schema-hint-syntax" title="Permalink to this headline">¶</a></h3>
+<p>There is a special syntax for schema only available to <code class="docutils literal notranslate"><span class="pre">Transformers</span></code> Please read <a class="reference external" href="https://triad.readthedocs.io/en/latest/api/triad.collections.html#triad.collections.schema.Schema.transform">this</a> for detailed syntax, here we only show some examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># schema: *,c:int</span>
+<span class="k">def</span> <span class="nf">with_c</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="c1"># schema: *-b</span>
+<span class="k">def</span> <span class="nf">drop_b</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># schema: *~b,c</span>
+<span class="k">def</span> <span class="nf">drop_b_c_if_exists</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span><span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">with_c</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">drop_b</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">drop_b_c_if_exists</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+a:int|b:int|c:int
+-----+-----+-----
+0    |1    |1    
+0    |2    |1    
+Total count: 2
+
+PandasDataFrame
+a:int|c:int
+-----+-----
+0    |1    
+0    |1    
+Total count: 2
+
+PandasDataFrame
+a:int
+-----
+0    
+0    
+Total count: 2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="decorator-approach">
+<h2>Decorator Approach<a class="headerlink" href="#decorator-approach" title="Permalink to this headline">¶</a></h2>
+<p>The decorator approach also has the special schema syntax and it can also take a function that generates the schema. This can be used to create new column names or types based on transformer parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">transformer</span>
+
+<span class="c1"># df is the zipped DataFrames, **kwargs is the parameters passed in from Fugue</span>
+<span class="c1"># the syntax below is equivalent to @transformer(&quot;*,c:int&quot;) </span>
+<span class="nd">@transformer</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="o">+</span><span class="s2">&quot;c:int&quot;</span><span class="p">)</span> 
+<span class="k">def</span> <span class="nf">with_c</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span><span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">with_c</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+a:int|b:int|c:int
+-----+-----+-----
+0    |1    |1    
+0    |2    |1    
+1    |3    |1    
+1    |1    |1    
+Total count: 4
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="interface-approach-advanced">
+<h2>Interface Approach (Advanced)<a class="headerlink" href="#interface-approach-advanced" title="Permalink to this headline">¶</a></h2>
+<p>All the previous methods are just wrappers of the interface approach. They cover most of the use cases and simplify the usage. But for certain cases, implementing the interface approach significantly improves performance. Example scenarios to use the interface approach are:</p>
+<ul class="simple">
+<li><p>The output schema needs partition information, such as partition keys, schema, and current values of the keys.</p></li>
+<li><p>The transformer has an expensive but common initialization step for processing each logical partition. Initialization should then happen when initialiazing physical partition, meaning it doesn’t unnecessarily repeat.</p></li>
+</ul>
+<p>The biggest advantage of interface approach is that you can customize physical partition level initialization, and you have all the up-to-date context variables to use. In the interface approach, type annotations are not necessary, but again, it’s good practice to have them.</p>
+<p>From here onwards, we will we using a <code class="docutils literal notranslate"><span class="pre">create_helper</span></code> function that creates a random pandas DataFrame for us.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">create_helper</span><span class="p">(</span><span class="n">ct</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following examples focuses on performance comparisons. To see how to use context variables, see the <a class="reference external" href="./cotransformer.ipynb#Interface-Approach">CoTransfromer example</a>. In the example below, pay attention to the <code class="docutils literal notranslate"><span class="pre">get_output_schema</span></code> method and the <code class="docutils literal notranslate"><span class="pre">on_init</span></code> method. The <code class="docutils literal notranslate"><span class="pre">on_init</span></code> calls the <code class="docutils literal notranslate"><span class="pre">expensive_init</span></code> function which just sleeps for the given amount of time. This represents an operation with significant overhead.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">Transformer</span><span class="p">,</span> <span class="n">PandasDataFrame</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">LocalDataFrame</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="k">def</span> <span class="nf">expensive_init</span><span class="p">(</span><span class="n">sec</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="n">sec</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Median</span><span class="p">(</span><span class="n">Transformer</span><span class="p">):</span>
+    <span class="c1"># this is invoked on driver side</span>
+    <span class="k">def</span> <span class="nf">get_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">schema</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get_or_throw</span><span class="p">(</span><span class="s2">&quot;col&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span><span class="nb">float</span><span class="p">)</span>
+    
+    <span class="c1"># on initialization of the physical partition</span>
+    <span class="k">def</span> <span class="nf">on_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get_or_throw</span><span class="p">(</span><span class="s2">&quot;col&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+        <span class="n">expensive_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sec&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+        
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="n">pdf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">as_pandas</span><span class="p">()</span>
+        <span class="n">pdf</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">]</span><span class="o">=</span><span class="n">pdf</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">PandasDataFrame</span><span class="p">(</span><span class="n">pdf</span><span class="p">)</span>
+        
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">create_helper</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Median</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;col&quot;</span><span class="p">:</span><span class="s2">&quot;med&quot;</span><span class="p">,</span> <span class="s2">&quot;sec&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+a:long|b:long|c:long|med:double
+------+------+------+----------
+0     |4     |7     |4.0       
+1     |3     |3     |4.0       
+1     |9     |9     |4.0       
+1     |4     |9     |4.0       
+2     |3     |8     |1.5       
+</pre></div>
+</div>
+</div>
+</div>
+<p>As a side note, this example shows parameters can be retrieved using <code class="docutils literal notranslate"><span class="pre">self.params.get</span></code> or <code class="docutils literal notranslate"><span class="pre">self.params.get_or_throw</span></code>. <code class="docutils literal notranslate"><span class="pre">self.params</span></code> is a dictionary so the <code class="docutils literal notranslate"><span class="pre">get</span></code> method is just the same as accessing a dictionary. <code class="docutils literal notranslate"><span class="pre">self.params.get_or_throw</span></code> throws an error if the param does not match the given type.</p>
+<p>In order to show the benefit of <code class="docutils literal notranslate"><span class="pre">on_init</span></code> we also create another version of the <code class="docutils literal notranslate"><span class="pre">Median</span></code> transformer using the schema hint. This also calls <code class="docutils literal notranslate"><span class="pre">expensive_init</span></code> in that function for each logical partition. Also, in the run function, we set <code class="docutils literal notranslate"><span class="pre">num=2</span></code> to show the effect when using 2 workers. So for <code class="docutils literal notranslate"><span class="pre">Median</span></code> transformer that used the interface, the <code class="docutils literal notranslate"><span class="pre">expensive_init</span></code> will be called at most twice, but for version which used the schema hint, it will be called for more times.</p>
+<p>The numbers may be off if you run this on binder, but focus on the difference in magnitude.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+<span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">timeit</span>
+
+<span class="c1"># schema: *, m:double</span>
+<span class="k">def</span> <span class="nf">median</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">expensive_init</span><span class="p">(</span><span class="n">sec</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;m&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">interfaceless</span><span class="p">,</span> <span class="n">sec</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">create_helper</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">interfaceless</span><span class="p">:</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="n">num</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">median</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sec&quot;</span><span class="p">:</span> <span class="n">sec</span><span class="p">})</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="n">num</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Median</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;col&quot;</span><span class="p">:</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;sec&quot;</span><span class="p">:</span> <span class="n">sec</span><span class="p">})</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    
+<span class="n">engine</span> <span class="o">=</span> <span class="n">SparkExecutionEngine</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Interfaceless Execution time: </span><span class="si">{</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">run</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Interface Execution time: </span><span class="si">{</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">run</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SparkDataFrame
+a:long|b:long|c:long|m:double
+------+------+------+--------
+2     |3     |8     |1.5     
+2     |0     |0     |1.5     
+4     |7     |6     |5.0     
+4     |3     |0     |5.0     
+4     |5     |5     |5.0     
+Interfaceless Execution time: 10.233126380999238
+SparkDataFrame
+a:long|b:long|c:long|m:double
+------+------+------+--------
+2     |3     |8     |1.5     
+2     |0     |0     |1.5     
+4     |7     |6     |5.0     
+4     |3     |0     |5.0     
+4     |5     |5     |5.0     
+Interface Execution time: 1.8927552820005076
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">on_init</span></code> method tremendously sped up the operation because the <code class="docutils literal notranslate"><span class="pre">expensive_init</span></code> was not unnecessarily repeated.</p>
+</div>
+<div class="section" id="fugue-transform">
+<h2>Fugue transform<a class="headerlink" href="#fugue-transform" title="Permalink to this headline">¶</a></h2>
+<p>All of these transformers above can be used with the Fugue <code class="docutils literal notranslate"><span class="pre">transform</span></code> function. The <code class="docutils literal notranslate"><span class="pre">transform</span></code> function takes in a function or transformer and applies it to the dataframe immediately. As with other Transformers, schema needs to be explicit to it either needs to be supplied during the transformer definition, or during runtime with the <code class="docutils literal notranslate"><span class="pre">schema</span></code> argument.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">transform</span></code> function is useful for paralellizing one function over Spark or Dask.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># schema not supplied, so it is passed later</span>
+<span class="k">def</span> <span class="nf">median1</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;m&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="c1"># schema: *, m:double</span>
+<span class="k">def</span> <span class="nf">median2</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;m&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These two transformers can then be used. <code class="docutils literal notranslate"><span class="pre">median1</span></code> was written with the <code class="docutils literal notranslate"><span class="pre">Native</span> <span class="pre">Approach</span></code>, so schema will be required for the <code class="docutils literal notranslate"><span class="pre">transform</span></code> call below. <code class="docutils literal notranslate"><span class="pre">median2</span></code> on the other hand, uses the schema hint to provide the schema, so it does not need to be provided during runtime.</p>
+<p>In both cases below, we pass in the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>, which converts the initial <code class="docutils literal notranslate"><span class="pre">df</span></code> into a Spark DataFrame and executes the <code class="docutils literal notranslate"><span class="pre">median</span></code> functions in a distributed way. This also returns a Spark DataFrame because compute was run on <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>. It can be converted back to <code class="docutils literal notranslate"><span class="pre">pandas</span></code> using the <code class="docutils literal notranslate"><span class="pre">toPandas()</span></code> method of Spark DataFrames, but this method is only performant for smaller data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">transform</span>
+
+<span class="c1"># sample pandas DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">create_helper</span><span class="p">()</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
+               <span class="n">median</span><span class="p">,</span> 
+               <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*, m:double&quot;</span><span class="p">,</span>
+               <span class="n">engine</span><span class="o">=</span><span class="n">SparkExecutionEngine</span><span class="p">,</span> 
+               <span class="n">partition</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+               <span class="p">)</span>
+
+<span class="c1"># schema is known for median2</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
+               <span class="n">median2</span><span class="p">,</span> 
+               <span class="n">engine</span><span class="o">=</span><span class="n">SparkExecutionEngine</span><span class="p">,</span> 
+               <span class="n">partition</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+               <span class="p">)</span>
+
+<span class="n">df1</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># convert back to pandas</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+---+---+---+
+|  a|  b|  c|  m|
++---+---+---+---+
+|  0|  4|  7|4.0|
+|  6|  7|  7|7.5|
++---+---+---+---+
+only showing top 2 rows
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>m</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>4</td>
+      <td>7</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/extensions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="outputter.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Outputter</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="cotransformer.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">CoTransformer</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

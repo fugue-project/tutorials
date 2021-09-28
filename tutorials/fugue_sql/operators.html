@@ -1,0 +1,1727 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operators &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using Python" href="python.html" />
+    <link rel="prev" title="Syntax" href="syntax.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../beginner/index.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   FugueSQL
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../advanced/index.html">
+   Deep Dive
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using databricks-connect
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/fugue_sql/operators.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tutorials/fugue_sql/operators.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-and-output-operations">
+   Input and Output Operations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#print">
+   PRINT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load">
+   LOAD
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#save-or-save-and-use">
+   SAVE (or SAVE AND USE)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partitioning">
+   Partitioning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepartition">
+   PREPARTITION
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#presort">
+   PRESORT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#column-and-schema-opeartions">
+   Column and Schema Opeartions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rename-columns">
+   RENAME COLUMNS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alter-columns">
+   ALTER COLUMNS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#drop-columns">
+   DROP COLUMNS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#null-handling">
+   NULL Handling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#drop-rows">
+   DROP ROWS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fill">
+   FILL
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sampling">
+   Sampling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample">
+   SAMPLE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#take">
+   TAKE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distributed-computing-operations">
+   Distributed Computing Operations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#broadcast">
+   BROADCAST
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#persist-or-checkpoint">
+   PERSIST or CHECKPOINT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#yield">
+   YIELD
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="operators">
+<h1>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h1>
+<p>The previous section talked about <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> syntax. Along with the standard SQL operations, <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> has implemented some additional keywords (and continues to add more). These keywords have equivalent methods in the programming interface. <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> aims to make more coding fun and more English-like. Our goal is to provide an intuitive interface that is easy to read.</p>
+<p>This is not a complete reference, it just contains the most used keywords.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_notebook</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="n">setup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+require(["codemirror/lib/codemirror"]);
+function set(str) {
+    var obj = {}, words = str.split(" ");
+    for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
+    return obj;
+  }
+var fugue_keywords = "fill hash rand even presort persist broadcast params process output outtransform rowcount concurrency prepartition zip print title save append parquet csv json single checkpoint weak strong deterministic yield connect sample seed take sub callback dataframe file";
+CodeMirror.defineMIME("text/x-fsql", {
+    name: "sql",
+    keywords: set(fugue_keywords + " add after all alter analyze and anti archive array as asc at between bucket buckets by cache cascade case cast change clear cluster clustered codegen collection column columns comment commit compact compactions compute concatenate cost create cross cube current current_date current_timestamp database databases data dbproperties defined delete delimited deny desc describe dfs directories distinct distribute drop else end escaped except exchange exists explain export extended external false fields fileformat first following for format formatted from full function functions global grant group grouping having if ignore import in index indexes inner inpath inputformat insert intersect interval into is items join keys last lateral lazy left like limit lines list load local location lock locks logical macro map minus msck natural no not null nulls of on optimize option options or order out outer outputformat over overwrite partition partitioned partitions percent preceding principals purge range recordreader recordwriter recover reduce refresh regexp rename repair replace reset restrict revoke right rlike role roles rollback rollup row rows schema schemas select semi separated serde serdeproperties set sets show skewed sort sorted start statistics stored stratify struct table tables tablesample tblproperties temp temporary terminated then to touch transaction transactions transform true truncate unarchive unbounded uncache union unlock unset use using values view when where window with"),
+    builtin: set("date datetime tinyint smallint int bigint boolean float double string binary timestamp decimal array map struct uniontype delimited serde sequencefile textfile rcfile inputformat outputformat"),
+    atoms: set("false true null"),
+    operatorChars: /^[*\/+\-%<>!=~&|^]/,
+    dateSQL: set("time"),
+    support: set("ODBCdotTable doubleQuote zerolessFloat")
+  });
+
+CodeMirror.modeInfo.push( {
+            name: "Fugue SQL",
+            mime: "text/x-fsql",
+            mode: "sql"
+          } );
+
+require(['notebook/js/codecell'], function(codecell) {
+    codecell.CodeCell.options_default.highlight_modes['magic_text/x-fsql'] = {'reg':[/%%fsql/]} ;
+    Jupyter.notebook.events.on('kernel_ready.Kernel', function(){
+    Jupyter.notebook.get_cells().map(function(cell){
+        if (cell.cell_type == 'code'){ cell.auto_highlight(); } }) ;
+    });
+  });
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01-01&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01-02&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01-03&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01-01&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01-02&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01-03&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="input-and-output-operations">
+<h2>Input and Output Operations<a class="headerlink" href="#input-and-output-operations" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="print">
+<h2>PRINT<a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h2>
+<p>Prints a dataframe.</p>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">PRINT</span> <span class="pre">[number]</span> <span class="pre">[ROW|ROWS]</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span> <span class="pre">[ROWCOUNT]</span> <span class="pre">[TITLE</span> <span class="pre">“title”]</span></code></p>
+<ul class="simple">
+<li><p>dataframe - If not provided, takes the last dataframe</p></li>
+<li><p>number - Number of rows</p></li>
+<li><p>ROW|ROWS - No difference</p></li>
+<li><p>ROWCOUNT - Displays number of rows for dataframe. This is expensive for Spark and Dask. For distributed environments, persisting will help before doing this operation.</p></li>
+<li><p>TITLE - Title for display</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
+-- PRINT example
+df = CREATE [[0,&quot;hello&quot;],[1,&quot;world&quot;]] SCHEMA a:int,b:str
+PRINT 2 ROWS FROM df TITLE &quot;xyz&quot;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h3>xyz</h3></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>hello</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>world</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div></div>
+</div>
+</div>
+<div class="section" id="load">
+<h2>LOAD<a class="headerlink" href="#load" title="Permalink to this headline">¶</a></h2>
+<p>Loads a CSV, JSON, or PARQUET file as a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">LOAD</span> <span class="pre">[PARQUET|CSV|JSON]</span> <span class="pre">&quot;path&quot;</span> <span class="pre">(params)</span> <span class="pre">[COLUMNS</span> <span class="pre">schema|columns]</span></code></p>
+<ul class="simple">
+<li><p>PARQUET|CSV|JSON - File type to load. Required if the file has no extension.</p></li>
+<li><p>path - File path to load.</p></li>
+<li><p>params - Passed on to underlying execution engine loading method.</p></li>
+<li><p>COLUMNS - Columns to grab or schema to load it in as.</p></li>
+</ul>
+</div>
+<div class="section" id="save-or-save-and-use">
+<h2>SAVE (or SAVE AND USE)<a class="headerlink" href="#save-or-save-and-use" title="Permalink to this headline">¶</a></h2>
+<p>Saves a CSV, JSON, or PARQUET file as a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. <code class="docutils literal notranslate"><span class="pre">SAVE</span> <span class="pre">AND</span> <span class="pre">USE</span></code> just returns the dataframe so there is no need to load it back in.</p>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">SAVE</span> <span class="pre">[dataframe]</span> <span class="pre">[PREPARTITION</span> <span class="pre">statement]</span> <span class="pre">[OVERWRITE|APPEND|TO]</span> <span class="pre">[SINGLE]</span> <span class="pre">[PARQUET|CSV|JSON]</span> <span class="pre">&quot;path&quot;</span> <span class="pre">[(params)]</span></code></p>
+<p>or</p>
+<p><code class="docutils literal notranslate"><span class="pre">SAVE</span> <span class="pre">AND</span> <span class="pre">USE</span> <span class="pre">[dataframe]</span> <span class="pre">[PREPARTITION</span> <span class="pre">statement]</span> <span class="pre">[OVERWRITE|APPEND|TO]</span> <span class="pre">[SINGLE]</span> <span class="pre">[PARQUET|CSV|JSON]</span> <span class="pre">&quot;path&quot;</span> <span class="pre">[(params)]</span></code></p>
+<ul class="simple">
+<li><p>dataframe - If not provided, takes the last dataframe.</p></li>
+<li><p>PREPARTITION - Partitions for file.</p></li>
+<li><p>OVERWRITE|APPEND|TO - Choose the mode for writing the file out. <code class="docutils literal notranslate"><span class="pre">TO</span></code> throws an error if the file exists.</p></li>
+<li><p>SINGLE - One file output.</p></li>
+<li><p>PARQUET|CSV|JSON - Choose file type (Parquet, CSV, or JSON) for output. Required if path has no extension.</p></li>
+<li><p>path - File path to write out to.</p></li>
+<li><p>params - Passed on to underlying execution engine saving method.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
+-- SAVE and LOAD example
+CREATE [[0,&quot;1&quot;]] SCHEMA a:int,b:str
+SAVE OVERWRITE &quot;/tmp/f.parquet&quot;
+SAVE OVERWRITE &quot;/tmp/f.csv&quot; (header=true)
+SAVE OVERWRITE &quot;/tmp/f.json&quot;
+SAVE OVERWRITE PARQUET &quot;/tmp/f&quot;
+
+LOAD &quot;/tmp/f.parquet&quot; PRINT
+LOAD &quot;/tmp/f.parquet&quot; COLUMNS a PRINT
+LOAD PARQUET &quot;/tmp/f&quot; PRINT
+LOAD &quot;/tmp/f.csv&quot; (header=true) PRINT
+LOAD &quot;/tmp/f.csv&quot; (header=true) COLUMNS a:int,b:str PRINT
+LOAD &quot;/tmp/f.json&quot; PRINT
+LOAD &quot;/tmp/f.json&quot; COLUMNS a:int,b:str PRINT
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:int</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:str,b:str</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:long,b:long</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div></div>
+</div>
+</div>
+<div class="section" id="partitioning">
+<h2>Partitioning<a class="headerlink" href="#partitioning" title="Permalink to this headline">¶</a></h2>
+<p>Partitioning is an important part of distributed computing. Data is arranged into different logical partitions and then perform operations. This is normally used in conjunction with Fugue extensions. This is a clause that as part of statements.</p>
+</div>
+<div class="section" id="prepartition">
+<h2>PREPARTITION<a class="headerlink" href="#prepartition" title="Permalink to this headline">¶</a></h2>
+<p>Partitions a dataframe in preparation for a following operation.</p>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">PREPARTITION</span> <span class="pre">[RAND|HASH|EVEN]</span> <span class="pre">[number]</span> <span class="pre">[BY</span> <span class="pre">columns]</span> <span class="pre">[PRESORT</span> <span class="pre">statement]</span></code></p>
+<ul class="simple">
+<li><p>RAND|HASH|EVEN - Algorithm for prepartition. Read <a class="reference internal" href="../advanced/partition.html"><span class="doc std std-doc">this</span></a>.</p></li>
+<li><p>number - Number of partitions.</p></li>
+<li><p>columns - What columns to partition on.</p></li>
+<li><p>statement - Presort hint. Check <code class="docutils literal notranslate"><span class="pre">PRESORT</span></code> syntax.</p></li>
+</ul>
+</div>
+<div class="section" id="presort">
+<h2>PRESORT<a class="headerlink" href="#presort" title="Permalink to this headline">¶</a></h2>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">PRESORT</span> <span class="pre">column</span> <span class="pre">[ASC|DESC]</span></code></p>
+<p>Defines a presort before another operation. This is a clause mainly used with <code class="docutils literal notranslate"><span class="pre">PREPARTITION</span></code>. Multiple column, order pairs can be used separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p>
+<ul class="simple">
+<li><p>column - Name of columns to sort on.</p></li>
+<li><p>ASC|DESC - Order of sort.</p></li>
+</ul>
+<p>The example below shows how to use <code class="docutils literal notranslate"><span class="pre">PREPARTITION</span></code> and <code class="docutils literal notranslate"><span class="pre">PRESORT</span></code>. We need to define a transformer to apply it with.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PREPARTITION and PRESORT example</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># schema: *, shift:double</span>
+<span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
+-- PREPARTITION and PRESORT example
+TRANSFORM data PREPARTITION BY id PRESORT date ASC USING shift
+PRINT
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>date</th>
+      <th>value</th>
+      <th>shift</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>2020-01-01</td>
+      <td>10.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A</td>
+      <td>2020-01-02</td>
+      <td>NaN</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A</td>
+      <td>2020-01-03</td>
+      <td>30.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B</td>
+      <td>2020-01-01</td>
+      <td>20.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>B</td>
+      <td>2020-01-02</td>
+      <td>NaN</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>B</td>
+      <td>2020-01-03</td>
+      <td>40.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: id:str,date:str,value:double,shift:double</small></div></div>
+</div>
+</div>
+<div class="section" id="column-and-schema-opeartions">
+<h2>Column and Schema Opeartions<a class="headerlink" href="#column-and-schema-opeartions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="rename-columns">
+<h2>RENAME COLUMNS<a class="headerlink" href="#rename-columns" title="Permalink to this headline">¶</a></h2>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">RENAME</span> <span class="pre">COLUMNS</span> <span class="pre">params</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span></code></p>
+<ul class="simple">
+<li><p>params : Pairs of old_name:new_name separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p></li>
+<li><p>dataframe: If none is provided, take the previous one.</p></li>
+</ul>
+</div>
+<div class="section" id="alter-columns">
+<h2>ALTER COLUMNS<a class="headerlink" href="#alter-columns" title="Permalink to this headline">¶</a></h2>
+<p>Changes data type of columns.</p>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">COLUMNS</span> <span class="pre">params</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span></code></p>
+<ul class="simple">
+<li><p>params : Pairs of column:dtype separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p></li>
+<li><p>dataframe - If not provided, takes the last one.</p></li>
+</ul>
+</div>
+<div class="section" id="drop-columns">
+<h2>DROP COLUMNS<a class="headerlink" href="#drop-columns" title="Permalink to this headline">¶</a></h2>
+<p>Drops columns from <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">COLUMNS</span> <span class="pre">colnames</span> <span class="pre">[IF</span> <span class="pre">EXISTS]</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span></code></p>
+<ul class="simple">
+<li><p>colnames - Column names separated by <code class="docutils literal notranslate"><span class="pre">'</span></code>.</p></li>
+<li><p>IF EXISTS - Drops if the column exists, otherwise error.</p></li>
+<li><p>dataframe - If not provided, takes the last.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
+-- RENAME COLUMNS, ALTER COLUMNS, DROP COLUMNS example
+df = CREATE [[0,&quot;1&quot;]] SCHEMA a:int,b:str
+df2 = RENAME COLUMNS a:aa, b:bb FROM df
+PRINT df2
+df3 = ALTER COLUMNS aa:str, bb:int FROM df2
+PRINT df3
+df4 = DROP COLUMNS bb, c IF EXISTS FROM df3
+PRINT df4
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aa</th>
+      <th>bb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: aa:int,bb:str</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aa</th>
+      <th>bb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: aa:str,bb:int</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: aa:str</small></div></div>
+</div>
+</div>
+<div class="section" id="null-handling">
+<h2>NULL Handling<a class="headerlink" href="#null-handling" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="drop-rows">
+<h2>DROP ROWS<a class="headerlink" href="#drop-rows" title="Permalink to this headline">¶</a></h2>
+<p>Drops rows from <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> containing NULLs.</p>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">ROWS</span> <span class="pre">IF</span> <span class="pre">ALL|ANY</span> <span class="pre">NULL|NULLS</span> <span class="pre">[ON</span> <span class="pre">columns]</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span></code></p>
+<ul class="simple">
+<li><p>ALL|ANY - All values are NULL or any value is NULL in the row of data.</p></li>
+<li><p>NULL|NULLS - There is no difference.</p></li>
+<li><p>columns - Columns to check for NULL values.</p></li>
+<li><p>dataframe - If not provided, takes the last.</p></li>
+</ul>
+</div>
+<div class="section" id="fill">
+<h2>FILL<a class="headerlink" href="#fill" title="Permalink to this headline">¶</a></h2>
+<p>Fills values from <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> containing NULLs.</p>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">FILL</span> <span class="pre">NULL|NULLS</span> <span class="pre">PARAMS</span> <span class="pre">params</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span></code></p>
+<ul class="simple">
+<li><p>NULL|NULLS - There is no difference</p></li>
+<li><p>params - Pairs of column_name:fill_value</p></li>
+<li><p>dataframe - If not provided, takes the last dataframe</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
+-- DROP ROWS and FILL example
+df = CREATE [[NULL,&quot;1&quot;]] SCHEMA a:double,b:str
+df2 = DROP ROWS IF ANY NULL ON a FROM df
+PRINT df2
+df3 = DROP ROWS IF ALL NULLS FROM df
+PRINT df3
+df4 = FILL NULLS PARAMS a:1 FROM df
+PRINT df4
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:double,b:str</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:double,b:str</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:double,b:str</small></div></div>
+</div>
+</div>
+<div class="section" id="sampling">
+<h2>Sampling<a class="headerlink" href="#sampling" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="sample">
+<h2>SAMPLE<a class="headerlink" href="#sample" title="Permalink to this headline">¶</a></h2>
+<p>Takes a sample of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, potentially with replacement. Use either number of rows or percent of dataframe.</p>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">SAMPLE</span> <span class="pre">[REPLACE]</span> <span class="pre">[rows</span> <span class="pre">ROWS</span> <span class="pre">|</span> <span class="pre">percent</span> <span class="pre">PERCENT]</span> <span class="pre">[SEED</span> <span class="pre">seed]</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span></code></p>
+<ul class="simple">
+<li><p>REPLACE - Sample with replacement</p></li>
+<li><p>rows - Integer for number of rows.</p></li>
+<li><p>percent - Integer or Decimal indicating percent of dataframe to be returned</p></li>
+<li><p>seed - Random seed for sampling</p></li>
+<li><p>dataframe - If not provided, takes the last dataframe</p></li>
+</ul>
+</div>
+<div class="section" id="take">
+<h2>TAKE<a class="headerlink" href="#take" title="Permalink to this headline">¶</a></h2>
+<p>TAKE is equivalent to Pandas <code class="docutils literal notranslate"><span class="pre">head</span></code>. It returns the top rows of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. If used with <code class="docutils literal notranslate"><span class="pre">PREPARTITION</span></code>, it returns the top rows of each partition. <code class="docutils literal notranslate"><span class="pre">PRESPORT</span></code> can be applied before taking the top rows.</p>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">TAKE</span> <span class="pre">rows</span> <span class="pre">ROW|ROWS</span> <span class="pre">[FROM</span> <span class="pre">dataframe</span> <span class="pre">]</span> <span class="pre">[PREPARTITION</span> <span class="pre">statement]</span> <span class="pre">[NULL|NULLS</span> <span class="pre">FIRST|LAST]</span></code></p>
+<ul class="simple">
+<li><p>rows - Integer for number of rows</p></li>
+<li><p>dataframe - If not provided, takes the last dataframe</p></li>
+<li><p>PREPARTITION - See syntax for <code class="docutils literal notranslate"><span class="pre">PREPARTITION</span></code></p></li>
+<li><p>NULL|NULLS - No difference</p></li>
+<li><p>FIRST|LAST - If there is a <code class="docutils literal notranslate"><span class="pre">PRESORT</span></code>, sort with NULLS at the top or NULLS at the bottom</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
+-- SAMPLE and TAKE example
+df = CREATE [[1,&quot;1&quot;],[2,&quot;2&quot;],[3,&quot;3&quot;],[4,&quot;4&quot;],[5,&quot;5&quot;]] SCHEMA a:double,b:str
+df2 = SAMPLE 2 ROWS SEED 42 FROM df
+PRINT df2
+df3 = SAMPLE 40 PERCENT SEED 42 FROM df
+PRINT df3
+df4 = TAKE 3 ROWS FROM df
+PRINT df4
+df5 = TAKE 1 ROW FROM df PREPARTITION BY a   # Returns 1 row for each partition
+PRINT df5
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5.0</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:double,b:str</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5.0</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:double,b:str</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:double,b:str</small></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:double,b:str</small></div></div>
+</div>
+</div>
+<div class="section" id="distributed-computing-operations">
+<h2>Distributed Computing Operations<a class="headerlink" href="#distributed-computing-operations" title="Permalink to this headline">¶</a></h2>
+<p>These next keywords are used for distributed environments to save repeated computation.</p>
+</div>
+<div class="section" id="broadcast">
+<h2>BROADCAST<a class="headerlink" href="#broadcast" title="Permalink to this headline">¶</a></h2>
+<p>Copies a DataFrame (ideally a small one) to worker nodes to prevent shuffling when joining to larger dataframes. This is used after any <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> statement that outputs a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. It is used by adding it to the end of a statement.</p>
+</div>
+<div class="section" id="persist-or-checkpoint">
+<h2>PERSIST or CHECKPOINT<a class="headerlink" href="#persist-or-checkpoint" title="Permalink to this headline">¶</a></h2>
+<p>Caches a dataframe. Fugue has many types of <code class="docutils literal notranslate"><span class="pre">CHECKPOINT</span></code>. Please read <a class="reference internal" href="../advanced/checkpoint.html"><span class="doc std std-doc">this</span></a> for a deep dive when to use each type. Similar to <code class="docutils literal notranslate"><span class="pre">BROADCAST</span></code>, it it used by appending the keyword after another <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> statement that outputs a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
+-- BROADCAST and PERSIST example
+df = CREATE [[1,&quot;1&quot;],[2,&quot;2&quot;],[3,&quot;3&quot;],[4,&quot;4&quot;],[5,&quot;5&quot;]] SCHEMA a:double,b:str
+df2 = TAKE 2 ROWS FROM df BROADCAST
+df3 = TAKE 2 ROWS FROM df PERSIST
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="yield">
+<h2>YIELD<a class="headerlink" href="#yield" title="Permalink to this headline">¶</a></h2>
+<p>By default, dataframes inside a <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> cell are only local. YIELD is used to make DataFrames available in succeeding <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> cells. There are two commands <code class="docutils literal notranslate"><span class="pre">YIELD</span> <span class="pre">DATAFRAME</span></code> and <code class="docutils literal notranslate"><span class="pre">YIELD</span> <span class="pre">FILE</span></code>. Using <code class="docutils literal notranslate"><span class="pre">YIELD</span> <span class="pre">DATAFRAME</span></code> holds the DataFrame in memory while <code class="docutils literal notranslate"><span class="pre">YIELD</span> <span class="pre">FILE</span></code> saves the file in a memory location and loads it when needed. <code class="docutils literal notranslate"><span class="pre">YIELD</span> <span class="pre">FILE</span></code> is intended for larger DataFrames.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
+-- YIELD example
+yielded_df = CREATE [[1,&quot;1&quot;],[2,&quot;2&quot;],[3,&quot;3&quot;],[4,&quot;4&quot;],[5,&quot;5&quot;]] SCHEMA a:double,b:str
+YIELD DATAFRAME AS yielded
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
+-- yielded is available from the previous cell
+SELECT * FROM yielded
+PRINT
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:double,b:str</small></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/fugue_sql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="syntax.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Syntax</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="python.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Using Python</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

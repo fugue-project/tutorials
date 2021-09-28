@@ -1,0 +1,792 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partitioning &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Checkpoint Deep Dive" href="checkpoint.html" />
+    <link rel="prev" title="Data Type, Schema &amp; DataFrames" href="schema_dataframes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../beginner/index.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Deep Dive
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using databricks-connect
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/advanced/partition.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tutorials/advanced/partition.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-partitions">
+   Visualizing Partitions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hash-partition-num-4">
+     Hash Partition: num=4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rand-partition-num-4">
+     Rand Partition: num=4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#even-partition-num-4">
+     Even Partition: num=4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hash-partition-by-color">
+     Hash Partition: by color
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#spark-hash-partition-by-color">
+       (Spark) Hash Partition: by color
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hash-partition-by-color-presort-letter">
+     Hash Partition: by color, presort letter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rand-partition-by-color">
+     Rand Partition: by color
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#even-partition-by-color">
+     Even Partition: by color
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#even-partition-by-color-num-4">
+     Even Partition: by color, num=4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theory">
+   Theory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#physical-vs-logical-partitions">
+     Physical vs Logical Partitions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#number-of-partitions">
+   Number Of Partitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partition-keys">
+   Partition Keys
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#presort">
+   Presort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partition-algorithms-hint">
+   Partition Algorithms (Hint)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partitionspec-in-fugue">
+   PartitionSpec in Fugue
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="partitioning">
+<h1>Partitioning<a class="headerlink" href="#partitioning" title="Permalink to this headline">¶</a></h1>
+<p>It’s one of the most important concepts in Fugue. And it is slightly different from Spark’s partition concept, so be careful. And this is also the most difficult Fugue concept to understand. We will go through a couple of examples, then go through the theory</p>
+<div class="section" id="visualizing-partitions">
+<h2>Visualizing Partitions<a class="headerlink" href="#visualizing-partitions" title="Permalink to this headline">¶</a></h2>
+<p>Assume we have a collection of colored balls with letters, they are stored in 5 buckets (gray bars).</p>
+<img src="../../images/p_orig.svg" width="250">
+<p>Now we are going to repartition these balls in different ways</p>
+<div class="section" id="hash-partition-num-4">
+<h3>Hash Partition: num=4<a class="headerlink" href="#hash-partition-num-4" title="Permalink to this headline">¶</a></h3>
+<p>Hash partition means we calculate a hash code according to the color and letter and put into the correspondent bucket. <code class="docutils literal notranslate"><span class="pre">num=4</span></code> means we want to use only bucket 0 1 2 3, and bucket 4 will be empty</p>
+<img src="../../images/p_num_4.svg" width="600">
+</div>
+<div class="section" id="rand-partition-num-4">
+<h3>Rand Partition: num=4<a class="headerlink" href="#rand-partition-num-4" title="Permalink to this headline">¶</a></h3>
+<p>Rand partition means we assign a random code to a ball and put into the correspondent bucket. It’s like reshuffle. The number of balls in each bucket should be similar, but not perfectly even. As you can see the following bucket 0 has 2 more balls than others.</p>
+<img src="../../images/p_rand_num_4.svg" width="600">
+</div>
+<div class="section" id="even-partition-num-4">
+<h3>Even Partition: num=4<a class="headerlink" href="#even-partition-num-4" title="Permalink to this headline">¶</a></h3>
+<p>Now I want to enforce evenness. So, I use even partition, it guarantees the biggest and smallest buckets have at most 1 ball difference.</p>
+<img src="../../images/p_even_num_4.svg" width="600">
+</div>
+<div class="section" id="hash-partition-by-color">
+<h3>Hash Partition: by color<a class="headerlink" href="#hash-partition-by-color" title="Permalink to this headline">¶</a></h3>
+<p>Now instead of giving a number, I specify partitioning by color. Each ball is assigned with a hash code by color. A main difference between Fugue and Spark is that, after partitioning by color, in each bucket, the balls are also sorted by color.</p>
+<p>Ans after sorting, we will see same colors are in chunks, we call each chunk a <strong>logical partition</strong></p>
+<img src="../../images/p_by_color_fugue.svg" width="600">
+<div class="section" id="spark-hash-partition-by-color">
+<h4>(Spark) Hash Partition: by color<a class="headerlink" href="#spark-hash-partition-by-color" title="Permalink to this headline">¶</a></h4>
+<p>In Spark, after partitioning by color, the balls in each bucket are not sorted.</p>
+<img src="../../images/p_by_color_spark.svg" width="400">
+</div>
+</div>
+<div class="section" id="hash-partition-by-color-presort-letter">
+<h3>Hash Partition: by color, presort letter<a class="headerlink" href="#hash-partition-by-color-presort-letter" title="Permalink to this headline">¶</a></h3>
+<p>In addition to partitioning, we also want to sort by letter. In Fugue, after partition-by, a sort will always happen, so when you specify a <code class="docutils literal notranslate"><span class="pre">presort</span></code>, it’s just adding a key for the sort, so it doesn’t add much overhead to the process. With presort, it’s even faster than pandas udf in certain cases. (Fugue also <a class="reference external" href="useful_config.ipynb#Use-Pandas-UDF-on-SparkExecutionEngine">supports pandas udf</a>)</p>
+<img src="../../images/p_by_color_presort.svg" width="600">
+</div>
+<div class="section" id="rand-partition-by-color">
+<h3>Rand Partition: by color<a class="headerlink" href="#rand-partition-by-color" title="Permalink to this headline">¶</a></h3>
+<p>In Fugue, there is no rand partition by color, it will become a hash partition by color</p>
+<img src="../../images/p_by_color_fugue.svg" width="600">
+</div>
+<div class="section" id="even-partition-by-color">
+<h3>Even Partition: by color<a class="headerlink" href="#even-partition-by-color" title="Permalink to this headline">¶</a></h3>
+<p>Hash partition by color can’t guarantee a single bucket contains a single color of balls. Even partition by color can guarantee that.</p>
+<img src="../../images/p_even_by_color.svg" width="600">
+</div>
+<div class="section" id="even-partition-by-color-num-4">
+<h3>Even Partition: by color, num=4<a class="headerlink" href="#even-partition-by-color-num-4" title="Permalink to this headline">¶</a></h3>
+<p>When you also specify a number in even partition by, it guarantees <code class="docutils literal notranslate"><span class="pre">max(colors</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">bucket)-min(colors</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">bucket)&lt;=1</span></code>. When you have more than tens of thousands of colors, you should consider using <code class="docutils literal notranslate"><span class="pre">num</span></code></p>
+<img src="../../images/p_even_num_4_by_color.svg" width="600">
+</div>
+</div>
+<div class="section" id="theory">
+<h2>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
+<p>We will use the examples above the explain the theories.</p>
+<div class="section" id="physical-vs-logical-partitions">
+<h3>Physical vs Logical Partitions<a class="headerlink" href="#physical-vs-logical-partitions" title="Permalink to this headline">¶</a></h3>
+<p>One <strong>physical</strong> partition (one bucket in the above examples) is a subset of data that will be moved onto one machine and be processed by one worker thread. Notice one worker thread can still process multiple physical partitions, but one physical partition can only be processed by one thread (unless the process failed, and it may retry on another worker thread on another machine). Notice in one worker thread, the code can still use multi-thread, it’s two different concepts.</p>
+<p>One <strong>logical</strong> partition (same color balls, after sort, in one bucket) is always inside one <strong>physical</strong> partition. One physical partition can contain multiple logical partitions, but one logical partition will guarantee to appear in only one physical partition. When logical partition is not defined, we use the physical partition as the logical partition.</p>
+<p>Fugue mainly focuses on the <strong>logical</strong> partition level, but you can also have custom handlers on <strong>physical</strong> level. For example, if it’s to process every logical partition, you need the same expensive initialization, then you can move this to the physical level handler, which can save significant amount of time. (<code class="docutils literal notranslate"><span class="pre">on_init</span></code> in <a class="reference external" href="transformer.ipynb#Interface-Approach">this example</a></p>
+<p>There are 4 major components of the partition concept in Fugue.</p>
+</div>
+</div>
+<div class="section" id="number-of-partitions">
+<h2>Number Of Partitions<a class="headerlink" href="#number-of-partitions" title="Permalink to this headline">¶</a></h2>
+<p>It specifies <strong>at most</strong> how many <strong>physical</strong> partitions (buckets) for all rows.</p>
+<p>If you only specify number of partitions, it indicates you want to <code class="docutils literal notranslate"><span class="pre">reshuffle</span></code> the data to number of partitions so in the next step you can process them with controlled concurrency. Notice that Spark has more granular concepts, <code class="docutils literal notranslate"><span class="pre">repartition</span></code> and <code class="docutils literal notranslate"><span class="pre">coalesce</span></code>, you can read <a class="reference external" href="https://blog.knoldus.com/apache-spark-repartitioning-v-s-coalesce/">this great article</a> for details.</p>
+<p>In current Fugue SparkExecutionEngine, we only use <code class="docutils literal notranslate"><span class="pre">repartition</span></code> because we notice that <code class="docutils literal notranslate"><span class="pre">reshuffle</span></code> is no longer bad in Spark. It performs extremely well in most cases, and data with <code class="docutils literal notranslate"><span class="pre">reshuffle</span></code> is a lot more balanced than <code class="docutils literal notranslate"><span class="pre">coalesce</span></code> without noticeable overhead. The advantage of <code class="docutils literal notranslate"><span class="pre">repartition</span></code> has been proven with numerous production use cases. Plus <code class="docutils literal notranslate"><span class="pre">coalesce</span></code> seems to be more inclined to <code class="docutils literal notranslate"><span class="pre">push-down</span></code>, causing a lot of hard-to-find performance issues. To avoid confusion and inconsistency, we only use <code class="docutils literal notranslate"><span class="pre">repartition</span></code> in SparkExecutionEngine. You can inherit from built-in SparkExecutionEngine and change to use <code class="docutils literal notranslate"><span class="pre">coalesce</span></code> if you feel that is useful to you.</p>
+<p><strong>All Fugue ExecutionEngine follows this rule of number of partitions</strong>:</p>
+<ul class="simple">
+<li><p><strong>&lt;=0</strong> means I don’t want to repartition to current dataframe with an explicit number. The ExecutionEngine can decide whether to do nothing or reshuffle to new buckets.</p></li>
+<li><p><strong>==1</strong> means I want all data to move to a single physical partition</p></li>
+<li><p><strong>&gt;1</strong> means I want to reshuffle the data to the number of physical partitions</p></li>
+</ul>
+<p>The underlying computing frameworks may have inconsistent behaviors on this (you have to be careful if moving away from Fugue), but on Fugue ExecutionEngine level, they are always consistent.</p>
+</div>
+<div class="section" id="partition-keys">
+<h2>Partition Keys<a class="headerlink" href="#partition-keys" title="Permalink to this headline">¶</a></h2>
+<p>It specifies the keys to partition on. It is to define the <strong>logical</strong> partitions. All items with a same set of keys will be moved to a single physical location to process and partition keys is to tell the framework within this physical partition, I will separate the data by certain keys and process them separately.</p>
+</div>
+<div class="section" id="presort">
+<h2>Presort<a class="headerlink" href="#presort" title="Permalink to this headline">¶</a></h2>
+<p>In each <strong>physical</strong> partition, to figure out the <strong>logical</strong> partitions, Fugue will sort first. And after you get the <strong>logical</strong> partitions, you may also need to sort inside that partition on some other keys before process.  By specifying <code class="docutils literal notranslate"><span class="pre">presort</span></code> you only add additional keys to the first sort. <code class="docutils literal notranslate"><span class="pre">presort</span></code> must not overlap with <code class="docutils literal notranslate"><span class="pre">partition</span> <span class="pre">keys</span></code>, and you can also specify whether to sort ascending or descending.</p>
+<p>Using <a class="reference external" href="useful_config.ipynb#Use-Pandas-UDF-on-SparkExecutionEngine">pandas udf on SparkExecutionEngine</a> is an exception, the engine does not sort on physical partition, and presort step will happen inside each logical partition. The outcome is the same.</p>
+</div>
+<div class="section" id="partition-algorithms-hint">
+<h2>Partition Algorithms (Hint)<a class="headerlink" href="#partition-algorithms-hint" title="Permalink to this headline">¶</a></h2>
+<p>Notice this is a hint, it does not require every ExecutionEngine to strictly follow. Currently only SparkExecutionEngine supports it. It has no effect on other engines.</p>
+<p>Currently 3 algos are supported: <code class="docutils literal notranslate"><span class="pre">HASH</span></code> (default), <code class="docutils literal notranslate"><span class="pre">RAND</span></code>, <code class="docutils literal notranslate"><span class="pre">EVEN</span></code>.</p>
+<p>No algo is good for everything, you need to use accordingly. The examples above have explained their differences. Here is a summary of pros and cons of each algo</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>.</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">HASH</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">RAND</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">EVEN</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Speed</p></td>
+<td><p>fast (map, shuffle)</p></td>
+<td><p>fast (map, shuffle)</p></td>
+<td><p>slow (map, reduce, map, shuffle)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Space</p></td>
+<td><p>low</p></td>
+<td><p>low</p></td>
+<td><p>high (need cache the dataframe first)</p></td>
+</tr>
+<tr class="row-even"><td><p>Deterministic</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Eveness (small data)</p></td>
+<td><p>bad</p></td>
+<td><p>random</p></td>
+<td><p>perfect (strict eveness)</p></td>
+</tr>
+<tr class="row-even"><td><p>Eveness (big data)</p></td>
+<td><p>good</p></td>
+<td><p>good</p></td>
+<td><p>perfect (but worth it?)</p></td>
+</tr>
+</tbody>
+</table>
+<p>For large number of rows or for large number of partitions (when partition by keys is used), both <code class="docutils literal notranslate"><span class="pre">HASH</span></code> and <code class="docutils literal notranslate"><span class="pre">RAND</span></code> will generate even partitions, you may not need <code class="docutils literal notranslate"><span class="pre">EVEN</span></code>. But for small dataframe where each row/partition is expensive to process, <code class="docutils literal notranslate"><span class="pre">EVEN</span></code> will guarantee the perfect load balance.</p>
+<p>For example, you have a dataframe with 100 rows, it takes 1 hour to process each row, and you have 100 cores, if using <code class="docutils literal notranslate"><span class="pre">HASH</span></code> or <code class="docutils literal notranslate"><span class="pre">RAND</span></code> partition, you may get physical partitions with more than 1 row, for example you get 99 partitions, only 1 partition cotains 2 rows, but the whole process will still take 2 hours. But using <code class="docutils literal notranslate"><span class="pre">EVEN</span></code> you can reduce it to 1 hour.</p>
+<p><code class="docutils literal notranslate"><span class="pre">EVEN</span></code> is the best for small size but expensive computations.</p>
+</div>
+<div class="section" id="partitionspec-in-fugue">
+<h2>PartitionSpec in Fugue<a class="headerlink" href="#partitionspec-in-fugue" title="Permalink to this headline">¶</a></h2>
+<p>Here are examples to initialize PartitionSpec in Fugue. It’s a widely used data structure</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">PartitionSpec</span>
+
+<span class="k">assert</span> <span class="n">PartitionSpec</span><span class="p">()</span><span class="o">.</span><span class="n">empty</span> <span class="c1"># empty partition spec means no operation needed, it can be the default value</span>
+<span class="n">PartitionSpec</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">PartitionSpec</span><span class="p">(</span><span class="n">algo</span><span class="o">=</span><span class="s2">&quot;even&quot;</span><span class="p">,</span><span class="n">num</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">],</span><span class="n">presort</span><span class="o">=</span><span class="s2">&quot;c,d desc&quot;</span><span class="p">)</span> <span class="c1"># c,d desc == c asc, d desc</span>
+
+<span class="c1"># you can use expression in num, ROWCOUNT can be used to indicate using the row count of the dataframe to operate on</span>
+<span class="c1"># if a df has 1000 rows, this means I want to even partition it to 10 rows per partition</span>
+<span class="n">PartitionSpec</span><span class="p">(</span><span class="n">algo</span><span class="o">=</span><span class="s2">&quot;even&quot;</span><span class="p">,</span><span class="n">num</span><span class="o">=</span><span class="s2">&quot;ROWCOUNT/10&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PartitionSpec(num=&#39;ROWCOUNT/10&#39;, by=[], presort=&#39;&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/advanced"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="schema_dataframes.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Data Type, Schema &amp; DataFrames</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="checkpoint.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Checkpoint Deep Dive</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

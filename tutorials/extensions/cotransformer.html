@@ -1,0 +1,915 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoTransformer &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Output Transformer (Advanced)" href="outputtransformer.html" />
+    <link rel="prev" title="Transformer" href="transformer.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../beginner/index.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Extensions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../advanced/index.html">
+   Deep Dive
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using databricks-connect
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/extensions/cotransformer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tutorials/extensions/cotransformer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-use-cases">
+   Example Use Cases
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-notes-on-usage">
+   Quick Notes on Usage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-scenario-model-predictions-per-partition">
+   Example Scenario - Model Predictions per Partition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#native-approach">
+   Native Approach
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#with-schema-hint">
+   With Schema Hint
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decorator-approach">
+   Decorator Approach
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interface-approach-advanced">
+   Interface Approach (Advanced)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-dataframes">
+   Using DataFrames
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="cotransformer">
+<h1>CoTransformer<a class="headerlink" href="#cotransformer" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code> represents the logic unit executing on arbitrary machine on a collection of partitions of the same partition keys of the input dataframes. The partitioning logic is not a concern of <code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code>, it must be specified by <code class="docutils literal notranslate"><span class="pre">zip</span></code> in the previous step. You must understand <a class="reference internal" href="../advanced/partition.html"><span class="doc std std-doc">partition</span></a> and <a class="reference external" href="../advanced/execution_engine.ipynb#Zip-&amp;-Comap">zip</a></p>
+<p>In this tutorial are the methods to define an <code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code>. There is no preferred method and Fugue makes it flexible for users to choose whatever interface works for them. The four ways are native approach, schema hint, decorator, and the class interface in order of simplicity.</p>
+<div class="section" id="example-use-cases">
+<h2>Example Use Cases<a class="headerlink" href="#example-use-cases" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code> deals with multiple DataFrames partitioned in the same way and returns one DataFrame. So in a lot of cases, it will be used for joins that are traditionally hard to do.</p>
+<ul class="simple">
+<li><p><strong>As-of merge for multiple tables</strong></p></li>
+<li><p><strong>Using serialized objects - model prediction per partition</strong></p></li>
+</ul>
+</div>
+<div class="section" id="quick-notes-on-usage">
+<h2>Quick Notes on Usage<a class="headerlink" href="#quick-notes-on-usage" title="Permalink to this headline">¶</a></h2>
+<p><strong>ExecutionEngine unaware</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transformers</span></code> are executed on the workers, meaning that they are not unaware of the <code class="docutils literal notranslate"><span class="pre">ExecutionEngine</span></code>.</p></li>
+</ul>
+<p><strong>Acceptable input DataFrame types</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LocalDataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">List[List[Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">Iterable[List[Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">EmptyAwareIterable[List[Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">List[Dict[str,</span> <span class="pre">Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">Iterable[Dict[str,</span> <span class="pre">Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">EmptyAwareIterable[Dict[str,</span> <span class="pre">Any]]</span></code></p></li>
+<li><p>Can also be a single <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code></p></li>
+</ul>
+<p><strong>Acceptable output DataFrame types</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LocalDataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">List[List[Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">Iterable[List[Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">EmptyAwareIterable[List[Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">List[Dict[str,</span> <span class="pre">Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">Iterable[Dict[str,</span> <span class="pre">Any]]</span></code>, <code class="docutils literal notranslate"><span class="pre">EmptyAwareIterable[Dict[str,</span> <span class="pre">Any]]</span></code></p></li>
+</ul>
+<p><strong>Explicit output schema</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code> requires users to be explicit on the output schema. Different from <code class="docutils literal notranslate"><span class="pre">Transformer</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code> is not allowed because there is a chance for column names to collide.</p></li>
+<li><p>Notice that <code class="docutils literal notranslate"><span class="pre">ArrayDataFrame</span></code> and other local dataframes can’t be used as annotation, you must use <code class="docutils literal notranslate"><span class="pre">LocalDataFrame</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="example-scenario-model-predictions-per-partition">
+<h2>Example Scenario - Model Predictions per Partition<a class="headerlink" href="#example-scenario-model-predictions-per-partition" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code> is a bit hard to conceptually understand at first, so we need to clarify the example in this tutorial. First, we’ll create a DataFrame with groups A,B, and C. For each of these groups, we have 2 features in <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code>. The target variable will be <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">]</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span><span class="o">*</span><span class="mi">5</span><span class="p">),</span>
+                    <span class="s2">&quot;x1&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+                    <span class="s2">&quot;x2&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+                    <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we make two functions. First will be <code class="docutils literal notranslate"><span class="pre">transformer</span></code> named <code class="docutils literal notranslate"><span class="pre">train_model</span></code> to train a model for each group and return it in serialized form. The serialized form is needed because Spark DataFrames can’t hold Python classes unless they are serialized. Note that by the time the data enters <code class="docutils literal notranslate"><span class="pre">train_model</span></code>, it is already partitioned.</p>
+<p>The second function is a <code class="docutils literal notranslate"><span class="pre">predict</span></code> function that will take in two DataFrames. The first will be named <code class="docutils literal notranslate"><span class="pre">data</span></code> and the second will be <code class="docutils literal notranslate"><span class="pre">models</span></code>. By the time these DataFrames come into the function, they will already have been paritioned to work on a logical group. Because we only have one model per group, <code class="docutils literal notranslate"><span class="pre">models</span></code> will actually be a DataFrame that only contains one row. It becomes really easy to access the model if we use the <code class="docutils literal notranslate"><span class="pre">List[Dict[str,Any]]</span></code> annotation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="c1"># schema: group:str, model:binary</span>
+<span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
+    <span class="c1"># the value of group will be the same because it&#39;s partitioned</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;x2&quot;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
+
+    <span class="c1"># we return the group and the model</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="n">group</span><span class="p">,</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">model</span><span class="p">)]]</span>
+
+<span class="c1">#schema: group:str, x1:double, x2:double, y_pred:double</span>
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">models</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">models</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;model&#39;</span><span class="p">])</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;x2&quot;</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that in order to pair the correct model with the appropriate group of data (A,B,C), we need to partition both DataFrames in the same way (by <code class="docutils literal notranslate"><span class="pre">group</span></code>). This is what a <code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code> is meant for, operating of multiple DataFrames partitioned the same way. To demo this, we’ll just apply the models on the original dataset (not advised for production but illustrative for this demo).</p>
+<p>Before we do that, we’ll just show what the model table will look like with one model for each group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>                <span class="c1"># original pd.DataFrame</span>
+    <span class="n">models</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">partition_by</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">train_model</span><span class="p">)</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+group:str|model:bytes                                                                               
+---------+------------------------------------------------------------------------------------------
+A        |b&#39;\x80\x03csklearn.linear_model._base\nLinearRegression\nq\x00)\x81q\x01}q\x02(X\r\x00\x00
+         |\x00fit_interceptq\x03\x88X\t\x00\x00\x00normalizeq\x04\x89X\x06\x00\x00\x00copy_Xq\x05\x8
+         |8X\x06\x00\x00\x00n_jobsq\x06NX\x08\x00\x00\x00positiveq\x07\x89X\x0e\x00\x00\x00n_feature
+         |s_in_q\x08K\x02X\x05\x00\x00\x00coef_q\tcnumpy.core.multiarray\n_reconstruct\nq\ncnumpy\nn
+         |darray\nq\x0bK\x00\x85q\x0cC\x01bq\r\x87q\x0eRq\x0f(K\x01K\x02\x85q\x10cnumpy\ndtype\nq\x1
+         |1X\x02\x00\x00\x00f8q\x12\x89\x88\x87q\x13Rq\x1...                                        
+B        |b&#39;\x80\x03csklearn.linear_model._base\nLinearRegression\nq\x00)\x81q\x01}q\x02(X\r\x00\x00
+         |\x00fit_interceptq\x03\x88X\t\x00\x00\x00normalizeq\x04\x89X\x06\x00\x00\x00copy_Xq\x05\x8
+         |8X\x06\x00\x00\x00n_jobsq\x06NX\x08\x00\x00\x00positiveq\x07\x89X\x0e\x00\x00\x00n_feature
+         |s_in_q\x08K\x02X\x05\x00\x00\x00coef_q\tcnumpy.core.multiarray\n_reconstruct\nq\ncnumpy\nn
+         |darray\nq\x0bK\x00\x85q\x0cC\x01bq\r\x87q\x0eRq\x0f(K\x01K\x02\x85q\x10cnumpy\ndtype\nq\x1
+         |1X\x02\x00\x00\x00f8q\x12\x89\x88\x87q\x13Rq\x1...                                        
+C        |b&#39;\x80\x03csklearn.linear_model._base\nLinearRegression\nq\x00)\x81q\x01}q\x02(X\r\x00\x00
+         |\x00fit_interceptq\x03\x88X\t\x00\x00\x00normalizeq\x04\x89X\x06\x00\x00\x00copy_Xq\x05\x8
+         |8X\x06\x00\x00\x00n_jobsq\x06NX\x08\x00\x00\x00positiveq\x07\x89X\x0e\x00\x00\x00n_feature
+         |s_in_q\x08K\x02X\x05\x00\x00\x00coef_q\tcnumpy.core.multiarray\n_reconstruct\nq\ncnumpy\nn
+         |darray\nq\x0bK\x00\x85q\x0cC\x01bq\r\x87q\x0eRq\x0f(K\x01K\x02\x85q\x10cnumpy\ndtype\nq\x1
+         |1X\x02\x00\x00\x00f8q\x12\x89\x88\x87q\x13Rq\x1...                                        
+Total count: 3
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="native-approach">
+<h2>Native Approach<a class="headerlink" href="#native-approach" title="Permalink to this headline">¶</a></h2>
+<p>The simplest way, with no dependency on Fugue. You just need to have acceptable annotations on input dataframes and output. In native approach, you must specify schema in the Fugue code. We will define the <code class="docutils literal notranslate"><span class="pre">predict</span></code> function again with no annotations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
+
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">models</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">models</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;model&#39;</span><span class="p">])</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;x2&quot;</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="n">out_schema</span> <span class="o">=</span> <span class="s2">&quot;group:str, x1:double, x2:double, y_pred:double&quot;</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>                <span class="c1"># original pd.DataFrame</span>
+    <span class="n">models</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">partition_by</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">train_model</span><span class="p">)</span>
+
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">train</span><span class="p">[[</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;x2&quot;</span><span class="p">]]</span> <span class="c1"># simulated test data</span>
+
+    <span class="c1"># specifying partition and applying the cotransformer</span>
+    <span class="n">pred</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">partition</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;by&quot;</span><span class="p">:</span><span class="s2">&quot;group&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">predict</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">out_schema</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+group:str|x1:double|x2:double|y_pred:double                                                         
+---------+---------+---------+----------------------------------------------------------------------
+A        |1.764    |0.334    |-0.7738478452015277                                                   
+A        |0.4      |1.494    |0.22878910751099973                                                   
+A        |0.979    |-0.205   |-0.17631594944134255                                                  
+A        |2.241    |0.313    |-1.1310124534267185                                                   
+A        |1.868    |-0.854   |-0.8316128594414108                                                   
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="with-schema-hint">
+<h2>With Schema Hint<a class="headerlink" href="#with-schema-hint" title="Permalink to this headline">¶</a></h2>
+<p>The schema can also be provided during the function definition through the use of the schema hint comment. Providing it during definition means it does not need to be provided inside the <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#schema: group:str, x1:double, x2:double, y_pred:double</span>
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">models</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">models</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;model&#39;</span><span class="p">])</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;x2&quot;</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>                <span class="c1"># original pd.DataFrame</span>
+    <span class="n">models</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">partition_by</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">train_model</span><span class="p">)</span>
+
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">train</span><span class="p">[[</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;x2&quot;</span><span class="p">]]</span> <span class="c1"># simulated test data</span>
+    <span class="n">pred</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">partition</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;by&quot;</span><span class="p">:</span><span class="s2">&quot;group&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+group:str|x1:double|x2:double|y_pred:double                                                         
+---------+---------+---------+----------------------------------------------------------------------
+A        |1.764    |0.334    |-0.7738478452015277                                                   
+A        |0.4      |1.494    |0.22878910751099973                                                   
+A        |0.979    |-0.205   |-0.17631594944134255                                                  
+A        |2.241    |0.313    |-1.1310124534267185                                                   
+A        |1.868    |-0.854   |-0.8316128594414108                                                   
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="decorator-approach">
+<h2>Decorator Approach<a class="headerlink" href="#decorator-approach" title="Permalink to this headline">¶</a></h2>
+<p>The decorator approach also has the special schema syntax and it can also take a function that generates the schema. This can be used to create new column names or types based on cotransformer parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span><span class="p">,</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">cotransformer</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+    
+<span class="nd">@cotransformer</span><span class="p">(</span><span class="s2">&quot;group:str, x1:double, x2:double, y_pred:double&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">models</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">models</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;model&#39;</span><span class="p">])</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;x2&quot;</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>                <span class="c1"># original pd.DataFrame</span>
+    <span class="n">models</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">partition_by</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">train_model</span><span class="p">)</span>
+
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">train</span><span class="p">[[</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;x2&quot;</span><span class="p">]]</span> <span class="c1"># simulated test data</span>
+    <span class="n">pred</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">partition</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;by&quot;</span><span class="p">:</span><span class="s2">&quot;group&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+group:str|x1:double|x2:double|y_pred:double                                                         
+---------+---------+---------+----------------------------------------------------------------------
+A        |1.764    |0.334    |-0.7738478452015277                                                   
+A        |0.4      |1.494    |0.22878910751099973                                                   
+A        |0.979    |-0.205   |-0.17631594944134255                                                  
+A        |2.241    |0.313    |-1.1310124534267185                                                   
+A        |1.868    |-0.854   |-0.8316128594414108                                                   
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="interface-approach-advanced">
+<h2>Interface Approach (Advanced)<a class="headerlink" href="#interface-approach-advanced" title="Permalink to this headline">¶</a></h2>
+<p>All the previous methods are just wrappers of the interface approach. They cover most of the use cases and simplify the usage. But for certain cases, implementing the interface approach significantly improves performance. Example scenarios to use the interface approach are:</p>
+<ul class="simple">
+<li><p>The output schema needs partition information, such as partition keys, schema, and current values of the keys.</p></li>
+<li><p>The transformer has an expensive but common initialization step for processing each logical partition. Initialization should then happen when initialiazing physical partition, meaning it doesn’t unnecessarily repeat.</p></li>
+</ul>
+<p>The biggest advantage of interface approach is that you can customize physical partition level initialization, and you have all the up-to-date context variables to use. In the interface approach, type annotations are not necessary, but again, it’s good practice to have them.</p>
+<p>This example will be different from the previous ones because it will demonstrate how to use context variables. For this example, we will create a new column with the model name <code class="docutils literal notranslate"><span class="pre">(model_A,</span> <span class="pre">model_B,</span> <span class="pre">modelC)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">CoTransformer</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">PandasDataFrame</span>
+<span class="kn">from</span> <span class="nn">triad.collections</span> <span class="kn">import</span> <span class="n">Schema</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="k">class</span> <span class="nc">Predict</span><span class="p">(</span><span class="n">CoTransformer</span><span class="p">):</span>
+    <span class="c1"># this is invoked on driver side</span>
+    <span class="k">def</span> <span class="nf">get_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dfs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">key_schema</span> <span class="o">+</span> <span class="s2">&quot;x1:double, x2:double, y_pred:double, model_name:str&quot;</span>
+    
+    <span class="c1"># on initialization of the physical partition</span>
+    <span class="k">def</span> <span class="nf">on_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dfs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">as_pandas</span><span class="p">()</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">as_dict_iterable</span><span class="p">()</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">models</span><span class="p">)[</span><span class="s1">&#39;model&#39;</span><span class="p">])</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;x2&quot;</span><span class="p">]])</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;model_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;model_&quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">key_value_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">PandasDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>                <span class="c1"># original pd.DataFrame</span>
+    <span class="n">models</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">partition_by</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">train_model</span><span class="p">)</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">train</span><span class="p">[[</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;x2&quot;</span><span class="p">]]</span> <span class="c1"># simulated test data</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pred</span><span class="p">,</span><span class="n">models</span><span class="o">=</span><span class="n">models</span><span class="p">),</span> <span class="n">partition</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;by&quot;</span><span class="p">:</span><span class="s2">&quot;group&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Predict</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+group:str|x1:double|x2:double|y_pred:double                                          |model_name:str
+---------+---------+---------+-------------------------------------------------------+--------------
+A        |1.764    |0.334    |-0.7738478452015277                                    |model_A       
+A        |0.4      |1.494    |0.22878910751099973                                    |model_A       
+A        |0.979    |-0.205   |-0.17631594944134255                                   |model_A       
+A        |2.241    |0.313    |-1.1310124534267185                                    |model_A       
+A        |1.868    |-0.854   |-0.8316128594414108                                    |model_A       
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice a few things here:</p>
+<ul class="simple">
+<li><p>How we access the key schema (<code class="docutils literal notranslate"><span class="pre">self.key_schema</span></code>), and current logical partition’s keys as array (<code class="docutils literal notranslate"><span class="pre">self.cursor.key_value_array</span></code>)</p></li>
+<li><p>Although DataFrames is a dict, it’s an ordered dict following the input order, so you can iterate in this way</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expensive_init</span></code> is something that is a common initialization for different logical partitions, we move it to <code class="docutils literal notranslate"><span class="pre">on_init</span></code> so it will run once for each physcial partition.</p></li>
+</ul>
+</div>
+<div class="section" id="using-dataframes">
+<h2>Using DataFrames<a class="headerlink" href="#using-dataframes" title="Permalink to this headline">¶</a></h2>
+<p>Instead of using dataframes as input, you can use a single <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> for arbitrary number of inputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">DataFrames</span><span class="p">,</span> <span class="n">FugueWorkflow</span>
+
+<span class="c1">#schema: res:[str]</span>
+<span class="k">def</span> <span class="nf">to_str</span><span class="p">(</span><span class="n">dfs</span><span class="p">:</span><span class="n">DataFrames</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
+    <span class="k">return</span> <span class="p">[[[</span><span class="n">x</span><span class="o">.</span><span class="n">as_array</span><span class="p">()</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">dfs</span><span class="o">.</span><span class="n">values</span><span class="p">()]]]</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]],</span><span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+    <span class="n">df2</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span><span class="s2">&quot;a:int,c:int&quot;</span><span class="p">)</span>
+    <span class="n">df3</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">]],</span><span class="s2">&quot;a:int,d:int&quot;</span><span class="p">)</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">df3</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">to_str</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">df1</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">df3</span><span class="p">))</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">to_str</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+res:[str]                                                                                           
+----------------------------------------------------------------------------------------------------
+[&#39;[[0, 1]]&#39;, &#39;[[0, 4]]&#39;, &#39;[[0, 2]]&#39;]                                                                
+[&#39;[[1, 3]]&#39;, &#39;[[1, 2]]&#39;, &#39;[[1, 1], [1, 5]]&#39;]                                                        
+Total count: 2
+
+PandasDataFrame
+res:[str]                                                                                           
+----------------------------------------------------------------------------------------------------
+[&#39;[[0, 1]]&#39;, &#39;[[0, 4]]&#39;, &#39;[[0, 2]]&#39;]                                                                
+[&#39;[[1, 3]]&#39;, &#39;[[1, 2]]&#39;, &#39;[[1, 1], [1, 5]]&#39;]                                                        
+Total count: 2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/extensions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="transformer.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Transformer</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="outputtransformer.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Output Transformer (Advanced)</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,908 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Decoupling Logic and Execution &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Fugue Interface" href="interface.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Getting Started
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../advanced/index.html">
+   Deep Dive
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using databricks-connect
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/beginner/decoupling_logic_and_execution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tutorials/beginner/decoupling_logic_and_execution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#differences-between-pandas-and-spark">
+   Differences between Pandas and Spark
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transform-versus-fugueworkflow">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     transform
+    </span>
+   </code>
+   versus
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     FugueWorkflow
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#independence-from-frameworks">
+   Independence from Frameworks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testability-and-maintainability">
+   Testability and Maintainability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fugue-as-a-mindset">
+   Fugue as a Mindset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-comparison-to-modin-and-koalas">
+   [Optional] Comparison to Modin and Koalas
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="decoupling-logic-and-execution">
+<h1>Decoupling Logic and Execution<a class="headerlink" href="#decoupling-logic-and-execution" title="Permalink to this headline">¶</a></h1>
+<p>In the last section, we used Fugue’s transform function to port pandas code to Spark. Decoupling logic and execution is one of the primary motivations of Fugue. When transitioning a project from pandas to Spark, the majority of the code normally has has to be re-written. This is because using either pandas or Spark makes code highly coupled with that framework. This leads to a couple of problems:</p>
+<ol class="simple">
+<li><p>Users have to learn an entirely new framework to work with distributed compute problems</p></li>
+<li><p>Logic written for a <em>small data</em> project does not become reusable for a <em>big data</em> project</p></li>
+<li><p>Testing becomes a heavyweight process for distributed compute, especially Spark</p></li>
+<li><p>Along with number 3, iterations for distributed compute problems become slower and more expensive</p></li>
+</ol>
+<p>Fugue believes that code should minimize dependency on frameworks as much as possible. This provides flexibility and portability. <strong>By decoupling logic and execution, we can focus on our logic in a scale-agnostic way, and then choose which engine to use when the time arises.</strong></p>
+<div class="section" id="differences-between-pandas-and-spark">
+<h2>Differences between Pandas and Spark<a class="headerlink" href="#differences-between-pandas-and-spark" title="Permalink to this headline">¶</a></h2>
+<p>To illustrate the first two main points above, we’ll use a simple example. For the data below, we are interested in getting the first three digits of the <code class="docutils literal notranslate"><span class="pre">phone</span></code> column and populating a new column called <code class="docutils literal notranslate"><span class="pre">location</span></code> by using a dictionary that maps the values. We start by preparing the sample data and defining the mapping.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">_area_code_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;217&quot;</span><span class="p">:</span> <span class="s2">&quot;Champaign, IL&quot;</span><span class="p">,</span> <span class="s2">&quot;407&quot;</span><span class="p">:</span> <span class="s2">&quot;Orlando, FL&quot;</span><span class="p">,</span> <span class="s2">&quot;510&quot;</span><span class="p">:</span> <span class="s2">&quot;Fremont, CA&quot;</span><span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;(217)-123-4567&quot;</span><span class="p">,</span> <span class="s2">&quot;(217)-234-5678&quot;</span><span class="p">,</span> <span class="s2">&quot;(407)-123-4567&quot;</span><span class="p">,</span> 
+                               <span class="s2">&quot;(407)-234-5678&quot;</span><span class="p">,</span> <span class="s2">&quot;(510)-123-4567&quot;</span><span class="p">]})</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>(217)-123-4567</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(217)-234-5678</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>(407)-123-4567</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>(407)-234-5678</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>(510)-123-4567</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>First, we’ll perform the operation in pandas. It’s very simple because of the <code class="docutils literal notranslate"><span class="pre">.map()</span></code> method in pandas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">map_phone_to_location</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;phone&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_area_code_map</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">map_phone_to_location</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>phone</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>(217)-123-4567</td>
+      <td>Champaign, IL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(217)-234-5678</td>
+      <td>Champaign, IL</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>(407)-123-4567</td>
+      <td>Orlando, FL</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>(407)-234-5678</td>
+      <td>Orlando, FL</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>(510)-123-4567</td>
+      <td>Fremont, CA</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Next we’ll perform the same operation in Spark and see how different the syntax is.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setting up Spark session</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">DataFrame</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">create_map</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="n">substring</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># converting the previous Pandas DataFrame</span>
+
+<span class="n">mapping_expr</span> <span class="o">=</span> <span class="n">create_map</span><span class="p">([</span><span class="n">lit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">_area_code_map</span><span class="o">.</span><span class="n">items</span><span class="p">())])</span>
+
+<span class="k">def</span> <span class="nf">map_phone_to_location</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="n">mapping_expr</span><span class="p">[</span><span class="n">substring</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;phone&quot;</span><span class="p">),</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">_df</span>
+
+<span class="n">map_phone_to_location</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------+-------------+
+|         phone|     location|
++--------------+-------------+
+|(217)-123-4567|Champaign, IL|
+|(217)-234-5678|Champaign, IL|
+|(407)-123-4567|  Orlando, FL|
+|(407)-234-5678|  Orlando, FL|
+|(510)-123-4567|  Fremont, CA|
++--------------+-------------+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looking at the two code examples, we had to reimplement the exact same functionality with completely different syntax. This isn’t a cherry-picked example. Data practitioners will often have to write two implementations of the same logic, one for each framework, especially as the logic gets more specific.</p>
+<p>This is where Fugue comes in. Users can use the abstraction layer to only write one implementation of the function. This can then be applied to pandas, Spark, and Dask. All we need to do is apply a <code class="docutils literal notranslate"><span class="pre">transformer</span></code> decorator to the pandas implementation of the function. The decorator takes in a string that specifies the output schema. The <code class="docutils literal notranslate"><span class="pre">transform</span></code> function does the same thing to the function that is passed in.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">transformer</span>
+
+<span class="nd">@transformer</span><span class="p">(</span><span class="s2">&quot;*, location:str&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">map_phone_to_location</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;phone&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_area_code_map</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By wrapping the function with the decorator, we can then use it inside a <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code>. The <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code> constructs a directed-acyclic graph (DAG) where the inputs and outputs are DataFrames. More details will follow in the next sections but the important thing for now is to show how it’s used. The code block below is still running in Pandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>  <span class="c1"># Still the original Pandas DataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">map_phone_to_location</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+phone:str                                                      |location:str             
+---------------------------------------------------------------+-------------------------
+(217)-123-4567                                                 |Champaign, IL            
+(217)-234-5678                                                 |Champaign, IL            
+(407)-123-4567                                                 |Orlando, FL              
+(407)-234-5678                                                 |Orlando, FL              
+(510)-123-4567                                                 |Fremont, CA              
+Total count: 5
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to bring it to Spark, all we need to do is pass the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> into <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code>, similar to how we used the <code class="docutils literal notranslate"><span class="pre">transform</span></code> function to Spark in the last section. Now all the code underneath the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement will run on Spark. We did not make any modifications to <code class="docutils literal notranslate"><span class="pre">map_phone_to_location</span></code> in order to bring it to Spark. By wrapping the function with a <code class="docutils literal notranslate"><span class="pre">transformer</span></code>, it became agnostic to the ExecutionEngine it was operating on. We can use the same function in Spark or Dask without making modifications.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">(</span><span class="n">SparkExecutionEngine</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>  <span class="c1"># Still the original Pandas DataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">map_phone_to_location</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SparkDataFrame
+phone:str                                                      |location:str             
+---------------------------------------------------------------+-------------------------
+(217)-123-4567                                                 |Champaign, IL            
+(217)-234-5678                                                 |Champaign, IL            
+(407)-123-4567                                                 |Orlando, FL              
+(407)-234-5678                                                 |Orlando, FL              
+(510)-123-4567                                                 |Fremont, CA              
+Total count: 5
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="transform-versus-fugueworkflow">
+<h2><code class="docutils literal notranslate"><span class="pre">transform</span></code> versus <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code><a class="headerlink" href="#transform-versus-fugueworkflow" title="Permalink to this headline">¶</a></h2>
+<p>We have seen the two approaches to bring Python and pandas code to Spark with Fugue. The <code class="docutils literal notranslate"><span class="pre">transform</span></code> function introduced in the first section allows users to leave a function in pandas or Python, and then port it to Spark and Dask. Meanwhile, <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code> does the same for full workflows as opposed to one function.</p>
+<p>For example, if we had five different functions to call <code class="docutils literal notranslate"><span class="pre">transform</span></code> on and bring to Spark, we would need to specify the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> five times. The <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code> allows us to make the entire computation run on either pandas, Spark, or Dask. Both are similar in principle, in that they leave the original functions decoupled to the execution environment.</p>
+</div>
+<div class="section" id="independence-from-frameworks">
+<h2>Independence from Frameworks<a class="headerlink" href="#independence-from-frameworks" title="Permalink to this headline">¶</a></h2>
+<p>We earlier said that the abstraction layer Fugue provides makes code independent of any framework. To show this is true, we can actually rewrite the <code class="docutils literal notranslate"><span class="pre">map_phone_to_location</span></code> function in native Python and still apply it on the pandas and Spark engines.</p>
+<p>Below is the implementation in native Python. Similar to earlier, we are running this on Spark by passing in the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>. A function written in native Python can be ported to pandas, Spark, and Dask.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="c1"># schema: *, location:str</span>
+<span class="k">def</span> <span class="nf">map_phone_to_location</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+        <span class="n">row</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_area_code_map</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;phone&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]]</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">(</span><span class="n">SparkExecutionEngine</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>  <span class="c1"># Still the original Pandas DataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">map_phone_to_location</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SparkDataFrame
+phone:str                                                      |location:str             
+---------------------------------------------------------------+-------------------------
+(217)-123-4567                                                 |Champaign, IL            
+(217)-234-5678                                                 |Champaign, IL            
+(407)-123-4567                                                 |Orlando, FL              
+(407)-234-5678                                                 |Orlando, FL              
+(510)-123-4567                                                 |Fremont, CA              
+Total count: 5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice the <code class="docutils literal notranslate"><span class="pre">&#64;transformer</span></code> decorator was removed from <code class="docutils literal notranslate"><span class="pre">map_phone_to_location</span></code>. Instead, it was replaced with a comment that specified the schema. Fugue reads in this comment as the <strong>schema hint</strong>. Now, this function is truly independent of any framework and written in native Python. <strong>It is even independent from Fugue itself.</strong> Fugue only appears when we reach the execution part of the code. The logic, however, is not coupled with any framework. The type annotations in the <code class="docutils literal notranslate"><span class="pre">map_phone_to_location</span></code> caused the DataFrame to be converted as it was used by the function. If users want to offboard from Fugue, they can use their function with Pandas <code class="docutils literal notranslate"><span class="pre">apply</span></code> or Spark user-defined functions (UDFs).</p>
+<p>Is the native Python implementation or Pandas implementation of <code class="docutils literal notranslate"><span class="pre">map_phone_to_location</span></code> better? Is the native Spark implementation better?</p>
+<p>The main concern of Fugue is clear readable code. <strong>Users can write code in whatever expresses their logic the best</strong>. The compute efficiency lost by using Fugue is unlikely to be significant, especially in comparison to the developer efficiency gained through more rapid iterations and easier maintenance. In fact, Fugue is designed in a way that often sees speed ups compared to inexperienced users working with native Spark code. Fugue handles a lot of the tricks necessary to use Spark effectively.</p>
+<p>Fugue also future-proofs the code. If one day Spark and Dask are replaced by a more efficient framework, a new ExecutionEngine can be added to Fugue to support that new framework.</p>
+</div>
+<div class="section" id="testability-and-maintainability">
+<h2>Testability and Maintainability<a class="headerlink" href="#testability-and-maintainability" title="Permalink to this headline">¶</a></h2>
+<p>Fugue code becomes easily testable because the function contains logic that is portable across all pandas, Spark, and Dask. All we have to do is run some values through the defined function. We can test code without the need to spin up compute resources (such as Spark or Dask clusters). This hardware often takes time to spin up just for a simple test, making it painful to run unit tests on Spark. Now, we can test quickly with native Python or pandas, and then execute on Spark when needed. Developers that use Fugue benefit from more rapid iterations in their data projects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remember the input was List[Dict[str,Any]]</span>
+<span class="n">map_phone_to_location</span><span class="p">([{</span><span class="s1">&#39;phone&#39;</span><span class="p">:</span> <span class="s1">&#39;(407)-234-5678&#39;</span><span class="p">},</span> 
+                       <span class="p">{</span><span class="s1">&#39;phone&#39;</span><span class="p">:</span> <span class="s1">&#39;(407)-234-5679&#39;</span><span class="p">}])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;phone&#39;: &#39;(407)-234-5678&#39;, &#39;location&#39;: &#39;Orlando, FL&#39;},
+ {&#39;phone&#39;: &#39;(407)-234-5679&#39;, &#39;location&#39;: &#39;Orlando, FL&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Even if the output here is a <code class="docutils literal notranslate"><span class="pre">List[Dict[str,Any]]</span></code>, Fugue takes care of converting it back to a DataFrame.</p>
+</div>
+<div class="section" id="fugue-as-a-mindset">
+<h2>Fugue as a Mindset<a class="headerlink" href="#fugue-as-a-mindset" title="Permalink to this headline">¶</a></h2>
+<p>Fugue is a framework, but more importantly, it is a mindset.</p>
+<ol class="simple">
+<li><p>Fugue believes that the framework should adapt to the user, not the other way around</p></li>
+<li><p>Fugue lets users code express logic in a scale-agnostic way, with the tools they prefer</p></li>
+<li><p>Fugue values readability and maintainability of code over deep framework-specific optimizations</p></li>
+</ol>
+<p>Using distributed computing is currently harder than it needs to be. However, these systems often follow similar patterns, which have been abstracted to create a framework that lets users focus on defining their logic. We cover these concepts in the rest of tutorials. If you’re new to distributed computing, Fugue is the perfect place to get started.</p>
+</div>
+<div class="section" id="optional-comparison-to-modin-and-koalas">
+<h2>[Optional] Comparison to Modin and Koalas<a class="headerlink" href="#optional-comparison-to-modin-and-koalas" title="Permalink to this headline">¶</a></h2>
+<p>Fugue gets compared a lot of Modin and Koalas. Modin is a pandas interface for execution on Dask, and Koalas is a pandas interface for execution on Spark. Fugue, Modin, and Koalas have similar goals in making an easier distributed computing experience. The main difference is that Modin and Koalas use pandas as the grammar for distributed compute. Fugue, on the other hand, uses native Python and SQL as the grammar for distributed compute (though pandas is also supported).</p>
+<p>The clearest example of pandas not being compatible with Spark is the acceptance of mixed-typed columns. A single column can have numeric and string values. Spark on the other hand, is strongly typed and enforces the schema. More than that, pandas is strongly reliant on the index for operations. As users transition to Spark, the index mindset does not hold as well. Order is not always guaranteed in a distributed system, there is an overhead to maintain a global index and moreover it is often not necessary.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/beginner"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="introduction.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Introduction</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="interface.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Fugue Interface</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

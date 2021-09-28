@@ -1,0 +1,949 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callbacks From Transformers To Driver &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="X-like Objects" href="x-like.html" />
+    <link rel="prev" title="Checkpoint Deep Dive" href="checkpoint.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../beginner/index.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Deep Dive
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using databricks-connect
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/advanced/rpc.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tutorials/advanced/rpc.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-simplest-example">
+   The simplest example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#callbacks-on-distributed-execution-engines">
+   Callbacks on distributed execution engines
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stateful-callbacks">
+   Stateful callbacks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementing-rpchandler-instead">
+   Implementing
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     RPCHandler
+    </span>
+   </code>
+   instead
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-callbacks-in-transformer-class">
+   Using callbacks in Transformer class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-real-example-ploting-mins-in-real-time">
+   A real example: ploting mins in real time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-with-caution">
+   Use with caution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#callback-settings-and-rpcserver-combination-for-interfaceless">
+   Callback settings and RPCServer combination (for interfaceless)
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="callbacks-from-transformers-to-driver">
+<h1>Callbacks From Transformers To Driver<a class="headerlink" href="#callbacks-from-transformers-to-driver" title="Permalink to this headline">¶</a></h1>
+<p>Transformers are the only Fugue extensions to execute on remote worker nodes. For some scenarios, the transformers need to communicate with the driver while it is running. For example, a transformer is training a Keras model, and at the end of each epoch, it needs to report the metrics to the driver and the driver can respond with a decision whether to stop the training.</p>
+<p>In Fugue, the callback model is also abstract, you only need to define the callback functions and specify the server to handle remote calls.</p>
+<div class="section" id="the-simplest-example">
+<h2>The simplest example<a class="headerlink" href="#the-simplest-example" title="Permalink to this headline">¶</a></h2>
+<p>The simplest way to have a call back, is to define a callback parameter in the interfaceless way. You only need to annotate the parameter with <code class="docutils literal notranslate"><span class="pre">callable</span></code>, <code class="docutils literal notranslate"><span class="pre">Callable</span></code> or <code class="docutils literal notranslate"><span class="pre">Callable</span></code> with arguments, for example <code class="docutils literal notranslate"><span class="pre">Callable[[str],str]</span></code>. And this parameter must be after all dataframe parameters and before all other parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
+
+<span class="c1"># schema: *</span>
+<span class="k">def</span> <span class="nf">print_describe_and_return</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">cb</span><span class="p">:</span><span class="n">callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">cb</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span><span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">print_describe_and_return</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above example, it’s a typical interfaceless transformer example with two additions: <code class="docutils literal notranslate"><span class="pre">cb:callback</span></code> in the transformer, and <code class="docutils literal notranslate"><span class="pre">callback</span> <span class="pre">=</span> <span class="pre">lambda</span> <span class="pre">x:print(x)</span></code> in the transform function. <code class="docutils literal notranslate"><span class="pre">cb:callback</span></code> is to tell Fugue that we want to use a callback inside the transformation. <code class="docutils literal notranslate"><span class="pre">callback</span> <span class="pre">=</span> <span class="pre">lambda</span> <span class="pre">x:print(x)</span></code> is to define the function that will execute on the driver.</p>
+<p>As you can see, since there are 3 partitions of <code class="docutils literal notranslate"><span class="pre">a</span></code>, there are 3 descriptions printed, and in the end, the output dataframe is also printed.</p>
+<p>You can make the callback optional</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="c1"># schema: *</span>
+<span class="k">def</span> <span class="nf">print_describe_and_return</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">cb</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span><span class="kc">None</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">cb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cb</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span><span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">print_describe_and_return</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">dag2</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dag2</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span><span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">print_describe_and_return</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">dag2</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above example we use <code class="docutils literal notranslate"><span class="pre">Optional</span></code> to tell Fugue that this transformer can work with or without the callback. The transformer code is responsible to check null on the callback parameter. And if you don’t provide a callback handler when you invoke the transformer, the transformer side will get None on the callback parameter.</p>
+<p>This is a more flexible way where your transformer can be used in different situations.</p>
+</div>
+<div class="section" id="callbacks-on-distributed-execution-engines">
+<h2>Callbacks on distributed execution engines<a class="headerlink" href="#callbacks-on-distributed-execution-engines" title="Permalink to this headline">¶</a></h2>
+<p>The above code is running using <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> running on the current process. It’s the minimal code to test whether your callback logic will work. To run it using a distributed engine, You need to setup the callback server to handle network calls.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+
+<span class="n">conf</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;fugue.rpc.server&quot;</span><span class="p">:</span> <span class="s2">&quot;fugue.rpc.flask.FlaskRPCServer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fugue.rpc.flask_server.host&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fugue.rpc.flask_server.port&quot;</span><span class="p">:</span> <span class="s2">&quot;1234&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fugue.rpc.flask_server.timeout&quot;</span><span class="p">:</span> <span class="s2">&quot;2 sec&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">SparkExecutionEngine</span><span class="p">(</span><span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The above code uses the built-in flask server to handle network calls from workers. To use <code class="docutils literal notranslate"><span class="pre">fugue.rpc.flask.FlaskRPCServer</span></code>, you must set <code class="docutils literal notranslate"><span class="pre">fugue.rpc.flask_server.host</span></code> and <code class="docutils literal notranslate"><span class="pre">fugue.rpc.flask_server.port</span></code>, and it’s suggested to also set <code class="docutils literal notranslate"><span class="pre">fugue.rpc.flask_server.timeout</span></code> to a reasonable timeout for your own case.</p>
+<p>You can also create your custom server by implementing <a class="reference external" href="https://fugue.readthedocs.io/en/latest/api/fugue.rpc.html#fugue.rpc.base.RPCServer">RPCServer</a> and <a class="reference external" href="https://fugue.readthedocs.io/en/latest/api/fugue.rpc.html#fugue.rpc.base.RPCClient">RPCClient</a>. For example you may create a pair of server and client to communicate with <a class="reference external" href="https://mlflow.org/">MLFlow</a> to update metrics in real time.</p>
+</div>
+<div class="section" id="stateful-callbacks">
+<h2>Stateful callbacks<a class="headerlink" href="#stateful-callbacks" title="Permalink to this headline">¶</a></h2>
+<p>Commonly, callbacks need to be stateful. In Fugue, it’s totally fine to set the callback to be a method of an instance (in order to be stateful), or to use a global method/variable. You only need to make the function thread safe because it could be invoked in parallel.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">RLock</span>
+
+<span class="k">class</span> <span class="nc">Callback</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_lock</span> <span class="o">=</span> <span class="n">RLock</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">should_skip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">&gt;=</span><span class="mi">3</span>
+                
+<span class="n">callback</span> <span class="o">=</span> <span class="n">Callback</span><span class="p">()</span>
+                
+                
+<span class="c1"># schema: *</span>
+<span class="k">def</span> <span class="nf">take</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span><span class="n">callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">skip</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span><span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">take</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="n">callback</span><span class="o">.</span><span class="n">should_skip</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above example, we only take two partitions of the entire dataframe, so the <code class="docutils literal notranslate"><span class="pre">Callback</span></code> implemented a thread safe counter, and return true or false based on the counter.</p>
+<p><strong>The only requirement</strong> for a callback function that Fugue can use is that its input parameters and output are picklable (Nones are fine). The function itself is OK if not picklable. In the above case, <code class="docutils literal notranslate"><span class="pre">should_skip</span></code> invoked <code class="docutils literal notranslate"><span class="pre">RLock</span></code> which is not picklable, but it doesn’t matter.</p>
+</div>
+<div class="section" id="implementing-rpchandler-instead">
+<h2>Implementing <code class="docutils literal notranslate"><span class="pre">RPCHandler</span></code> instead<a class="headerlink" href="#implementing-rpchandler-instead" title="Permalink to this headline">¶</a></h2>
+<p>In most case the above native approaches are sufficient. However, if you want to having more control on the callback side, you can directly implement <a class="reference external" href="https://fugue.readthedocs.io/en/latest/api/fugue.rpc.html#fugue.rpc.base.RPCHandler">RPCHandler</a>. For example, you want to start a thread to process the incoming calls and stop the thread when the execution finishes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">RLock</span>
+<span class="kn">from</span> <span class="nn">fugue.rpc</span> <span class="kn">import</span> <span class="n">RPCHandler</span>
+<span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">uuid4</span>
+
+<span class="k">class</span> <span class="nc">Callback</span><span class="p">(</span><span class="n">RPCHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>  <span class="c1"># &lt;-- must call</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_lock</span> <span class="o">=</span> <span class="n">RLock</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">__uuid__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;UUID that can affect the determinism of the workflow&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid4</span><span class="p">())</span>  <span class="c1"># in this case, it will make the workflow non deterministic</span>
+
+    <span class="k">def</span> <span class="nf">start_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;User implementation of starting the handler&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;counter started&quot;</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">stop_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;User implementation of stopping the handler&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;counter stopped&quot;</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">&gt;=</span><span class="mi">3</span>
+                
+<span class="n">callback</span> <span class="o">=</span> <span class="n">Callback</span><span class="p">()</span>
+                
+                
+<span class="c1"># schema: *</span>
+<span class="k">def</span> <span class="nf">take</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span><span class="n">callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">skip</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span><span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">take</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="n">callback</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dag</span><span class="o">.</span><span class="n">spec_uuid</span><span class="p">())</span>  <span class="c1"># every time, the id will be different because the Callback is not deterministic</span>
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-callbacks-in-transformer-class">
+<h2>Using callbacks in Transformer class<a class="headerlink" href="#using-callbacks-in-transformer-class" title="Permalink to this headline">¶</a></h2>
+<p>If you must implement a <code class="docutils literal notranslate"><span class="pre">Transformer</span></code>, <code class="docutils literal notranslate"><span class="pre">OutputTransformer</span></code>, <code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code> and <code class="docutils literal notranslate"><span class="pre">OutputCoTransformer</span></code>, then you can use <code class="docutils literal notranslate"><span class="pre">callback</span></code> property as the callback.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span><span class="p">,</span> <span class="n">Transformer</span>
+
+<span class="k">class</span> <span class="nc">PrintAndReturn</span><span class="p">(</span><span class="n">Transformer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">schema</span>
+    
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">as_pandas</span><span class="p">()</span><span class="o">.</span><span class="n">describe</span><span class="p">()))</span>
+        <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span><span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">PrintAndReturn</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="a-real-example-ploting-mins-in-real-time">
+<h2>A real example: ploting mins in real time<a class="headerlink" href="#a-real-example-ploting-mins-in-real-time" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
+<span class="kn">from</span> <span class="nn">fugue.rpc</span> <span class="kn">import</span> <span class="n">RPCHandler</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">clear_output</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">RLock</span><span class="p">,</span> <span class="n">Thread</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">class</span> <span class="nc">PlotMinNow</span><span class="p">(</span><span class="n">RPCHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_lock</span> <span class="o">=</span> <span class="n">RLock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_values</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_updated</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_shutdown</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span> <span class="o">=</span> <span class="kc">None</span>
+        
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">value</span><span class="o">&lt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_updated</span><span class="o">=</span><span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">start_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">thread</span><span class="p">():</span>
+            <span class="k">def</span> <span class="nf">_plot</span><span class="p">():</span>
+                <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_lock</span><span class="p">:</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_updated</span> <span class="k">else</span> <span class="p">[]</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+                    <span class="n">clear_output</span><span class="p">()</span>
+                    <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_updated</span><span class="o">=</span><span class="kc">False</span>
+
+            <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shutdown</span><span class="p">:</span>
+                <span class="n">_plot</span><span class="p">()</span>
+                <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">_plot</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">thread</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        
+        
+    <span class="k">def</span> <span class="nf">stop_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_shutdown</span><span class="o">=</span><span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+        
+<span class="k">with</span> <span class="n">PlotMinNow</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+    <span class="n">p</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">p</span><span class="p">(</span><span class="mf">9.5</span><span class="p">)</span>
+    <span class="n">p</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/rpc_13_0.png" src="../../_images/rpc_13_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">100</span><span class="o">-</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span><span class="n">callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span><span class="o">/</span><span class="mf">100.0</span><span class="p">:</span>
+        <span class="n">p</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">create</span><span class="p">)</span><span class="o">.</span><span class="n">out_transform</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">PlotMinNow</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/rpc_14_0.png" src="../../_images/rpc_14_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="use-with-caution">
+<h2>Use with caution<a class="headerlink" href="#use-with-caution" title="Permalink to this headline">¶</a></h2>
+<p>Callbacks may be convenient to use, but you should use with caution. For example, it may not be a good idea to direct worker sider logs to driver using this approach because the amount of data can be unexpectedly large.</p>
+<p>Also, when you implement the driver side logic for the callbacks, you should be careful about the contention and latency. Take a look at the <code class="docutils literal notranslate"><span class="pre">_plot</span></code> in <code class="docutils literal notranslate"><span class="pre">PlotMinNow</span></code>, it’s a consumer competing with the data producers (remote callers), so it minimizes the logic inside the locked part to reduce such contention.</p>
+<p>The CPU usage is also a concern, when multiple workers are calling back, it could overload the system. So you should consider decoupling producers and consumers and moving the expensive operations to the consumer side so that you have better control of the load. See <code class="docutils literal notranslate"><span class="pre">__call__</span></code> in <code class="docutils literal notranslate"><span class="pre">PlotMinNow</span></code>, it has very cheap operations, if we re-draw the chart in side <code class="docutils literal notranslate"><span class="pre">__call__</span></code>, it may be a bad idea.</p>
+</div>
+<div class="section" id="callback-settings-and-rpcserver-combination-for-interfaceless">
+<h2>Callback settings and RPCServer combination (for interfaceless)<a class="headerlink" href="#callback-settings-and-rpcserver-combination-for-interfaceless" title="Permalink to this headline">¶</a></h2>
+<p>For interfaceless settings, you have 3 options on the transformer function: without callable, with callable, with optional callable. And you have the option whether to add the callback handler when you invoke the transformer. And you have the option to set the RPCServer.</p>
+<p>The following table is a full list of possible combinations and indicated scenarios</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Callback in transformers</p></th>
+<th class="text-align:center head"><p>Provide callback handler when using transformers</p></th>
+<th class="text-align:center head"><p>Customize RPCServer</p></th>
+<th class="text-align:left head"><p>Scenario</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>No callback</p></td>
+<td class="text-align:center"><p>No</p></td>
+<td class="text-align:center"><p>No</p></td>
+<td class="text-align:left"><p><strong>Most common</strong>, the callback feature is not used at all</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>No callback</p></td>
+<td class="text-align:center"><p>No</p></td>
+<td class="text-align:center"><p>Yes</p></td>
+<td class="text-align:left"><p><em>Meaningless</em>, plus you may introduce overhead to start and stop the server</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>No callback</p></td>
+<td class="text-align:center"><p>Yes</p></td>
+<td class="text-align:center"><p>No</p></td>
+<td class="text-align:left"><p><em>Meaningless</em>, plus you may introduce overhead to start and stop the callback handler</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>No callback</p></td>
+<td class="text-align:center"><p>Yes</p></td>
+<td class="text-align:center"><p>Yes</p></td>
+<td class="text-align:left"><p><em>Meaningless</em>, plus you may introduce overhead to start and stop the callback handler and the server</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Required</p></td>
+<td class="text-align:center"><p>No</p></td>
+<td class="text-align:center"><p>No</p></td>
+<td class="text-align:left"><p><em>Invalid</em>, Fugue compile time exception will be thrown</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Required</p></td>
+<td class="text-align:center"><p>No</p></td>
+<td class="text-align:center"><p>Yes</p></td>
+<td class="text-align:left"><p><em>Invalid</em>, Fugue compile time exception will be thrown</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Required</p></td>
+<td class="text-align:center"><p>Yes</p></td>
+<td class="text-align:center"><p>No</p></td>
+<td class="text-align:left"><p><strong>Local only</strong>, you can use it to test your callbacks using <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> only. If you use a distributed engine, serialization exception will be thrown</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Required</p></td>
+<td class="text-align:center"><p>Yes</p></td>
+<td class="text-align:center"><p>Yes</p></td>
+<td class="text-align:left"><p><strong>Common</strong>, a typical way to use callbacks both locally and distributedly</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Optional</p></td>
+<td class="text-align:center"><p>No</p></td>
+<td class="text-align:center"><p>No</p></td>
+<td class="text-align:left"><p><strong>Flexible</strong>, the callback on the transformer side will be None, you need to check. For a transformer to run with and without a callback, this is a solution</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Optional</p></td>
+<td class="text-align:center"><p>No</p></td>
+<td class="text-align:center"><p>Yes</p></td>
+<td class="text-align:left"><p><em>Meaningless</em>, plus you may introduce overhead to start and stop the server</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Optional</p></td>
+<td class="text-align:center"><p>Yes</p></td>
+<td class="text-align:center"><p>No</p></td>
+<td class="text-align:left"><p><strong>Local only</strong>, you can use it to test your callbacks using <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> only. If you use a distributed engine, serialization exception will be thrown</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Optional</p></td>
+<td class="text-align:center"><p>Yes</p></td>
+<td class="text-align:center"><p>Yes</p></td>
+<td class="text-align:left"><p><strong>Common</strong>, a typical way to use callbacks both locally and distributedly</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/advanced"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="checkpoint.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Checkpoint Deep Dive</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="x-like.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">X-like Objects</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

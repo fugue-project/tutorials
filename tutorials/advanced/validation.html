@@ -1,0 +1,794 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extension Input Data Validation &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data Type, Schema &amp; DataFrames" href="schema_dataframes.html" />
+    <link rel="prev" title="Execution Engine" href="execution_engine.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../beginner/index.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Deep Dive
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using databricks-connect
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/advanced/validation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tutorials/advanced/validation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#supported-validations">
+   Supported Validations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extensions-compatibility">
+   Extensions Compatibility
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-add-validations">
+   How To Add Validations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#by-comment">
+   By Comment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#by-decorator">
+   By Decorator
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#by-interface">
+   By Interface
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="extension-input-data-validation">
+<h1>Extension Input Data Validation<a class="headerlink" href="#extension-input-data-validation" title="Permalink to this headline">¶</a></h1>
+<p>When using extensions in Fugue, you may add input data validation logic inside your code. However, there is standard way to add your validation logic. Here is a simple example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="c1"># partitionby_has: a</span>
+<span class="c1"># schema: a:int,ct:int</span>
+<span class="k">def</span> <span class="nf">get_count</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;a&quot;</span><span class="p">],</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following commented-out code will fail, because of the hint <code class="docutils literal notranslate"><span class="pre">partitionby_has:</span> <span class="pre">a</span></code> requires the input dataframe to be prepartitioned by at least column <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span> <span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+    <span class="c1"># df.transform(get_count).show()  # will fail because of no partition by</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">get_count</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">get_count</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># b,a is a super set of a</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also have multiple rules, the following requires partition keys to contain <code class="docutils literal notranslate"><span class="pre">a</span></code>, and presort to be exactly <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">asc</span></code> (<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">==</span> <span class="pre">b</span> <span class="pre">asc</span></code>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="c1"># partitionby_has: a</span>
+<span class="c1"># presort_is: b</span>
+<span class="c1"># schema: a:int,ct:int</span>
+<span class="k">def</span> <span class="nf">get_count2</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;a&quot;</span><span class="p">],</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span> <span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+    <span class="c1"># df.partition(by=[&quot;a&quot;]).transform(get_count).show()  # will fail because of no presort</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="n">presort</span><span class="o">=</span><span class="s2">&quot;b asc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">get_count</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="supported-validations">
+<h2>Supported Validations<a class="headerlink" href="#supported-validations" title="Permalink to this headline">¶</a></h2>
+<p>The following are all supported validations. <strong>Compile time validations</strong> will happen when you construct the <span class="xref myst">FugueWorkflow</span> while <strong>runtime validations</strong> happen during execution. Compile time validations are very useful to quickly identify logical issues. Runtime validations may take longer time to happen but they are still useful.On Fugue level, we are trying to move runtime validations to compile time as much as we can.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Rule</p></th>
+<th class="text-align:left head"><p>Description</p></th>
+<th class="text-align:left head"><p>Compile Time</p></th>
+<th class="text-align:left head"><p>Order Matters</p></th>
+<th class="text-align:left head"><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><strong>partitionby_has</strong></p></td>
+<td class="text-align:left"><p>assert the input dataframe is prepartitioned, and the partition keys contain these values</p></td>
+<td class="text-align:left"><p>Yes</p></td>
+<td class="text-align:left"><p>No</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">partitionby_has:</span> <span class="pre">a,b</span></code> means the partition keys must contain <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> columns</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><strong>partitionby_is</strong></p></td>
+<td class="text-align:left"><p>assert the input dataframe is prepartitioned, and the partition keys are exactly these values</p></td>
+<td class="text-align:left"><p>Yes</p></td>
+<td class="text-align:left"><p>Yes</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">partitionby_is:</span> <span class="pre">a,b</span></code> means the partition keys must contain and only contain <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> columns</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><strong>presort_has</strong></p></td>
+<td class="text-align:left"><p>assert the input dataframe is prepartitioned and <a class="reference external" href="./partition.ipynb#Presort">presorted</a>, and the presort keys contain these values</p></td>
+<td class="text-align:left"><p>Yes</p></td>
+<td class="text-align:left"><p>No</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">presort_has:</span> <span class="pre">a,b</span> <span class="pre">desc</span></code> means the presort contains <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">asc</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">desc</span></code> (<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">a</span> <span class="pre">asc</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><strong>presort_is</strong></p></td>
+<td class="text-align:left"><p>assert the input dataframe is prepartitioned and <a class="reference external" href="./partition.ipynb#Presort">presorted</a>, and the presort keys are exactly these values</p></td>
+<td class="text-align:left"><p>Yes</p></td>
+<td class="text-align:left"><p>Yes</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">presort_is:</span> <span class="pre">a,b</span> <span class="pre">desc</span></code> means the presort is exactly <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">asc,</span> <span class="pre">b</span> <span class="pre">desc</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><strong>schema_has</strong></p></td>
+<td class="text-align:left"><p>assert input dataframe schema has certain keys or key type pairs</p></td>
+<td class="text-align:left"><p>No</p></td>
+<td class="text-align:left"><p>No</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">schema_has:</span> <span class="pre">a,b:str</span></code> means input dataframe schema contains column <code class="docutils literal notranslate"><span class="pre">a</span></code> regardless of type, and <code class="docutils literal notranslate"><span class="pre">b</span></code> of type string, order doesn’t matter. So <code class="docutils literal notranslate"><span class="pre">b:str,a:int</span></code> is valid, <code class="docutils literal notranslate"><span class="pre">b:int,a:int</span></code> is invalid because of <code class="docutils literal notranslate"><span class="pre">b</span></code> type, and <code class="docutils literal notranslate"><span class="pre">b:str</span></code> is invalid because <code class="docutils literal notranslate"><span class="pre">a</span></code> is not in the schema</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><strong>schema_is</strong></p></td>
+<td class="text-align:left"><p>assert input dataframe schema is exactly this value (the value must be a <a class="reference external" href="./schema_dataframes.ipynb#Schema">schema expression</a>)</p></td>
+<td class="text-align:left"><p>No</p></td>
+<td class="text-align:left"><p>Yes</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">schema_is:</span> <span class="pre">a:int,b:str</span></code>, then <code class="docutils literal notranslate"><span class="pre">b:str,a:int</span></code> is invalid because of order, <code class="docutils literal notranslate"><span class="pre">a:str,b:str</span></code> is invalid because of <code class="docutils literal notranslate"><span class="pre">a</span></code> type</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="extensions-compatibility">
+<h2>Extensions Compatibility<a class="headerlink" href="#extensions-compatibility" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Extension Type</p></th>
+<th class="text-align:left head"><p>Supported</p></th>
+<th class="text-align:left head"><p>Not Supported</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Transformer</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">partitionby_has</span></code>, <code class="docutils literal notranslate"><span class="pre">partitionby_is</span></code>, <code class="docutils literal notranslate"><span class="pre">presort_has</span></code>, <code class="docutils literal notranslate"><span class="pre">presort_is</span></code>, <code class="docutils literal notranslate"><span class="pre">schema_has</span></code>, <code class="docutils literal notranslate"><span class="pre">schema_is</span></code></p></td>
+<td class="text-align:left"><p>None</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>CoTransformer</p></td>
+<td class="text-align:left"><p>None</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">partitionby_has</span></code>, <code class="docutils literal notranslate"><span class="pre">partitionby_is</span></code>, <code class="docutils literal notranslate"><span class="pre">presort_has</span></code>, <code class="docutils literal notranslate"><span class="pre">presort_is</span></code>, <code class="docutils literal notranslate"><span class="pre">schema_has</span></code>, <code class="docutils literal notranslate"><span class="pre">schema_is</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>OutputTransformer</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">partitionby_has</span></code>, <code class="docutils literal notranslate"><span class="pre">partitionby_is</span></code>, <code class="docutils literal notranslate"><span class="pre">presort_has</span></code>, <code class="docutils literal notranslate"><span class="pre">presort_is</span></code>, <code class="docutils literal notranslate"><span class="pre">schema_has</span></code>, <code class="docutils literal notranslate"><span class="pre">schema_is</span></code></p></td>
+<td class="text-align:left"><p>None</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>OutputCoTransformer</p></td>
+<td class="text-align:left"><p>None</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">partitionby_has</span></code>, <code class="docutils literal notranslate"><span class="pre">partitionby_is</span></code>, <code class="docutils literal notranslate"><span class="pre">presort_has</span></code>, <code class="docutils literal notranslate"><span class="pre">presort_is</span></code>, <code class="docutils literal notranslate"><span class="pre">schema_has</span></code>, <code class="docutils literal notranslate"><span class="pre">schema_is</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Creator</p></td>
+<td class="text-align:left"><p>N/A</p></td>
+<td class="text-align:left"><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Processor</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">partitionby_has</span></code>, <code class="docutils literal notranslate"><span class="pre">partitionby_is</span></code>, <code class="docutils literal notranslate"><span class="pre">presort_has</span></code>, <code class="docutils literal notranslate"><span class="pre">presort_is</span></code>, <code class="docutils literal notranslate"><span class="pre">schema_has</span></code>, <code class="docutils literal notranslate"><span class="pre">schema_is</span></code></p></td>
+<td class="text-align:left"><p>None</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Outputter</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">partitionby_has</span></code>, <code class="docutils literal notranslate"><span class="pre">partitionby_is</span></code>, <code class="docutils literal notranslate"><span class="pre">presort_has</span></code>, <code class="docutils literal notranslate"><span class="pre">presort_is</span></code>, <code class="docutils literal notranslate"><span class="pre">schema_has</span></code>, <code class="docutils literal notranslate"><span class="pre">schema_is</span></code></p></td>
+<td class="text-align:left"><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="how-to-add-validations">
+<h2>How To Add Validations<a class="headerlink" href="#how-to-add-validations" title="Permalink to this headline">¶</a></h2>
+<p>It depends on how you write your extension, by comment, by decorator or by interface, feature wise, they are equivalent.</p>
+</div>
+<div class="section" id="by-comment">
+<h2>By Comment<a class="headerlink" href="#by-comment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="c1"># schema: a:int,ct:int</span>
+<span class="k">def</span> <span class="nf">get_count2</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;a&quot;</span><span class="p">],</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="by-decorator">
+<h2>By Decorator<a class="headerlink" href="#by-decorator" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">processor</span><span class="p">,</span> <span class="n">transformer</span>
+
+<span class="nd">@transformer</span><span class="p">(</span><span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">partitionby_has</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">],</span> <span class="n">presort_is</span><span class="o">=</span><span class="s2">&quot;b, c desc&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">example1</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="nd">@transformer</span><span class="p">(</span><span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">partitionby_has</span><span class="o">=</span><span class="s2">&quot;a,d&quot;</span><span class="p">,</span> <span class="n">presort_is</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="kc">False</span><span class="p">)])</span>
+<span class="k">def</span> <span class="nf">example2</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="c1"># partitionby_has: a</span>
+<span class="c1"># presort_is: b</span>
+<span class="nd">@transformer</span><span class="p">(</span><span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">example3</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="nd">@processor</span><span class="p">(</span><span class="n">partitionby_has</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">],</span> <span class="n">presort_is</span><span class="o">=</span><span class="s2">&quot;b, c desc&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">example4</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="by-interface">
+<h2>By Interface<a class="headerlink" href="#by-interface" title="Permalink to this headline">¶</a></h2>
+<p>In every extension, you can override <code class="docutils literal notranslate"><span class="pre">validation_rules</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">Transformer</span>
+
+<span class="k">class</span> <span class="nc">T</span><span class="p">(</span><span class="n">Transformer</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">validation_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;partitionby_has&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">get_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">schema</span>
+    
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/advanced"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="execution_engine.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Execution Engine</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="schema_dataframes.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Data Type, Schema &amp; DataFrames</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

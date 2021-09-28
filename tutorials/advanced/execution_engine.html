@@ -1,0 +1,973 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Execution Engine &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Extension Input Data Validation" href="validation.html" />
+    <link rel="prev" title="Fugue Configurations" href="useful_config.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../beginner/index.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Deep Dive
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using databricks-connect
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/advanced/execution_engine.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tutorials/advanced/execution_engine.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initialization">
+   Initialization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#native-python">
+     Native Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dask">
+     Dask
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spark">
+     Spark
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-dataframe">
+   Create DataFrame
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repartition">
+   Repartition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#map">
+   Map
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#persist-broadcast">
+   Persist &amp; Broadcast
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#join">
+   Join
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zip-comap">
+   Zip &amp; Comap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-save">
+   Load &amp; Save
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sqlengine">
+   SQLEngine
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="execution-engine">
+<h1>Execution Engine<a class="headerlink" href="#execution-engine" title="Permalink to this headline">¶</a></h1>
+<p>It is the heart of Fugue. It is the layer that unifies core concepts of distributed computing, and separates the underlying computing frameworks from user’s high level logic. Normally you don’t directly operate on execution engines. But it’s good to understand the basics.</p>
+<p>In Fugue, <strong>the only dataset is schemaed dataframes</strong>, so although there are other important concepts such as <code class="docutils literal notranslate"><span class="pre">RDD</span></code>, we don’t cover them. More options may result in more flexibility or more confusion. You can read these <a class="reference external" href="https://databricks.com/blog/2016/07/14/a-tale-of-three-apache-spark-apis-rdds-dataframes-and-datasets.html">1</a> <a class="reference external" href="https://data-flair.training/blogs/apache-spark-rdd-vs-dataframe-vs-dataset/">2</a> to get more insights.</p>
+<p>However, it is important to understand that, <strong>you have full access to any underlying computing frameworks</strong>, and to use any specific features including <code class="docutils literal notranslate"><span class="pre">RDD</span></code>. We unify certain things to make them easy and consistent, but we don’t block anything else.</p>
+<div class="section" id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
+<p>Although there is no hard rules for initializing an ExecutionEngine. The general way is to initialize from configs. We should use the config to describe each components, such as what logger to use, what SQLEngine to use and other properties.</p>
+<p>Here is the best practice to initialize each built-in ExecutionEngine.</p>
+<div class="section" id="native-python">
+<h3>Native Python<a class="headerlink" href="#native-python" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">NativeExecutionEngine</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">NativeExecutionEngine</span><span class="p">({</span><span class="s2">&quot;myconfig&quot;</span><span class="p">:</span><span class="s2">&quot;abc&quot;</span><span class="p">})</span>
+<span class="k">assert</span> <span class="n">engine</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">get_or_throw</span><span class="p">(</span><span class="s2">&quot;myconfig&quot;</span> <span class="p">,</span><span class="nb">str</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;abc&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dask">
+<h3>Dask<a class="headerlink" href="#dask" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span> <span class="c1"># without this, dask is not in distributed mode</span>
+<span class="kn">from</span> <span class="nn">fugue_dask</span> <span class="kn">import</span> <span class="n">DaskExecutionEngine</span>
+
+<span class="c1"># fugue.dask.dataframe.default.partitions determines the default partitions for a new DaskDataFrame</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">DaskExecutionEngine</span><span class="p">({</span><span class="s2">&quot;fugue.dask.dataframe.default.partitions&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">})</span>
+<span class="k">assert</span> <span class="n">engine</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">get_or_throw</span><span class="p">(</span><span class="s2">&quot;fugue.dask.dataframe.default.partitions&quot;</span> <span class="p">,</span><span class="nb">int</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="spark">
+<h3>Spark<a class="headerlink" href="#spark" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+
+<span class="c1"># here is the place you get a spark session, it&#39;s the same as if there is no Fugue</span>
+<span class="c1"># notice that you can configure almost everything in this way, even running mode, such as local mode or other mode</span>
+<span class="c1"># the best way based on my experience is to only use this way + spark-defaults.conf to initialize SparkSessions.</span>
+<span class="n">spark_session</span> <span class="o">=</span> <span class="p">(</span><span class="n">SparkSession</span>
+                 <span class="o">.</span><span class="n">builder</span>
+                 <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.executor.cores&quot;</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+                 <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;fugue.dummy&quot;</span><span class="p">,</span><span class="s2">&quot;dummy&quot;</span><span class="p">)</span>
+                 <span class="o">.</span><span class="n">getOrCreate</span><span class="p">())</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">SparkExecutionEngine</span><span class="p">(</span><span class="n">spark_session</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;additional_conf&quot;</span><span class="p">:</span><span class="s2">&quot;abc&quot;</span><span class="p">})</span>
+<span class="k">assert</span> <span class="n">engine</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">get_or_throw</span><span class="p">(</span><span class="s2">&quot;spark.executor.cores&quot;</span> <span class="p">,</span><span class="nb">int</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="k">assert</span> <span class="n">engine</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">get_or_throw</span><span class="p">(</span><span class="s2">&quot;fugue.dummy&quot;</span> <span class="p">,</span><span class="nb">str</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;dummy&quot;</span>
+<span class="k">assert</span> <span class="n">engine</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">get_or_throw</span><span class="p">(</span><span class="s2">&quot;additional_conf&quot;</span> <span class="p">,</span><span class="nb">str</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;abc&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A special feature of Fugue is that, the <code class="docutils literal notranslate"><span class="pre">engine.conf</span></code> is also accessible on workers (different machines) within all types of Fugue exetensions. The engine itself is only accessible on driver or dirver side extensions.</p>
+</div>
+</div>
+<div class="section" id="create-dataframe">
+<h2>Create DataFrame<a class="headerlink" href="#create-dataframe" title="Permalink to this headline">¶</a></h2>
+<p>With ExecutionEngine, you only need to tell the system I need to create a DataFrame with raw data or dataframes. And with different ExecutionEngines, different types of DataFrames will be created. <code class="docutils literal notranslate"><span class="pre">to_df</span></code> is the common interface for ExecutionEngines, use it to create DataFrames.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">NativeExecutionEngine</span><span class="p">,</span> <span class="n">ArrayDataFrame</span>
+<span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+
+<span class="n">engine1</span> <span class="o">=</span> <span class="n">NativeExecutionEngine</span><span class="p">()</span>
+<span class="n">engine2</span> <span class="o">=</span> <span class="n">SparkExecutionEngine</span><span class="p">()</span> <span class="c1"># if spark_session is not provided, it will get the current active session</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">engine1</span><span class="o">.</span><span class="n">to_df</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span><span class="s2">&quot;a:int&quot;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">engine2</span><span class="o">.</span><span class="n">to_df</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span><span class="s2">&quot;a:int&quot;</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">engine1</span><span class="o">.</span><span class="n">to_df</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>  <span class="c1"># see, NativeExecutionEngine can also take SparkDataFrame and convert to a local dataframe</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df2</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">df1</span><span class="o">.</span><span class="n">as_array</span><span class="p">()</span> <span class="o">==</span> <span class="n">df2</span><span class="o">.</span><span class="n">as_array</span><span class="p">()</span> <span class="c1"># both materialized on driver, and compare</span>
+<span class="k">assert</span> <span class="n">df1</span><span class="o">.</span><span class="n">as_array</span><span class="p">()</span> <span class="o">==</span> <span class="n">df3</span><span class="o">.</span><span class="n">as_array</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For every general methods that ExecutionEngine supports, it will take arbitrary <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object and will call <code class="docutils literal notranslate"><span class="pre">to_df</span></code> to make sure it becomes an engine compatible dataframe. So you may not need to call <code class="docutils literal notranslate"><span class="pre">to_df</span></code> directly</p>
+</div>
+<div class="section" id="repartition">
+<h2>Repartition<a class="headerlink" href="#repartition" title="Permalink to this headline">¶</a></h2>
+<p>This is to partition a DataFrame with PartitionSpec (read <a class="reference internal" href="partition.html"><span class="doc std std-doc">this</span></a>). Normally it’s for your next operation. Calling it directly may or may not have effect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">ArrayDataFrame</span><span class="p">,</span> <span class="n">PartitionSpec</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">SparkExecutionEngine</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">]],</span><span class="s2">&quot;a:int&quot;</span><span class="p">),</span> <span class="n">PartitionSpec</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># as you can see df becomes a SparkDataFrame because of the engine, but the repartition does not have any effect</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="map">
+<h2>Map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h2>
+<p>Before reading it, read the <a class="reference internal" href="partition.html"><span class="doc std std-doc">Partition tutorial</span></a> first. Map in Fugue is on <a class="reference external" href="./partition.ipynb#Physical-vs-Logical-Partitions"><strong>logical</strong> partition level</a>. You can pass in an <code class="docutils literal notranslate"><span class="pre">on_init</span></code> function which will be called when starting a <strong>physical</strong> partition. (the following example will not cover <code class="docutils literal notranslate"><span class="pre">on_init</span></code>)</p>
+<p>It’s not important to understand how to use it, because there is a better <a class="reference external" href="dag.ipynb#Transformer">programming interface</a> on top of it. It’s important to understand the meaning of this method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">ArrayDataFrame</span><span class="p">,</span> <span class="n">PandasDataFrame</span><span class="p">,</span> <span class="n">PartitionSpec</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">map_func</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">key_value_dict</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">as_array</span><span class="p">()</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="n">key</span><span class="p">,</span><span class="n">sub</span><span class="p">]],</span><span class="s2">&quot;key:str,data:str&quot;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">PandasDataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">)))</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">SparkExecutionEngine</span><span class="p">()</span>
+
+<span class="n">engine</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span> 
+    <span class="n">map_func</span><span class="p">,</span>
+    <span class="n">output_schema</span><span class="o">=</span><span class="s2">&quot;key:str,data:str&quot;</span><span class="p">,</span>
+    <span class="n">partition_spec</span><span class="o">=</span><span class="n">PartitionSpec</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">engine</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span> 
+    <span class="n">map_func</span><span class="p">,</span>
+    <span class="n">output_schema</span><span class="o">=</span><span class="s2">&quot;key:str,data:str&quot;</span><span class="p">,</span>
+    <span class="n">partition_spec</span><span class="o">=</span><span class="n">PartitionSpec</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">],</span><span class="n">presort</span><span class="o">=</span><span class="s2">&quot;c DESC&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="persist-broadcast">
+<h2>Persist &amp; Broadcast<a class="headerlink" href="#persist-broadcast" title="Permalink to this headline">¶</a></h2>
+<p>Similar to Spark, Fugue is lazy, so <code class="docutils literal notranslate"><span class="pre">persist</span></code> is a very important operation to control the execution plan. Notice that different from Spark, when calling persist in Fugue, it will materialize the dataframe immediately. Broadcast is also similar to Spark, read <a class="reference external" href="https://forums.databricks.com/questions/18849/broadcast-dataframe-once-and-use-it-many-a-times-s.html">this</a>.</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">persist</span></code> and <code class="docutils literal notranslate"><span class="pre">broadcast</span></code> are on Fugue dataframes, for one dataframe, if you call persist or broadcast multiple times, only the first calls will take effect.</p>
+<p>If you want auto broadcast, it’s supported on Spark, read <a class="reference external" href="https://spark.apache.org/docs/latest/sql-performance-tuning.html#other-configuration-options">this</a>, so you can configure the Fugue SparkExecutionEngine with these parameters.</p>
+<p>If you want auto persist, it’s supported on Fugue, read <a class="reference external" href="useful_config.ipynb#Auto-Persist">this</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">ArrayDataFrame</span><span class="p">,</span> <span class="n">PandasDataFrame</span><span class="p">,</span> <span class="n">PartitionSpec</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span> <span class="nn">timeit</span>
+
+<span class="k">def</span> <span class="nf">map_func</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">SparkExecutionEngine</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">persist</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span><span class="s2">&quot;a:int&quot;</span><span class="p">),</span>
+        <span class="n">map_func</span><span class="p">,</span>
+        <span class="n">output_schema</span><span class="o">=</span><span class="s2">&quot;a:int&quot;</span><span class="p">,</span>
+        <span class="n">partition_spec</span><span class="o">=</span><span class="n">PartitionSpec</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">persist</span><span class="p">:</span>
+        <span class="n">df</span><span class="o">=</span><span class="n">engine</span><span class="o">.</span><span class="n">persist</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">as_array</span><span class="p">()</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">as_array</span><span class="p">()</span> <span class="c1"># without persist, this will trigger map to run again</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">run</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># 30 sec + overhead</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">run</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># 15 sec + overhead</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="join">
+<h2>Join<a class="headerlink" href="#join" title="Permalink to this headline">¶</a></h2>
+<p>Join is a very common operation for big data problems, it is also highly optimized by all computing frameworks. So if you can convert some task to join operation, it normally will be faster and also scale agnostic.</p>
+<p>Currently, these join types are supported: <code class="docutils literal notranslate"><span class="pre">CROSS</span></code>, <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">SEMI</span></code>, <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">ANTI</span></code>, <code class="docutils literal notranslate"><span class="pre">INNER</span></code>, <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">OUTER</span></code>, <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">OUTER</span></code>, <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">OUTER</span></code>.</p>
+<p>If you directly use SQL to interact with the underlying frameworks, you may be able to use more join types.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">NativeExecutionEngine</span><span class="p">,</span> <span class="n">ArrayDataFrame</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="s2">&quot;k1&quot;</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">],[</span><span class="s2">&quot;k2&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">]],</span><span class="s2">&quot;a:str,b:str&quot;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="s2">&quot;k2&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">],[</span><span class="s2">&quot;k3&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">]],</span><span class="s2">&quot;a:str,c:str&quot;</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="s2">&quot;k4&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">],[</span><span class="s2">&quot;k5&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">]],</span><span class="s2">&quot;d:str,e:str&quot;</span><span class="p">)</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">NativeExecutionEngine</span><span class="p">()</span>
+
+<span class="c1"># in joins, except for `on` columns, all other columns must be different in df1 and df2</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;semi&quot;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;LEFT SEMI&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;anti&quot;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;LEFT ANTI&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;INNER&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;left_outer&quot;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;LEFT OUTER&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;right_outer&quot;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;RIGHT OUTER&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;full_outer&quot;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;FULL OUTER&quot;</span><span class="p">)</span>
+
+<span class="c1"># `on` parameter can be inferred, so you don&#39;t really need to specify that</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;semi&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;LEFT SEMI&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;anti&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;LEFT ANTI&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;INNER&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;left_outer&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;LEFT OUTER&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;right_outer&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;RIGHT OUTER&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;full_outer&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;FULL OUTER&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span><span class="n">df3</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;cross&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;CROSS&quot;</span><span class="p">)</span>
+
+<span class="c1"># but what if we want to join two dfs with common columns that is not a join key?</span>
+<span class="n">df1_</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">&quot;b&quot;</span><span class="p">:</span><span class="s2">&quot;c&quot;</span><span class="p">})</span> <span class="c1"># rename these columns before join</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df1_</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="zip-comap">
+<h2>Zip &amp; Comap<a class="headerlink" href="#zip-comap" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes, you need to partition multiple dataframes in the same way (on the same keys), and then on each logical partition, you process them together as a collection. This will require you to <code class="docutils literal notranslate"><span class="pre">zip</span></code> multiple dataframes partitioned in the same way, and then process them using <code class="docutils literal notranslate"><span class="pre">comap</span></code></p>
+<p>Read through the following code and run them to see the results. It’s not important to learn how to use them directly because there will be <a class="reference external" href="dag.ipynb#CoTransformer">programming interface</a> on top of it. It’s important to see the results and to understand the basic ideas of zip and comap.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">NativeExecutionEngine</span><span class="p">,</span> <span class="n">ArrayDataFrame</span><span class="p">,</span> <span class="n">PartitionSpec</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="s2">&quot;k1&quot;</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">],[</span><span class="s2">&quot;k1&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">],[</span><span class="s2">&quot;k2&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">],[</span><span class="s2">&quot;k2&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">]],</span><span class="s2">&quot;a:str,b:str&quot;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="s2">&quot;k2&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">],[</span><span class="s2">&quot;k2&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">],[</span><span class="s2">&quot;k3&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">],[</span><span class="s2">&quot;k3&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">]],</span><span class="s2">&quot;a:str,b:str&quot;</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="s2">&quot;k4&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">]],</span><span class="s2">&quot;d:str,e:str&quot;</span><span class="p">)</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">NativeExecutionEngine</span><span class="p">()</span>
+<span class="c1"># different from engine.join, engine.zip can accept two dataframes with common columns that are not partition keys</span>
+<span class="c1"># so it&#39;s good practice to be explicit about the the partition spec</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">engine</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span> <span class="n">partition_spec</span> <span class="o">=</span> <span class="n">PartitionSpec</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span>
+<span class="c1"># if you let zip to infer, it will find the common schemas as the keys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">engine</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span> <span class="c1"># notice the difference?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">engine</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left_outer&quot;</span><span class="p">,</span> <span class="n">partition_spec</span> <span class="o">=</span> <span class="n">PartitionSpec</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># dfs is of type DataFames, it always contains all zipped dataframes in order, </span>
+<span class="c1"># in an outer join some dataframe can be empty instead if None</span>
+<span class="k">def</span> <span class="nf">map_func</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="n">dfs</span><span class="p">):</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">key_value_dict</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">as_array</span><span class="p">()</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">dfs</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">]],</span><span class="s2">&quot;key:str,value:[str]&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># comap must operate on zipped dataframe, or error will be thrown</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left_outer&quot;</span><span class="p">,</span> <span class="n">partition_spec</span> <span class="o">=</span> <span class="n">PartitionSpec</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]))</span>
+<span class="c1"># for this left outer join case, df2 has no key k1, so in the map_func, it will receive an empty dataframe as df2 on the key k1</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">comap</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">map_func</span><span class="p">,</span> <span class="n">output_schema</span> <span class="o">=</span> <span class="s2">&quot;key:str,value:[str]&quot;</span><span class="p">,</span> <span class="n">partition_spec</span> <span class="o">=</span> <span class="n">PartitionSpec</span><span class="p">())</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">comap</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">map_func</span><span class="p">,</span> <span class="n">output_schema</span> <span class="o">=</span> <span class="s2">&quot;key:str,value:[str]&quot;</span><span class="p">,</span> <span class="n">partition_spec</span> <span class="o">=</span> <span class="n">PartitionSpec</span><span class="p">())</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="load-save">
+<h2>Load &amp; Save<a class="headerlink" href="#load-save" title="Permalink to this headline">¶</a></h2>
+<p>Load and save are also in common interface for ExecutionEngines. Across all ExecutionEngines, <code class="docutils literal notranslate"><span class="pre">parquet</span></code>, <code class="docutils literal notranslate"><span class="pre">csv</span></code> and <code class="docutils literal notranslate"><span class="pre">json</span></code> are supported.</p>
+<p>Fugue depends on <a class="reference external" href="https://docs.pyfilesystem.org/en/latest/index.html">PyFilesystem2</a>. For details, read <a class="reference external" href="https://triad.readthedocs.io/en/latest/api/triad.collections.html#triad.collections.fs.FileSystem">this</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">ArrayDataFrame</span>
+<span class="kn">from</span> <span class="nn">triad.collections.fs</span> <span class="kn">import</span> <span class="n">FileSystem</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">],[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">],[</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">],[</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">]],</span><span class="s2">&quot;a:str,b:str&quot;</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="n">FileSystem</span><span class="p">()</span>
+
+<span class="c1"># simplest examples</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">SparkExecutionEngine</span><span class="p">()</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">save_df</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="s2">&quot;/tmp/t1.parquet&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fs</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;/tmp/t1.parquet&quot;</span><span class="p">))</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">load_df</span><span class="p">(</span><span class="s2">&quot;/tmp/t1.parquet&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># you can use format hint to specify file types</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">save_df</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="s2">&quot;/tmp/t1&quot;</span><span class="p">,</span> <span class="n">format_hint</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fs</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;/tmp/t1&quot;</span><span class="p">))</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">load_df</span><span class="p">(</span><span class="s2">&quot;/tmp/t1&quot;</span><span class="p">,</span> <span class="n">format_hint</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># you can load just certain columns, this can be faster for certain execution engine and certain file types</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">load_df</span><span class="p">(</span><span class="s2">&quot;/tmp/t1&quot;</span><span class="p">,</span> <span class="n">format_hint</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># by default, the save mode is overwrite, you can also use append and error (throw if the file exists)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">load_df</span><span class="p">(</span><span class="s2">&quot;/tmp/t1.parquet&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">save_df</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="s2">&quot;/tmp/t1.parquet&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">load_df</span><span class="p">(</span><span class="s2">&quot;/tmp/t1.parquet&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># engine.save_df(df1,&quot;/tmp/t1.parquet&quot;, mode=&quot;error&quot;)  # this will throw exception</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># distributed engines can save files as a folder, but sometimes you need a single file, here is how</span>
+<span class="n">fs</span><span class="o">.</span><span class="n">removetree</span><span class="p">(</span><span class="s2">&quot;/tmp/t1.parquet&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">save_df</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="s2">&quot;/tmp/t1.parquet&quot;</span><span class="p">,</span> <span class="n">force_single</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fs</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;/tmp/t1.parquet&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># here is how you work with csv</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">save_df</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="s2">&quot;/tmp/t1.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">load_df</span><span class="p">(</span><span class="s2">&quot;/tmp/t1.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># you can use columns to define the column types. The column names has to match the header</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">load_df</span><span class="p">(</span><span class="s2">&quot;/tmp/t1.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;a:int,b:str&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">engine</span><span class="o">.</span><span class="n">save_df</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="s2">&quot;/tmp/t1.csv&quot;</span><span class="p">)</span> <span class="c1"># by default header will not be saved</span>
+<span class="c1"># you can use columns to define the column types. The column names has to match the header</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">load_df</span><span class="p">(</span><span class="s2">&quot;/tmp/t1.csv&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;a:int,b:str&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># if header is not saved, you must specify the schema</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sqlengine">
+<h2>SQLEngine<a class="headerlink" href="#sqlengine" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">SQLEngine</span></code> is based on <code class="docutils literal notranslate"><span class="pre">ExecutionEngine</span></code>, but is separated from <code class="docutils literal notranslate"><span class="pre">ExecutionEngine</span></code>. You can write your own <code class="docutils literal notranslate"><span class="pre">SQLEngine</span></code> to work with different <code class="docutils literal notranslate"><span class="pre">ExecutionEngines</span></code>.</p>
+<p>For most users, you only need to know that you can switch <code class="docutils literal notranslate"><span class="pre">SQLEngine</span></code> when you have chosen a certain <code class="docutils literal notranslate"><span class="pre">ExecutionEngine</span></code>. A real use case is that if you have a <code class="docutils literal notranslate"><span class="pre">PrestoSQLEngine</span></code> to send queries to presto and get dataframe back. you can use it as well as the built in <code class="docutils literal notranslate"><span class="pre">SparkSQLEngine</span></code> to get data from mutliple sources and process in <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">SqliteEngine</span> <span class="c1"># default engine for NativeExecutionEngine and DaskExecutionEngine</span>
+<span class="kn">from</span> <span class="nn">fugue_spark.execution_engine</span> <span class="kn">import</span> <span class="n">SparkSQLEngine</span> <span class="c1"># default engine for SparkExecutionEngine</span>
+<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">ArrayDataFrame</span><span class="p">,</span> <span class="n">DataFrames</span><span class="p">,</span> <span class="n">NativeExecutionEngine</span>
+<span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span><span class="s2">&quot;a:long,b:long&quot;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span><span class="s2">&quot;a:long,c:long&quot;</span><span class="p">)</span>
+<span class="n">dfs</span> <span class="o">=</span> <span class="n">DataFrames</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">df2</span><span class="p">)</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">NativeExecutionEngine</span><span class="p">()</span>
+<span class="n">sql_engine</span> <span class="o">=</span> <span class="n">SqliteEngine</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+<span class="n">sql_engine</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span><span class="s2">&quot;SELECT x.*,c FROM x INNER JOIN y ON x.a=y.a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">SparkExecutionEngine</span><span class="p">()</span>
+<span class="n">sql_engine</span> <span class="o">=</span> <span class="n">SparkSQLEngine</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+<span class="n">sql_engine</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span><span class="s2">&quot;SELECT x.*,c FROM x INNER JOIN y ON x.a=y.a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># spark execution engine can also use SqliteEngine, it&#39;s just to show you can switch SQLEngines</span>
+<span class="n">sql_engine</span> <span class="o">=</span> <span class="n">SqliteEngine</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span> 
+<span class="n">sql_engine</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span><span class="s2">&quot;SELECT x.*,c FROM x INNER JOIN y ON x.a=y.a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/advanced"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="useful_config.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Fugue Configurations</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="validation.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Extension Input Data Validation</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

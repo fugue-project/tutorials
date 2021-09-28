@@ -1,0 +1,801 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X-like Objects &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Examples" href="../examples/index.html" />
+    <link rel="prev" title="Callbacks From Transformers To Driver" href="rpc.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../beginner/index.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Deep Dive
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using databricks-connect
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/advanced/x-like.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tutorials/advanced/x-like.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#schema">
+   Schema
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameters">
+   Parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe">
+   DataFrame
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframes">
+   DataFrames
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframes-in-programming-interface">
+     DataFrames in Programming Interface
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partition">
+   Partition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rpc">
+   RPC
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="x-like-objects">
+<h1>X-like Objects<a class="headerlink" href="#x-like-objects" title="Permalink to this headline">¶</a></h1>
+<p>In Fugue, it’s flexibile to initialize many built-in objects. This is a tutorial for all of them.</p>
+<div class="section" id="schema">
+<h2>Schema<a class="headerlink" href="#schema" title="Permalink to this headline">¶</a></h2>
+<p>Fugue creates a special syntax to represent schema: Separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>, each column type pair is <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;:&lt;type</span> <span class="pre">expression&gt;</span></code></p>
+<p>For example: <code class="docutils literal notranslate"><span class="pre">a:int,b:str</span></code> or <code class="docutils literal notranslate"><span class="pre">a:int,b_array:[int],c_dict:{x:int,y:str}</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">Schema</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Schema</span><span class="p">(</span><span class="s2">&quot;a:int,b:str&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Schema</span><span class="p">(</span><span class="s2">&quot;a:int32,b_array:[int64],c_dict:{x:int,y:string}&quot;</span><span class="p">))</span>
+
+<span class="c1"># get pyarrow schema</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">(</span><span class="s2">&quot; a : int , b : str&quot;</span><span class="p">)</span> <span class="c1"># space is ok</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pa schema&quot;</span><span class="p">,</span> <span class="n">schema</span><span class="o">.</span><span class="n">pa_schema</span><span class="p">)</span>
+
+<span class="c1"># more ways to initialized fugue Schema</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Schema</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">pa_schema</span><span class="p">))</span> <span class="c1"># by pyarrow schema</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Schema</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="nb">int</span><span class="p">))</span> <span class="c1"># pythonic way</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Schema</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="nb">int</span><span class="p">)))</span> <span class="c1"># pythonic way</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Schema</span><span class="p">(</span><span class="s2">&quot;e:str&quot;</span><span class="p">,</span><span class="s2">&quot;f:str&quot;</span><span class="p">))</span> <span class="c1"># you can separate</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Schema</span><span class="p">([</span><span class="s2">&quot;e:str&quot;</span><span class="p">,</span><span class="s2">&quot;f:str&quot;</span><span class="p">],</span> <span class="p">(</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="nb">int</span><span class="p">)))</span> <span class="c1"># you can separate, notice int in python means long in schema</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Schema</span><span class="p">(</span><span class="n">Schema</span><span class="p">(</span><span class="s2">&quot;a:int&quot;</span><span class="p">,</span><span class="s2">&quot;b:str&quot;</span><span class="p">)))</span> <span class="c1"># you can separate</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ParamDict</span></code> is not that flexible, it can only accept dict or list of tuples just like python dict. <code class="docutils literal notranslate"><span class="pre">ParamDict</span></code> itself is a python dict.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">triad.collections</span> <span class="kn">import</span> <span class="n">ParamDict</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ParamDict</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ParamDict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ParamDict</span><span class="p">([(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">)]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dataframe">
+<h2>DataFrame<a class="headerlink" href="#dataframe" title="Permalink to this headline">¶</a></h2>
+<p>Normally, you should create a dataframe from <a class="reference internal" href="execution_engine.html"><span class="doc std std-doc">ExecutionEngine</span></a> or <a class="reference internal" href="dag.html"><span class="doc std std-doc">FugueWorkflow</span></a>. In general, all execution engines and workflows support list/iterable of python arrays and pandas or Fugue dataframes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">ExecutionEngine</span><span class="p">,</span> <span class="n">FugueWorkflow</span><span class="p">,</span> <span class="n">NativeExecutionEngine</span><span class="p">,</span> <span class="n">PandasDataFrame</span>
+<span class="kn">from</span> <span class="nn">fugue_dask</span> <span class="kn">import</span> <span class="n">DaskExecutionEngine</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">construct_df_by_execution_engine</span><span class="p">(</span><span class="n">eng</span><span class="p">:</span><span class="n">ExecutionEngine</span><span class="p">):</span>
+    <span class="n">eng</span><span class="o">.</span><span class="n">to_df</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span> <span class="s2">&quot;a:int&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;from array&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">PandasDataFrame</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span> <span class="s2">&quot;a:int&quot;</span><span class="p">)</span>
+    <span class="n">eng</span><span class="o">.</span><span class="n">to_df</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;from fugue dataframe&quot;</span><span class="p">)</span>
+    <span class="n">eng</span><span class="o">.</span><span class="n">to_df</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">as_pandas</span><span class="p">())</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;from pandas dataframe&quot;</span><span class="p">)</span>
+    
+<span class="n">construct_df_by_execution_engine</span><span class="p">(</span><span class="n">NativeExecutionEngine</span><span class="p">())</span>
+<span class="n">construct_df_by_execution_engine</span><span class="p">(</span><span class="n">DaskExecutionEngine</span><span class="p">())</span>  <span class="c1"># notice the dataframe types change</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------------&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">construct_df_by_workflow</span><span class="p">(</span><span class="n">eng</span><span class="p">:</span><span class="n">ExecutionEngine</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">(</span><span class="n">eng</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+        <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span> <span class="s2">&quot;a:int&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;from array&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">PandasDataFrame</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span> <span class="s2">&quot;a:int&quot;</span><span class="p">)</span>
+        <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;from fugue dataframe&quot;</span><span class="p">)</span>
+        <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">as_pandas</span><span class="p">())</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;from pandas dataframe&quot;</span><span class="p">)</span>
+        
+<span class="n">construct_df_by_workflow</span><span class="p">(</span><span class="n">NativeExecutionEngine</span><span class="p">())</span>
+<span class="n">construct_df_by_workflow</span><span class="p">(</span><span class="n">DaskExecutionEngine</span><span class="p">())</span>  <span class="c1"># notice the dataframe types change   </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dataframes">
+<h2>DataFrames<a class="headerlink" href="#dataframes" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> is a type, it represents a collection of Fugue DataFrames. It can be dict-like where each dataframe has a name, or list-like. It is also an extensively used data structure in the framework</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">DataFrames</span><span class="p">,</span> <span class="n">ArrayDataFrame</span><span class="p">,</span> <span class="n">ArrowDataFrame</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span><span class="s2">&quot;a:int&quot;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">ArrowDataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">]],</span><span class="s2">&quot;b:int&quot;</span><span class="p">)</span>
+
+<span class="n">dfs</span> <span class="o">=</span> <span class="n">DataFrames</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span> <span class="c1"># list-like</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">dfs</span><span class="o">.</span><span class="n">has_key</span>
+<span class="k">assert</span> <span class="n">df1</span> <span class="ow">is</span> <span class="n">dfs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">df2</span> <span class="ow">is</span> <span class="n">dfs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># how to get values as an array in list-like DataFrames</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">dfs</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+<span class="n">dfs</span> <span class="o">=</span> <span class="n">DataFrames</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">df2</span><span class="p">)</span> <span class="c1"># dict-like</span>
+<span class="k">assert</span> <span class="n">dfs</span><span class="o">.</span><span class="n">has_key</span>
+<span class="k">assert</span> <span class="n">df1</span> <span class="ow">is</span> <span class="n">dfs</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">df2</span> <span class="ow">is</span> <span class="n">dfs</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="c1"># dfs itself is dict, so you know how to iterate</span>
+
+<span class="n">dfs</span> <span class="o">=</span> <span class="n">DataFrames</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">df2</span><span class="p">))</span> <span class="c1"># another equal way to init dict-like</span>
+
+<span class="n">df3</span> <span class="o">=</span> <span class="n">ArrowDataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">]],</span><span class="s2">&quot;a:int&quot;</span><span class="p">)</span>
+<span class="n">dfs1</span> <span class="o">=</span> <span class="n">DataFrames</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">df2</span><span class="p">))</span>
+<span class="n">dfs2</span> <span class="o">=</span> <span class="n">DataFrames</span><span class="p">(</span><span class="n">dfs1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">df3</span><span class="p">)</span>  <span class="c1"># DataFrames are immutable, but you can update in this way</span>
+<span class="n">dfs2</span> <span class="o">=</span> <span class="n">DataFrames</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">df2</span><span class="p">),</span> <span class="n">z</span><span class="o">=</span><span class="n">df3</span><span class="p">)</span>
+
+<span class="n">dfs3</span> <span class="o">=</span> <span class="n">DataFrames</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">)</span>
+<span class="n">dfs4</span> <span class="o">=</span> <span class="n">DataFrames</span><span class="p">(</span><span class="n">dfs3</span><span class="p">,</span> <span class="n">df3</span><span class="p">)</span>  <span class="c1"># DataFrames are immutable, but you can update in this way</span>
+<span class="n">dfs4</span> <span class="o">=</span> <span class="n">DataFrames</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span> <span class="n">df3</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dataframes-in-programming-interface">
+<h3>DataFrames in Programming Interface<a class="headerlink" href="#dataframes-in-programming-interface" title="Permalink to this headline">¶</a></h3>
+<p>In Fugue programming interface, it’s common to use DataFrames, it’s also very flexible</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span><span class="p">,</span> <span class="n">ArrayDataFrame</span><span class="p">,</span> <span class="n">DataFrames</span>
+<span class="kn">from</span> <span class="nn">fugue_dask</span> <span class="kn">import</span> <span class="n">DaskExecutionEngine</span>
+
+<span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">dfs</span><span class="p">:</span><span class="n">DataFrames</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">title</span><span class="o">!=</span><span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">dfs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span><span class="s2">&quot;a:int&quot;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">ArrayDataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">]],</span><span class="s2">&quot;b:int&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">(</span><span class="n">DaskExecutionEngine</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="c1"># inside output, it constructs DataFrames(df1, df2) and then convert both to WorkflowDataFrames</span>
+    <span class="c1"># you can see it&#39;s a list like dataframes, but due to the engine, they become DaskDataFrame</span>
+    <span class="c1"># all these conversions are automatic</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">using</span><span class="o">=</span><span class="n">show</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;*args from raw dataframes&quot;</span><span class="p">})</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">output</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span><span class="n">using</span><span class="o">=</span><span class="n">show</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;list from raw dataframes&quot;</span><span class="p">})</span>
+    <span class="c1"># dict-like input must be passed in as dicts</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">df2</span><span class="p">),</span><span class="nb">dict</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">df1</span><span class="p">),</span><span class="n">using</span><span class="o">=</span><span class="n">show</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;dict from raw dataframes&quot;</span><span class="p">})</span>
+    
+    <span class="n">cdf1</span><span class="o">=</span><span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>  <span class="c1"># you can also convert the dataframes to WorkflowDataFrame explicitly (recommended)</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">cdf1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">using</span><span class="o">=</span><span class="n">show</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;mixed&quot;</span><span class="p">})</span>  <span class="c1"># and you can mix them, although not recommended   </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="partition">
+<h2>Partition<a class="headerlink" href="#partition" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">PartitionSpec</span>
+
+<span class="k">assert</span> <span class="n">PartitionSpec</span><span class="p">()</span><span class="o">.</span><span class="n">empty</span> <span class="c1"># empty partition spec means no operation needed, it can be the default value</span>
+<span class="n">PartitionSpec</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">PartitionSpec</span><span class="p">(</span><span class="n">algo</span><span class="o">=</span><span class="s2">&quot;even&quot;</span><span class="p">,</span><span class="n">num</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">],</span><span class="n">presort</span><span class="o">=</span><span class="s2">&quot;c,d desc&quot;</span><span class="p">)</span> <span class="c1"># c,d desc == c ASC, d DESC</span>
+
+<span class="c1"># you can use expression in num, ROWCOUNT can be used to indicate using the row count of the dataframe to operate on</span>
+<span class="c1"># if a df has 1000 rows, this means I want to even partition it to 10 rows per partition</span>
+<span class="n">PartitionSpec</span><span class="p">(</span><span class="n">algo</span><span class="o">=</span><span class="s2">&quot;even&quot;</span><span class="p">,</span><span class="n">num</span><span class="o">=</span><span class="s2">&quot;ROWCOUNT/10&quot;</span><span class="p">)</span>
+
+<span class="n">PartitionSpec</span><span class="p">({</span><span class="s2">&quot;num&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;by&quot;</span><span class="p">:[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">]})</span> <span class="c1"># from dict, using dict on `partition-like`  parameters is common</span>
+<span class="n">PartitionSpec</span><span class="p">(</span><span class="s1">&#39;{&quot;num&quot;:4}&#39;</span><span class="p">)</span> <span class="c1"># from json</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">PartitionSpec</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">PartitionSpec</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">PartitionSpec</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="c1"># combine</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">PartitionSpec</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span>
+<span class="n">PartitionSpec</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">],</span> <span class="n">algo</span><span class="o">=</span><span class="s2">&quot;even&quot;</span><span class="p">)</span> <span class="c1"># override</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="rpc">
+<h2>RPC<a class="headerlink" href="#rpc" title="Permalink to this headline">¶</a></h2>
+<p>For callbacks you defined for transformers, you can provide a lambda function, a native python function, or an instance implementing <a class="reference external" href="https://fugue.readthedocs.io/en/latest/api/fugue.rpc.html#fugue.rpc.base.RPCHandler">RPCHandler</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
+<span class="kn">from</span> <span class="nn">fugue.rpc</span> <span class="kn">import</span> <span class="n">RPCHandler</span>
+
+<span class="c1"># schema: *</span>
+<span class="k">def</span> <span class="nf">print_describe_and_return</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">cb</span><span class="p">:</span><span class="n">callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">cb</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span><span class="s2">&quot;a:int,b:int&quot;</span><span class="p">)</span>
+
+<span class="c1"># lambda</span>
+<span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">print_describe_and_return</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># function</span>
+<span class="k">def</span> <span class="nf">pt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">print_describe_and_return</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="n">pt</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># RPCHandler</span>
+<span class="k">class</span> <span class="nc">Handler</span><span class="p">(</span><span class="n">RPCHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+<span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">print_describe_and_return</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="n">Handler</span><span class="p">())</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/advanced"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="rpc.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Callbacks From Transformers To Driver</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../examples/index.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Examples</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
