@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -70,6 +70,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
       
@@ -434,7 +438,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tutorials/examples/stock_sentiment.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/examples/stock_sentiment.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -529,7 +533,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span> <span class="k">as</span> <span class="n">Dag</span>
 
 <span class="k">with</span> <span class="n">Dag</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/stock_sentiment_data.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;../../data/stock_sentiment_data.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">dag</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;Sentiment, COUNT(*) AS ct FROM&quot;</span><span class="p">,</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;GROUP BY Sentiment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -559,7 +563,7 @@
                    <span class="n">text</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">])</span>
         
 <span class="k">with</span> <span class="n">Dag</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/stock_sentiment_data.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;../../data/stock_sentiment_data.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">preprocess</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -594,7 +598,7 @@
             <span class="k">yield</span> <span class="p">[</span><span class="n">w</span><span class="p">,</span><span class="n">sentiment</span><span class="p">]</span>
 
 <span class="k">with</span> <span class="n">Dag</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/stock_sentiment_data.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;../../data/stock_sentiment_data.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">tk</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">preprocess</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">tokenize</span><span class="p">)</span>
     <span class="n">tk</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">words</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">to_single</span><span class="p">)</span>
@@ -635,7 +639,7 @@
         
 
 <span class="k">with</span> <span class="n">Dag</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/stock_sentiment_data.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;../../data/stock_sentiment_data.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;* FROM&quot;</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="s2">&quot; LIMIT 100&quot;</span><span class="p">)</span>
     <span class="n">pre</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">preprocess</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">entity_linking</span><span class="p">)</span>
     <span class="n">pre</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -667,7 +671,7 @@
 <span class="n">session</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
 
 <span class="k">with</span> <span class="n">Dag</span><span class="p">(</span><span class="n">SparkExecutionEngine</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">))</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/stock_sentiment_data.csv&quot;</span><span class="p">,</span> <span class="n">escape</span><span class="o">=</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">preprocess</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;../../data/stock_sentiment_data.csv&quot;</span><span class="p">,</span> <span class="n">escape</span><span class="o">=</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">preprocess</span><span class="p">)</span>
     <span class="n">tokens</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">tokenize</span><span class="p">)</span>
     <span class="n">entities</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">entity_linking</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">inner_join</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span><span class="n">entities</span><span class="p">)</span>
@@ -684,7 +688,7 @@
 
 <span class="k">with</span> <span class="n">FugueSQLWorkflow</span><span class="p">(</span><span class="n">SparkExecutionEngine</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">))</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
     <span class="n">dag</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    LOAD &quot;../data/stock_sentiment_data.csv&quot;(header=true,escape=&#39;&quot;&#39;)</span>
+<span class="s2">    LOAD &quot;../../data/stock_sentiment_data.csv&quot;(header=true,escape=&#39;&quot;&#39;)</span>
 <span class="s2">    df = TRANSFORM USING preprocess</span>
 <span class="s2">    tokens = TRANSFORM df USING tokenize</span>
 <span class="s2">    entities = TRANSFORM df USING entity_linking</span>
@@ -769,7 +773,7 @@
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
