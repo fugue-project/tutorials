@@ -1,6 +1,8 @@
 # Welcome To Fugue Tutorials
 
-[![Documentation Status](https://readthedocs.org/projects/fugue-tutorials/badge/?version=latest)](https://fugue-tutorials.readthedocs.io/en/latest/?badge=latest) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fugue-project/tutorials/master)
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://fugue-project.github.io/tutorials/)
+[![Documentation Status](https://readthedocs.org/projects/fugue-tutorials/badge/?version=latest)](https://fugue-tutorials.readthedocs.io/en/latest/?badge=latest) 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fugue-project/tutorials/master)
 
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ)
 
