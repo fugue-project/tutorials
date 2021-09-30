@@ -6,7 +6,7 @@ All questions are welcome in the Slack channel.
 
 We have previously introduced extensions in the [Getting Started section](../beginner/beginner_extension.ipynb). This section is a more comprehensive guide to extensions in Fugue. Extensions are user-created functions that perform operations on DataFrames. By converting these functions to the approriate extension, they can be brought into Fugue workflows. 
 
-<img src="../../_images/extensions.svg" width="700">
+![](../../images/extensions.svg)
 
 ## Driver vs Worker
 
