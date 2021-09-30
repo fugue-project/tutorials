@@ -568,53 +568,53 @@
 <div class="section" id="visualizing-partitions">
 <h2>Visualizing Partitions<a class="headerlink" href="#visualizing-partitions" title="Permalink to this headline">¶</a></h2>
 <p>Assume we have a collection of colored balls with letters, they are stored in 5 buckets (gray bars).</p>
-<img src="../../images/p_orig.svg" width="250">
+<p><img alt="" src="../../_images/p_orig.svg" /></p>
 <p>Now we are going to repartition these balls in different ways</p>
 <div class="section" id="hash-partition-num-4">
 <h3>Hash Partition: num=4<a class="headerlink" href="#hash-partition-num-4" title="Permalink to this headline">¶</a></h3>
 <p>Hash partition means we calculate a hash code according to the color and letter and put into the correspondent bucket. <code class="docutils literal notranslate"><span class="pre">num=4</span></code> means we want to use only bucket 0 1 2 3, and bucket 4 will be empty</p>
-<img src="../../images/p_num_4.svg" width="600">
+<p><img alt="" src="../../_images/p_num_4.svg" /></p>
 </div>
 <div class="section" id="rand-partition-num-4">
 <h3>Rand Partition: num=4<a class="headerlink" href="#rand-partition-num-4" title="Permalink to this headline">¶</a></h3>
 <p>Rand partition means we assign a random code to a ball and put into the correspondent bucket. It’s like reshuffle. The number of balls in each bucket should be similar, but not perfectly even. As you can see the following bucket 0 has 2 more balls than others.</p>
-<img src="../../images/p_rand_num_4.svg" width="600">
+<p><img alt="" src="../../_images/p_rand_num_4.svg" /></p>
 </div>
 <div class="section" id="even-partition-num-4">
 <h3>Even Partition: num=4<a class="headerlink" href="#even-partition-num-4" title="Permalink to this headline">¶</a></h3>
 <p>Now I want to enforce evenness. So, I use even partition, it guarantees the biggest and smallest buckets have at most 1 ball difference.</p>
-<img src="../../images/p_even_num_4.svg" width="600">
+<p><img alt="" src="../../_images/p_even_num_4.svg" /></p>
 </div>
 <div class="section" id="hash-partition-by-color">
 <h3>Hash Partition: by color<a class="headerlink" href="#hash-partition-by-color" title="Permalink to this headline">¶</a></h3>
 <p>Now instead of giving a number, I specify partitioning by color. Each ball is assigned with a hash code by color. A main difference between Fugue and Spark is that, after partitioning by color, in each bucket, the balls are also sorted by color.</p>
 <p>Ans after sorting, we will see same colors are in chunks, we call each chunk a <strong>logical partition</strong></p>
-<img src="../../images/p_by_color_fugue.svg" width="600">
+<p><img alt="" src="../../_images/p_by_color_fugue.svg" /></p>
 <div class="section" id="spark-hash-partition-by-color">
 <h4>(Spark) Hash Partition: by color<a class="headerlink" href="#spark-hash-partition-by-color" title="Permalink to this headline">¶</a></h4>
 <p>In Spark, after partitioning by color, the balls in each bucket are not sorted.</p>
-<img src="../../images/p_by_color_spark.svg" width="400">
+<p><img alt="" src="../../_images/p_by_color_spark.svg" /></p>
 </div>
 </div>
 <div class="section" id="hash-partition-by-color-presort-letter">
 <h3>Hash Partition: by color, presort letter<a class="headerlink" href="#hash-partition-by-color-presort-letter" title="Permalink to this headline">¶</a></h3>
 <p>In addition to partitioning, we also want to sort by letter. In Fugue, after partition-by, a sort will always happen, so when you specify a <code class="docutils literal notranslate"><span class="pre">presort</span></code>, it’s just adding a key for the sort, so it doesn’t add much overhead to the process. With presort, it’s even faster than pandas udf in certain cases. (Fugue also <a class="reference external" href="useful_config.ipynb#Use-Pandas-UDF-on-SparkExecutionEngine">supports pandas udf</a>)</p>
-<img src="../../images/p_by_color_presort.svg" width="600">
+<p><img alt="" src="../../_images/p_by_color_presort.svg" /></p>
 </div>
 <div class="section" id="rand-partition-by-color">
 <h3>Rand Partition: by color<a class="headerlink" href="#rand-partition-by-color" title="Permalink to this headline">¶</a></h3>
 <p>In Fugue, there is no rand partition by color, it will become a hash partition by color</p>
-<img src="../../images/p_by_color_fugue.svg" width="600">
+<p><img alt="" src="../../_images/p_by_color_fugue.svg" /></p>
 </div>
 <div class="section" id="even-partition-by-color">
 <h3>Even Partition: by color<a class="headerlink" href="#even-partition-by-color" title="Permalink to this headline">¶</a></h3>
 <p>Hash partition by color can’t guarantee a single bucket contains a single color of balls. Even partition by color can guarantee that.</p>
-<img src="../../images/p_even_by_color.svg" width="600">
+<p><img alt="" src="../../_images/p_even_by_color.svg" /></p>
 </div>
 <div class="section" id="even-partition-by-color-num-4">
 <h3>Even Partition: by color, num=4<a class="headerlink" href="#even-partition-by-color-num-4" title="Permalink to this headline">¶</a></h3>
 <p>When you also specify a number in even partition by, it guarantees <code class="docutils literal notranslate"><span class="pre">max(colors</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">bucket)-min(colors</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">bucket)&lt;=1</span></code>. When you have more than tens of thousands of colors, you should consider using <code class="docutils literal notranslate"><span class="pre">num</span></code></p>
-<img src="../../images/p_even_num_4_by_color.svg" width="600">
+<p><img alt="" src="../../_images/p_even_num_4_by_color.svg" /></p>
 </div>
 </div>
 <div class="section" id="theory">

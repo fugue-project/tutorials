@@ -24,7 +24,7 @@ x-like
 
 ## Architecture
 
-<img src="../../_images/architecture.svg" width="500">
+![](../../images/architecture.svg)
 
 ## [Execution Graph (DAG)](dag.ipynb)
 

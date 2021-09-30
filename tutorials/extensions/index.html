@@ -481,7 +481,7 @@
 <p>All questions are welcome in the Slack channel.</p>
 <p><a class="reference external" href="https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ"><img alt="Slack Status" src="https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&amp;style=social" /></a></p>
 <p>We have previously introduced extensions in the <a class="reference internal" href="../beginner/beginner_extension.html"><span class="doc std std-doc">Getting Started section</span></a>. This section is a more comprehensive guide to extensions in Fugue. Extensions are user-created functions that perform operations on DataFrames. By converting these functions to the approriate extension, they can be brought into Fugue workflows.</p>
-<img src="../../_images/extensions.svg" width="700">
+<p><img alt="" src="../../_images/extensions.svg" /></p>
 <div class="section" id="driver-vs-worker">
 <h2>Driver vs Worker<a class="headerlink" href="#driver-vs-worker" title="Permalink to this headline">¶</a></h2>
 <p>To fully understand extensions, it is important to understand the basic distributed compute architecture. A compute cluster is comprised of one <code class="docutils literal notranslate"><span class="pre">driver</span></code>, and multiple <code class="docutils literal notranslate"><span class="pre">worker</span></code> nodes. The <code class="docutils literal notranslate"><span class="pre">driver</span></code> is the machine responsible for orchestrating the <code class="docutils literal notranslate"><span class="pre">worker</span></code> machines. Because the driver is responsible for communciating and distributing work, it has access to information that worker nodes don’t have. For example, it keeps track of partition information.</p>
