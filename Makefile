@@ -30,3 +30,6 @@ docs:
 	rm -rf tutorials/dask-worker-space
 	rm -rf tutorials/spark-warehouse
 	python -m sphinx ./ docs/build
+
+jdocs:
+	jupyter-book build .
