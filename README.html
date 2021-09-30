@@ -442,13 +442,8 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#view-tutorials">
-   View Tutorials
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#running-the-code">
-   Running the Code
+  <a class="reference internal nav-link" href="#running-locally">
+   Running locally
   </a>
  </li>
 </ul>
@@ -464,23 +459,30 @@
                 
   <div class="section" id="welcome-to-fugue-tutorials">
 <h1>Welcome To Fugue Tutorials<a class="headerlink" href="#welcome-to-fugue-tutorials" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://fugue-project.github.io/tutorials/"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a>
-<a class="reference external" href="https://fugue-tutorials.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/fugue-tutorials/badge/?version=latest" /></a>
-<a class="reference external" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
-<p><a class="reference external" href="https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ"><img alt="Slack Status" src="https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&amp;style=social" /></a></p>
-<div class="section" id="view-tutorials">
-<h2>View Tutorials<a class="headerlink" href="#view-tutorials" title="Permalink to this headline">¶</a></h2>
-<p>Go to the <a class="reference external" href="https://fugue-tutorials.readthedocs.io/en/latest/">Fugue Tutorials</a>.</p>
-</div>
-<div class="section" id="running-the-code">
-<h2>Running the Code<a class="headerlink" href="#running-the-code" title="Permalink to this headline">¶</a></h2>
-<p>The simplest way to run the tutorial is to use <a class="reference external" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master">mybinder</a></p>
-<p><strong>BUT please notice that, it runs slow on binder, the spark initialization can take a long time</strong></p>
-<p>To run the tutorials environment on your own machine, the simplest way is, if you have docker installed:</p>
+<p><a class="reference external" href="https://fugue-project.github.io/tutorials/"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a> ⬅️ Open the tutorials
+<a class="reference external" href="https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ"><img alt="Slack Status" src="https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&amp;style=social" /></a> ⬅️ Chat with us on slack</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>⚠️ Please notice that running the code is slow on binder as the spark initialization can take a long time!</p></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<div class="section" id="running-locally">
+<h2>Running locally<a class="headerlink" href="#running-locally" title="Permalink to this headline">¶</a></h2>
+<p>To run the tutorials environment on your own machine, the simplest way is via docker:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8888</span><span class="p">:</span><span class="mi">8888</span> <span class="n">fugueproject</span><span class="o">/</span><span class="n">tutorials</span><span class="p">:</span><span class="n">latest</span>
 </pre></div>
 </div>
-<p>To run docker on your own machine, the performance should be a lot better.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>🚀 The performance should be better running docker on your own machine</p></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
 </div>
 </div>
 
