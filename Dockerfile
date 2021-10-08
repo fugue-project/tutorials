@@ -1,7 +1,7 @@
 FROM fugueproject/notebook:0.2.4
 
-ARG NB_USER=vscode
-ARG NB_UID=1000
+ENV NB_USER vscode
+ENV NB_UID 1000
 ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
@@ -14,7 +14,6 @@ USER root
 # RUN rm -rf ${HOME}
 RUN echo ${NB_USER}
 RUN echo ${NB_UID}
-RUN echo ${NB_UIDd}
 
 COPY README.md ${HOME}/
 COPY tutorials ${HOME}/tutorials
