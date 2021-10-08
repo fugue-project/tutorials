@@ -1,6 +1,4 @@
-FROM fugueproject/devenv:0.2.0
-
-RUN pip install fugue[all]==0.6.1.dev1
+FROM fugueproject/notebook:0.2.4
 
 ARG NB_USER=vscode
 ARG NB_UID=1000
@@ -11,7 +9,7 @@ ENV HOME /home/${NB_USER}
 WORKDIR ${HOME}
 
 USER root
-RUN rm -rf ${HOME}
+# RUN rm -rf ${HOME}
 # COPY README.ipynb ${HOME}/
 COPY README.md ${HOME}/
 COPY tutorials ${HOME}/tutorials
@@ -23,5 +21,5 @@ RUN mkdir -p /home/${NB_USER}/.jupyter
 RUN cp -R /root/.jupyter/* /home/${NB_USER}/.jupyter
 
 USER root
-RUN chown -R ${NB_UID} ${HOME}
+# RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
