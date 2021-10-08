@@ -1,4 +1,4 @@
-FROM fugueproject/notebook:0.2.8
+FROM fugueproject/notebook:0.2.9
 
 ENV NB_USER vscode
 ENV NB_UID 1000
@@ -10,16 +10,11 @@ WORKDIR ${HOME}
 
 USER root
 
-RUN ls ${HOME}/.ipython
-
 COPY README.md ${HOME}/
 COPY tutorials ${HOME}/tutorials
 COPY data ${HOME}/data
 COPY .jupyter ${HOME}/.jupyter
 COPY images ${HOME}/images
-
-# RUN mkdir -p /home/${NB_USER}/.jupyter
-# RUN cp -R /root/.jupyter/* /home/${NB_USER}/.jupyter
 
 USER root
 RUN chown -R ${NB_UID} ${HOME}
