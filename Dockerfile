@@ -10,7 +10,7 @@ WORKDIR ${HOME}
 
 USER root
 
-RUN ls /home/vscode/.ipython
+RUN ls {HOME}/.ipython
 # RUN rm -rf ${HOME}
 
 COPY README.md ${HOME}/
