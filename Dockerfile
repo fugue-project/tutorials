@@ -9,6 +9,8 @@ ENV HOME /home/${NB_USER}
 WORKDIR ${HOME}
 
 USER root
+
+RUN ls /home/vscode/.ipython
 # RUN rm -rf ${HOME}
 
 COPY README.md ${HOME}/
@@ -23,3 +25,5 @@ RUN cp -R /root/.jupyter/* /home/${NB_USER}/.jupyter
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
+
+WORKDIR ${HOME}
