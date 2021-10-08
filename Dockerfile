@@ -12,6 +12,7 @@ USER root
 
 # RUN ls ${HOME}/.ipython
 # RUN rm -rf ${HOME}
+RUN echo ${NB_USER}
 
 COPY README.md ${HOME}/
 COPY tutorials ${HOME}/tutorials
