@@ -11,9 +11,6 @@ WORKDIR ${HOME}
 USER root
 
 RUN ls ${HOME}/.ipython
-# RUN rm -rf ${HOME}
-RUN echo ${NB_USER}
-RUN echo ${NB_UID}
 
 COPY README.md ${HOME}/
 COPY tutorials ${HOME}/tutorials
