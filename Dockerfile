@@ -1,4 +1,4 @@
-FROM fugueproject/notebook:0.2.4
+FROM fugueproject/notebook:0.2.8
 
 ENV NB_USER vscode
 ENV NB_UID 1000
