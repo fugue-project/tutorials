@@ -8,9 +8,9 @@ ENV HOME /home/${NB_USER}
 
 WORKDIR ${HOME}
 
-# USER root
+USER root
 # RUN rm -rf ${HOME}
-# COPY README.ipynb ${HOME}/
+COPY README.ipynb ${HOME}/
 COPY README.md ${HOME}/
 COPY tutorials ${HOME}/tutorials
 COPY data ${HOME}/data
@@ -21,5 +21,5 @@ RUN mkdir -p /home/${NB_USER}/.jupyter
 RUN cp -R /root/.jupyter/* /home/${NB_USER}/.jupyter
 
 USER root
-# RUN chown -R ${NB_UID} ${HOME}
+RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
