@@ -14,6 +14,7 @@ USER root
 # RUN rm -rf ${HOME}
 RUN echo ${NB_USER}
 RUN echo ${NB_UID}
+RUN echo ${NB_UIDd}
 
 COPY README.md ${HOME}/
 COPY tutorials ${HOME}/tutorials
