@@ -10,7 +10,7 @@ WORKDIR ${HOME}
 
 USER root
 
-# RUN ls ${HOME}/.ipython
+RUN ls ${HOME}/.ipython
 # RUN rm -rf ${HOME}
 RUN echo ${NB_USER}
 RUN echo ${NB_UID}
