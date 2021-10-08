@@ -10,7 +10,7 @@ WORKDIR ${HOME}
 
 USER root
 # RUN rm -rf ${HOME}
-COPY README.ipynb ${HOME}/
+
 COPY README.md ${HOME}/
 COPY tutorials ${HOME}/tutorials
 COPY data ${HOME}/data
