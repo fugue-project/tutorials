@@ -8,7 +8,7 @@ ENV HOME /home/${NB_USER}
 
 WORKDIR ${HOME}
 
-USER root
+# USER root
 # RUN rm -rf ${HOME}
 # COPY README.ipynb ${HOME}/
 COPY README.md ${HOME}/
