@@ -4,7 +4,7 @@ on:
   # Trigger the workflow on push to main branch
   push:
     branches:
-      - master
+      - build-jbook-without-conda
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
@@ -23,20 +23,8 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - uses: actions/checkout@v2
-    - name: Cache
-      uses: actions/cache@v1
-      env:
-        # Increase this value to reset cache
-        CACHE_NUMBER: 0
-      with:
-        path: ~/conda_pkgs_dir
-        key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('environment.yml') }}
-    - uses: conda-incubator/setup-miniconda@v2
-      with:
-        activate-environment: fugue-docs
-        mamba-version: "*"
-        environment-file: environment.yml
-        use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
+    - name: Install jupyter-book
+      run: pip install jupyter-book
 
     # Build the book
     - name: Build the book
