@@ -670,9 +670,12 @@ require(['notebook/js/codecell'], function(codecell) {
 <li><p>dataframe - If not provided, takes the last dataframe</p></li>
 <li><p>number - Number of rows</p></li>
 <li><p>ROW|ROWS - No difference</p></li>
-<li><p>ROWCOUNT - Displays number of rows for dataframe. This is expensive for Spark and Dask. For distributed environments, persisting will help before doing this operation.</p></li>
+<li><p>ROWCOUNT - Displays number of rows for dataframe</p></li>
 <li><p>TITLE - Title for display</p></li>
 </ul>
+<blockquote>
+<div><p><strong>Note:</strong> the ROWCOUNT operation is expensive for <code class="docutils literal notranslate"><span class="pre">Spark</span></code> and <code class="docutils literal notranslate"><span class="pre">Dask</span></code>. For distributed environments, persisting will help before doing this operation.</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
@@ -723,31 +726,31 @@ PRINT 2 ROWS FROM df TITLE &quot;xyz&quot;
 </div>
 <div class="section" id="load">
 <h2>LOAD<a class="headerlink" href="#load" title="Permalink to this headline">¶</a></h2>
-<p>Loads a CSV, JSON, or PARQUET file as a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p>Loads a CSV, JSON, PARQUET or AVRO file as a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
 <p>Usage:</p>
-<p><code class="docutils literal notranslate"><span class="pre">LOAD</span> <span class="pre">[PARQUET|CSV|JSON]</span> <span class="pre">&quot;path&quot;</span> <span class="pre">(params)</span> <span class="pre">[COLUMNS</span> <span class="pre">schema|columns]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">LOAD</span> <span class="pre">[PARQUET|CSV|JSON|AVRO]</span> <span class="pre">&quot;path&quot;</span> <span class="pre">(params)</span> <span class="pre">[COLUMNS</span> <span class="pre">schema|columns]</span></code></p>
 <ul class="simple">
-<li><p>PARQUET|CSV|JSON - File type to load. Required if the file has no extension.</p></li>
-<li><p>path - File path to load.</p></li>
-<li><p>params - Passed on to underlying execution engine loading method.</p></li>
-<li><p>COLUMNS - Columns to grab or schema to load it in as.</p></li>
+<li><p>PARQUET|CSV|JSON - File type to load. Required if the file has no extension</p></li>
+<li><p>path - File path to load</p></li>
+<li><p>params - Passed on to underlying execution engine loading method</p></li>
+<li><p>COLUMNS - Columns to grab or schema to load it in as</p></li>
 </ul>
 </div>
 <div class="section" id="save-or-save-and-use">
 <h2>SAVE (or SAVE AND USE)<a class="headerlink" href="#save-or-save-and-use" title="Permalink to this headline">¶</a></h2>
-<p>Saves a CSV, JSON, or PARQUET file as a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. <code class="docutils literal notranslate"><span class="pre">SAVE</span> <span class="pre">AND</span> <span class="pre">USE</span></code> just returns the dataframe so there is no need to load it back in.</p>
+<p>Saves a CSV, JSON, PARQUET or AVRO file as a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. <code class="docutils literal notranslate"><span class="pre">SAVE</span> <span class="pre">AND</span> <span class="pre">USE</span></code> just returns the dataframe so there is no need to load it back in.</p>
 <p>Usage:</p>
-<p><code class="docutils literal notranslate"><span class="pre">SAVE</span> <span class="pre">[dataframe]</span> <span class="pre">[PREPARTITION</span> <span class="pre">statement]</span> <span class="pre">[OVERWRITE|APPEND|TO]</span> <span class="pre">[SINGLE]</span> <span class="pre">[PARQUET|CSV|JSON]</span> <span class="pre">&quot;path&quot;</span> <span class="pre">[(params)]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">SAVE</span> <span class="pre">[dataframe]</span> <span class="pre">[PREPARTITION</span> <span class="pre">statement]</span> <span class="pre">[OVERWRITE|APPEND|TO]</span> <span class="pre">[SINGLE]</span> <span class="pre">[PARQUET|CSV|JSON|AVRO]</span> <span class="pre">&quot;path&quot;</span> <span class="pre">[(params)]</span></code></p>
 <p>or</p>
 <p><code class="docutils literal notranslate"><span class="pre">SAVE</span> <span class="pre">AND</span> <span class="pre">USE</span> <span class="pre">[dataframe]</span> <span class="pre">[PREPARTITION</span> <span class="pre">statement]</span> <span class="pre">[OVERWRITE|APPEND|TO]</span> <span class="pre">[SINGLE]</span> <span class="pre">[PARQUET|CSV|JSON]</span> <span class="pre">&quot;path&quot;</span> <span class="pre">[(params)]</span></code></p>
 <ul class="simple">
-<li><p>dataframe - If not provided, takes the last dataframe.</p></li>
-<li><p>PREPARTITION - Partitions for file.</p></li>
-<li><p>OVERWRITE|APPEND|TO - Choose the mode for writing the file out. <code class="docutils literal notranslate"><span class="pre">TO</span></code> throws an error if the file exists.</p></li>
-<li><p>SINGLE - One file output.</p></li>
-<li><p>PARQUET|CSV|JSON - Choose file type (Parquet, CSV, or JSON) for output. Required if path has no extension.</p></li>
-<li><p>path - File path to write out to.</p></li>
-<li><p>params - Passed on to underlying execution engine saving method.</p></li>
+<li><p>dataframe - If not provided, takes the last dataframe</p></li>
+<li><p>PREPARTITION - Partitions for file</p></li>
+<li><p>OVERWRITE|APPEND|TO - Choose the mode for writing the file out. <code class="docutils literal notranslate"><span class="pre">TO</span></code> throws an error if the file exists</p></li>
+<li><p>SINGLE - One file output</p></li>
+<li><p>PARQUET|CSV|JSON - Choose file type (Parquet, CSV, or JSON) for output. Required if path has no extension</p></li>
+<li><p>path - File path to write out to</p></li>
+<li><p>params - Passed on to underlying execution engine saving method</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -983,25 +986,25 @@ LOAD &quot;/tmp/f.json&quot; COLUMNS a:int,b:str PRINT
 </div>
 <div class="section" id="partitioning">
 <h2>Partitioning<a class="headerlink" href="#partitioning" title="Permalink to this headline">¶</a></h2>
-<p>Partitioning is an important part of distributed computing. Data is arranged into different logical partitions and then perform operations. This is normally used in conjunction with Fugue extensions. This is a clause that as part of statements.</p>
+<p>Partitioning is an important part of distributed computing. Partitioning data means splitting the data and spreading it across several machines. Sorting it determines how the data is ordered prior to this separation.  Data is arranged into different logical partitions before performing operations. This is normally used in conjunction with Fugue extensions. This is a clause that is specified as part of statements.</p>
 </div>
 <div class="section" id="prepartition">
 <h2>PREPARTITION<a class="headerlink" href="#prepartition" title="Permalink to this headline">¶</a></h2>
-<p>Partitions a dataframe in preparation for a following operation.</p>
+<p>Partitions a dataframe in preparation for a following operation</p>
 <p>Usage:</p>
 <p><code class="docutils literal notranslate"><span class="pre">PREPARTITION</span> <span class="pre">[RAND|HASH|EVEN]</span> <span class="pre">[number]</span> <span class="pre">[BY</span> <span class="pre">columns]</span> <span class="pre">[PRESORT</span> <span class="pre">statement]</span></code></p>
 <ul class="simple">
-<li><p>RAND|HASH|EVEN - Algorithm for prepartition. Read <a class="reference internal" href="../advanced/partition.html"><span class="doc std std-doc">this</span></a>.</p></li>
-<li><p>number - Number of partitions.</p></li>
-<li><p>columns - What columns to partition on.</p></li>
-<li><p>statement - Presort hint. Check <code class="docutils literal notranslate"><span class="pre">PRESORT</span></code> syntax.</p></li>
+<li><p>RAND|HASH|EVEN - Algorithm for prepartition. Read <a class="reference internal" href="../advanced/partition.html"><span class="doc std std-doc">this</span></a></p></li>
+<li><p>number - Number of partitions</p></li>
+<li><p>columns - Columns to partition on</p></li>
+<li><p>statement - Presort hint. Check <code class="docutils literal notranslate"><span class="pre">PRESORT</span></code> syntax</p></li>
 </ul>
 </div>
 <div class="section" id="presort">
 <h2>PRESORT<a class="headerlink" href="#presort" title="Permalink to this headline">¶</a></h2>
 <p>Usage:</p>
 <p><code class="docutils literal notranslate"><span class="pre">PRESORT</span> <span class="pre">column</span> <span class="pre">[ASC|DESC]</span></code></p>
-<p>Defines a presort before another operation. This is a clause mainly used with <code class="docutils literal notranslate"><span class="pre">PREPARTITION</span></code>. Multiple column, order pairs can be used separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p>
+<p>Defines a presort to be performed before another operation. This is a clause mainly used with <code class="docutils literal notranslate"><span class="pre">PREPARTITION</span></code>. Multiple column, order pairs can be used separated by <code class="docutils literal notranslate"><span class="pre">,</span></code></p>
 <ul class="simple">
 <li><p>column - Name of columns to sort on.</p></li>
 <li><p>ASC|DESC - Order of sort.</p></li>
@@ -1110,29 +1113,29 @@ PRINT
 <p>Usage:</p>
 <p><code class="docutils literal notranslate"><span class="pre">RENAME</span> <span class="pre">COLUMNS</span> <span class="pre">params</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span></code></p>
 <ul class="simple">
-<li><p>params : Pairs of old_name:new_name separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p></li>
-<li><p>dataframe: If none is provided, take the previous one.</p></li>
+<li><p>params : Pairs of old_name:new_name separated by <code class="docutils literal notranslate"><span class="pre">,</span></code></p></li>
+<li><p>dataframe: If none is provided, take the previous one</p></li>
 </ul>
 </div>
 <div class="section" id="alter-columns">
 <h2>ALTER COLUMNS<a class="headerlink" href="#alter-columns" title="Permalink to this headline">¶</a></h2>
-<p>Changes data type of columns.</p>
+<p>Changes data type of columns</p>
 <p>Usage:</p>
 <p><code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">COLUMNS</span> <span class="pre">params</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span></code></p>
 <ul class="simple">
-<li><p>params : Pairs of column:dtype separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p></li>
-<li><p>dataframe - If not provided, takes the last one.</p></li>
+<li><p>params : Pairs of column:dtype separated by <code class="docutils literal notranslate"><span class="pre">,</span></code></p></li>
+<li><p>dataframe - If not provided, takes the last one</p></li>
 </ul>
 </div>
 <div class="section" id="drop-columns">
 <h2>DROP COLUMNS<a class="headerlink" href="#drop-columns" title="Permalink to this headline">¶</a></h2>
-<p>Drops columns from <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p>Drops columns from <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
 <p>Usage:</p>
 <p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">COLUMNS</span> <span class="pre">colnames</span> <span class="pre">[IF</span> <span class="pre">EXISTS]</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span></code></p>
 <ul class="simple">
-<li><p>colnames - Column names separated by <code class="docutils literal notranslate"><span class="pre">'</span></code>.</p></li>
-<li><p>IF EXISTS - Drops if the column exists, otherwise error.</p></li>
-<li><p>dataframe - If not provided, takes the last.</p></li>
+<li><p>colnames - Column names separated by <code class="docutils literal notranslate"><span class="pre">,</span></code></p></li>
+<li><p>IF EXISTS - Drops if the column exists, otherwise error</p></li>
+<li><p>dataframe - If not provided, takes the last</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1245,19 +1248,19 @@ PRINT df4
 </div>
 <div class="section" id="drop-rows">
 <h2>DROP ROWS<a class="headerlink" href="#drop-rows" title="Permalink to this headline">¶</a></h2>
-<p>Drops rows from <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> containing NULLs.</p>
+<p>Drops rows from <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> containing NULLs</p>
 <p>Usage:</p>
 <p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">ROWS</span> <span class="pre">IF</span> <span class="pre">ALL|ANY</span> <span class="pre">NULL|NULLS</span> <span class="pre">[ON</span> <span class="pre">columns]</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span></code></p>
 <ul class="simple">
-<li><p>ALL|ANY - All values are NULL or any value is NULL in the row of data.</p></li>
-<li><p>NULL|NULLS - There is no difference.</p></li>
-<li><p>columns - Columns to check for NULL values.</p></li>
-<li><p>dataframe - If not provided, takes the last.</p></li>
+<li><p>ALL|ANY - All values are NULL or any value is NULL in the row of data</p></li>
+<li><p>NULL|NULLS - There is no difference</p></li>
+<li><p>columns - Columns to check for NULL values</p></li>
+<li><p>dataframe - If not provided, takes the last</p></li>
 </ul>
 </div>
 <div class="section" id="fill">
 <h2>FILL<a class="headerlink" href="#fill" title="Permalink to this headline">¶</a></h2>
-<p>Fills values from <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> containing NULLs.</p>
+<p>Fills values from <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> containing NULLs</p>
 <p>Usage:</p>
 <p><code class="docutils literal notranslate"><span class="pre">FILL</span> <span class="pre">NULL|NULLS</span> <span class="pre">PARAMS</span> <span class="pre">params</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span></code></p>
 <ul class="simple">
@@ -1373,20 +1376,23 @@ PRINT df4
 </div>
 <div class="section" id="sample">
 <h2>SAMPLE<a class="headerlink" href="#sample" title="Permalink to this headline">¶</a></h2>
-<p>Takes a sample of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, potentially with replacement. Use either number of rows or percent of dataframe.</p>
+<p>Takes a sample of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, potentially with replacement. Use either number of rows or percent of dataframe</p>
 <p>Usage:</p>
 <p><code class="docutils literal notranslate"><span class="pre">SAMPLE</span> <span class="pre">[REPLACE]</span> <span class="pre">[rows</span> <span class="pre">ROWS</span> <span class="pre">|</span> <span class="pre">percent</span> <span class="pre">PERCENT]</span> <span class="pre">[SEED</span> <span class="pre">seed]</span> <span class="pre">[FROM</span> <span class="pre">dataframe]</span></code></p>
 <ul class="simple">
 <li><p>REPLACE - Sample with replacement</p></li>
-<li><p>rows - Integer for number of rows.</p></li>
+<li><p>rows - Integer for number of rows</p></li>
 <li><p>percent - Integer or Decimal indicating percent of dataframe to be returned</p></li>
-<li><p>seed - Random seed for sampling</p></li>
+<li><p>seed - Random seed for sampling, used to reproduce the same random sampling each time</p></li>
 <li><p>dataframe - If not provided, takes the last dataframe</p></li>
 </ul>
 </div>
 <div class="section" id="take">
 <h2>TAKE<a class="headerlink" href="#take" title="Permalink to this headline">¶</a></h2>
-<p>TAKE is equivalent to Pandas <code class="docutils literal notranslate"><span class="pre">head</span></code>. It returns the top rows of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. If used with <code class="docutils literal notranslate"><span class="pre">PREPARTITION</span></code>, it returns the top rows of each partition. <code class="docutils literal notranslate"><span class="pre">PRESPORT</span></code> can be applied before taking the top rows.</p>
+<p>TAKE returns the top N rows of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. If used with <code class="docutils literal notranslate"><span class="pre">PREPARTITION</span></code>, it returns the top N rows of each partition. <code class="docutils literal notranslate"><span class="pre">PRESPORT</span></code> can be applied before taking the top N rows.</p>
+<blockquote>
+<div><p>Equivalent to Pandas <code class="docutils literal notranslate"><span class="pre">head</span></code></p>
+</div></blockquote>
 <p>Usage:</p>
 <p><code class="docutils literal notranslate"><span class="pre">TAKE</span> <span class="pre">rows</span> <span class="pre">ROW|ROWS</span> <span class="pre">[FROM</span> <span class="pre">dataframe</span> <span class="pre">]</span> <span class="pre">[PREPARTITION</span> <span class="pre">statement]</span> <span class="pre">[NULL|NULLS</span> <span class="pre">FIRST|LAST]</span></code></p>
 <ul class="simple">

@@ -557,39 +557,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/javascript">
-require(["codemirror/lib/codemirror"]);
-function set(str) {
-    var obj = {}, words = str.split(" ");
-    for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
-    return obj;
-  }
-var fugue_keywords = "fill hash rand even presort persist broadcast params process output outtransform rowcount concurrency prepartition zip print title save append parquet csv json single checkpoint weak strong deterministic yield connect sample seed take sub callback dataframe file";
-CodeMirror.defineMIME("text/x-fsql", {
-    name: "sql",
-    keywords: set(fugue_keywords + " add after all alter analyze and anti archive array as asc at between bucket buckets by cache cascade case cast change clear cluster clustered codegen collection column columns comment commit compact compactions compute concatenate cost create cross cube current current_date current_timestamp database databases data dbproperties defined delete delimited deny desc describe dfs directories distinct distribute drop else end escaped except exchange exists explain export extended external false fields fileformat first following for format formatted from full function functions global grant group grouping having if ignore import in index indexes inner inpath inputformat insert intersect interval into is items join keys last lateral lazy left like limit lines list load local location lock locks logical macro map minus msck natural no not null nulls of on optimize option options or order out outer outputformat over overwrite partition partitioned partitions percent preceding principals purge range recordreader recordwriter recover reduce refresh regexp rename repair replace reset restrict revoke right rlike role roles rollback rollup row rows schema schemas select semi separated serde serdeproperties set sets show skewed sort sorted start statistics stored stratify struct table tables tablesample tblproperties temp temporary terminated then to touch transaction transactions transform true truncate unarchive unbounded uncache union unlock unset use using values view when where window with"),
-    builtin: set("date datetime tinyint smallint int bigint boolean float double string binary timestamp decimal array map struct uniontype delimited serde sequencefile textfile rcfile inputformat outputformat"),
-    atoms: set("false true null"),
-    operatorChars: /^[*\/+\-%<>!=~&|^]/,
-    dateSQL: set("time"),
-    support: set("ODBCdotTable doubleQuote zerolessFloat")
-  });
-
-CodeMirror.modeInfo.push( {
-            name: "Fugue SQL",
-            mime: "text/x-fsql",
-            mode: "sql"
-          } );
-
-require(['notebook/js/codecell'], function(codecell) {
-    codecell.CodeCell.options_default.highlight_modes['magic_text/x-fsql'] = {'reg':[/%%fsql/]} ;
-    Jupyter.notebook.events.on('kernel_ready.Kernel', function(){
-    Jupyter.notebook.get_cells().map(function(cell){
-        if (cell.cell_type == 'code'){ cell.auto_highlight(); } }) ;
-    });
-  });
-</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -708,11 +675,11 @@ PRINT
 </div></div><div class="output text_html"><small>schema: id:str,date:str,value:double</small></div></div>
 </div>
 <p>Note that the Pandas DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code> was accessed inside the SQL expression. DataFrames defined in Python cells are automatically accessible by SQL cells. Other variables need to be passed in through <a class="reference internal" href="#"><span class="doc std std-doc">Jinja templating</span></a>. More on this will be shown when we explore how Python and fugue-sql interact.</p>
-<p>The example above shows the possibility of combining Python and SQL workflows. This is useful if Python needs to connect to other place (AWS S3, Azure Blob Storage, Google Analytics) to retrieve data that is needed for the compute workflow. The data can be loaded in with Python and passed to <code class="docutils literal notranslate"><span class="pre">%%fsql</span></code> cells.</p>
+<p>The example above shows the possibility of combining Python and SQL workflows. This is useful if Python needs to connect somewhere (AWS S3, Azure Blob Storage, Google Analytics etc) to retrieve data that is needed for the compute workflow. The data can be loaded in with Python and passed to <code class="docutils literal notranslate"><span class="pre">%%fsql</span></code> cells.</p>
 </div>
 <div class="section" id="input-and-output">
 <h2>Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this headline">¶</a></h2>
-<p>Actual data work often require loading in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. <code class="docutils literal notranslate"><span class="pre">Fugue</span></code> has two keywords in <code class="docutils literal notranslate"><span class="pre">SAVE</span></code> and <code class="docutils literal notranslate"><span class="pre">LOAD</span></code>. Using these allow <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> users to orchestrate their ETL jobs with SQL logic. A csv file can be loaded in, transformed, and then saved elsewhere. Full data analysis and transformation workflows can be done in <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code>.</p>
+<p>Actual data work often requires loading in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> for which <code class="docutils literal notranslate"><span class="pre">Fugue</span></code> has two keywords <code class="docutils literal notranslate"><span class="pre">SAVE</span></code> and <code class="docutils literal notranslate"><span class="pre">LOAD</span></code>. Using these allow <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> users to orchestrate their ETL jobs with SQL logic. A csv file can be loaded in, transformed, and then saved elsewhere. Full data analysis and transformation workflows can be done in <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
@@ -949,7 +916,7 @@ LOAD &quot;/tmp/f.json&quot; COLUMNS a:int,b:str PRINT
 </table>
 </div></div><div class="output text_html"><small>schema: a:int,b:str</small></div></div>
 </div>
-<p>json, csv, and parquet are support file formats. There are plans to support avro. Notice that parameters can be passed. If running on the default <a class="reference internal" href="../advanced/execution_engine.html"><span class="doc std std-doc">execution engine</span></a>, these would be passed on to <strong>Pandas</strong> <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> and <code class="docutils literal notranslate"><span class="pre">to_csv</span></code>.  The file extension is used as a hint to use the appropriate load/save function. If the extension is not present in the filename, it has to be specified.</p>
+<p>json, csv, parquet and avro are supported file formats. Notice that parameters can be passed. If running on the default <a class="reference internal" href="../advanced/execution_engine.html"><span class="doc std std-doc">execution engine</span></a>, these would be passed on to <strong>Pandas</strong> <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> and <code class="docutils literal notranslate"><span class="pre">to_csv</span></code>.  The file extension is used as a hint to use the appropriate load/save function. If the extension is not present in the filename, it has to be specified.</p>
 </div>
 <div class="section" id="variable-assignment">
 <h2>Variable Assignment<a class="headerlink" href="#variable-assignment" title="Permalink to this headline">¶</a></h2>
@@ -1008,7 +975,7 @@ PRINT new
 </div>
 <div class="section" id="execution-engine">
 <h2>Execution Engine<a class="headerlink" href="#execution-engine" title="Permalink to this headline">¶</a></h2>
-<p>So far, we’ve only dealt with the default <a class="reference internal" href="../advanced/execution_engine.html"><span class="doc std std-doc">execution engine</span></a>. If nothing is passed to the <code class="docutils literal notranslate"><span class="pre">%%fsql</span></code>, the <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> is used. Like <code class="docutils literal notranslate"><span class="pre">Fugue</span></code> programming interface, the <code class="docutils literal notranslate"><span class="pre">execution</span> <span class="pre">engine</span></code> can be easily changed by passing it to <code class="docutils literal notranslate"><span class="pre">FugueSQLWorkflow</span></code>. Below is an example for Spark.</p>
+<p>So far, we’ve only dealt with the default <a class="reference internal" href="../advanced/execution_engine.html"><span class="doc std std-doc">execution engine</span></a>. If nothing is passed to <code class="docutils literal notranslate"><span class="pre">%%fsql</span></code>, the <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> is used. Like <code class="docutils literal notranslate"><span class="pre">Fugue</span></code> programming interface, the <code class="docutils literal notranslate"><span class="pre">execution</span> <span class="pre">engine</span></code> can be easily changed by passing it to <code class="docutils literal notranslate"><span class="pre">FugueSQLWorkflow</span></code>. Below is an example for Spark.</p>
 <p>Take note of the output <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> in the example below. It will be a <code class="docutils literal notranslate"><span class="pre">SparkDataFrame</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
