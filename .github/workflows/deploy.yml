@@ -24,7 +24,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - uses: actions/checkout@v2
     - name: Install jupyter-book
-      run: pip install jupyter-book
+      run: pip install jupyter-book==0.11.3
 
     # Build the book
     - name: Build the book
