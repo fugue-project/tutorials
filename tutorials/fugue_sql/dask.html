@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -33,17 +33,17 @@
     
   <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
@@ -93,7 +93,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Tutorials
  </span>
@@ -293,7 +293,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Applications
  </span>
@@ -344,7 +344,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Further Information
  </span>
@@ -497,7 +497,7 @@
         
               <div>
                 
-  <div class="section" id="fuguesql-and-dask-sql">
+  <div class="tex2jax_ignore mathjax_ignore section" id="fuguesql-and-dask-sql">
 <h1>FugueSQL and Dask-sql<a class="headerlink" href="#fuguesql-and-dask-sql" title="Permalink to this headline">¶</a></h1>
 <p><strong>Pandas</strong> and <strong>Spark</strong> already have solutions that allow users to execute SQL code to describe computation workflows. <strong>Dask</strong>, on the other hand, does not have a standard SQL interface yet. <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> provides this feature with the DaskExecutionEngine, but users should also be aware that <a class="reference external" href="https://dask-sql.readthedocs.io/en/latest/index.html">dask-sql</a> is a relatively new project and has a majority of SQL keywords implemented already. Additionally, it is also faster than FugueSql on average. However, there are still some features under development. Most notably, the SQL <code class="docutils literal notranslate"><span class="pre">WINDOW</span></code> is not yet implemented.</p>
 <p>We are collaborating to have our solutions converge to create the de facto SQL interface for Dask. In the meantime, we have unified our solutions by allowing <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> to use <a class="reference external" href="https://dask-sql.readthedocs.io/en/latest/index.html">dask-sql</a> as an <a class="reference internal" href="../advanced/execution_engine.html"><span class="doc std std-doc">execution engine</span></a>. The <a class="reference external" href="https://github.com/nils-braun/dask-sql">dask_sql</a> project has added a <code class="docutils literal notranslate"><span class="pre">DaskSQLExecutionEngine</span></code> into their code to let us import it and pass it into <code class="docutils literal notranslate"><span class="pre">FugueSQLWorkflow</span></code>. Note this is a different engine from <code class="docutils literal notranslate"><span class="pre">Fugue's</span> <span class="pre">DaskExecutionEngine</span></code></p>
