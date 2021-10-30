@@ -6,8 +6,7 @@
 
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ) ⬅️ Chat with us on slack
 
-| ⚠️ Please notice that running the code is slow on binder as the spark initialization can take a long time! |
-|---------------------------------------------------------------------------------------------------------------|
+> ⚠️ Please notice that running the code is slow on binder as the spark initialization can take a long time!
 
 ## Running locally
 
@@ -17,5 +16,4 @@ To run the tutorials environment on your own machine, the simplest way is via do
 docker run -p 8888:8888 fugueproject/tutorials:latest
 ```
 
-| 🚀 The performance should be better running docker on your own machine |
-|-------------------------------------------------------------------------|
+> 🚀 The performance should be better running docker on your own machine
