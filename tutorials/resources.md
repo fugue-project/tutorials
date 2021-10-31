@@ -8,15 +8,21 @@ This is a collection of talks given at various Meetups and conferences. All ques
 
 **Conferences**
 
-PyCon US 2021
+PyCon US
 * [Large Scale Data Validation with Spark and Dask](https://www.youtube.com/watch?v=2AdvBgjO_3Q)
 
-Dask Summit 2021
+Dask Summit
 * [Dask SQL Query Engines](https://www.youtube.com/watch?v=bQDN41Bc3bw)
 
   * FugueSQL is one of the engines introduced
 
-Spark AI Summit and Dremio Subsurface videos have not been uploaded yet.
+Spark AI Summit
+* [Superworkflow of Graph Neural Networks with K8S and Fugue](https://www.youtube.com/watch?v=-aEZjQiqSFA)
+* [Fully Utilizing Spark for Data Validation](https://www.youtube.com/watch?v=f901OJrP5ls)
+
+KubeCon
+* [Scaling Machine Learning Workflows to Big Data with Fugue](https://www.youtube.com/watch?v=fDIRMiwc0aA)
+
 
 **Blogs**
 
@@ -49,5 +55,5 @@ DataOps DC Meetup
 
 **Conferences**
 
-Spark AI Summit 2020
+Spark AI Summit
 * [Unifying Spark and Non-Spark Ecosystems for Big Data Analytics](https://www.youtube.com/watch?v=BBd4b2pMk0c)
