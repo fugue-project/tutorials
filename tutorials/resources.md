@@ -16,6 +16,7 @@ Data Validation
 FugueSQL
 
 * [Dask SQL Query Engines](https://www.youtube.com/watch?v=bQDN41Bc3bw)(Dask Summit)
+* [Fugue SQL: Extending SQL Interface for End-to-End Data Pipelines](https://www.dremio.com/subsurface/fugue-sql-extending-sql-interface-for-end-to-end-data-pipelines/)(Dremio Subsurface)
 
 Machine Learning
 
