@@ -22,6 +22,9 @@ Machine Learning
 * [Superworkflow of Graph Neural Networks with K8S and Fugue](https://www.youtube.com/watch?v=-aEZjQiqSFA)(Spark AI Summit)
 * [Scaling Machine Learning Workflows to Big Data with Fugue](https://www.youtube.com/watch?v=fDIRMiwc0aA)(KubeCon)
 
+Tune
+
+* [Intuitive and Scalable Hyperparameter Tuning with Apache Spark + Fugue](https://www.youtube.com/watch?v=JUretXiLtK0)(Spark AI Summit)
 
 **Blogs**
 
