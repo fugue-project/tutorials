@@ -64,6 +64,7 @@ tutorials/advanced/index
 
 tutorials/examples/index
 tutorials/applications/index
+tutorials/debugging/index
 ```
 
 ```{toctree}
