@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Using Fugue on Databricks &#8212; Fugue Tutorials</title>
+    <title>Testing PySpark Applications &#8212; Fugue Tutorials</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Using Fugue on Coiled" href="coiled.html" />
-    <link rel="prev" title="Testing PySpark Applications" href="testing.html" />
+    <link rel="next" title="Using Fugue on Databricks" href="databricks_connect.html" />
+    <link rel="prev" title="Data Validation" href="data_validation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -336,13 +336,13 @@
      Data Validation
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="testing.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Testing PySpark Applications
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="databricks_connect.html">
      Using Fugue on Databricks
     </a>
    </li>
@@ -440,7 +440,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tutorials/applications/databricks_connect.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tutorials/applications/testing.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -460,10 +460,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/fugue-project/tutorials/issues/new?title=Issue%20on%20page%20%2Ftutorials/applications/databricks_connect.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/fugue-project/tutorials/issues/new?title=Issue%20on%20page%20%2Ftutorials/applications/testing.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/applications/databricks_connect.ipynb"><button
+        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/applications/testing.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -483,7 +483,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/applications/databricks_connect.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/applications/testing.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -509,33 +509,18 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-cluster">
-   Create cluster
+  <a class="reference internal nav-link" href="#reducing-boilerplate-code">
+   Reducing Boilerplate Code
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-fugue">
-   Installing Fugue
+  <a class="reference internal nav-link" href="#decoupling-of-spark-hardware">
+   Decoupling of Spark Hardware
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fugue-and-databricks-connect">
-   Fugue and databricks-connect
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#added-configuration">
-   Added Configuration
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-fugue-sql-on-the-cluster">
-   Using Fugue-sql on the Cluster
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
+  <a class="reference internal nav-link" href="#rapid-prototyping">
+   Rapid Prototyping
   </a>
  </li>
 </ul>
@@ -549,195 +534,246 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="using-fugue-on-databricks">
-<h1>Using Fugue on Databricks<a class="headerlink" href="#using-fugue-on-databricks" title="Permalink to this headline">¶</a></h1>
-<p>A lot of Databricks users use the <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> library to execute Spark commands on a Databricks cluster instead of a local session. <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> replaces the local installation of <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> and makes <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> code get executed on the cluster, allowing users to use the cluster directly from their IDE.</p>
-<p>In this tutorial, we will go through the following steps:
-1.</p>
-<p>For more information check the <a class="reference external" href="https://docs.databricks.com/dev-tools/databricks-connect.html">Databricks</a> documentation for how to configure <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code>. Getting Databricks setup for each cloud provider will also vary a bit, but in general, you want to create a workspace. A workspace will look like the following:</p>
-<p><img alt="Databricks workspace" src="https://cdn-images-1.medium.com/max/1600/1*YUF7X7cLLse1YDy2dTFh1Q.png" /></p>
-<div class="section" id="create-cluster">
-<h2>Create cluster<a class="headerlink" href="#create-cluster" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="installing-fugue">
-<h2>Installing Fugue<a class="headerlink" href="#installing-fugue" title="Permalink to this headline">¶</a></h2>
-<p><img alt="Installing Fugue" src="https://cdn-images-1.medium.com/max/1600/1*z1AO5S17BxWFE1YGwj8RLQ.png" /></p>
-</div>
-<div class="section" id="fugue-and-databricks-connect">
-<h2>Fugue and databricks-connect<a class="headerlink" href="#fugue-and-databricks-connect" title="Permalink to this headline">¶</a></h2>
-<p>Fugue helps solve this problem by allowing users to use the default <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> for local development and testing. Users can use sampled files for local development, and then bring it to Spark when ready for larger tests. To demo this, we have a sample code snippet below.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="testing-pyspark-applications">
+<h1>Testing PySpark Applications<a class="headerlink" href="#testing-pyspark-applications" title="Permalink to this headline">¶</a></h1>
+<p>Testing Spark applications is a very common painpoint for big data developers. Because of the difficulty, developers often avoid writing robust tests. Using Fugue helps testing by doing the following:</p>
+<ol class="simple">
+<li><p>Lessening the amount of boilerplate code needed for testing</p></li>
+<li><p>Eliminating the need for a Spark cluster to unit test</p></li>
+<li><p>Accelerating development by enabling rapid testing of code snippets</p></li>
+</ol>
+<p>In this walkthrough, we’ll go through each of these items in more detail.</p>
+<div class="section" id="reducing-boilerplate-code">
+<h2>Reducing Boilerplate Code<a class="headerlink" href="#reducing-boilerplate-code" title="Permalink to this headline">¶</a></h2>
+<p>Recall in the <a class="reference internal" href="../beginner/introduction.html"><span class="doc std std-doc">beginner tutorial</span></a> that in order to bring a simple prediction function to PySpark for execution using <code class="docutils literal notranslate"><span class="pre">mapInPandas()</span></code>, we need to construct two helper functions. Using the same example as the introduction, we train a <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> model and then create a <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function that will apply this model to a DataFrame. This following code is just <code class="docutils literal notranslate"><span class="pre">pandas</span></code> for now.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
-<span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;numbers&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;words&#39;</span><span class="p">:[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="s1">&#39;world&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">]})</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;x_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;x_2&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="c1"># schema: *, reversed:str</span>
-<span class="k">def</span> <span class="nf">reverse_word</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;reversed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;words&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">df</span>
-
-<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">reverse_word</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
-numbers:long|words:str|reversed:str
-------------+---------+------------
-1           |hello    |olleh       
-2           |world    |dlrow       
-3           |apple    |elppa       
-4           |banana   |ananab      
-Total count: 4
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">LinearRegression</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Again, this DataFrame is just 4 rows, but we should need to bring it to the Spark cluster if we were using <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code>. Here, we perform the test locally first and confirm that it works. After that, we can bring it to Spark with:</p>
+<p>We can then quickly test this with another DataFrame</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This Pandas DataFrame gets converted to Spark</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;numbers&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;words&#39;</span><span class="p">:[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="s1">&#39;world&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">]})</span>
-
-<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">(</span><span class="n">SparkExecutionEngine</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">reverse_word</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;x_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s2">&quot;x_2&quot;</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">]})</span>
+<span class="n">predict</span><span class="p">(</span><span class="n">input_df</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">reg</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SparkDataFrame
-numbers:long|words:str|reversed:str
-------------+---------+------------
-1           |hello    |olleh       
-2           |world    |dlrow       
-3           |apple    |elppa       
-4           |banana   |ananab      
-Total count: 4
-</pre></div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x_1</th>
+      <th>x_2</th>
+      <th>predicted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>3</td>
+      <td>12.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>3</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6</td>
+      <td>6</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6</td>
+      <td>6</td>
+      <td>21.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
-</div>
-<p>No added work is needed. The <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> imports <code class="docutils literal notranslate"><span class="pre">pyspark</span></code>, meaning that it will import the <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> configuration under the hood and use the configured cluster. Fugue works with <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> seamlessly, allowing for convenient switching between local development and a remote cluster.</p>
-</div>
-<div class="section" id="added-configuration">
-<h2>Added Configuration<a class="headerlink" href="#added-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Most <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> users add additional Spark configurations on the cluster. If additional configruation is needed in local code, it can be provided with the following syntax:</p>
+<p>Now in order to bring this to Spark, need to wrap it with some helper functions as seen below. This is the same as the introduction section so there is no need to spend too much time looking at the code. The goal here is just to see the amount of boilerplate code we need to introduce to apply it to a Spark function. We are adding two functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+<span class="n">spark_session</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StructType</span><span class="p">,</span> <span class="n">StructField</span><span class="p">,</span> <span class="n">DoubleType</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">DataFrame</span> 
+
+<span class="k">def</span> <span class="nf">predict_wrapper</span><span class="p">(</span><span class="n">dfs</span><span class="p">:</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span> <span class="n">model</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">run_predict</span><span class="p">(</span><span class="n">input_df</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span> <span class="n">model</span><span class="p">):</span>
+    <span class="c1"># conversion</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_df</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="n">sdf</span> <span class="o">=</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">input_df</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sdf</span> <span class="o">=</span> <span class="n">input_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="n">schema</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">sdf</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">fields</span><span class="p">))</span>
+    <span class="n">schema</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;predicted&quot;</span><span class="p">,</span> <span class="n">DoubleType</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">sdf</span><span class="o">.</span><span class="n">mapInPandas</span><span class="p">(</span><span class="k">lambda</span> <span class="n">dfs</span><span class="p">:</span> <span class="n">predict_wrapper</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">model</span><span class="p">),</span> 
+                           <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">run_predict</span><span class="p">(</span><span class="n">input_df</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">reg</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+---+---------+
+|x_1|x_2|predicted|
++---+---+---------+
+|  3|  3|     12.0|
+|  4|  3|     13.0|
+|  6|  6|     21.0|
+|  6|  6|     21.0|
++---+---+---------+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using Fugue, the equivalent code would be to invoke the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">transform</span>
 <span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
 
-<span class="n">spark_session</span> <span class="o">=</span> <span class="p">(</span><span class="n">SparkSession</span>
-                 <span class="o">.</span><span class="n">builder</span>
-                 <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.executor.cores&quot;</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-                 <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;fugue.dummy&quot;</span><span class="p">,</span><span class="s2">&quot;dummy&quot;</span><span class="p">)</span>
-                 <span class="o">.</span><span class="n">getOrCreate</span><span class="p">())</span>
-
-<span class="n">engine</span> <span class="o">=</span> <span class="n">SparkExecutionEngine</span><span class="p">(</span><span class="n">spark_session</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;additional_conf&quot;</span><span class="p">:</span><span class="s2">&quot;abc&quot;</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="using-fugue-sql-on-the-cluster">
-<h2>Using Fugue-sql on the Cluster<a class="headerlink" href="#using-fugue-sql-on-the-cluster" title="Permalink to this headline">¶</a></h2>
-<p>Because Fugue-sql also just uses the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>, it can also be easily executed on a remote cluster.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_sql</span> <span class="kn">import</span> <span class="n">fsql</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;numbers&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;words&#39;</span><span class="p">:[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="s1">&#39;world&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">]})</span>
-
-<span class="n">fsql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">      SELECT *</span>
-<span class="s2">        FROM data</span>
-<span class="s2">      TRANSFORM USING reverse_word</span>
-<span class="s2">      PRINT&quot;&quot;&quot;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">SparkExecutionEngine</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span>
+    <span class="n">input_df</span><span class="p">,</span>
+    <span class="n">predict</span><span class="p">,</span>
+    <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*,predicted:double&quot;</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">reg</span><span class="p">),</span>
+    <span class="n">engine</span><span class="o">=</span><span class="n">SparkExecutionEngine</span><span class="p">(</span><span class="n">spark_session</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SparkDataFrame
-numbers:long|words:str|reversed:str
-------------+---------+------------
-1           |hello    |olleh       
-2           |world    |dlrow       
-3           |apple    |elppa       
-4           |banana   |ananab      
-Total count: 4
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrames()
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+---+---------+
+|x_1|x_2|predicted|
++---+---+---------+
+|  3|  3|     12.0|
+|  4|  3|     13.0|
+|  6|  6|     21.0|
+|  6|  6|     21.0|
++---+---+---------+
 </pre></div>
 </div>
 </div>
 </div>
+<p>In order to write unit tests for our logic, we just need to test the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function because the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function is extensively tested on the Fugue side. Using the native Spark approach, we need to write two unit tests, one for each helper function. If you have 10 <code class="docutils literal notranslate"><span class="pre">pandas</span></code>-based functions that you are bring to Spark, this could add a lot of tests just for the boilerplate code.</p>
+</div>
+<div class="section" id="decoupling-of-spark-hardware">
+<h2>Decoupling of Spark Hardware<a class="headerlink" href="#decoupling-of-spark-hardware" title="Permalink to this headline">¶</a></h2>
+<p>A lot of Spark users use <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> to run their PySpark jobs on Databricks. This allows developers to write code on their local machine, and then run it against the cluster. While <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> is convenient for leveraging cluster compute resources, it also makes it difficult to conduct tests quickly. Spinning up a cluster takes around 5 minutes, slowing down iterations. Development also becomes very expensive as the <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> configuration is attached to a cluster, meaning that it’s inconvenient to switch to a smaller cluster (or local Spark) for smaller tests.</p>
+<p>Why do we need to test on Spark though? Recall our <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function that we brought to Spark. We can just unit test this locally now using <code class="docutils literal notranslate"><span class="pre">pandas</span></code> because it’s written without any dependency on Spark. In fact, we already did it earlier.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_notebook</span> <span class="kn">import</span> <span class="n">setup</span>
-<span class="n">setup</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;x_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s2">&quot;x_2&quot;</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">]})</span>
+<span class="n">predict</span><span class="p">(</span><span class="n">input_df</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">reg</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/javascript">
-require(["codemirror/lib/codemirror"]);
-function set(str) {
-    var obj = {}, words = str.split(" ");
-    for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
-    return obj;
-  }
-var fugue_keywords = "fill hash rand even presort persist broadcast params process output outtransform rowcount concurrency prepartition zip print title save append parquet csv json single checkpoint weak strong deterministic yield connect sample seed take sub callback dataframe file";
-CodeMirror.defineMIME("text/x-fsql", {
-    name: "sql",
-    keywords: set(fugue_keywords + " add after all alter analyze and anti archive array as asc at between bucket buckets by cache cascade case cast change clear cluster clustered codegen collection column columns comment commit compact compactions compute concatenate cost create cross cube current current_date current_timestamp database databases data dbproperties defined delete delimited deny desc describe dfs directories distinct distribute drop else end escaped except exchange exists explain export extended external false fields fileformat first following for format formatted from full function functions global grant group grouping having if ignore import in index indexes inner inpath inputformat insert intersect interval into is items join keys last lateral lazy left like limit lines list load local location lock locks logical macro map minus msck natural no not null nulls of on optimize option options or order out outer outputformat over overwrite partition partitioned partitions percent preceding principals purge range recordreader recordwriter recover reduce refresh regexp rename repair replace reset restrict revoke right rlike role roles rollback rollup row rows schema schemas select semi separated serde serdeproperties set sets show skewed sort sorted start statistics stored stratify struct table tables tablesample tblproperties temp temporary terminated then to touch transaction transactions transform true truncate unarchive unbounded uncache union unlock unset use using values view when where window with"),
-    builtin: set("date datetime tinyint smallint int bigint boolean float double string binary timestamp decimal array map struct uniontype delimited serde sequencefile textfile rcfile inputformat outputformat"),
-    atoms: set("false true null"),
-    operatorChars: /^[*\/+\-%<>!=~&|^]/,
-    dateSQL: set("time"),
-    support: set("ODBCdotTable doubleQuote zerolessFloat")
-  });
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-CodeMirror.modeInfo.push( {
-            name: "Fugue SQL",
-            mime: "text/x-fsql",
-            mode: "sql"
-          } );
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-require(['notebook/js/codecell'], function(codecell) {
-    codecell.CodeCell.options_default.highlight_modes['magic_text/x-fsql'] = {'reg':[/%%fsql/]} ;
-    Jupyter.notebook.events.on('kernel_ready.Kernel', function(){
-    Jupyter.notebook.get_cells().map(function(cell){
-        if (cell.cell_type == 'code'){ cell.auto_highlight(); } }) ;
-    });
-  });
-</script></div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x_1</th>
+      <th>x_2</th>
+      <th>predicted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>3</td>
+      <td>12.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>3</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6</td>
+      <td>6</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6</td>
+      <td>6</td>
+      <td>21.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">fsql</span> spark
-<span class="n">SELECT</span> <span class="o">*</span>
-  <span class="n">FROM</span> <span class="n">data</span>
-<span class="n">TRANSFORM</span> <span class="n">USING</span> <span class="n">reverse_word</span>
- <span class="n">PRINT</span>
-</pre></div>
+<p>For Spark users that manually submit their job to Spark using <code class="docutils literal notranslate"><span class="pre">spark-submit</span></code>, this lessens the number of times that the code has to be sent to the cluster to test it. Even testing Spark code with local Spark takes a significant amount of time to spin-up compared to testing on <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>Here we have shown the painpoints in using <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code>. It slows down developer productitity and increases compute costs. We can solve both of these problems by toggling between Fugue’s default <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> and <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>. Fugue’s <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> will seamlessly use whatever <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> is configured for the user.</p>
-<p>Fugue also allows for additional configuration of the underlying frameworks. We showed the syntax for passing a <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code> to the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>.</p>
+<div class="section" id="rapid-prototyping">
+<h2>Rapid Prototyping<a class="headerlink" href="#rapid-prototyping" title="Permalink to this headline">¶</a></h2>
+<p>This brings us to the last point. It is very common to test simple code snippets when working on projects. With Spark code and big data, testing code snippets is a significant bottleneck to development because of the frequent cluster spin-up necessary (even on local). By using Fugue and decoupling logic and execution, we can test on local maching quickly then bring it to the cluster for integration tests when ready. This increases the velocity of big data projects.</p>
 </div>
 </div>
 
@@ -771,19 +807,19 @@ require(['notebook/js/codecell'], function(codecell) {
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="testing.html" title="previous page">
+        <a class="left-prev" href="data_validation.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Testing PySpark Applications</p>
+                <p class="prevnext-title">Data Validation</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="coiled.html" title="next page">
+        <a class="right-next" href="databricks_connect.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Using Fugue on Coiled</p>
+                <p class="prevnext-title">Using Fugue on Databricks</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

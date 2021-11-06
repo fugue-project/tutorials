@@ -16,12 +16,16 @@ Data Validation
 FugueSQL
 
 * [Dask SQL Query Engines](https://www.youtube.com/watch?v=bQDN41Bc3bw)(Dask Summit)
+* [Fugue SQL: Extending SQL Interface for End-to-End Data Pipelines](https://www.dremio.com/subsurface/fugue-sql-extending-sql-interface-for-end-to-end-data-pipelines/)(Dremio Subsurface)
 
 Machine Learning
 
 * [Superworkflow of Graph Neural Networks with K8S and Fugue](https://www.youtube.com/watch?v=-aEZjQiqSFA)(Spark AI Summit)
 * [Scaling Machine Learning Workflows to Big Data with Fugue](https://www.youtube.com/watch?v=fDIRMiwc0aA)(KubeCon)
 
+Tune
+
+* [Intuitive and Scalable Hyperparameter Tuning with Apache Spark + Fugue](https://www.youtube.com/watch?v=JUretXiLtK0)(Spark AI Summit)
 
 **Blogs**
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World &#8212; Fugue Tutorials</title>
+    <title>SystemError - unknown opcode &#8212; Fugue Tutorials</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Resources" href="../resources.html" />
+    <link rel="prev" title="Debugging" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -296,7 +298,7 @@
   Applications
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../examples/index.html">
    Examples
@@ -351,18 +353,18 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../debugging/index.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
    Debugging
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../debugging/unknown_opcode.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      SystemError - unknown opcode
     </a>
    </li>
@@ -438,7 +440,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tutorials/legacy/hello.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tutorials/debugging/unknown_opcode.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -458,10 +460,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/fugue-project/tutorials/issues/new?title=Issue%20on%20page%20%2Ftutorials/legacy/hello.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/fugue-project/tutorials/issues/new?title=Issue%20on%20page%20%2Ftutorials/debugging/unknown_opcode.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/legacy/hello.ipynb"><button
+        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/debugging/unknown_opcode.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -481,7 +483,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/legacy/hello.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/debugging/unknown_opcode.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -509,43 +511,108 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="hello-world">
-<h1>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h1>
-<p>Every framework has a hello world, Fugue is the same. But you must understand that distributed computing is not
-easy, a simple modification of the hello world can’t solve most of the problems. And please
-don’t be misled by hello world examples of any distributed frameworks. There is much more to understand.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
-
-<span class="c1"># create a dataframe and print</span>
-<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;hello&quot;</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;world&quot;</span><span class="p">]],</span><span class="s2">&quot;x:int,b:str&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+  <div class="tex2jax_ignore mathjax_ignore section" id="systemerror-unknown-opcode">
+<h1>SystemError - unknown opcode<a class="headerlink" href="#systemerror-unknown-opcode" title="Permalink to this headline">¶</a></h1>
+<p>This normally arises when using Dask on a cluster (it will not happen locally).  The error will look something like this.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">SystemError</span><span class="p">:</span> <span class="n">unknown</span> <span class="n">opcode</span>
 </pre></div>
 </div>
-</div>
-</div>
-<p>Fugue is using DAG (Directed Acyclic Graph) to express workflow. You always construct a dag before executing it. Currently, Fugue does not support execution during construction (this is also called interactive mode).</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">with</span></code> statement tells the system I want to execute it when exiting. You don’t have to use <code class="docutils literal notranslate"><span class="pre">with</span></code> all the time. For example, submitting to spark may be slow, it’s totally fine we construct the dag, then start Spark and run it, so DAG construction errors can be captured before execution, it can be a lot faster (similar to compile time errors).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
-<span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
-<span class="kn">from</span> <span class="nn">fugue_dask</span> <span class="kn">import</span> <span class="n">DaskExecutionEngine</span>
+<p>The most common cause is an inconsistent environment between local and the cluster. The local versions of Python, dask, and distributed all need to be aligned because code is serialized with cloudpickle on the local side before it is sent to the cluster. This code is then unpickled and the deserialization will be inconsistent if the Python versions are inconsistent.</p>
+<p><a class="reference external" href="https://github.com/dask/distributed/issues/5331">This Github issue</a> replicates the issue by using a nested function. We can test this is by running the following code on the Dask cluster. When using the code snippet below, configure the Client to point to your Dask cluster.</p>
+<p>This will give a traceback similar to the following.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">SystemError</span>                               <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">856</span><span class="n">eb59918a9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">wrap</span><span class="p">()</span>
 
-<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
-<span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;hello&quot;</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;world&quot;</span><span class="p">]],</span><span class="s2">&quot;x:int,b:str&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="c1"># here I have finished the construction, and the following is to run on different execution engines</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="mi">36</span><span class="n">bd46412ed1</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="n">wrap</span><span class="p">()</span>
+     <span class="mi">22</span>     <span class="n">ddf</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+     <span class="mi">23</span> 
+<span class="o">---&gt;</span> <span class="mi">24</span>     <span class="k">return</span> <span class="n">transform</span><span class="p">(</span><span class="n">ddf</span><span class="p">,</span> <span class="n">ppp</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;dask&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 
-<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>                     <span class="c1"># native python</span>
-<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">SparkExecutionEngine</span><span class="p">)</span> <span class="c1"># spark</span>
-<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">DaskExecutionEngine</span><span class="p">)</span>  <span class="c1"># dask</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">dask</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="n">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="mi">286</span>         <span class="n">dask</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">compute</span>
+    <span class="mi">287</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">--&gt; 288         (result,) = compute(self, traverse=False, **kwargs)</span>
+<span class="s2">    289         return result</span>
+<span class="s2">    290 </span>
+
+<span class="s2">/usr/local/lib/python3.9/site-packages/dask/base.py in compute(*args, **kwargs)</span>
+<span class="s2">    568         postcomputes.append(x.__dask_postcompute__())</span>
+<span class="s2">    569 </span>
+<span class="s2">--&gt; 570     results = schedule(dsk, keys, **kwargs)</span>
+<span class="s2">    571     return repack([f(r, *a) for r, (f, a) in zip(results, postcomputes)])</span>
+<span class="s2">    572 </span>
+
+<span class="s2">/usr/local/lib/python3.9/site-packages/distributed/client.py in get(self, dsk, keys, workers, allow_other_workers, resources, sync, asynchronous, direct, retries, priority, fifo_timeout, actors, **kwargs)</span>
+<span class="s2">   2691                     should_rejoin = False</span>
+<span class="s2">   2692             try:</span>
+<span class="s2">-&gt; 2693                 results = self.gather(packed, asynchronous=asynchronous, direct=direct)</span>
+<span class="s2">   2694             finally:</span>
+<span class="s2">   2695                 for f in futures.values():</span>
+
+<span class="s2">/usr/local/lib/python3.9/site-packages/distributed/client.py in gather(self, futures, errors, direct, asynchronous)</span>
+<span class="s2">   1967             else:</span>
+<span class="s2">   1968                 local_worker = None</span>
+<span class="s2">-&gt; 1969             return self.sync(</span>
+<span class="s2">   1970                 self._gather,</span>
+<span class="s2">   1971                 futures,</span>
+
+<span class="s2">/usr/local/lib/python3.9/site-packages/distributed/client.py in sync(self, func, asynchronous, callback_timeout, *args, **kwargs)</span>
+<span class="s2">    863             return future</span>
+<span class="s2">    864         else:</span>
+<span class="s2">--&gt; 865             return sync(</span>
+<span class="s2">    866                 self.loop, func, *args, callback_timeout=callback_timeout, **kwargs</span>
+<span class="s2">    867             )</span>
+
+<span class="s2">/usr/local/lib/python3.9/site-packages/distributed/utils.py in sync(loop, func, callback_timeout, *args, **kwargs)</span>
+<span class="s2">    325     if error[0]:</span>
+<span class="s2">    326         typ, exc, tb = error[0]</span>
+<span class="s2">--&gt; 327         raise exc.with_traceback(tb)</span>
+<span class="s2">    328     else:</span>
+<span class="s2">    329         return result[0]</span>
+
+<span class="s2">/usr/local/lib/python3.9/site-packages/distributed/utils.py in f()</span>
+<span class="s2">    308             if callback_timeout is not None:</span>
+<span class="s2">    309                 future = asyncio.wait_for(future, callback_timeout)</span>
+<span class="s2">--&gt; 310             result[0] = yield future</span>
+<span class="s2">    311         except Exception:</span>
+<span class="s2">    312             error[0] = sys.exc_info()</span>
+
+<span class="s2">/usr/local/lib/python3.9/site-packages/tornado/gen.py in run(self)</span>
+<span class="s2">    760 </span>
+<span class="s2">    761                     try:</span>
+<span class="s2">--&gt; 762                         value = future.result()</span>
+<span class="s2">    763                     except Exception:</span>
+<span class="s2">    764                         exc_info = sys.exc_info()</span>
+
+<span class="s2">/usr/local/lib/python3.9/site-packages/distributed/client.py in _gather(self, futures, errors, direct, local_worker)</span>
+<span class="s2">   1832                             exc = CancelledError(key)</span>
+<span class="s2">   1833                         else:</span>
+<span class="s2">-&gt; 1834                             raise exception.with_traceback(traceback)</span>
+<span class="s2">   1835                         raise exc</span>
+<span class="s2">   1836                     if errors == &quot;skip&quot;:</span>
+
+<span class="s2">/opt/conda/envs/coiled/lib/python3.8/site-packages/dask/optimization.py in __call__()</span>
+
+<span class="s2">/opt/conda/envs/coiled/lib/python3.8/site-packages/dask/core.py in get()</span>
+
+<span class="s2">/opt/conda/envs/coiled/lib/python3.8/site-packages/dask/core.py in _execute_task()</span>
+
+<span class="s2">/opt/conda/envs/coiled/lib/python3.8/site-packages/dask/utils.py in apply()</span>
+
+<span class="s2">/opt/conda/envs/coiled/lib/python3.8/site-packages/dask/dataframe/core.py in apply_and_enforce()</span>
+
+<span class="s2">/usr/local/lib/python3.9/site-packages/fugue_dask/execution_engine.py in _map()</span>
+<span class="s2">    196                 pdf.reset_index(drop=True), input_schema, pandas_df_wrapper=True</span>
+<span class="s2">    197             )</span>
+<span class="s2">--&gt; 198             if on_init_once is not None:</span>
+<span class="s2">    199                 on_init_once(0, input_df)</span>
+<span class="s2">    200             cursor = partition_spec.get_cursor(input_schema, 0)</span>
+
+<span class="s2">SystemError: unknown opcode</span>
 </pre></div>
 </div>
-</div>
-</div>
-<p>You can find that the results are the same, but they are in different dataframes. Different execution engines will use different dataframes, they can convert to each other. Fugue tries to make the concept of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as abstract as possible, users normally don’t need to care the about the dataframe type.</p>
-<p>Here we show the simple ways to run the same dag on different execution engines, it’s good for initial prototyping. But in real use cases, you should well configure your execution engines and then pass into the dag to run. Again, hello world <code class="docutils literal notranslate"><span class="pre">!=</span></code> real ways to use.</p>
+<p>In the traceback above, notice there are two versions of Python. Dask requires consistent Python versions between the client and cluster.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -561,7 +628,7 @@ don’t be misled by hello world examples of any distributed frameworks. There i
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./tutorials/legacy"
+            path: "./tutorials/debugging"
         },
         predefinedOutput: true
     }
@@ -577,6 +644,24 @@ don’t be misled by hello world examples of any distributed frameworks. There i
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="index.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Debugging</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../resources.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Resources</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         

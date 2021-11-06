@@ -337,8 +337,35 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="testing.html">
+     Testing PySpark Applications
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="databricks_connect.html">
-     Using databricks-connect
+     Using Fugue on Databricks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="coiled.html">
+     Using Fugue on Coiled
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../debugging/index.html">
+   Debugging
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../debugging/unknown_opcode.html">
+     SystemError - unknown opcode
     </a>
    </li>
   </ul>
@@ -359,8 +386,8 @@
   <a class="reference internal" href="../appendix/index.html">
    Appendix
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -469,11 +496,32 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fugue-and-databricks-connect">
+  <a class="reference internal nav-link" href="#testing-big-data-applications">
    <span class="xref myst">
-    Fugue and Databricks Connect
+    Testing Big Data Applications
    </span>
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-fugue-with-providers">
+   Using Fugue with Providers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fugue-and-databricks-connect">
+     <span class="xref myst">
+      Fugue and Databricks Connect
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fugue-and-coiled">
+     <span class="xref myst">
+      Fugue and Coiled
+     </span>
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -496,9 +544,21 @@
 <h2><a class="reference internal" href="data_validation.html"><span class="doc std std-doc">Data Validation</span></a><a class="headerlink" href="#data-validation" title="Permalink to this headline">¶</a></h2>
 <p>We’ll get started with using Fugue and Pandera for data validation. Using Fugue, we can bring Pandas-based libraries into Spark, meaning we don’t have to re-implement the same logic twice. Moreover, using Fugue allows us to achieve <strong>validation by partition</strong>, an operation missing in the current data validation frameworks.</p>
 </div>
+<div class="section" id="testing-big-data-applications">
+<h2><a class="reference internal" href="testing.html"><span class="doc std std-doc">Testing Big Data Applications</span></a><a class="headerlink" href="#testing-big-data-applications" title="Permalink to this headline">¶</a></h2>
+<p>Unit testing is a significant pain point in big data applications. In this section, we examine what makes it so hard to test and how Fugue simplifies it. Through simplified testing, Fugue users often see speedup in the development of big data projects (in addition to lower compute costs).</p>
+</div>
+<div class="section" id="using-fugue-with-providers">
+<h2>Using Fugue with Providers<a class="headerlink" href="#using-fugue-with-providers" title="Permalink to this headline">¶</a></h2>
+<p>Since Fugue is a framework for distributed compute, it is often paired with a solution that manages Spark or Dask clusters. This section will cover how to use Fugue with different providers.</p>
 <div class="section" id="fugue-and-databricks-connect">
-<h2><a class="reference internal" href="databricks_connect.html"><span class="doc std std-doc">Fugue and Databricks Connect</span></a><a class="headerlink" href="#fugue-and-databricks-connect" title="Permalink to this headline">¶</a></h2>
-<p>Fugue can be used with the <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> library to run code that uses the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> on a Databricks cluster. Here we’ll go over some details.</p>
+<h3><a class="reference internal" href="databricks_connect.html"><span class="doc std std-doc">Fugue and Databricks Connect</span></a><a class="headerlink" href="#fugue-and-databricks-connect" title="Permalink to this headline">¶</a></h3>
+<p>Fugue can be used with the <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> library to run code that uses the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> on a Databricks cluster. Here we’ll go over some details of how to set it up.</p>
+</div>
+<div class="section" id="fugue-and-coiled">
+<h3><a class="reference internal" href="coiled.html"><span class="doc std std-doc">Fugue and Coiled</span></a><a class="headerlink" href="#fugue-and-coiled" title="Permalink to this headline">¶</a></h3>
+<p>Coiled is one of the leading solutions to manage Dask clusters. Here, we go over how to spin up a Dask cluster with Coiled and use Fugue on the cluster.</p>
+</div>
 </div>
 </div>
 
