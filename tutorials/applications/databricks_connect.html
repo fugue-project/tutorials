@@ -509,8 +509,13 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-cluster">
-   Create cluster
+  <a class="reference internal nav-link" href="#setup-workspace">
+   Setup Workspace
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-cluster">
+   Create a Cluster
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -519,13 +524,23 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#databricks-connect">
+   Databricks-connect
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuring-the-cluster">
+   Configuring the Cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fugue-and-databricks-connect">
    Fugue and databricks-connect
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#added-configuration">
-   Added Configuration
+  <a class="reference internal nav-link" href="#additional-configuration">
+   Additional Configuration
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -551,25 +566,62 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="using-fugue-on-databricks">
 <h1>Using Fugue on Databricks<a class="headerlink" href="#using-fugue-on-databricks" title="Permalink to this headline">¶</a></h1>
-<p>A lot of Databricks users use the <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> library to execute Spark commands on a Databricks cluster instead of a local session. <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> replaces the local installation of <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> and makes <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> code get executed on the cluster, allowing users to use the cluster directly from their IDE.</p>
-<p>In this tutorial, we will go through the following steps:
-1.</p>
-<p>For more information check the <a class="reference external" href="https://docs.databricks.com/dev-tools/databricks-connect.html">Databricks</a> documentation for how to configure <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code>. Getting Databricks setup for each cloud provider will also vary a bit, but in general, you want to create a workspace. A workspace will look like the following:</p>
-<p><img alt="Databricks workspace" src="https://cdn-images-1.medium.com/max/1600/1*YUF7X7cLLse1YDy2dTFh1Q.png" /></p>
-<div class="section" id="create-cluster">
-<h2>Create cluster<a class="headerlink" href="#create-cluster" title="Permalink to this headline">¶</a></h2>
+<p>A lot of Spark users use the <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> library to execute Spark commands on a Databricks cluster instead of a local session. <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> replaces the local installation of <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> and makes <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> code get executed on the cluster, allowing users to use the cluster directly from their local machine.</p>
+<p>In this tutorial, we will go through the following steps:</p>
+<ol class="simple">
+<li><p>Setting up a Databricks cluster</p></li>
+<li><p>Installing and configuring <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code></p></li>
+<li><p>Using Fugue with a Spark backend</p></li>
+</ol>
+<div class="section" id="setup-workspace">
+<h2>Setup Workspace<a class="headerlink" href="#setup-workspace" title="Permalink to this headline">¶</a></h2>
+<p>Databricks is available across all three major cloud providers (AWS, Azure, GCP). In general, it will involve going to the Marketplace of your cloud vendor, and then signing up for Databricks.</p>
+<p>For more information, you can look at the following cloud-specific documentation.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://databricks.com/product/aws">https://databricks.com/product/aws</a></p></li>
+<li><p><a class="reference external" href="https://databricks.com/product/azure">https://databricks.com/product/azure</a></p></li>
+<li><p><a class="reference external" href="https://databricks.com/product/google-cloud">https://databricks.com/product/google-cloud</a></p></li>
+</ul>
+<p>The picture below is what entering a workspace will look like</p>
+<p><img alt="Databricks workspace" src="https://miro.medium.com/max/1400/1*YUF7X7cLLse1YDy2dTFh1Q.png" /></p>
+</div>
+<div class="section" id="create-a-cluster">
+<h2>Create a Cluster<a class="headerlink" href="#create-a-cluster" title="Permalink to this headline">¶</a></h2>
+<p>From here, you can create a cluster by clicking the “New Cluster” link. The cluster will serve as the backend for our Spark commands. With the databricks-connectpackage that we will use later, we can connect our laptop to the cluster automatically just by using Spark commands. The computation graph is built locally and then sent to the cluster for execution.</p>
+<p><img alt="Creating a cluster" src="https://miro.medium.com/max/1400/1*CHFIHFOBugQYEQBBQugDZA.png" /></p>
+<p>Note when creating a cluster that you can start out by reducing the Worker Type. Clusters can be very expensive! Be sure to lower the worker type to something reasonable for your workload. Also, you can enable autoscaling and terminating the cluster after a certain number of minutes of inactivity.</p>
 </div>
 <div class="section" id="installing-fugue">
 <h2>Installing Fugue<a class="headerlink" href="#installing-fugue" title="Permalink to this headline">¶</a></h2>
-<p><img alt="Installing Fugue" src="https://cdn-images-1.medium.com/max/1600/1*z1AO5S17BxWFE1YGwj8RLQ.png" /></p>
+<p>In order to use Fugue on the cluster from our local environment, we need to install it on the cluster that we created. The easiest way to do this is to navigate the the libraries tab and add the package there. Below is an image of the tab.</p>
+<p><img alt="Installing Fugue" src="https://miro.medium.com/max/1400/1*z1AO5S17BxWFE1YGwj8RLQ.png" /></p>
+</div>
+<div class="section" id="databricks-connect">
+<h2>Databricks-connect<a class="headerlink" href="#databricks-connect" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> is a library that Databricks provides to run Spark commands on the cluster. The content here will just be a summary, but the full guide to installing databricks-connect can be found <a class="reference external" href="https://docs.databricks.com/dev-tools/databricks-connect.html">here</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">uninstall</span> <span class="n">pyspark</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">databricks</span><span class="o">-</span><span class="n">connect</span>
+</pre></div>
+</div>
+<p>Pyspark needs to be uninstalled because it conflicts with <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code>. databricks-connect will replace your pyspark installation. This means that <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pyspark</span></code> will load the databricks-connect version of PySpark and all succeeding Spark commands are sent to the cluster for execution.</p>
+<p>Note that the version of <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> must match the Databricks Runtime Version of your cluster. Otherwise, you will run into errors and the code will not be able to execute correctly.</p>
+</div>
+<div class="section" id="configuring-the-cluster">
+<h2>Configuring the Cluster<a class="headerlink" href="#configuring-the-cluster" title="Permalink to this headline">¶</a></h2>
+<p>Now that you have a cluster created from the first step and <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> installed, you can configure the cluster by doing <code class="docutils literal notranslate"><span class="pre">databricks-connect</span> <span class="pre">configure</span></code>.</p>
+<p>There are more details where to get the relevant pieces of information in their documentation here. For my example on AWS, it looked like this:</p>
+<p><img alt="databricks-connect configure" src="https://miro.medium.com/max/1108/1*sMNZBrA2V64mYmdgiBFQbQ.png" /></p>
+<p>You can verify if this worked by using <code class="docutils literal notranslate"><span class="pre">databricks-connect</span> <span class="pre">test</span></code>, and then you should see a message that all tests passed.</p>
 </div>
 <div class="section" id="fugue-and-databricks-connect">
 <h2>Fugue and databricks-connect<a class="headerlink" href="#fugue-and-databricks-connect" title="Permalink to this headline">¶</a></h2>
-<p>Fugue helps solve this problem by allowing users to use the default <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> for local development and testing. Users can use sampled files for local development, and then bring it to Spark when ready for larger tests. To demo this, we have a sample code snippet below.</p>
+<p>After setting the cluster up and configuring <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> to point to the cluster, there is no added effort needed to connect Fugue to your Spark cluster. The <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> imports <code class="docutils literal notranslate"><span class="pre">pyspark</span></code>, meaning that it will import the <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> configuration under the hood and use the configured cluster. Fugue works with <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> seamlessly, allowing for convenient switching between local development and a remote cluster.</p>
+<p>The code below will execute on the Databricks cluster if you followed the steps above. In order to run this locally, simple use the default <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> instead of the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
+<span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">transform</span>
 <span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;numbers&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;words&#39;</span><span class="p">:[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="s1">&#39;world&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">]})</span>
@@ -579,57 +631,28 @@
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;reversed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;words&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">df</span>
 
-<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">reverse_word</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">spark_df</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">reverse_word</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">SparkExecutionEngine</span><span class="p">())</span>
+<span class="n">spark_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
-numbers:long|words:str|reversed:str
-------------+---------+------------
-1           |hello    |olleh       
-2           |world    |dlrow       
-3           |apple    |elppa       
-4           |banana   |ananab      
-Total count: 4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-------+------+--------+
+|numbers| words|reversed|
++-------+------+--------+
+|      1| hello|   olleh|
+|      2| world|   dlrow|
+|      3| apple|   elppa|
+|      4|banana|  ananab|
++-------+------+--------+
 </pre></div>
 </div>
 </div>
 </div>
-<p>Again, this DataFrame is just 4 rows, but we should need to bring it to the Spark cluster if we were using <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code>. Here, we perform the test locally first and confirm that it works. After that, we can bring it to Spark with:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This Pandas DataFrame gets converted to Spark</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;numbers&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;words&#39;</span><span class="p">:[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="s1">&#39;world&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">]})</span>
-
-<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">(</span><span class="n">SparkExecutionEngine</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">reverse_word</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SparkDataFrame
-numbers:long|words:str|reversed:str
-------------+---------+------------
-1           |hello    |olleh       
-2           |world    |dlrow       
-3           |apple    |elppa       
-4           |banana   |ananab      
-Total count: 4
-</pre></div>
-</div>
-</div>
-</div>
-<p>No added work is needed. The <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> imports <code class="docutils literal notranslate"><span class="pre">pyspark</span></code>, meaning that it will import the <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> configuration under the hood and use the configured cluster. Fugue works with <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> seamlessly, allowing for convenient switching between local development and a remote cluster.</p>
-</div>
-<div class="section" id="added-configuration">
-<h2>Added Configuration<a class="headerlink" href="#added-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Most <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> users add additional Spark configurations on the cluster. If additional configruation is needed in local code, it can be provided with the following syntax:</p>
+<div class="section" id="additional-configuration">
+<h2>Additional Configuration<a class="headerlink" href="#additional-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Most <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> users add additional Spark configurations on the cluster through the DAtabricks UI. If additional configruation is needed, it can be provided with the following syntax:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
@@ -650,37 +673,6 @@ Total count: 4
 <div class="section" id="using-fugue-sql-on-the-cluster">
 <h2>Using Fugue-sql on the Cluster<a class="headerlink" href="#using-fugue-sql-on-the-cluster" title="Permalink to this headline">¶</a></h2>
 <p>Because Fugue-sql also just uses the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>, it can also be easily executed on a remote cluster.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_sql</span> <span class="kn">import</span> <span class="n">fsql</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;numbers&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;words&#39;</span><span class="p">:[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="s1">&#39;world&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">]})</span>
-
-<span class="n">fsql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">      SELECT *</span>
-<span class="s2">        FROM data</span>
-<span class="s2">      TRANSFORM USING reverse_word</span>
-<span class="s2">      PRINT&quot;&quot;&quot;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">SparkExecutionEngine</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SparkDataFrame
-numbers:long|words:str|reversed:str
-------------+---------+------------
-1           |hello    |olleh       
-2           |world    |dlrow       
-3           |apple    |elppa       
-4           |banana   |ananab      
-Total count: 4
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrames()
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_notebook</span> <span class="kn">import</span> <span class="n">setup</span>
@@ -724,19 +716,72 @@ require(['notebook/js/codecell'], function(codecell) {
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">fsql</span> spark
-<span class="n">SELECT</span> <span class="o">*</span>
-  <span class="n">FROM</span> <span class="n">data</span>
-<span class="n">TRANSFORM</span> <span class="n">USING</span> <span class="n">reverse_word</span>
- <span class="n">PRINT</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span> spark
+SELECT *
+  FROM data
+TRANSFORM USING reverse_word
+ PRINT
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>numbers</th>
+      <th>words</th>
+      <th>reversed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>hello</td>
+      <td>olleh</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>world</td>
+      <td>dlrow</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>apple</td>
+      <td>elppa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>banana</td>
+      <td>ananab</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: numbers:long,words:str,reversed:str</small></div></div>
 </div>
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>Here we have shown the painpoints in using <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code>. It slows down developer productitity and increases compute costs. We can solve both of these problems by toggling between Fugue’s default <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> and <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>. Fugue’s <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> will seamlessly use whatever <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> is configured for the user.</p>
+<p>Here we have shown how to connect Fugue to a Databricks cluster. Using Fugue along with <code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> provides the best of both worlds, only utilitizing the cluster when needed.</p>
+<p><code class="docutils literal notranslate"><span class="pre">databricks-connect</span></code> can slow down developer productitity and increase compute costs because all the Spark code becomes configured to run on the cluster. Using Fugue, we can toggle between Fugue’s default <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> and <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>. The default <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> will run on local without using Spark and Fugue’s <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> will seamlessly use whatever <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> is configured for the user.</p>
 <p>Fugue also allows for additional configuration of the underlying frameworks. We showed the syntax for passing a <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code> to the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>.</p>
 </div>
 </div>
