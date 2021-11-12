@@ -1,6 +1,6 @@
 # Welcome To Fugue Tutorials
 
-[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://fugue-project.github.io/tutorials/) ⬅️ Open the tutorials
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://fugue-tutorials.readthedocs.io/) ⬅️ Open the tutorials
 
 [![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue) ⬅️ Check out our source code
 
