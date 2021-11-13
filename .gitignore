@@ -72,6 +72,7 @@ instance/
 docs/_build/
 docs/images/
 docs/tutorials/
+docs/jupyter_execute/
 
 # PyBuilder
 target/
