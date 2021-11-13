@@ -14,7 +14,7 @@ html_favicon = 'docs/_static/fugue_logo_trimmed.svg'
 html_logo = 'images/logo_blue.svg'
 html_sourcelink_suffix = ''
 html_theme = 'sphinx_book_theme'
-html_theme_options = {'search_bar_text': 'Search this book...', 'launch_buttons': {'notebook_interface': 'classic', 'binderhub_url': 'https://mybinder.org', 'jupyterhub_url': '', 'thebe': True, 'colab_url': ''}, 'path_to_docs': '', 'repository_url': 'https://fugue-tutorials.readthedocs.io', 'repository_branch': 'master', 'google_analytics_id': '', 'extra_navbar': 'Powered by <a href="https://jupyterbook.org">Jupyter Book</a>', 'extra_footer': '', 'home_page_in_toc': True, 'use_repository_button': True, 'use_edit_page_button': True, 'use_issues_button': True}
+html_theme_options = {'search_bar_text': 'Search this book...', 'launch_buttons': {'notebook_interface': 'classic', 'binderhub_url': 'https://mybinder.org', 'jupyterhub_url': '', 'thebe': True, 'colab_url': ''}, 'path_to_docs': '', 'repository_url': 'https://github.com/fugue-project/tutorials/', 'repository_branch': 'master', 'google_analytics_id': '', 'extra_navbar': 'Powered by <a href="https://jupyterbook.org">Jupyter Book</a>', 'extra_footer': '', 'home_page_in_toc': True, 'use_repository_button': True, 'use_edit_page_button': True, 'use_issues_button': True}
 html_title = 'Fugue Tutorials'
 jupyter_cache = ''
 jupyter_execute_notebooks = 'off'
