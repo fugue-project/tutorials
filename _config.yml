@@ -1,6 +1,8 @@
 title: Fugue Tutorials
+author: The Fugue Development Team
 logo: images/logo_blue.svg
 execute:
+  timeout: 600
   execute_notebooks: off
   allow_errors: false
 
@@ -10,11 +12,12 @@ launch_buttons:
   thebe                     : true 
 
 repository:
-  url                       : https://github.com/fugue-project/tutorials  # The URL to your book's repository
+  url                       : https://fugue-tutorials.readthedocs.io  # The URL to your book's repository
   path_to_book              : ""  # A path to your book's folder, relative to the repository root.
   branch                    : master  # Which branch of the repository should be used when creating links
 
 html:
+  favicon: docs/_static/fugue_logo_trimmed.svg
   use_edit_page_button: true
   use_repository_button: true
   use_issues_button: true
