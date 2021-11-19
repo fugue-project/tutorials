@@ -9,11 +9,11 @@ The appendix is for miscellanous content. Any questions are welcome in the Slack
 :hidden:
 
 generate_types.ipynb
-fugue_vs_spark.ipynb
+fugue_spark_benchmark.ipynb
 ```
 
 ## [Fugue and PyArrow Types](generate_types.ipynb)
 Generate a full table comparing Fugue and PyArrow types using `Fugue-sql`. 
 
-## [Fugue versus Spark](fugue_vs_spark.ipynb)
+## [Fugue versus Spark](fugue_spark_benchmark.ipynb)
 Benchmarks for comparing Fugue against PySpark and Pandas UDF.
