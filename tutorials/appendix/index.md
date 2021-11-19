@@ -15,5 +15,5 @@ fugue_spark_benchmark.ipynb
 ## [Fugue and PyArrow Types](generate_types.ipynb)
 Generate a full table comparing Fugue and PyArrow types using `Fugue-sql`. 
 
-## [Fugue versus Spark](fugue_spark_benchmark.ipynb)
-Benchmarks for comparing Fugue against PySpark and Pandas UDF.
+## [Benchmark of Fugue on Spark](fugue_spark_benchmark.ipynb)
+Benchmarks for running Fugue on PySpark including Pandas UDF.
