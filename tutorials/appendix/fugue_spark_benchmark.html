@@ -517,6 +517,11 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuration">
+   Configuration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-datasets">
    The Datasets
   </a>
@@ -527,13 +532,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#minus-mean">
-   Minus-Mean
+  <a class="reference internal nav-link" href="#subtract-mean">
+   Subtract Mean
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#minus-one">
-   Minus-One
+  <a class="reference internal nav-link" href="#plus-one">
+   Plus One
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -556,10 +561,18 @@
 <h1>Benchmark of Fugue on Spark<a class="headerlink" href="#benchmark-of-fugue-on-spark" title="Permalink to this headline">¶</a></h1>
 <p>As an abstraction layer, how much performance overhead does Fugue add to native Spark?</p>
 <p>We will find out in this article. This article is based on the <a class="reference external" href="https://databricks.com/blog/2017/10/30/introducing-vectorized-udfs-for-pyspark.html">Databricks article</a> that compared the performance of native Spark and Pandas UDF. The author used 3 examples: Cumulative-Probability, Minus-Mean, and Minus-One.</p>
-<p>In this article, we will keep using the same examples and same datasets. We will compare the performance of Native PySpark, Fugue on Native PySpark, Pandas UDF, Fugue on Pandas UDF, and Fugue SQL. We will also test on additional datasets to provide a better picture of the performance difference.</p>
-<p>Notice that to make Fugue run on native PySpark or Pandas UDF, you only need to toggle the configuration <code class="docutils literal notranslate"><span class="pre">fugue.spark.use_pandas_udf</span></code> (see <a class="reference internal" href="../advanced/useful_config.html"><span class="doc std std-doc">details</span></a>).</p>
-<p>All metrics were collected from Databricks Spark 3.2.0 cluster with 8 i3.xlarge worker instances on AWS.
-The original notebook can be found <a class="reference external" href="https://rawcdn.githack.com/fugue-project/tutorials/43ff485961ca6f0e388ba5f03f687271d4a14480/tutorials/appendix/fugue_spark_benchmark_notebook.html">here</a> or <a class="reference external" href="https://github.com/fugue-project/tutorials/blob/43ff485961ca6f0e388ba5f03f687271d4a14480/tutorials/appendix/fugue_spark_benchmark_notebook.html">here</a>.</p>
+<p>In the original article, the author presented this performance comparison chart:</p>
+<p><img alt="Original Chart" src="https://databricks.com/wp-content/uploads/2017/10/image1-4.png" /></p>
+<p>In this article, we will keep using the same examples and same datasets. We will compare the performance of row-at-a-time-UDF, Fugue on Native Spark, Pandas UDF, Fugue on Pandas UDF, and Fugue SQL. We will also test on additional datasets to provide a better picture of the performance difference.</p>
+<p>Notice that to make Fugue run on native Spark or Pandas UDF, you only need to toggle the configuration <code class="docutils literal notranslate"><span class="pre">fugue.spark.use_pandas_udf</span></code> (see <a class="reference internal" href="../advanced/useful_config.html"><span class="doc std std-doc">details</span></a>).</p>
+<p>The original notebook can be found <a class="reference external" href="https://rawcdn.githack.com/fugue-project/tutorials/43ff485961ca6f0e388ba5f03f687271d4a14480/tutorials/appendix/fugue_spark_benchmark_notebook.html">here</a> or <a class="reference external" href="https://github.com/fugue-project/tutorials/blob/43ff485961ca6f0e388ba5f03f687271d4a14480/tutorials/appendix/fugue_spark_benchmark_notebook.html">here</a>.</p>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Databricks runtime version:</strong> 10.1 (Scala 2.12 Spark 3.2..0)</p></li>
+<li><p><strong>Cluster:</strong> 1 i3.xlarge driver instance and 8 i3.xlarge worker instances</p></li>
+</ul>
+</div>
 <div class="section" id="the-datasets">
 <h2>The Datasets<a class="headerlink" href="#the-datasets" title="Permalink to this headline">¶</a></h2>
 <p>The original example dataset is a Spark dataframe with 10 million rows, it was created and persisted in this way:</p>
@@ -597,7 +610,7 @@ For <code class="docutils literal notranslate"><span class="pre">df_largest</spa
 <p>Here is the performance chart:</p>
 <p><img alt="Cumulative Probability" src="../../_images/fugue_spark_benchmark_cdf.png" /></p>
 <ul class="simple">
-<li><p>Without Pandas UDF, Fugue on Native Spark is roughly 9x to 10x faster than the approach (PySpark UDF) written in the original article.</p></li>
+<li><p>Fugue on Native Spark is roughly 9x to 10x faster than row-at-a-time UDF.</p></li>
 <li><p>With Pandas UDF, the overhead of Fugue is less than 0.1 seconds regardless of data size.</p></li>
 <li><p>Pandas UDF is indeed much faster.</p></li>
 </ul>
@@ -609,8 +622,8 @@ the compute using Pandas will reduce overhead, and when they add together, it tu
 on Pandas UDF are faster than Pandas UDF itself, it’s mainly because of the performance variance. What we want to show here is
 that performance-wise, Fugue on Pandas UDF is on the same level as Pandas UDF, there isn’t obvious overhead.</p>
 </div>
-<div class="section" id="minus-mean">
-<h2>Minus-Mean<a class="headerlink" href="#minus-mean" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="subtract-mean">
+<h2>Subtract Mean<a class="headerlink" href="#subtract-mean" title="Permalink to this headline">¶</a></h2>
 <p>The author’s approach is <code class="docutils literal notranslate"><span class="pre">groupby-apply</span></code>, which is a valid idea to compare the performance. And to examine the performance overhead brought by Fugue, we will also consider 3 more scenarios here:</p>
 <ul class="simple">
 <li><p>With more compute: each partition processing logic can take longer, so we let it sleep 0.5 seconds before returning the result.</p></li>
@@ -624,9 +637,9 @@ that performance-wise, Fugue on Pandas UDF is on the same level as Pandas UDF, t
 </pre></div>
 </div>
 <p>Here is the performance chart:</p>
-<p><img alt="Minus Mean 1" src="../../_images/fugue_spark_benchmark_minus_mean_1.png" /></p>
+<p><img alt="Subtract Mean 1" src="../../_images/fugue_spark_benchmark_subtract_mean_1.png" /></p>
 <ul class="simple">
-<li><p>Without Pandas UDF, Fugue on Native Spark is over 2x faster than the code written in the Databricks article.</p></li>
+<li><p>Fugue on Native Spark is over 2x faster than row-at-a-time UDF.</p></li>
 <li><p>With Pandas UDF, the overhead of Fugue is not obvious, regardless of data size, compute size, or partition size.</p></li>
 <li><p>Pandas UDF is indeed much faster, but with more compute, Pandas UDF has less speed advantage.</p></li>
 <li><p>With the same amount of data, more partitions always require more time to process.</p></li>
@@ -641,14 +654,14 @@ It is a typical case where SQL can provide an elegant solution, here is the Fugu
 </div>
 <p>Fugue SQL on Spark will be translated to a sequence of Spark SQLs to run.
 We tested on <code class="docutils literal notranslate"><span class="pre">df</span></code>, <code class="docutils literal notranslate"><span class="pre">df_larger</span></code> and <code class="docutils literal notranslate"><span class="pre">df_largest</span></code>:</p>
-<p><img alt="Minus Mean 2" src="../../_images/fugue_spark_benchmark_minus_mean_2.png" /></p>
+<p><img alt="Subtract Mean 2" src="../../_images/fugue_spark_benchmark_subtract_mean_2.png" /></p>
 <p>So the SQL approach is always the fastest regardless of data size.
 This is an important rule of thumb: <strong>try to keep Spark compute in JVM</strong>.</p>
 </div>
-<div class="section" id="minus-one">
-<h2>Minus-One<a class="headerlink" href="#minus-one" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="plus-one">
+<h2>Plus One<a class="headerlink" href="#plus-one" title="Permalink to this headline">¶</a></h2>
 <p>The reason we put this example the last is because it is not a good example as the Cumulative Probability.
-Based on the previous examples, we can tell the Pandas UDF will beat the Native PySpark UDF again.
+Based on the previous examples, we can tell the Pandas UDF will beat the one-row-at-a-time UDF again.
 But how does Pandas UDF compare to a SQL solution?
 Since we have verified the overhead of Fugue on Pandas UDF in the previous examples, in this example, we will just compare Pandas UDF and Fugue SQL:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">v</span><span class="o">+</span><span class="mi">1</span> <span class="k">AS</span> <span class="n">v</span> <span class="k">FROM</span> <span class="n">df</span>
@@ -657,7 +670,7 @@ Since we have verified the overhead of Fugue on Pandas UDF in the previous examp
 </pre></div>
 </div>
 <p>Again we tested on <code class="docutils literal notranslate"><span class="pre">df</span></code>, <code class="docutils literal notranslate"><span class="pre">df_larger</span></code> and <code class="docutils literal notranslate"><span class="pre">df_largest</span></code>:</p>
-<p><img alt="Minus One" src="../../_images/fugue_spark_benchmark_minus_one.png" /></p>
+<p><img alt="Plus One" src="../../_images/fugue_spark_benchmark_plus_one.png" /></p>
 <p>It simply reiterates the rule of thumb: try to keep Spark compute in JVM.
 Why SQL is important for Spark? One of the reasons is that it naturally keeps most of the logic inside JVM,
 so Spark can run efficiently.</p>
@@ -666,7 +679,7 @@ so Spark can run efficiently.</p>
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
 <p>Considering the 3 examples above:</p>
 <ul class="simple">
-<li><p>Without Pandas UDF, Fugue is highly optimized to run on PySpark. It usually outperforms simple native PySpark code.</p></li>
+<li><p>Without Pandas UDF, Fugue is highly optimized to run on PySpark. It usually outperforms simple native PySpark code such as row-at-a-time UDF</p></li>
 <li><p>With Pandas UDF, Fugue doesn’t have a noticeable overhead against the native Pandas UDF approach, regardless of data size, compute size, and partition size. (Based on our other tests, Fugue on Pandas UDF may have a fixed overhead on a sub-second level regardless of data size.)</p></li>
 <li><p>Fugue SQL on Spark can easily outperform Pandas UDF if the logic can be expressed in SQL.</p></li>
 </ul>
