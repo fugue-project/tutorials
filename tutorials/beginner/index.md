@@ -10,7 +10,8 @@ Fugue is an abstraction framework that lets users write code in native Python or
 :hidden:
 
 introduction
-transform
+type_flexibility
+partitioning
 decoupling_logic_and_execution
 interface
 joins
@@ -25,6 +26,9 @@ We'll get started by introducing Fugue and the simplest way to use it with the `
 
 ## [Type Flexbility](type_flexibility.ipynb)
 After seeing an example of the `transform()` function, we look into the further flexibility Fugue provides by accepting functions with different input and output types. This allows users to define their logic in whatever makes the most sense, and bring native Python functions to Spark or Dask.
+
+## [Partitioning](partitioning.ipynb)
+Now that we have seen how functions can be written for Fugue to bring them to Spark or Dask, we look at how the `transform()` function can be applied with partitioning. In pandas semantics, this would be the equivalent of a `groupby-apply()`. The difference is partitioning is a core concept in distrubted compute as it controls both logical and physical grouping of data.
 
 ## [Decoupling Logic and Execution](decoupling_logic_and_execution.ipynb)
 After seeing how the `transform` function enables the use of Python and pandas code on Spark, we'll see how we can apply this same principle to entire compute workflows using `FugueWorkflow`. We'll show how Fugue allows users to decouple logic from execution, and introduce some of the benefits this provides. We'll go one step further in showing how we use native Python to make our code truly independent of any framework.
