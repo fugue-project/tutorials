@@ -6,21 +6,21 @@ hide-toc: true
 
 All questions are welcome in the Slack channel.
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fugue-project/tutorials/master) ⬅️ Launch these tutorials in Binder
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fugue-project/tutorials/master) ⬅️  Launch these tutorials in Binder
 
-[![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue) ⬅️ Check out our source code
+[![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue) ⬅️  Check out our source code
 
-[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ) ⬅️ Chat with us on slack
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ) ⬅️  Chat with us on slack
 
 ## What Does Fugue Do?
 
 Fugue provides an easier interface to using distributed compute effectively and accelerates big data projects. It does this by minimizing the amount of code you need to write, in addition to taking care of tricks and optimizations that lead to more efficient execution.
 
-If you are new to Fugue or distributed computing, start with the [Getting Started](tutorials/beginner/index.md) section.
+Bringing a Python/Pandas function to Spark or Dask? check the [Fugue Transform](introduction.html#fugue-transform) section.
 
-If you are specifically looking for FugueSQL to use a SQL interface on top of Spark and Dask, check the [FugueSQL](tutorials/fugue_sql/index.md) section.
+Need a SQL interface on top of Pandas, Spark and Dask? check the [FugueSQL](tutorials/fugue_sql/index.md) section.
 
-There are also multiple conference presentations and blog posts that can be found in the [Resources](tutorials/resources.md) section.
+For previous conference presentations and blog posts, check the [Resources](tutorials/resources.md) section.
 
 ## Installation
 
@@ -63,6 +63,7 @@ tutorials/advanced/index
 
 
 tutorials/examples/index
+tutorials/recipes/index
 tutorials/applications/index
 tutorials/debugging/index
 ```
