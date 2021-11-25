@@ -578,7 +578,7 @@
 </div>
 <div class="section" id="fugue-transform">
 <h2>Fugue <code class="docutils literal notranslate"><span class="pre">transform()</span></code><a class="headerlink" href="#fugue-transform" title="Permalink to this headline">¶</a></h2>
-<p>The simplest way Fugue can be used to scale Pandas based code to Spark or Dask is the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function. In the example below, we’ll train a model using scikit-learn and pandas, and then perform the <code class="docutils literal notranslate"><span class="pre">predict</span></code> step in parallel on top of the Spark execution engine.</p>
+<p>The simplest way Fugue can be used to scale Pandas based code to Spark or Dask is the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function. In the example below, we’ll train a model using scikit-learn and pandas, and then perform the inference parallelized on top of the Spark execution engine.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -672,15 +672,14 @@
     <span class="n">params</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">reg</span><span class="p">),</span>
     <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;spark&quot;</span>
 <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
 <span class="n">result</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+---+---------+
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pyspark.sql.dataframe.DataFrame&#39;&gt;
++---+---+---------+
 |x_1|x_2|predicted|
 +---+---+---------+
 |  3|  3|     12.0|
