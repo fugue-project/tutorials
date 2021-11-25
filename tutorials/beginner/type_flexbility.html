@@ -1,0 +1,1030 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Type Flexibility &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/fugue_logo_trimmed.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="index.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="partitioning.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../advanced/index.html">
+   Deep Dive
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/testing.html">
+     Testing PySpark Applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using Fugue on Databricks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/coiled.html">
+     Using Fugue on Coiled
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../debugging/index.html">
+   Debugging
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../debugging/unknown_opcode.html">
+     SystemError - unknown opcode
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/fugue_spark_benchmark.html">
+     Benchmark of Fugue on Spark
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/beginner/type_flexbility.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/fugue-project/tutorials/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/beginner/type_flexbility.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/beginner/type_flexbility.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/beginner/type_flexbility.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-problem-and-transform">
+   Sample Problem and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     transform()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#different-input-and-output-annotations">
+   Different Input and Output Annotations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bring-the-functions-to-distrbited-compute">
+   Bring the Functions to Distrbited Compute
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#valid-input-and-output-types">
+   Valid input and output types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="type-flexibility">
+<h1>Type Flexibility<a class="headerlink" href="#type-flexibility" title="Permalink to this headline">¶</a></h1>
+<p>In the previous section, we saw how the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function was used to bring a Python function to Spark or Dask. In this section, we take a deeper look at the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function and what types of inputs and outputs it can handle.</p>
+<p>In the last section, the function we brought to Spark looked like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">LinearRegression</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>It had an input of type <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>, and an output of type <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>. Fugue applies these type annotations and converts the input to the type specified. The output annotation is also used to convert back to the engine DataFrame (Pandas, Spark or Dask). In this section, we will see some other examples of type annotations Fugue can handle.</p>
+<p>For those more familiar with distributed computing, the conversion is done for each partition. This will be explained more in later sections, but the important concept is that Fugue <strong>does not</strong> convert the whole Spark or Dask DataFrame to Pandas to perform the operation. The conversion overhead has been <a class="reference internal" href="../appendix/fugue_spark_benchmark.html"><span class="doc std std-doc">benchmarked</span></a> and found to be negligible, especially for big data.</p>
+<div class="section" id="sample-problem-and-transform">
+<h2>Sample Problem and <code class="docutils literal notranslate"><span class="pre">transform()</span></code><a class="headerlink" href="#sample-problem-and-transform" title="Permalink to this headline">¶</a></h2>
+<p>In this sample problem, we are interested in getting the first three digits of the <code class="docutils literal notranslate"><span class="pre">phone</span></code> column and populating a new column called <code class="docutils literal notranslate"><span class="pre">location</span></code> by using a dictionary that maps the values. We start by preparing the sample data and defining the mapping.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">_area_code_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;217&quot;</span><span class="p">:</span> <span class="s2">&quot;Champaign, IL&quot;</span><span class="p">,</span> <span class="s2">&quot;407&quot;</span><span class="p">:</span> <span class="s2">&quot;Orlando, FL&quot;</span><span class="p">,</span> <span class="s2">&quot;510&quot;</span><span class="p">:</span> <span class="s2">&quot;Fremont, CA&quot;</span><span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;(217)-123-4567&quot;</span><span class="p">,</span> <span class="s2">&quot;(217)-234-5678&quot;</span><span class="p">,</span> <span class="s2">&quot;(407)-123-4567&quot;</span><span class="p">,</span> 
+                               <span class="s2">&quot;(407)-234-5678&quot;</span><span class="p">,</span> <span class="s2">&quot;(510)-123-4567&quot;</span><span class="p">]})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, we’ll perform the operation in pandas. It’s very simple because of the <code class="docutils literal notranslate"><span class="pre">.map()</span></code> method in pandas. We then test the function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">map_phone_to_location</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;phone&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_area_code_map</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">map_phone_to_location</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>phone</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>(217)-123-4567</td>
+      <td>Champaign, IL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(217)-234-5678</td>
+      <td>Champaign, IL</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>(407)-123-4567</td>
+      <td>Orlando, FL</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>(407)-234-5678</td>
+      <td>Orlando, FL</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>(510)-123-4567</td>
+      <td>Fremont, CA</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Similar to the function in the previous section, this function can be used in Spark on big data with Fugue’s <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function. For now, we will leave the engine blank to use the default pandas-based <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">transform</span>
+
+<span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
+          <span class="n">map_phone_to_location</span><span class="p">,</span>
+          <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*, location:str&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>phone</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>(217)-123-4567</td>
+      <td>Champaign, IL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(217)-234-5678</td>
+      <td>Champaign, IL</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="different-input-and-output-annotations">
+<h2>Different Input and Output Annotations<a class="headerlink" href="#different-input-and-output-annotations" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">map_phone_to_location()</span></code> logic can actually be expressed in native Python. Below are three valid implementations of the same function. The <code class="docutils literal notranslate"><span class="pre">map_phone_to_location3()</span></code> below is less practical, but it’s just to demo the varying types Fugue can take. <code class="docutils literal notranslate"><span class="pre">List[List]</span></code> will be useful in some use cases where you want to perform row-wise operations on DataFrames.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="k">def</span> <span class="nf">map_phone_to_location2</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+        <span class="n">row</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_area_code_map</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;phone&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]]</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">def</span> <span class="nf">map_phone_to_location3</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_area_code_map</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">def</span> <span class="nf">map_phone_to_location4</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_area_code_map</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]])</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;phone&quot;</span><span class="p">,</span> <span class="s2">&quot;location&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">map_phone_to_location4()</span></code> shows that the input and output types can differ. We can test these functions by passing some input.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">map_phone_to_location2</span><span class="p">([{</span><span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;(217)-123-4567&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;(217)-234-5678&quot;</span><span class="p">}])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;phone&#39;: &#39;(217)-123-4567&#39;, &#39;location&#39;: &#39;Champaign, IL&#39;},
+ {&#39;phone&#39;: &#39;(217)-234-5678&#39;, &#39;location&#39;: &#39;Champaign, IL&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">map_phone_to_location3</span><span class="p">([[</span><span class="s2">&quot;(217)-123-4567&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;(217)-234-5678&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;(217)-123-4567&#39;, &#39;Champaign, IL&#39;], [&#39;(217)-234-5678&#39;, &#39;Champaign, IL&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">map_phone_to_location4</span><span class="p">([[</span><span class="s2">&quot;(217)-123-4567&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;(217)-234-5678&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>phone</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>(217)-123-4567</td>
+      <td>Champaign, IL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(217)-234-5678</td>
+      <td>Champaign, IL</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Even if these functions are not meant to operate on pandas DataFrames, Fugue <code class="docutils literal notranslate"><span class="pre">transform()</span></code> will handle the conversion for us so we don’t need to make any changes to them to use them on Pandas, Spark or Dask.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
+          <span class="n">map_phone_to_location2</span><span class="p">,</span>
+          <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*, location:str&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>phone</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>(217)-123-4567</td>
+      <td>Champaign, IL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(217)-234-5678</td>
+      <td>Champaign, IL</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
+          <span class="n">map_phone_to_location3</span><span class="p">,</span>
+          <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*, location:str&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>phone</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>(217)-123-4567</td>
+      <td>Champaign, IL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(217)-234-5678</td>
+      <td>Champaign, IL</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
+          <span class="n">map_phone_to_location4</span><span class="p">,</span>
+          <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*, location:str&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>phone</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>(217)-123-4567</td>
+      <td>Champaign, IL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(217)-234-5678</td>
+      <td>Champaign, IL</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="bring-the-functions-to-distrbited-compute">
+<h2>Bring the Functions to Distrbited Compute<a class="headerlink" href="#bring-the-functions-to-distrbited-compute" title="Permalink to this headline">¶</a></h2>
+<p>Because they work on the <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code>, we can also use the functions on the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fugue_spark</span>
+
+<span class="n">spark_df</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
+                     <span class="n">map_phone_to_location3</span><span class="p">,</span>    <span class="c1"># List[List] implementation</span>
+                     <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*, location:str&quot;</span><span class="p">,</span>
+                     <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;spark&quot;</span><span class="p">)</span>
+
+<span class="n">spark_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------+-------------+
+|         phone|     location|
++--------------+-------------+
+|(217)-123-4567|Champaign, IL|
+|(217)-234-5678|Champaign, IL|
++--------------+-------------+
+only showing top 2 rows
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="valid-input-and-output-types">
+<h2>Valid input and output types<a class="headerlink" href="#valid-input-and-output-types" title="Permalink to this headline">¶</a></h2>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function, Fugue is converting the function into a <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> object under the hood. The full list valid input and output annotations can be found in the <a class="reference internal" href="../extensions/transformer.html"><span class="doc std std-doc">Transformer extension docs</span></a>.</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>In this section we have shown how the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function can adapt to user’s code by accepting multiple input and output type annotations. This allows users to express their logic in whatever is best for the given problem. Fugue then uses the specified annotations and takes care of bringing these functions to Spark or Dask.</p>
+<p>In the next section, we’ll cover how the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function handles partitions.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "fugue-project/tutorials",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/beginner"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Fugue Development Team<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

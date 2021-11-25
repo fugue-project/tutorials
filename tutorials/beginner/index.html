@@ -119,6 +119,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="partitioning.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="decoupling_logic_and_execution.html">
      Decoupling Logic and Execution
     </a>
@@ -505,6 +510,20 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#type-flexbility">
+   <span class="xref myst">
+    Type Flexbility
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partitioning">
+   <span class="xref myst">
+    Partitioning
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#decoupling-logic-and-execution">
    <span class="xref myst">
     Decoupling Logic and Execution
@@ -566,7 +585,15 @@
 </div>
 <div class="section" id="introduction">
 <h2><a class="reference internal" href="introduction.html"><span class="doc std std-doc">Introduction</span></a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>We’ll get started by introducing Fugue and the simplest way to use it with the <code class="docutils literal notranslate"><span class="pre">transform</span></code> function. The <code class="docutils literal notranslate"><span class="pre">transform</span></code> function can take in a Python or pandas function and scale it out in Spark or Dask without having to modify the function. This provides a very simple interface to parallelize Python and pandas code on distributed compute engines, such as Spark and Dask.</p>
+<p>We’ll get started by introducing Fugue and the simplest way to use it with the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function. The <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function can take in a Python or pandas function and scale it out in Spark or Dask without having to modify the function. This provides a very simple interface to parallelize Python and pandas code on distributed compute engines, such as Spark and Dask.</p>
+</div>
+<div class="section" id="type-flexbility">
+<h2><span class="xref myst">Type Flexbility</span><a class="headerlink" href="#type-flexbility" title="Permalink to this headline">¶</a></h2>
+<p>After seeing an example of the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function, we look into the further flexibility Fugue provides by accepting functions with different input and output types. This allows users to define their logic in whatever makes the most sense, and bring native Python functions to Spark or Dask.</p>
+</div>
+<div class="section" id="partitioning">
+<h2><a class="reference internal" href="partitioning.html"><span class="doc std std-doc">Partitioning</span></a><a class="headerlink" href="#partitioning" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have seen how functions can be written for Fugue to bring them to Spark or Dask, we look at how the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function can be applied with partitioning. In pandas semantics, this would be the equivalent of a <code class="docutils literal notranslate"><span class="pre">groupby-apply()</span></code>. The difference is partitioning is a core concept in distrubted compute as it controls both logical and physical grouping of data.</p>
 </div>
 <div class="section" id="decoupling-logic-and-execution">
 <h2><a class="reference internal" href="decoupling_logic_and_execution.html"><span class="doc std std-doc">Decoupling Logic and Execution</span></a><a class="headerlink" href="#decoupling-logic-and-execution" title="Permalink to this headline">¶</a></h2>

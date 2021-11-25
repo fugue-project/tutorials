@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Fugue Interface" href="interface.html" />
-    <link rel="prev" title="Introduction" href="introduction.html" />
+    <link rel="prev" title="Partitioning" href="partitioning.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -116,6 +116,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="introduction.html">
      Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="partitioning.html">
+     Partitioning
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -538,11 +543,6 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#independence-from-frameworks">
-   Independence from Frameworks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#testability-and-maintainability">
    Testability and Maintainability
   </a>
@@ -570,17 +570,18 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="decoupling-logic-and-execution">
 <h1>Decoupling Logic and Execution<a class="headerlink" href="#decoupling-logic-and-execution" title="Permalink to this headline">¶</a></h1>
-<p>In the last section, we used Fugue’s transform function to port pandas code to Spark. Decoupling logic and execution is one of the primary motivations of Fugue. When transitioning a project from pandas to Spark, the majority of the code normally has has to be re-written. This is because using either pandas or Spark makes code highly coupled with that framework. This leads to a couple of problems:</p>
+<p>In the tutorials so far, we used Fugue’s <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function to port pandas code to Spark without any rewrites. The <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function is also very flexible so it can handle functions with varying input and output types.</p>
+<p>Decoupling logic and execution is one of the primary motivations of Fugue. This is meant to solve a couple of problems:</p>
 <ol class="simple">
 <li><p>Users have to learn an entirely new framework to work with distributed compute problems</p></li>
 <li><p>Logic written for a <em>small data</em> project does not become reusable for a <em>big data</em> project</p></li>
 <li><p>Testing becomes a heavyweight process for distributed compute, especially Spark</p></li>
 <li><p>Along with number 3, iterations for distributed compute problems become slower and more expensive</p></li>
 </ol>
-<p>Fugue believes that code should minimize dependency on frameworks as much as possible. This provides flexibility and portability. <strong>By decoupling logic and execution, we can focus on our logic in a scale-agnostic way, and then choose which engine to use when the time arises.</strong></p>
+<p>Fugue believes that code should minimize dependency on frameworks as much as possible. This provides flexibility and portability. <strong>By decoupling logic and execution, we can focus on our logic in a scale-agnostic way, and then choose which execution engine to use when the time arises.</strong> In this section, we look at how to move from the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function to end-to-end workflows with <code class="docutils literal notranslate"><span class="pre">FugueWorkflow()</span></code>.</p>
 <div class="section" id="differences-between-pandas-and-spark">
 <h2>Differences between Pandas and Spark<a class="headerlink" href="#differences-between-pandas-and-spark" title="Permalink to this headline">¶</a></h2>
-<p>To illustrate the first two main points above, we’ll use a simple example. For the data below, we are interested in getting the first three digits of the <code class="docutils literal notranslate"><span class="pre">phone</span></code> column and populating a new column called <code class="docutils literal notranslate"><span class="pre">location</span></code> by using a dictionary that maps the values. We start by preparing the sample data and defining the mapping.</p>
+<p>To illustrate the first two main points above, we’ll use the same example that we used in the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> section. We want to create a new column called <code class="docutils literal notranslate"><span class="pre">location</span></code> using the mapping dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -746,27 +747,79 @@
 </div>
 </div>
 <p>Looking at the two code examples, we had to reimplement the exact same functionality with completely different syntax. This isn’t a cherry-picked example. Data practitioners will often have to write two implementations of the same logic, one for each framework, especially as the logic gets more specific.</p>
-<p>This is where Fugue comes in. Users can use the abstraction layer to only write one implementation of the function. This can then be applied to pandas, Spark, and Dask. All we need to do is apply a <code class="docutils literal notranslate"><span class="pre">transformer</span></code> decorator to the pandas implementation of the function. The decorator takes in a string that specifies the output schema. The <code class="docutils literal notranslate"><span class="pre">transform</span></code> function does the same thing to the function that is passed in.</p>
+<p>This is where Fugue comes in. Users can use the abstraction layer to only write one implementation of the function. This can then be applied to pandas, Spark, and Dask. We already saw this with the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function. An example snippet can be found below, nothing will be new here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">transformer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">transform</span>
 
-<span class="nd">@transformer</span><span class="p">(</span><span class="s2">&quot;*, location:str&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">map_phone_to_location</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="n">df</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;phone&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_area_code_map</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
+          <span class="n">map_phone_to_location</span><span class="p">,</span>
+          <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>(217)-123-4567</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(217)-234-5678</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>(407)-123-4567</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>(407)-234-5678</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>(510)-123-4567</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-<p>By wrapping the function with the decorator, we can then use it inside a <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code>. The <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code> constructs a directed-acyclic graph (DAG) where the inputs and outputs are DataFrames. More details will follow in the next sections but the important thing for now is to show how it’s used. The code block below is still running in Pandas.</p>
+</div>
+<div class="section" id="transform-versus-fugueworkflow">
+<h2><code class="docutils literal notranslate"><span class="pre">transform</span></code> versus <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code><a class="headerlink" href="#transform-versus-fugueworkflow" title="Permalink to this headline">¶</a></h2>
+<p>While the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function is good for running a single function across multiple execution engines, Fugue also <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code> which can be used to make engine-agnostic workflows. <code class="docutils literal notranslate"><span class="pre">FugueWorkflow()</span></code> constructs a directed-acyclic graph (DAG) where the inputs and outputs are DataFrames. The code block below will run on the pandas-based <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
 
 <span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>  <span class="c1"># Still the original Pandas DataFrame</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">map_phone_to_location</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">map_phone_to_location</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*, location:str&quot;</span><span class="p">)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -788,11 +841,11 @@ Total count: 5
 <p>In order to bring it to Spark, all we need to do is pass the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> into <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code>, similar to how we used the <code class="docutils literal notranslate"><span class="pre">transform</span></code> function to Spark in the last section. Now all the code underneath the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement will run on Spark. We did not make any modifications to <code class="docutils literal notranslate"><span class="pre">map_phone_to_location</span></code> in order to bring it to Spark. By wrapping the function with a <code class="docutils literal notranslate"><span class="pre">transformer</span></code>, it became agnostic to the ExecutionEngine it was operating on. We can use the same function in Spark or Dask without making modifications.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fugue_spark</span>
 
-<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">(</span><span class="n">SparkExecutionEngine</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">(</span><span class="s2">&quot;spark&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>  <span class="c1"># Still the original Pandas DataFrame</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">map_phone_to_location</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">map_phone_to_location</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*, location:str&quot;</span><span class="p">)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -811,59 +864,25 @@ Total count: 5
 </div>
 </div>
 </div>
+<p>If we had five different functions that we call <code class="docutils literal notranslate"><span class="pre">transform</span></code> on to bring to Spark, we would need to specify the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> five times. The <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code> allows us to make the entire computation run on either pandas, Spark, or Dask. Both are similar in principle, in that they leave the original functions decoupled from the execution environment.</p>
 </div>
-<div class="section" id="transform-versus-fugueworkflow">
-<h2><code class="docutils literal notranslate"><span class="pre">transform</span></code> versus <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code><a class="headerlink" href="#transform-versus-fugueworkflow" title="Permalink to this headline">¶</a></h2>
-<p>We have seen the two approaches to bring Python and pandas code to Spark with Fugue. The <code class="docutils literal notranslate"><span class="pre">transform</span></code> function introduced in the first section allows users to leave a function in pandas or Python, and then port it to Spark and Dask. Meanwhile, <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code> does the same for full workflows as opposed to one function.</p>
-<p>For example, if we had five different functions to call <code class="docutils literal notranslate"><span class="pre">transform</span></code> on and bring to Spark, we would need to specify the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> five times. The <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code> allows us to make the entire computation run on either pandas, Spark, or Dask. Both are similar in principle, in that they leave the original functions decoupled to the execution environment.</p>
-</div>
-<div class="section" id="independence-from-frameworks">
-<h2>Independence from Frameworks<a class="headerlink" href="#independence-from-frameworks" title="Permalink to this headline">¶</a></h2>
-<p>We earlier said that the abstraction layer Fugue provides makes code independent of any framework. To show this is true, we can actually rewrite the <code class="docutils literal notranslate"><span class="pre">map_phone_to_location</span></code> function in native Python and still apply it on the pandas and Spark engines.</p>
-<p>Below is the implementation in native Python. Similar to earlier, we are running this on Spark by passing in the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>. A function written in native Python can be ported to pandas, Spark, and Dask.</p>
+<div class="section" id="testability-and-maintainability">
+<h2>Testability and Maintainability<a class="headerlink" href="#testability-and-maintainability" title="Permalink to this headline">¶</a></h2>
+<p>Is the native Python implementation or Pandas implementation of <code class="docutils literal notranslate"><span class="pre">map_phone_to_location</span></code> better? Is the native Spark implementation better?</p>
+<p>The main concern of Fugue is clear readable code. <strong>Users can write code in whatever expresses their logic the best</strong>. The compute efficiency lost by using Fugue is unlikely to be significant, especially in comparison to the developer efficiency gained through more rapid iterations and easier maintenance. In fact, Fugue is designed in a way that often sees speed ups compared to inexperienced users working with native Spark code because it handles a lot of the tricks necessary to use Spark effectively.</p>
+<p>Fugue code becomes easily testable because the function contains logic that is portable across all pandas, Spark, and Dask. We can test code without the need to spin up compute resources (such as Spark or Dask clusters). This hardware often takes time to spin up just for a simple test, making it painful to run unit tests on Spark. Now, we can test quickly with native Python or pandas, and then execute on Spark when needed. Developers that use Fugue benefit from more rapid iterations in their data projects.</p>
+<p>If we use a pure Python function such as the one below, all we have to do is run some values through the defined function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
 
-<span class="c1"># schema: *, location:str</span>
-<span class="k">def</span> <span class="nf">map_phone_to_location</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]:</span>
+<span class="k">def</span> <span class="nf">map_phone_to_location2</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]:</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
         <span class="n">row</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_area_code_map</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;phone&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]]</span>
     <span class="k">return</span> <span class="n">df</span>
 
-<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">(</span><span class="n">SparkExecutionEngine</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>  <span class="c1"># Still the original Pandas DataFrame</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">map_phone_to_location</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SparkDataFrame
-phone:str                                                      |location:str             
----------------------------------------------------------------+-------------------------
-(217)-123-4567                                                 |Champaign, IL            
-(217)-234-5678                                                 |Champaign, IL            
-(407)-123-4567                                                 |Orlando, FL              
-(407)-234-5678                                                 |Orlando, FL              
-(510)-123-4567                                                 |Fremont, CA              
-Total count: 5
-</pre></div>
-</div>
-</div>
-</div>
-<p>Notice the <code class="docutils literal notranslate"><span class="pre">&#64;transformer</span></code> decorator was removed from <code class="docutils literal notranslate"><span class="pre">map_phone_to_location</span></code>. Instead, it was replaced with a comment that specified the schema. Fugue reads in this comment as the <strong>schema hint</strong>. Now, this function is truly independent of any framework and written in native Python. <strong>It is even independent from Fugue itself.</strong> Fugue only appears when we reach the execution part of the code. The logic, however, is not coupled with any framework. The type annotations in the <code class="docutils literal notranslate"><span class="pre">map_phone_to_location</span></code> caused the DataFrame to be converted as it was used by the function. If users want to offboard from Fugue, they can use their function with Pandas <code class="docutils literal notranslate"><span class="pre">apply</span></code> or Spark user-defined functions (UDFs).</p>
-<p>Is the native Python implementation or Pandas implementation of <code class="docutils literal notranslate"><span class="pre">map_phone_to_location</span></code> better? Is the native Spark implementation better?</p>
-<p>The main concern of Fugue is clear readable code. <strong>Users can write code in whatever expresses their logic the best</strong>. The compute efficiency lost by using Fugue is unlikely to be significant, especially in comparison to the developer efficiency gained through more rapid iterations and easier maintenance. In fact, Fugue is designed in a way that often sees speed ups compared to inexperienced users working with native Spark code. Fugue handles a lot of the tricks necessary to use Spark effectively.</p>
-<p>Fugue also future-proofs the code. If one day Spark and Dask are replaced by a more efficient framework, a new ExecutionEngine can be added to Fugue to support that new framework.</p>
-</div>
-<div class="section" id="testability-and-maintainability">
-<h2>Testability and Maintainability<a class="headerlink" href="#testability-and-maintainability" title="Permalink to this headline">¶</a></h2>
-<p>Fugue code becomes easily testable because the function contains logic that is portable across all pandas, Spark, and Dask. All we have to do is run some values through the defined function. We can test code without the need to spin up compute resources (such as Spark or Dask clusters). This hardware often takes time to spin up just for a simple test, making it painful to run unit tests on Spark. Now, we can test quickly with native Python or pandas, and then execute on Spark when needed. Developers that use Fugue benefit from more rapid iterations in their data projects.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remember the input was List[Dict[str,Any]]</span>
-<span class="n">map_phone_to_location</span><span class="p">([{</span><span class="s1">&#39;phone&#39;</span><span class="p">:</span> <span class="s1">&#39;(407)-234-5678&#39;</span><span class="p">},</span> 
+<span class="c1"># Remember the input was List[Dict[str,Any]]</span>
+<span class="n">map_phone_to_location2</span><span class="p">([{</span><span class="s1">&#39;phone&#39;</span><span class="p">:</span> <span class="s1">&#39;(407)-234-5678&#39;</span><span class="p">},</span> 
                        <span class="p">{</span><span class="s1">&#39;phone&#39;</span><span class="p">:</span> <span class="s1">&#39;(407)-234-5679&#39;</span><span class="p">}])</span>
 </pre></div>
 </div>
@@ -919,11 +938,11 @@ Total count: 5
         
             <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="introduction.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="partitioning.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title">Partitioning</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="interface.html" title="next page">

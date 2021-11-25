@@ -52,7 +52,7 @@
     <link rel="shortcut icon" href="../../_static/fugue_logo_trimmed.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Decoupling Logic and Execution" href="decoupling_logic_and_execution.html" />
+    <link rel="next" title="Partitioning" href="partitioning.html" />
     <link rel="prev" title="Getting Started" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -116,6 +116,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="partitioning.html">
+     Partitioning
     </a>
    </li>
    <li class="toctree-l2">
@@ -527,7 +532,7 @@
    Fugue
    <code class="docutils literal notranslate">
     <span class="pre">
-     transform
+     transform()
     </span>
    </code>
   </a>
@@ -542,7 +547,7 @@
    [Optional] Spark Equivalent of
    <code class="docutils literal notranslate">
     <span class="pre">
-     transform
+     transform()
     </span>
    </code>
   </a>
@@ -560,17 +565,15 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>When data is small enough to fit on a laptop, it’s simple for data practitioners to iterate on data projects. Most commonly, data practitioners use pandas and NumPy for their data analysis and feature engineering needs. These tools go well with scikit-learn to provide a stack capable of handling the end-to-end machine learning pipeline. This works great until data becomes too big to fit on a single machine. At this point, data practitioners need to move to distributed compute frameworks such as Spark and Dask to scale their solutions out.</p>
 <div class="section" id="utilizing-distributed-compute">
 <h2>Utilizing Distributed Compute<a class="headerlink" href="#utilizing-distributed-compute" title="Permalink to this headline">¶</a></h2>
 <p>pandas is great for small datasets, but unfortunately does not scale well large datasets. The primary reason is that pandas is single core, and does not take advantage of all available compute resources. A lot of operations also generate <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/scale.html#scaling-to-large-datasets">intermediate copies</a> of data, utilizing more memory than necessary. To effectively handle data with pandas, users preferably need to have <a class="reference external" href="https://wesmckinney.com/blog/apache-arrow-pandas-internals/">5x to 10x times</a> as much RAM as the size of the dataset.</p>
-<p>This leads us to frameworks such as Spark and Dask. These frameworks allow us to split compute jobs across multiple machines. They also can handle datasets that don’t fit into memory by spilling data over to disk in some cases. Compared to Spark, Dask is the easier transition from pandas because it is built on top of the pandas DataFrames which means that there is strong parity between their APIs. But ultimately, moving to Spark or Dask still requires code changes to port pandas code. Added to changing code, there is also a big shift in mindset needed to fully utilize the distributed compute engines.</p>
+<p>Spark and Dask allow us to split compute jobs across multiple machines. They also can handle datasets that don’t fit into memory by spilling data over to disk in some cases. But ultimately, moving to Spark or Dask still requires significant code changes to port existing pandas code. Added to changing code, there is also a lot of knowledge required to use these frameworks effectively.</p>
 <p><strong>Fugue is a framework that is designed to unify the interface between pandas, Spark, and Dask, allowing one codebase to be used across all three engines.</strong></p>
 </div>
 <div class="section" id="fugue-transform">
-<h2>Fugue <code class="docutils literal notranslate"><span class="pre">transform</span></code><a class="headerlink" href="#fugue-transform" title="Permalink to this headline">¶</a></h2>
-<p>Fugue is an abstraction layer designed to provide a seamless transition from local compute to distributed compute. Using the abstraction layer allows users to take advantage of the Spark and Dask computation engines, while writing code in Python, pandas or SQL. This allows users to focus on the problems they are trying to solve, rather than learning a new framework for the job. This also provides other concrete benefits that we’ll see throughout this tutorial.</p>
-<p>The simplest way Fugue can be used to scale Pandas based code to Spark or Dask is the <code class="docutils literal notranslate"><span class="pre">transform</span></code> function. In the example below, we’ll train a model using scikit-learn and pandas, and then perform the <code class="docutils literal notranslate"><span class="pre">predict</span></code> step in parallel on top of the Spark execution engine.</p>
+<h2>Fugue <code class="docutils literal notranslate"><span class="pre">transform()</span></code><a class="headerlink" href="#fugue-transform" title="Permalink to this headline">¶</a></h2>
+<p>The simplest way Fugue can be used to scale Pandas based code to Spark or Dask is the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function. In the example below, we’ll train a model using scikit-learn and pandas, and then perform the <code class="docutils literal notranslate"><span class="pre">predict</span></code> step in parallel on top of the Spark execution engine.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -584,7 +587,7 @@
 </div>
 </div>
 </div>
-<p>After training our model, we then wrap it in a <code class="docutils literal notranslate"><span class="pre">predict</span></code> function. This function is still written in pandas. We can easily test it on the <code class="docutils literal notranslate"><span class="pre">input_df</span></code> that we create.</p>
+<p>After training our model, we then wrap it in a <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function. This function is still written in pandas. We can easily test it on the <code class="docutils literal notranslate"><span class="pre">input_df</span></code> that we create. Wrapping it will allow us to bring it to Spark.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">LinearRegression</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
@@ -650,34 +653,28 @@
 </table>
 </div></div></div>
 </div>
-<p>Now we bring it to Spark using Fugue in the next code snippets. Fugue has a function called transform that takes in a DataFrame and applies a function to it distributedly using Spark engine or Dask engine. We’ll explain the inputs that go into this function in a bit (but they should be intuitive). The important thing to notice is that we did not make modifications to the pandas-based <code class="docutils literal notranslate"><span class="pre">predict</span></code> function in order to use it on Spark. This function can now scale to big datasets through the Spark execution engine.</p>
-<p>Even if there is no cluster available, the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> will start a local Spark instance and parallelize the jobs with all cores of the machine</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create Spark session for next cells</span>
-<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
-<span class="n">spark_session</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>Now we bring it to Spark using Fugue using the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function. This takes in a DataFrame and applies a function to it using either of the Pandas, Spark, or Dask engines. The <code class="docutils literal notranslate"><span class="pre">transform()</span></code> inputs will be explained later, but for now, notice that we did not make modifications to the pandas-based <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function in order to use it on Spark. This function can now scale to big datasets through the Spark execution engine.</p>
+<p>Even if there is no Spark cluster available, the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> will start a local Spark instance and parallelize the jobs with all cores of the machine.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">transform</span>
-<span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+<span class="kn">import</span> <span class="nn">fugue_spark</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span>
     <span class="n">input_df</span><span class="p">,</span>
     <span class="n">predict</span><span class="p">,</span>
     <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*,predicted:double&quot;</span><span class="p">,</span>
     <span class="n">params</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">reg</span><span class="p">),</span>
-    <span class="n">engine</span><span class="o">=</span><span class="n">SparkExecutionEngine</span><span class="p">(</span><span class="n">spark_session</span><span class="p">)</span>
+    <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;spark&quot;</span>
 <span class="p">)</span>
 <span class="n">result</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+---+---------+
 |x_1|x_2|predicted|
 +---+---+---------+
@@ -690,22 +687,31 @@
 </div>
 </div>
 </div>
-<p>The first two arguments of the <code class="docutils literal notranslate"><span class="pre">transform</span></code> function are the DataFrame to operate on and the function to use. The <code class="docutils literal notranslate"><span class="pre">input_df</span></code> can either be a pandas DataFrame or a Spark DataFrame. The engine then dictates what execution engine to use for the computation. Because we supplied a pandas DataFrame with the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>, that DataFrame was converted to be used in Spark. The output of this function is a Spark DataFrame because the engine used was the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>. Supplying no engine uses the pandas-based <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code>. Fugue also has a <code class="docutils literal notranslate"><span class="pre">DaskExecutionEngine</span></code> available.</p>
-<p>The other two arguments are the <code class="docutils literal notranslate"><span class="pre">schema</span></code> and <code class="docutils literal notranslate"><span class="pre">params</span></code>. Explicit <code class="docutils literal notranslate"><span class="pre">schema</span></code> is a hard requirement in distributed computing frameworks, so we need to supply the output <code class="docutils literal notranslate"><span class="pre">schema</span></code> of the operation. When compared to the Spark equivalent (seen below), this is a much simpler interface to handle the <code class="docutils literal notranslate"><span class="pre">schema</span></code>. Lastly, <code class="docutils literal notranslate"><span class="pre">params</span></code> is a dictionary that contains other inputs into the function. In this case, we passed in the regression model to be used.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function takes in the following arguments:</p>
+<ul class="simple">
+<li><p>df     - input DataFrame. Can be a Spark, Pandas, or Dask DataFrame</p></li>
+<li><p>using  - a Python function with valid type annotations</p></li>
+<li><p>schema - output schema of the operation</p></li>
+<li><p>params - a dictionary of parameters to pass in the function</p></li>
+<li><p>engine - the execution engine to run the operation on (Pandas, Spark, or Dask).</p></li>
+</ul>
+<p>Because we supplied <code class="docutils literal notranslate"><span class="pre">&quot;spark&quot;</span></code> as the engine, the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function will be applied on <code class="docutils literal notranslate"><span class="pre">input_df</span></code> on top of the Spark ExecutionEngine. Fugue will handle the conversion from a Pandas DataFrame to a Spark DataFrame. Similarly, a Spark DataFrame can be passed to the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> call. Supplying no engine uses the pandas-based <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code>. Fugue also has a <code class="docutils literal notranslate"><span class="pre">DaskExecutionEngine</span></code> available.</p>
+<p>Explicit <code class="docutils literal notranslate"><span class="pre">schema</span></code> is a hard requirement in distributed computing frameworks, so we need to supply the output <code class="docutils literal notranslate"><span class="pre">schema</span></code> of the operation. When compared to the Spark equivalent (seen below), this is a much simpler interface to handle the <code class="docutils literal notranslate"><span class="pre">schema</span></code>.</p>
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>With that, we have shown the use-case of Fugue in scaling pandas-written code to Spark. It can be done in very few lines of code, without altering the existing code base. In the next section, we’ll see other features Fugue has to offer, and the other ways it simplifies using distributed compute. By using the <code class="docutils literal notranslate"><span class="pre">transform</span></code> function, we allowed the <code class="docutils literal notranslate"><span class="pre">predict</span></code> function to be applicable to both pandas and Spark. We’ll apply this same concept to entire workflows in the next section.</p>
-<p>While we used pandas here, we’ll also show that native Python functions can also be used across the different execution engines.</p>
+<p>Fugue’s <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function can scale pandas-written code to Spark or Dask, without altering the existing functions. In the next section, we’ll see take a deeper look at the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function. While we used pandas here, we’ll also show that native Python functions can also be used across the different execution engines.</p>
 </div>
 <div class="section" id="optional-spark-equivalent-of-transform">
-<h2>[Optional] Spark Equivalent of <code class="docutils literal notranslate"><span class="pre">transform</span></code><a class="headerlink" href="#optional-spark-equivalent-of-transform" title="Permalink to this headline">¶</a></h2>
-<p>If you are wondering how <code class="docutils literal notranslate"><span class="pre">transform</span></code> compares to implementing the same logic in Spark, below is an example of how the pandas function would be implemented in Spark if you did it yourself. This implementation uses the Spark’s <code class="docutils literal notranslate"><span class="pre">mapInPandas</span></code> method available in Spark 3.0. Note how the <code class="docutils literal notranslate"><span class="pre">schema</span></code> has to be handled inside the <code class="docutils literal notranslate"><span class="pre">run_predict</span></code> function. This is the <code class="docutils literal notranslate"><span class="pre">schema</span></code> requirement we mentioned earlier that Fugue provides a simpler interface for.</p>
+<h2>[Optional] Spark Equivalent of <code class="docutils literal notranslate"><span class="pre">transform()</span></code><a class="headerlink" href="#optional-spark-equivalent-of-transform" title="Permalink to this headline">¶</a></h2>
+<p>Below is an example of how the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function would be brought to Spark without the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function. This implementation uses the Spark’s <code class="docutils literal notranslate"><span class="pre">mapInPandas()</span></code> method available in Spark 3.0. Note how the <code class="docutils literal notranslate"><span class="pre">schema</span></code> has to be handled inside the <code class="docutils literal notranslate"><span class="pre">run_predict</span></code> function. This is the <code class="docutils literal notranslate"><span class="pre">schema</span></code> requirement we mentioned earlier that Fugue provides a simpler interface for.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StructType</span><span class="p">,</span> <span class="n">StructField</span><span class="p">,</span> <span class="n">DoubleType</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">SparkSession</span>
+
+<span class="n">spark_session</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">predict_wrapper</span><span class="p">(</span><span class="n">dfs</span><span class="p">:</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span> <span class="n">model</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="p">:</span>
@@ -741,7 +747,7 @@
 </div>
 </div>
 </div>
-<p>It’s very easy to see why it becomes very difficult to bring a pandas codebase to Spark with this approach. We had to define two additional functions in the <code class="docutils literal notranslate"><span class="pre">predict_wrapper</span></code> and the <code class="docutils literal notranslate"><span class="pre">run_predict</span></code> to bring it to Spark. If this had to be done for tens of functions, it could easily fill the codebase with boilerplate code, making it hard to focus on the logic.</p>
+<p>It’s very easy to see why it becomes very difficult to bring a pandas codebase to Spark with this approach. We had to define two additional functions in the <code class="docutils literal notranslate"><span class="pre">predict_wrapper()</span></code> and the <code class="docutils literal notranslate"><span class="pre">run_predict()</span></code> to bring it to Spark. If this had to be done for tens of functions, it could easily fill the codebase with boilerplate code, making it hard to focus on the logic.</p>
 </div>
 </div>
 
@@ -777,10 +783,10 @@
             <p class="prev-next-title">Getting Started</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="decoupling_logic_and_execution.html" title="next page">
+    <a class='right-next' id="next-link" href="partitioning.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Decoupling Logic and Execution</p>
+        <p class="prev-next-title">Partitioning</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
