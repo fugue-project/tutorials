@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why Fugue Does NOT Want To Be Another Pandas-Like Framework &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/fugue_logo_trimmed.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Benchmark of Fugue on Spark" href="fugue_spark_benchmark.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../beginner/index.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/type_flexibility.html">
+     Type Flexibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/partitioning.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../advanced/index.html">
+   Deep Dive
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/testing.html">
+     Testing PySpark Applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using Fugue on Databricks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/coiled.html">
+     Using Fugue on Coiled
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../debugging/index.html">
+   Debugging
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../debugging/unknown_opcode.html">
+     SystemError - unknown opcode
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Appendix
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fugue_spark_benchmark.html">
+     Benchmark of Fugue on Spark
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Why Fugue Does NOT Want To Be Another Pandas-Like Framework
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/appendix/fugue_not_pandas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/fugue-project/tutorials/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/appendix/fugue_not_pandas.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/appendix/fugue_not_pandas.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-simple-example">
+   A Simple Example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#configuration-and-datasets">
+     Configuration and Datasets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-1">
+     Comparison 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-2">
+     Comparison 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-3">
+     Comparison 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-of-comparisons">
+     Summary of Comparisons
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="why-fugue-does-not-want-to-be-another-pandas-like-framework">
+<h1>Why Fugue Does NOT Want To Be Another Pandas-Like Framework<a class="headerlink" href="#why-fugue-does-not-want-to-be-another-pandas-like-framework" title="Permalink to this headline">¶</a></h1>
+<p>Fugue fully utilizes Pandas for computing tasks, but <strong>Fugue is NOT a Pandas-like computing framework, and it never wants to be.</strong> In this article we are going to explain the reason for this critical design decision.</p>
+<div class="section" id="a-simple-example">
+<h2>A Simple Example<a class="headerlink" href="#a-simple-example" title="Permalink to this headline">¶</a></h2>
+<p>This is an example modified from a real piece of Pandas user code. Assume we have Pandas dataframes generated by this code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span><span class="s2">&quot;xyzzzz&quot;</span><span class="p">,</span><span class="s2">&quot;tttfs&quot;</span><span class="p">],</span><span class="n">n</span><span class="p">),</span>
+        <span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="n">n</span><span class="p">),</span>
+        <span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span><span class="s2">&quot;xyzzzz&quot;</span><span class="p">,</span><span class="s2">&quot;tttfs&quot;</span><span class="p">],</span><span class="n">n</span><span class="p">),</span>
+        <span class="n">d</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="n">n</span><span class="p">),</span>
+    <span class="p">))</span>
+</pre></div>
+</div>
+<p>The output has four columns with string and integer types. Here is the user’s code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;last&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Based on the code, the user want to firstly partition the dataframe by <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>,
+and in each group, the user wants to sort by <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code> and then to get the last record
+of each group.</p>
+<div class="section" id="configuration-and-datasets">
+<h3>Configuration and Datasets<a class="headerlink" href="#configuration-and-datasets" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Databricks runtime version:</strong> 10.1 (Scala 2.12 Spark 3.2..0)</p></li>
+<li><p><strong>Cluster:</strong> 1 i3.xlarge driver instance and 8 i3.xlarge worker instances</p></li>
+</ul>
+<p>And we will use 4 different datasets: 1 million, 10 million, 20 million, and 30 million</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span> <span class="o">=</span> <span class="n">gen</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">g1</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">pdf1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">to_pandas_on_spark</span><span class="p">()</span>
+
+<span class="n">g10</span> <span class="o">=</span> <span class="n">gen</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">df10</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">g10</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">df10</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">pdf10</span> <span class="o">=</span> <span class="n">df10</span><span class="o">.</span><span class="n">to_pandas_on_spark</span><span class="p">()</span>
+
+<span class="n">g20</span> <span class="o">=</span> <span class="n">gen</span><span class="p">(</span><span class="mi">20</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">df20</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">g20</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">df20</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">pdf20</span> <span class="o">=</span> <span class="n">df20</span><span class="o">.</span><span class="n">to_pandas_on_spark</span><span class="p">()</span>
+
+<span class="n">g30</span> <span class="o">=</span> <span class="n">gen</span><span class="p">(</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">df30</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">g30</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">df30</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">pdf30</span> <span class="o">=</span> <span class="n">df30</span><span class="o">.</span><span class="n">to_pandas_on_spark</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="comparison-1">
+<h3>Comparison 1<a class="headerlink" href="#comparison-1" title="Permalink to this headline">¶</a></h3>
+<p>Let’s firstly follow the user’s original logic, and we will discuss the alternative solution later.</p>
+<p>In this <a class="reference external" href="https://databricks.com/blog/2021/10/04/pandas-api-on-upcoming-apache-spark-3-2.html">Databrick’s article</a>
+the author claimed that Pandas users will be able to scale their workloads with one simple line change in the Spark 3.2 release.
+So we will first convert the Pandas dataframe to the Spark Pandas dataframe (and without any other change) to verify the result.</p>
+<p>On the other hand, in traditional Spark, a <a class="reference external" href="https://stackoverflow.com/a/33878701">window function solution</a> is typical.
+So we will also add the window function solution to the comparison.</p>
+<p>To force the full execution of the statement and also to verify result consistency, at the end of each execution
+we will compute the sum of column <code class="docutils literal notranslate"><span class="pre">d</span></code> and print.</p>
+<p>Based on the output, the 3 solutions all have consistent result, meaning they have no correctness issue, now let’s
+take a look at their speed:</p>
+<p><img alt="Sort Dedup vs Window" src="../../_images/pandas_like_1.png" /></p>
+<ul class="simple">
+<li><p>With a 32 core Spark cluster, both Spark solutions are significantly faster than
+the single core Pandas solution</p></li>
+<li><p>The window function solution is 30% to 50% faster than the Spark Pandas solution</p></li>
+</ul>
+<p>On a local machine, a global sort is a very popular technique that is often seen in Pandas code. And in certain
+scenarios it outperforms other methods. However
+the global sort operation in distributed computing is difficult and expensive. The performance depends on each
+specific computing framework’s implementation. Spark Pandas has done an amazing job, but even so,
+it is still significantly slower than a window function.</p>
+<p>Rethinking about the problem we want to solve, a global sort on the entire dataset is not necessary.
+If convenience is the only thing important, then switching the Pandas backend to Spark Pandas may make sense.
+However the whole point of moving to Spark is to be more scalable and performant. Moving to window function that
+will sort inside each partition isn’t overly complicated, but the performance advantage is significant.</p>
+</div>
+<div class="section" id="comparison-2">
+<h3>Comparison 2<a class="headerlink" href="#comparison-2" title="Permalink to this headline">¶</a></h3>
+<p>In the second comparison, we simplify the original problem to not consider column <code class="docutils literal notranslate"><span class="pre">c</span></code>. We only need to remove
+<code class="docutils literal notranslate"><span class="pre">c</span></code> in <code class="docutils literal notranslate"><span class="pre">sort_values</span></code> to accommodate the change</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;last&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Again, it’s intuitive and convenient and Spark Pandas can inherit this change too. However, this new problem
+actually means we want to group by <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> and get the max value of <code class="docutils literal notranslate"><span class="pre">d</span></code>. It can be a simple aggregation
+in big data. So in this comparison, we add the simple Spark aggregation approach.</p>
+<p><img alt="Sort Dedup vs Window vs Aggregation" src="../../_images/pandas_like_2.png" /></p>
+<ul class="simple">
+<li><p>The previous performance pattern stays the same</p></li>
+<li><p>Spark aggregation takes ~1 sec regardless of data size</p></li>
+</ul>
+<p>So now, do you want to just remove column <code class="docutils literal notranslate"><span class="pre">c</span></code> for simplicity or do you want to rewrite the logic for performance?</p>
+</div>
+<div class="section" id="comparison-3">
+<h3>Comparison 3<a class="headerlink" href="#comparison-3" title="Permalink to this headline">¶</a></h3>
+<p>Let’s go back to the original logic where we still have 4 columns. By understanding the intention, we can have an alternative Pandas solution:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>When testing on the 1 million dataset, the original logic takes <code class="docutils literal notranslate"><span class="pre">1.43</span> <span class="pre">sec</span></code> while this new logic takes <code class="docutils literal notranslate"><span class="pre">2.2</span> <span class="pre">sec</span></code>. This is probably
+one of the reasons the user chose the sort &amp; dedup approach. On a small local dataset, a global sort seems to be faster.</p>
+<p>In this section, we are going to compare groupby-apply with sort-dedup on all datasets. In addition, this fits nicely
+with <a class="reference external" href="https://databricks.com/blog/2017/10/30/introducing-vectorized-udfs-for-pyspark.html">Pandas UDF</a> scenarios, so we will also
+compare with the Pandas UDF approach.</p>
+<p>To avoid duplication, we extract the lambda function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">largest</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Unfortunately, the first issue we encounter is that Spark Pandas can’t take this function</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">largest</span><span class="p">)</span>  <span class="c1"># g1 is a pandas dataframe, it works</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">applyInPandas</span><span class="p">(</span><span class="n">largest</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;a string,b long,c string,d long&quot;</span><span class="p">)</span>  <span class="c1"># Pandas UDF works</span>
+<span class="n">pdf1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">largest</span><span class="p">)</span>  <span class="c1"># pdf1 is a spark pandas dataframe, it doesn&#39;t work</span>
+</pre></div>
+</div>
+<p>So for Spark Pandas we will need to use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdf1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">largest</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This breaks the claim that with an import change everything works out of the box.</p>
+<p>Now let’s see the performance chart:</p>
+<p><img alt="Sort Dedup vs Group Apply vs Pandas UDF" src="../../_images/pandas_like_3.png" /></p>
+<ul class="simple">
+<li><p>For Pandas, when data size increases, groupby-apply has more performance advantage over sort-dedup</p></li>
+<li><p>For Spark Pandas, groupby-apply is even slower than Pandas</p></li>
+<li><p>Pandas UDF is the fastest Spark solution for this problem</p></li>
+</ul>
+</div>
+<div class="section" id="summary-of-comparisons">
+<h3>Summary of Comparisons<a class="headerlink" href="#summary-of-comparisons" title="Permalink to this headline">¶</a></h3>
+<p>With the 3 comparisons we find out:</p>
+<ul class="simple">
+<li><p>The convenience is at the cost of performance</p></li>
+<li><p>Simply switching backend doesn’t always work (not 100% consistent)</p></li>
+<li><p>Simply switching backend can cause unexpected performance issues</p></li>
+<li><p>Big data problems require different ways of thinking, users must learn and change their mindset</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "fugue-project/tutorials",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/appendix"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="fugue_spark_benchmark.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Benchmark of Fugue on Spark</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Fugue Development Team<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
