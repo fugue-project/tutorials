@@ -717,12 +717,12 @@
 <p>The <code class="docutils literal notranslate"><span class="pre">map_phone_to_location()</span></code> logic can actually be expressed in native Python. Below are three valid implementations of the same function. The <code class="docutils literal notranslate"><span class="pre">map_phone_to_location3()</span></code> below is less practical, but it’s just to demo the varying types Fugue can take. <code class="docutils literal notranslate"><span class="pre">List[List]</span></code> will be useful in some use cases where you want to perform row-wise operations on DataFrames.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Iterable</span>
 
-<span class="k">def</span> <span class="nf">map_phone_to_location2</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]:</span>
+<span class="k">def</span> <span class="nf">map_phone_to_location2</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]:</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
         <span class="n">row</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_area_code_map</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;phone&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]]</span>
-    <span class="k">return</span> <span class="n">df</span>
+        <span class="k">yield</span> <span class="n">row</span>
 
 <span class="k">def</span> <span class="nf">map_phone_to_location3</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
@@ -746,8 +746,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;phone&#39;: &#39;(217)-123-4567&#39;, &#39;location&#39;: &#39;Champaign, IL&#39;},
- {&#39;phone&#39;: &#39;(217)-234-5678&#39;, &#39;location&#39;: &#39;Champaign, IL&#39;}]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object map_phone_to_location2 at 0x7f07ac856ed0&gt;
 </pre></div>
 </div>
 </div>
@@ -956,7 +955,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fugue_spark</span>
 
 <span class="n">spark_df</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
-                     <span class="n">map_phone_to_location3</span><span class="p">,</span>    <span class="c1"># List[List] implementation</span>
+                     <span class="n">map_phone_to_location2</span><span class="p">,</span>    <span class="c1"># Iterable[List] implementation</span>
                      <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*, location:str&quot;</span><span class="p">,</span>
                      <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;spark&quot;</span><span class="p">)</span>
 
@@ -975,6 +974,9 @@
 |(217)-234-5678|Champaign, IL|
 +--------------+-------------+
 only showing top 2 rows
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
