@@ -813,7 +813,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
-
+<span class="kn">import</span> <span class="nn">fugue_spark</span>
 
 <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]:</span>
     <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]}]</span>
@@ -826,6 +826,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21/11/28 22:12:14 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark&#39;s default log4j profile: org/apache/spark/log4j-defaults.properties
+Setting default log level to &quot;WARN&quot;.
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+-----+
 | id|count|
 +---+-----+
@@ -851,20 +857,6 @@ only showing top 5 rows
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+-----+
-| id|count|
-+---+-----+
-|  B|    3|
-|  C|    3|
-|  A|    3|
-+---+-----+
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="presort">
@@ -882,52 +874,6 @@ only showing top 5 rows
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>id</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2021-01-02</td>
-      <td>A</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2021-01-03</td>
-      <td>B</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2021-01-01</td>
-      <td>C</td>
-      <td>3</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Similarly, the row with the minumum <code class="docutils literal notranslate"><span class="pre">value</span></code> can be taken by using <code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">asc</span></code> as the presort.</p>
 </div>
@@ -939,12 +885,10 @@ only showing top 5 rows
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clip</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
     <span class="k">if</span> <span class="nb">id</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span><span class="p">:</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">df</span>
-
-    
 </pre></div>
 </div>
 </div>
@@ -957,26 +901,6 @@ only showing top 5 rows
           <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
           <span class="n">partition</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;by&quot;</span><span class="p">:</span><span class="s2">&quot;id&quot;</span><span class="p">},</span>
           <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;spark&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+---+-----+
-|      date| id|value|
-+----------+---+-----+
-|2021-01-01|  B|    1|
-|2021-01-02|  B|    2|
-|2021-01-03|  B|    2|
-|2021-01-01|  C|    2|
-|2021-01-02|  C|    2|
-|2021-01-03|  C|    2|
-|2021-01-01|  A|    3|
-|2021-01-02|  A|    4|
-|2021-01-03|  A|    2|
-+----------+---+-----+
 </pre></div>
 </div>
 </div>
