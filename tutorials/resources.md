@@ -42,6 +42,7 @@ FugueSQL
 
 * [Interoperable Python and SQL in Jupyter Notebooks](https://towardsdatascience.com/interoperable-python-and-sql-in-jupyter-notebooks-86245e711352)(Towards Data Science)
 * [Data Analysis with FugueSQL on Coiled Dask Clusters](https://coiled.io/data-analysis-with-fuguesql-on-coiled-dask-clusters/)([Coiled](https://coiled.io/) Blog)
+* [Introducing FugueSQL — SQL for Pandas, Spark, and Dask DataFrames](https://towardsdatascience.com/introducing-fuguesql-sql-for-pandas-spark-and-dask-dataframes-63d461a16b27)(By Khuyen Tran throughßß Towards Data Science)
 
 **Workshops**
 
