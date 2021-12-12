@@ -10,6 +10,7 @@ This is a list of examples of Fugue applications. Any questions are welcome in t
 
 data_validation
 testing
+model_sweeping
 databricks_connect
 coiled
 ```
@@ -19,6 +20,10 @@ We'll get started with using Fugue and Pandera for data validation. Using Fugue,
 
 ## [Testing Big Data Applications](testing.ipynb)
 Unit testing is a significant pain point in big data applications. In this section, we examine what makes it so hard to test and how Fugue simplifies it. Through simplified testing, Fugue users often see speedup in the development of big data projects (in addition to lower compute costs).
+
+## [Model Grid Search per Partition](model_sweeping.ipynb)
+Even if a dataset fits in one core, distributed compute can be used for parallelized model training. We can train multiple models simultaneously. In addition, Fugue provides an easy interface to train multiple models for each logical grouping of data.
+
 
 ## Using Fugue with Providers
 

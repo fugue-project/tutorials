@@ -356,6 +356,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="model_sweeping.html">
+     Distributed Machine Learning Model Sweeping
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="databricks_connect.html">
      Using Fugue on Databricks
     </a>
@@ -527,6 +532,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-grid-search-per-partition">
+   <span class="xref myst">
+    Model Grid Search per Partition
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-fugue-with-providers">
    Using Fugue with Providers
   </a>
@@ -571,6 +583,10 @@
 <div class="section" id="testing-big-data-applications">
 <h2><a class="reference internal" href="testing.html"><span class="doc std std-doc">Testing Big Data Applications</span></a><a class="headerlink" href="#testing-big-data-applications" title="Permalink to this headline">¶</a></h2>
 <p>Unit testing is a significant pain point in big data applications. In this section, we examine what makes it so hard to test and how Fugue simplifies it. Through simplified testing, Fugue users often see speedup in the development of big data projects (in addition to lower compute costs).</p>
+</div>
+<div class="section" id="model-grid-search-per-partition">
+<h2><a class="reference internal" href="model_sweeping.html"><span class="doc std std-doc">Model Grid Search per Partition</span></a><a class="headerlink" href="#model-grid-search-per-partition" title="Permalink to this headline">¶</a></h2>
+<p>Even if a dataset fits in one core, distributed compute can be used for parallelized model training. We can train multiple models simultaneously. In addition, Fugue provides an easy interface to train multiple models for each logical grouping of data.</p>
 </div>
 <div class="section" id="using-fugue-with-providers">
 <h2>Using Fugue with Providers<a class="headerlink" href="#using-fugue-with-providers" title="Permalink to this headline">¶</a></h2>
