@@ -11,7 +11,8 @@ pytest-spark
 sphinx
 sphinx-rtd-theme
 furo
-myst-parser
+myst-parser>=0.16.1
+myst-nb>=0.13.1
 
 nbconvert
 nbsphinx
