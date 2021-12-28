@@ -557,6 +557,11 @@
    Z-Score
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#consistency-issues">
+   Consistency issues
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -573,9 +578,9 @@
 <p>The <a class="reference external" href="https://ibis-project.org/docs/">Ibis project</a> tries to bridge the gap between local Python and <a class="reference external" href="https://ibis-project.org/docs/backends/index.html">various backends</a> including distributed systems such as Spark and Dask. The main idea is to create a pythonic interface to express SQL semantic, so the expression is agnostic to the backends.</p>
 <p>The design idea is very aligned with Fugue. But please notice there are a few key differences:</p>
 <ul class="simple">
-<li><p><strong>Fugue believes both pythonic APIs and SQL are valuable</strong>, and this should be determined by particular cases or users’ preferences. On the other hand, Ibis focuses on the pythonic expression of SQL and perfectionizes it.</p></li>
-<li><p><strong>Fugue is a higher level of abstraction than Ibis.</strong> Ibis is nice to construct single SQL statements to accomplish single tasks. Even it involves multiple tables and multiple steps, its final step is either outputting one table or inserting one table into a database. On the other hand, Fugue workflow is to orchestrate these tasks. For example, it can read a table, do the first transformation and save to a file, then do the second transformation and print. Each transformation may be done using Ibis, but loading, saving and printing and the orchestration can be done by Fugue.</p></li>
-<li><p><strong>Not all data transformations can be done by SQL semantic</strong> even if there is a pythonic interface. This is exactly what <a class="reference external" href="introduction.html#fugue-transform">Fugue Transform</a> is designed for. The transformers can wrap complicated Python/Pandas logic and apply them distributedly on dataframes. A typical example is distributed model inference, the inference part has to be done by Python, it can be easily achieved by a transformer, but the data preparation may be done nicely by SQL or Ibis.</p></li>
+<li><p><strong>Fugue supports both pythonic APIs and SQL</strong>, and the choice should be determined by particular cases or users’ preferences. On the other hand, Ibis focuses on the pythonic expression of SQL and perfectionizes it.</p></li>
+<li><p><strong>Fugue supports SQL and non-SQL semantic for data transformation.</strong> Besides SQL, another important option is <a class="reference external" href="introduction.html#fugue-transform">Fugue Transform</a>. The Fugue transformers can wrap complicated Python/Pandas logic and apply them distributedly on dataframes. A typical example is distributed model inference, the inference part has to be done by Python, it can be easily achieved by a transformer, but the data preparation may be done nicely by SQL or Ibis.</p></li>
+<li><p><strong>Fugue and Ibis are on different abstraction layers.</strong> Ibis is nice to construct single SQL statements to accomplish single tasks. Even it involves multiple tables and multiple steps, its final step is either outputting one table or inserting one table into a database. On the other hand, Fugue workflow is to orchestrate these tasks. For example, it can read a table, do the first transformation and save to a file, then do the second transformation and print. Each transformation may be done using Ibis, but loading, saving and printing and the orchestration can be done by Fugue.</p></li>
 </ul>
 <p>This is also why Ibis can be a very nice option for Fugue users to build their pipelines. For people who prefer pythonic APIs, they can keep all the logic in Python with the help of Ibis. Although Fugue has its own functional API similar to Ibis, the programming interface of Ibis is really elegant. It usually helps users write less but more expressive code to achieve the same thing.</p>
 <div class="section" id="hello-world">
@@ -839,6 +844,7 @@ Total count: 2
 </div>
 </div>
 </div>
+<p>And here is the final code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
@@ -881,6 +887,78 @@ a    |c    |0.14944830465|-1.361486459469925|-1.012748793586346|-1.3614864594|-1
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="consistency-issues">
+<h2>Consistency issues<a class="headerlink" href="#consistency-issues" title="Permalink to this headline">¶</a></h2>
+<p>Ibis as of 2.0.0 can have different behaviors on different backends. Here are some examples from the common discrepencies between pandas and SQL.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pandas drops null keys on group (by default), SQL doesn&#39;t</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="kc">None</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span> <span class="s2">&quot;a:str,b:int&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_ibis</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">as_fugue</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;duckdb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+a:str|s:long
+-----+------
+a    |1     
+Total count: 1
+
+PandasDataFrame
+a:str|s:long
+-----+------
+a    |1     
+NULL |2     
+Total count: 2
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrames()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pandas joins on NULLs, SQL doesn&#39;t</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="kc">None</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span> <span class="s2">&quot;a:str,b:int&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_ibis</span><span class="p">()</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="kc">None</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span> <span class="s2">&quot;a:str,c:int&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_ibis</span><span class="p">()</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">inner_join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])[</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="o">.</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">as_fugue</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;duckdb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+a:str|b:int|c:int
+-----+-----+-----
+a    |1    |1    
+NULL |2    |2    
+Total count: 2
+
+PandasDataFrame
+a:str|b:int|c:int
+-----+-----+-----
+a    |1    |1    
+Total count: 1
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrames()
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since Ibis integration is experimental, we rely on Ibis to achieve consistent behaviors. If you have any Ibis specific question please also consider asking in <a class="reference external" href="https://github.com/ibis-project/ibis/issues">Ibis issues</a>.</p>
 </div>
 </div>
 
