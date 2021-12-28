@@ -1,0 +1,949 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ibis Integration (Experimental) &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/fugue_logo_trimmed.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Extensions" href="../extensions/index.html" />
+    <link rel="prev" title="FugueSQL" href="beginner_sql.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Getting Started
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="type_flexibility.html">
+     Type Flexibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="partitioning.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Ibis Integration (Experimental)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../advanced/index.html">
+   Deep Dive
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/testing.html">
+     Testing PySpark Applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/model_sweeping.html">
+     Distributed Machine Learning Model Sweeping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using Fugue on Databricks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/coiled.html">
+     Using Fugue on Coiled
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../debugging/index.html">
+   Debugging
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../debugging/unknown_opcode.html">
+     SystemError - unknown opcode
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/fugue_spark_benchmark.html">
+     Benchmark of Fugue on Spark
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/fugue_not_pandas.html">
+     Why Fugue Does NOT Want To Be Another Pandas-Like Framework
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/beginner/ibis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/fugue-project/tutorials/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/beginner/ibis.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/beginner/ibis.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/beginner/ibis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hello-world">
+   Hello World
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-deeper-integration">
+   A deeper integration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#z-score">
+   Z-Score
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="ibis-integration-experimental">
+<h1>Ibis Integration (Experimental)<a class="headerlink" href="#ibis-integration-experimental" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="https://ibis-project.org/docs/">Ibis project</a> tries to bridge the gap between local Python and <a class="reference external" href="https://ibis-project.org/docs/backends/index.html">various backends</a> including distributed systems such as Spark and Dask. The main idea is to create a pythonic interface to express SQL semantic, so the expression is agnostic to the backends.</p>
+<p>The design idea is very aligned with Fugue. But please notice there are a few key differences:</p>
+<ul class="simple">
+<li><p><strong>Fugue believes both pythonic APIs and SQL are valuable</strong>, and this should be determined by particular cases or users’ preferences. On the other hand, Ibis focuses on the pythonic expression of SQL and perfectionizes it.</p></li>
+<li><p><strong>Fugue is a higher level of abstraction than Ibis.</strong> Ibis is nice to construct single SQL statements to accomplish single tasks. Even it involves multiple tables and multiple steps, its final step is either outputting one table or inserting one table into a database. On the other hand, Fugue workflow is to orchestrate these tasks. For example, it can read a table, do the first transformation and save to a file, then do the second transformation and print. Each transformation may be done using Ibis, but loading, saving and printing and the orchestration can be done by Fugue.</p></li>
+<li><p><strong>Not all data transformations can be done by SQL semantic</strong> even if there is a pythonic interface. This is exactly what <a class="reference external" href="introduction.html#fugue-transform">Fugue Transform</a> is designed for. The transformers can wrap complicated Python/Pandas logic and apply them distributedly on dataframes. A typical example is distributed model inference, the inference part has to be done by Python, it can be easily achieved by a transformer, but the data preparation may be done nicely by SQL or Ibis.</p></li>
+</ul>
+<p>This is also why Ibis can be a very nice option for Fugue users to build their pipelines. For people who prefer pythonic APIs, they can keep all the logic in Python with the help of Ibis. Although Fugue has its own functional API similar to Ibis, the programming interface of Ibis is really elegant. It usually helps users write less but more expressive code to achieve the same thing.</p>
+<div class="section" id="hello-world">
+<h2>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
+<p>In this example, we try to achieve this SQL semantic:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="mi">1</span> <span class="k">AS</span> <span class="n">b</span> <span class="k">FROM</span>
+    <span class="p">(</span><span class="k">SELECT</span> <span class="n">a</span> <span class="k">FROM</span> <span class="n">tb1</span> <span class="k">UNION</span> <span class="k">SELECT</span> <span class="n">a</span> <span class="k">FROM</span> <span class="n">tb2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ibis</span> <span class="kn">import</span> <span class="n">BaseBackend</span><span class="p">,</span> <span class="n">literal</span>
+<span class="kn">import</span> <span class="nn">ibis.expr.types</span> <span class="k">as</span> <span class="nn">ir</span>
+
+<span class="k">def</span> <span class="nf">ibis_func</span><span class="p">(</span><span class="n">backend</span><span class="p">:</span><span class="n">BaseBackend</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ir</span><span class="o">.</span><span class="n">TableExpr</span><span class="p">:</span>
+    <span class="n">tb1</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;tb1&quot;</span><span class="p">)</span>
+    <span class="n">tb2</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;tb2&quot;</span><span class="p">)</span>
+    <span class="n">tb3</span> <span class="o">=</span> <span class="n">tb1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">tb2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tb3</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">tb3</span><span class="o">.</span><span class="n">a</span><span class="o">+</span><span class="n">literal</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s test with the pandas backend</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ibis</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">con</span> <span class="o">=</span> <span class="n">ibis</span><span class="o">.</span><span class="n">pandas</span><span class="o">.</span><span class="n">connect</span><span class="p">({</span>
+    <span class="s2">&quot;tb1&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]),</span>
+    <span class="s2">&quot;tb2&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span>
+<span class="p">})</span>
+<span class="n">ibis_func</span><span class="p">(</span><span class="n">con</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now let’s make this a part of Fugue</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
+<span class="kn">from</span> <span class="nn">fugue_ibis</span> <span class="kn">import</span> <span class="n">run_ibis</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span> <span class="s2">&quot;a:long&quot;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">1</span><span class="p">]],</span> <span class="s2">&quot;a:long&quot;</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">run_ibis</span><span class="p">(</span><span class="n">ibis_func</span><span class="p">,</span> <span class="n">tb1</span><span class="o">=</span><span class="n">df1</span><span class="p">,</span> <span class="n">tb2</span><span class="o">=</span><span class="n">df2</span><span class="p">)</span>
+<span class="n">df3</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s run on Pandas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+a:long|b:long
+------+------
+0     |1     
+1     |2     
+Total count: 2
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrames()
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s run on Dask</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fugue_dask</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;dask&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DaskDataFrame
+a:long|b:long
+------+------
+0     |1     
+1     |2     
+Total count: 2
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrames()
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s run on DuckDB</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fugue_duckdb</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;duck&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+a:long|b:long
+------+------
+0     |1     
+1     |2     
+Total count: 2
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrames()
+</pre></div>
+</div>
+</div>
+</div>
+<p>For each different execution engine, Ibis will also run on the correspondent backend.</p>
+</div>
+<div class="section" id="a-deeper-integration">
+<h2>A deeper integration<a class="headerlink" href="#a-deeper-integration" title="Permalink to this headline">¶</a></h2>
+<p>The above approach needs a function taking in an Ibis backend and returning a <code class="docutils literal notranslate"><span class="pre">TableExpr</span></code>. The following is another approach that simpler and more elegant.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_ibis</span> <span class="kn">import</span> <span class="n">as_ibis</span><span class="p">,</span> <span class="n">as_fugue</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">tb1</span> <span class="o">=</span> <span class="n">as_ibis</span><span class="p">(</span><span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span> <span class="s2">&quot;a:long&quot;</span><span class="p">))</span>
+<span class="n">tb2</span> <span class="o">=</span> <span class="n">as_ibis</span><span class="p">(</span><span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">1</span><span class="p">]],</span> <span class="s2">&quot;a:long&quot;</span><span class="p">))</span>
+<span class="n">tb3</span> <span class="o">=</span> <span class="n">tb1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">tb2</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">as_fugue</span><span class="p">(</span><span class="n">tb3</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">tb3</span><span class="o">.</span><span class="n">a</span><span class="o">+</span><span class="n">literal</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">df3</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+a:long|b:long
+------+------
+0     |1     
+1     |2     
+Total count: 2
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrames()
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternatively, you can treat <code class="docutils literal notranslate"><span class="pre">as_ibis</span></code> and <code class="docutils literal notranslate"><span class="pre">as_fugue</span></code> as class methods. This is more convenient to use, but it’s a bit magical. This is achieved by adding these two methods using <code class="docutils literal notranslate"><span class="pre">setattr</span></code> to the correspondent classes. This patching-like design pattern is widely used by Ibis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fugue_ibis</span>  <span class="c1"># must import</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">tb1</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span> <span class="s2">&quot;a:long&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_ibis</span><span class="p">()</span>
+<span class="n">tb2</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">([[</span><span class="mi">1</span><span class="p">]],</span> <span class="s2">&quot;a:long&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_ibis</span><span class="p">()</span>
+<span class="n">tb3</span> <span class="o">=</span> <span class="n">tb1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">tb2</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">tb3</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">tb3</span><span class="o">.</span><span class="n">a</span><span class="o">+</span><span class="n">literal</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">as_fugue</span><span class="p">()</span>
+<span class="n">df3</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+a:long|b:long
+------+------
+0     |1     
+1     |2     
+Total count: 2
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrames()
+</pre></div>
+</div>
+</div>
+</div>
+<p>By importing <code class="docutils literal notranslate"><span class="pre">fugue_ibis</span></code>, the two methods were automatically added.</p>
+<p>It’s up to the users which way to go. The first approach (<code class="docutils literal notranslate"><span class="pre">run_ibis</span></code>) is the best to separate Ibis logic, as you can see, it is also great for unit testing. The second approach is elegant, but you will have to unit test the code with the logic before and after the conversions. The third approach is the most intuitive, but it’s a bit magical.</p>
+</div>
+<div class="section" id="z-score">
+<h2>Z-Score<a class="headerlink" href="#z-score" title="Permalink to this headline">¶</a></h2>
+<p>Now, let’s consider a practical example. We want to use Fugue to compute z-score of a dataframe, partitioning should be an option. The reason to implement it on Fugue level is that the compute becomes scale agnostic and framework agnostic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">WorkflowDataFrame</span>
+<span class="kn">from</span> <span class="nn">fugue_ibis</span> <span class="kn">import</span> <span class="n">as_ibis</span><span class="p">,</span> <span class="n">as_fugue</span>
+
+<span class="k">def</span> <span class="nf">z_score</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">WorkflowDataFrame</span><span class="p">,</span> <span class="n">input_col</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">output_col</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WorkflowDataFrame</span><span class="p">:</span>
+    <span class="n">by</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">partition_spec</span><span class="o">.</span><span class="n">partition_by</span>
+    <span class="n">idf</span> <span class="o">=</span> <span class="n">as_ibis</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">idf</span><span class="p">[</span><span class="n">input_col</span><span class="p">]</span>    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">by</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">as_fugue</span><span class="p">(</span><span class="n">idf</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">output_col</span><span class="p">:(</span><span class="n">col</span> <span class="o">-</span> <span class="n">col</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span><span class="n">col</span><span class="o">.</span><span class="n">std</span><span class="p">()}))</span>
+    <span class="n">agg</span> <span class="o">=</span> <span class="n">idf</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="n">by</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">mean_</span><span class="o">=</span><span class="n">col</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">std_</span><span class="o">=</span><span class="n">col</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">idf</span><span class="o">.</span><span class="n">inner_join</span><span class="p">(</span><span class="n">agg</span><span class="p">,</span> <span class="n">by</span><span class="p">)[</span><span class="n">idf</span><span class="p">,</span> <span class="p">((</span><span class="n">idf</span><span class="p">[</span><span class="n">input_col</span><span class="p">]</span><span class="o">-</span><span class="n">agg</span><span class="o">.</span><span class="n">mean_</span><span class="p">)</span><span class="o">/</span><span class="n">agg</span><span class="o">.</span><span class="n">std_</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">output_col</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">as_fugue</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, generate testing data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span>
+    <span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="p">))</span>
+
+<span class="n">pdf</span><span class="p">[</span><span class="s2">&quot;expected1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">pdf</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span> <span class="n">pdf</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span><span class="n">pdf</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">pdf</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">tdf</span><span class="p">:</span> <span class="n">tdf</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">expected2</span><span class="o">=</span><span class="p">(</span><span class="n">tdf</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span> <span class="n">tdf</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span><span class="n">tdf</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">z_score</span><span class="p">(</span><span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">pdf</span><span class="p">),</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;z1&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">z_score</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">partition_by</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">),</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;z2&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+a:str|b:str|c:double     |expected1:double  |expected2:double  |z1:double    |z2:double   
+-----+-----+-------------+------------------+------------------+-------------+------------
+a    |c    |0.84640867247|1.144636809499835 |1.577770556350802 |1.14463680949|1.5777705563
+     |     |11278        |                  |                  |98345        |508022      
+a    |c    |0.69947927531|0.6163095213101546|1.0316513450169476|0.61630952131|1.0316513450
+     |     |75043        |                  |                  |01543        |169478      
+a    |c    |0.81379781970|1.0273750242983348|1.4565598691775665|1.02737502429|1.4565598691
+     |     |24772        |                  |                  |83344        |77567       
+a    |c    |0.39650574084|-0.473119748536303|-0.094465490044129|-0.4731197485|-0.094465490
+     |     |698464       |06                |49                |3630345      |0441295     
+a    |c    |0.58127287263|0.1912640955118427|0.5922921108698395|0.19126409551|0.5922921108
+     |     |58587        |9                 |                  |18424        |698396      
+a    |c    |0.29828232595|-0.826310542423581|-0.459550319315429|-0.8263105424|-0.459550319
+     |     |603077       |5                 |6                 |235819       |3154297     
+a    |c    |0.57432524884|0.1662818979021328|0.5664686140318282|0.16628189790|0.5664686140
+     |     |95788        |8                 |                  |21325        |318284      
+a    |c    |0.43141843543|-0.347581023054070|0.0353008712338056|-0.3475810230|0.0353008712
+     |     |397396       |96                |9                 |540714       |33805695    
+a    |c    |0.43586492526|-0.331592378438154|0.0518279486404278|-0.3315923784|0.0518279486
+     |     |56268        |5                 |1                 |3815487      |4042782     
+a    |c    |0.14944830465|-1.361486459469925|-1.012748793586346|-1.3614864594|-1.012748793
+     |     |799375       |9                 |2                 |699263       |5863462     
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrames()
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "fugue-project/tutorials",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/beginner"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="beginner_sql.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">FugueSQL</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../extensions/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Extensions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Fugue Development Team<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
