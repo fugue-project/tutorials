@@ -6,7 +6,9 @@
 
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ) ⬅️ Chat with us on slack
 
-> ⚠️ Please notice that running the code is slow on binder as the spark initialization can take a long time!
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fugue-project/tutorials/master) ⬅️  Launch these tutorials in Binder
+
+> Please notice that running the code is slow on binder as the spark initialization can take a long time!
 
 ## Running locally
 
