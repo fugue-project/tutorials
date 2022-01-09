@@ -4,6 +4,14 @@ This is a collection of talks given at various Meetups and conferences. All ques
 
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ)
 
+## 2022
+
+**Blogs**
+
+Fugue and PyCaret
+
+* [Scaling PyCaret with Spark (or Dask) through Fugue](https://medium.com/p/60bdc3ce133f)(Towards Data Science)
+
 ## 2021
 
 **Conferences**
