@@ -34,6 +34,7 @@ Machine Learning
 Tune
 
 * [Intuitive and Scalable Hyperparameter Tuning with Apache Spark + Fugue](https://www.youtube.com/watch?v=JUretXiLtK0)(Spark AI Summit)
+* [Fugue Tune](https://www.youtube.com/watch?v=MRa0ao4tfWc)(PyData Global)
 
 Testing Spark
 
