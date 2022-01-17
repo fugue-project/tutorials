@@ -12,7 +12,6 @@ data_validation
 testing
 model_sweeping
 databricks_connect
-coiled
 ```
 
 ## [Data Validation](data_validation.ipynb)
