@@ -16,6 +16,6 @@ non-iterative
 
 Here we learn how to define the search space for hyperparameter tuning. We'll learn how Fugue Tune provides an intuitive and scalable interface for defining combinations for hyperparameters for an experiment.
 
-## [Non-iterative Problems](non-iterative.ipynb)
+## [Non-iterative Problems](non_iterative.ipynb)
 
 Next we apply the search space on non-iterative problems. These are machine learning models that converge to a solution.
