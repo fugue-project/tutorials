@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Using Fugue on Coiled &#8212; Fugue Tutorials</title>
+    <title>Fugue Tune &#8212; Fugue Tutorials</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,8 +52,8 @@
     <link rel="shortcut icon" href="../../_static/fugue_logo_trimmed.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Debugging" href="../debugging/index.html" />
-    <link rel="prev" title="Using Fugue on Databricks" href="databricks_connect.html" />
+    <link rel="next" title="Search Space" href="search_space.html" />
+    <link rel="prev" title="SystemError - unknown opcode" href="../debugging/unknown_opcode.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -317,7 +317,7 @@
   Applications
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../examples/index.html">
    Examples
@@ -340,39 +340,34 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
    Applications
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="data_validation.html">
+    <a class="reference internal" href="../applications/data_validation.html">
      Data Validation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="testing.html">
+    <a class="reference internal" href="../applications/testing.html">
      Testing PySpark Applications
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="model_sweeping.html">
+    <a class="reference internal" href="../applications/model_sweeping.html">
      Distributed Machine Learning Model Sweeping
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="databricks_connect.html">
+    <a class="reference internal" href="../applications/databricks_connect.html">
      Using Fugue on Databricks
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Using Fugue on Coiled
     </a>
    </li>
   </ul>
@@ -397,6 +392,30 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Fugue Tune
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Fugue Tune
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="search_space.html">
+     Search Space
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Further Information
  </span>
 </p>
@@ -410,8 +429,8 @@
   <a class="reference internal" href="../appendix/index.html">
    Appendix
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -474,9 +493,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tutorials/applications/coiled.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tutorials/tune/index.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -494,10 +513,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/applications/coiled.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/tune/index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/applications/coiled.ipynb"><button
+        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/tune/index.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -512,31 +531,26 @@
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/applications/coiled.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#search-space">
+   <span class="xref myst">
+    Search Space
+   </span>
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -544,20 +558,42 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Using Fugue on Coiled</h1>
+                <h1>Fugue Tune</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#search-space">
+   <span class="xref myst">
+    Search Space
+   </span>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="using-fugue-on-coiled">
-<h1>Using Fugue on Coiled<a class="headerlink" href="#using-fugue-on-coiled" title="Permalink to this headline">¶</a></h1>
-<p>Coming soon</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="fugue-tune">
+<h1>Fugue Tune<a class="headerlink" href="#fugue-tune" title="Permalink to this headline">¶</a></h1>
+<p>Tune is an abstraction layer for general parameter tuning built on top of <a class="reference external" href="https://github.com/fugue-project/fugue">Fugue</a>. It can run on the backends supported by Fugue (Spark and Dask). All questions are welcome in the Slack channel.</p>
+<p><a class="reference external" href="https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ"><img alt="Slack Status" src="https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&amp;style=social" /></a></p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="search-space">
+<h2><a class="reference internal" href="search_space.html"><span class="doc std std-doc">Search Space</span></a><a class="headerlink" href="#search-space" title="Permalink to this headline">¶</a></h2>
+<p>Here we learn how to define the search space for hyperparameter tuning. We’ll learn how Fugue Tune provides an intuitive and scalable interface for defining combinations for hyperparameters for an experiment.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -573,7 +609,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./tutorials/applications"
+            path: "./tutorials/tune"
         },
         predefinedOutput: true
     }
@@ -585,17 +621,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="databricks_connect.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../debugging/unknown_opcode.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Using Fugue on Databricks</p>
+            <p class="prev-next-title">SystemError - unknown opcode</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../debugging/index.html" title="next page">
+    <a class='right-next' id="next-link" href="search_space.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Debugging</p>
+        <p class="prev-next-title">Search Space</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

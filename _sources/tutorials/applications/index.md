@@ -31,6 +31,3 @@ Since Fugue is a framework for distributed compute, it is often paired with a so
 
 ### [Fugue and Databricks Connect](databricks_connect.ipynb)
 Fugue can be used with the `databricks-connect` library to run code that uses the `SparkExecutionEngine` on a Databricks cluster. Here we'll go over some details of how to set it up.
-
-### [Fugue and Coiled](coiled.ipynb)
-Coiled is one of the leading solutions to manage Dask clusters. Here, we go over how to spin up a Dask cluster with Coiled and use Fugue on the cluster.

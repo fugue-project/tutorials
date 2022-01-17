@@ -69,6 +69,15 @@ tutorials/debugging/index
 ```
 
 ```{toctree}
+:caption: Fugue Tune
+:hidden:
+
+
+tutorials/tune/index
+```
+
+
+```{toctree}
 :caption: Further Information
 :hidden:
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fugue SQL &#8212; Fugue Tutorials</title>
+    <title>Search Space &#8212; Fugue Tutorials</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,6 +52,8 @@
     <link rel="shortcut icon" href="../../_static/fugue_logo_trimmed.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Resources" href="../resources.html" />
+    <link rel="prev" title="Fugue Tune" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -393,19 +395,19 @@
   Fugue Tune
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../tune/index.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
    Fugue Tune
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tune/search_space.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Search Space
     </a>
    </li>
@@ -491,7 +493,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tutorials/legacy/sql.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tutorials/tune/search_space.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -511,10 +513,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/legacy/sql.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/tune/search_space.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/legacy/sql.ipynb"><button
+        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/tune/search_space.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -534,7 +536,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/legacy/sql.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/tune/search_space.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -560,23 +562,38 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hello-world">
-   Hello World
+  <a class="reference internal nav-link" href="#core-classes-concept">
+   Core Classes &amp; Concept
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anonymity">
-   Anonymity
+  <a class="reference internal nav-link" href="#static-space">
+   Static Space
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inline-statements">
-   Inline Statements
+  <a class="reference internal nav-link" href="#grid-search-space">
+   Grid Search Space
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#more-resources">
-   More Resources
+  <a class="reference internal nav-link" href="#random-search-space">
+   Random Search Space
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-search-space-without-sampling">
+   Random Search Space without Sampling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grid-random-search">
+   Grid + Random Search
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#space-combination">
+   Space Combination
   </a>
  </li>
 </ul>
@@ -589,7 +606,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Fugue SQL</h1>
+                <h1>Search Space</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -600,23 +617,38 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hello-world">
-   Hello World
+  <a class="reference internal nav-link" href="#core-classes-concept">
+   Core Classes &amp; Concept
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anonymity">
-   Anonymity
+  <a class="reference internal nav-link" href="#static-space">
+   Static Space
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inline-statements">
-   Inline Statements
+  <a class="reference internal nav-link" href="#grid-search-space">
+   Grid Search Space
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#more-resources">
-   More Resources
+  <a class="reference internal nav-link" href="#random-search-space">
+   Random Search Space
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-search-space-without-sampling">
+   Random Search Space without Sampling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grid-random-search">
+   Grid + Random Search
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#space-combination">
+   Space Combination
   </a>
  </li>
 </ul>
@@ -628,450 +660,170 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="fugue-sql">
-<h1>Fugue SQL<a class="headerlink" href="#fugue-sql" title="Permalink to this headline">¶</a></h1>
-<p>It is strongly recommended to quickly go through the <span class="xref myst">COVID19 example</span> to get a sense of what Fugue SQL can do, and how it works. Here we are going through details of different Fugue SQL features.</p>
-<p>Fugue SQL is an alternative to Fugue programming interface. Both are used to describe your end-to-end workflow logic. The SQL semantic is platform and scale agnostic, so if you write logic in SQL, it’s very high level and abstract, and the underlying computing frameworks will try to excute them in the optimal way.</p>
-<p>The syntax of Fugue SQL is between standard SQL, json and python. The goals behind this design are:</p>
-<ul class="simple">
-<li><p>To be fully compatible with standard SQL <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> statement</p></li>
-<li><p>To create a seamless flow between SQL and Python coding</p></li>
-<li><p>To minimize syntax overhead, to make code as short as possible while still easy to read</p></li>
-</ul>
-<div class="section" id="hello-world">
-<h2>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
-<p>To use Fugue SQL, you need to make sure you have installed the SQL extra</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">fugue</span><span class="p">[</span><span class="n">sql</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>To make writing SQL easier we will use <a class="reference external" href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">cell magic</a> that was introduced in <a class="reference external" href="https://fugue-tutorials.readthedocs.io/en/latest/tutorials/example_covid19.html">COVID19 Data Exploration</a> section of the tutorial. We will take the libraries and functions menteioned above and import it using the following imports:</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="search-space">
+<h1>Search Space<a class="headerlink" href="#search-space" title="Permalink to this headline">¶</a></h1>
+<p>Search space is an important concept in parameter optimization. We know that grid search and random search are the common tuning methods. And they seem to be exclusive to each other. Actually if we have a well defined Space concept, both of them can be included.</p>
+<p>We don’t see a satisfying space design in popular tuning frameworks, so here we polished this concept and created a space language. Plus, we make it as intuitive and minimal as possible.</p>
+<div class="section" id="core-classes-concept">
+<h2>Core Classes &amp; Concept<a class="headerlink" href="#core-classes-concept" title="Permalink to this headline">¶</a></h2>
+<p>The core classes include the Space class itself plus Grid and stochastic expressions. In the following example, we only import the most used ones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_notebook</span> <span class="kn">import</span> <span class="n">setup</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">setup</span> <span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tune</span> <span class="kn">import</span> <span class="n">Space</span><span class="p">,</span> <span class="n">Grid</span><span class="p">,</span> <span class="n">Rand</span><span class="p">,</span> <span class="n">RandInt</span><span class="p">,</span> <span class="n">Choice</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A space can be converted to a list of configurations (parameter combinations), and every configurations is independent and can execute any time any where.</p>
+</div>
+<div class="section" id="static-space">
+<h2>Static Space<a class="headerlink" href="#static-space" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">Space</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">space</span><span class="p">)</span>  <span class="c1"># this is how you get all combinations (configuarations) in a defined space</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/javascript">
-require(["codemirror/lib/codemirror"]);
-function set(str) {
-    var obj = {}, words = str.split(" ");
-    for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
-    return obj;
-  }
-var fugue_keywords = "fill hash rand even presort persist broadcast params process output outtransform rowcount concurrency prepartition zip print title save append parquet csv json single checkpoint weak strong deterministic yield connect sample seed take sub callback dataframe file";
-CodeMirror.defineMIME("text/x-fsql", {
-    name: "sql",
-    keywords: set(fugue_keywords + " add after all alter analyze and anti archive array as asc at between bucket buckets by cache cascade case cast change clear cluster clustered codegen collection column columns comment commit compact compactions compute concatenate cost create cross cube current current_date current_timestamp database databases data dbproperties defined delete delimited deny desc describe dfs directories distinct distribute drop else end escaped except exchange exists explain export extended external false fields fileformat first following for format formatted from full function functions global grant group grouping having if ignore import in index indexes inner inpath inputformat insert intersect interval into is items join keys last lateral lazy left like limit lines list load local location lock locks logical macro map minus msck natural no not null nulls of on optimize option options or order out outer outputformat over overwrite partition partitioned partitions percent preceding principals purge range recordreader recordwriter recover reduce refresh regexp rename repair replace reset restrict revoke right rlike role roles rollback rollup row rows schema schemas select semi separated serde serdeproperties set sets show skewed sort sorted start statistics stored stratify struct table tables tablesample tblproperties temp temporary terminated then to touch transaction transactions transform true truncate unarchive unbounded uncache union unlock unset use using values view when where window with"),
-    builtin: set("date datetime tinyint smallint int bigint boolean float double string binary timestamp decimal array map struct uniontype delimited serde sequencefile textfile rcfile inputformat outputformat"),
-    atoms: set("false true null"),
-    operatorChars: /^[*\/+\-%<>!=~&|^]/,
-    dateSQL: set("time"),
-    support: set("ODBCdotTable doubleQuote zerolessFloat")
-  });
-
-CodeMirror.modeInfo.push( {
-            name: "Fugue SQL",
-            mime: "text/x-fsql",
-            mode: "sql"
-          } );
-
-require(['notebook/js/codecell'], function(codecell) {
-    codecell.CodeCell.options_default.highlight_modes['magic_text/x-fsql'] = {'reg':[/%%fsql/]} ;
-    Jupyter.notebook.events.on('kernel_ready.Kernel', function(){
-    Jupyter.notebook.get_cells().map(function(cell){
-        if (cell.cell_type == 'code'){ cell.auto_highlight(); } }) ;
-    });
-  });
-</script></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;a&#39;: 1, &#39;b&#39;: 2}]
+</pre></div>
 </div>
+</div>
+</div>
+</div>
+<div class="section" id="grid-search-space">
+<h2>Grid Search Space<a class="headerlink" href="#grid-search-space" title="Permalink to this headline">¶</a></h2>
+<p>Grid means every value must present in the configurations, so if there are multiple grid expressions, we simply cross product them</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;hello&quot;</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;world&quot;</span><span class="p">]],</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">Space</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">))</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">space</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   a      b
-0  0  hello
-1  1  world
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: &#39;a&#39;},
+ {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: &#39;b&#39;},
+ {&#39;a&#39;: 1, &#39;b&#39;: 3, &#39;c&#39;: &#39;a&#39;},
+ {&#39;a&#39;: 1, &#39;b&#39;: 3, &#39;c&#39;: &#39;b&#39;}]
 </pre></div>
 </div>
 </div>
 </div>
-<p>the SQL will translate to a sequence of operations in programming interface.</p>
+</div>
+<div class="section" id="random-search-space">
+<h2>Random Search Space<a class="headerlink" href="#random-search-space" title="Permalink to this headline">¶</a></h2>
+<p>Stochastic expressions will randomly draw a value from the collection every time called, it does not guarantee the final sample space will contain all values. But you can control the total number of samples, so you can control the compute load.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">Space</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">Choice</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">))</span>
 
-SELECT 
-* 
-FROM df 
-WHERE a=0  -- we can use df directly defined outside of this cell
-PRINT
+<span class="nb">list</span><span class="p">(</span><span class="n">space</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>hello</td>
-    </tr>
-  </tbody>
-</table>
-</div></div><div class="output text_html"><small>schema: a:long,b:str</small></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;a&#39;: 1, &#39;b&#39;: Rand(low=0, high=1, q=None, log=False, include_high=True), &#39;c&#39;: Choice(&#39;a&#39;, &#39;b&#39;)}]
+</pre></div>
 </div>
 </div>
-<div class="section" id="anonymity">
-<h2>Anonymity<a class="headerlink" href="#anonymity" title="Permalink to this headline">¶</a></h2>
-<p>In Fugue SQL, a very important simplification is anonymity, it is optional, but it can significantly simplify your code.</p>
-<p>For a statement that only needs to consume the previous dataframe, you can use anonymity to chain commands. <code class="docutils literal notranslate"><span class="pre">PRINT</span></code> is the best example. This is good for chaining commands.</p>
+</div>
+<p>So without a sampling instruction, the randome stochastic expressions do not flatten by themselves. You must be explicit on how many samples you want. Also you can set a seed to make it reproduceable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">Space</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">Choice</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">))</span>
 
-a=CREATE [[0,&quot;hello&quot;],[1,&quot;world&quot;]] SCHEMA a:int,b:str
-PRINT   -- If the PRINT is not specify, it means it will print 
-                -- the last dataframe output of the previous statements
-PRINT   -- I can use anonymity again because PRINT doesn&#39;t generate output, so it still means PRINT a
+<span class="nb">list</span><span class="p">(</span><span class="n">space</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>hello</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>world</td>
-    </tr>
-  </tbody>
-</table>
-</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div><div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>hello</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>world</td>
-    </tr>
-  </tbody>
-</table>
-</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;a&#39;: 1, &#39;b&#39;: 0.771320643266746, &#39;c&#39;: &#39;b&#39;},
+ {&#39;a&#39;: 1, &#39;b&#39;: 0.0207519493594015, &#39;c&#39;: &#39;a&#39;},
+ {&#39;a&#39;: 1, &#39;b&#39;: 0.6336482349262754, &#39;c&#39;: &#39;b&#39;}]
+</pre></div>
 </div>
-<p>For statements that don’t generate output, you can’t assign it to any variable. For statements that generates single output, you can also use anonymity and don’t assign to a variable. The following statements will have to use anonymity if they need to consume this output.</p>
+</div>
+</div>
+<p>So far you can see that, the difference between grid and random search is just on expression. When they are converted to the Space class, they both represent a collection of configurations that can run independently. And they are both pre-determined, you know what you are going to do before real execution.</p>
+<p>You may see some newer tuning frameworks such as Optuna let you get rand variables when running a trial. It pushes the responsibility to runtime, giving you the most flexibility. However, that is no longer necessary with this design. You can keep the definition of the spaces in ‘compile time’</p>
+</div>
+<div class="section" id="random-search-space-without-sampling">
+<h2>Random Search Space without Sampling<a class="headerlink" href="#random-search-space-without-sampling" title="Permalink to this headline">¶</a></h2>
+<p>Why do we let this happen?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
-a=CREATE [[0,&quot;hello&quot;]] SCHEMA a:int,b:str
-CREATE [[1,&quot;world&quot;]] SCHEMA a:int,b:str
-PRINT     -- print the second 
-PRINT a   -- print the first, because it is explicit
-PRINT     -- print the second
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">Space</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">Choice</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">))</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">space</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>world</td>
-    </tr>
-  </tbody>
-</table>
-</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div><div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>hello</td>
-    </tr>
-  </tbody>
-</table>
-</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div><div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>world</td>
-    </tr>
-  </tbody>
-</table>
-</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;a&#39;: 1, &#39;b&#39;: Rand(low=0, high=1, q=None, log=False, include_high=True), &#39;c&#39;: Choice(&#39;a&#39;, &#39;b&#39;)}]
+</pre></div>
 </div>
-<p>In the same manner, <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> statement also follows this rule.</p>
+</div>
+</div>
+<p>This is because there is another very popular search algo: <a class="reference external" href="https://arxiv.org/pdf/1807.02811.pdf">Bayesian Optimization</a>, it requires to keep the stochastic expressions so the algo can decide what values to try at each iteration. It will utilize the historical iterations to determine the best next guess.</p>
+<p>It is sequential, but it takes much less guesses than random search to achieve comparable results. So the compute is much less, however, the total time taken is not necessarily less because random search can be fully parallelized while BO can’t.</p>
+<p>To sum up, all search algos have pros and cons, do not stick with one. So that is why we are going to combine them in the next step.</p>
+</div>
+<div class="section" id="grid-random-search">
+<h2>Grid + Random Search<a class="headerlink" href="#grid-random-search" title="Permalink to this headline">¶</a></h2>
+<p>It is common that for some parameters you want to do grid search while for others you want to do random/BO search.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
-CREATE [[0,&quot;hello&quot;], [1,&quot;world&quot;]] SCHEMA a:int,b:str
-SELECT * WHERE a=1  -- The FROM is not needed and it will grab last output of the previous statements
-                    -- This is good for chaining commands
-PRINT
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">Space</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">space</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>world</td>
-    </tr>
-  </tbody>
-</table>
-</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;a&#39;: 1, &#39;b&#39;: 1, &#39;c&#39;: Rand(low=0, high=1, q=None, log=False, include_high=True)},
+ {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: Rand(low=0, high=1, q=None, log=False, include_high=True)}]
+</pre></div>
 </div>
 </div>
-<div class="section" id="inline-statements">
-<h2>Inline Statements<a class="headerlink" href="#inline-statements" title="Permalink to this headline">¶</a></h2>
-<p>Inline statements is a very powerful tool for data wrangling and general analysis. It is easy to use and has an instinctive feel to it.</p>
-<p>Since we can easily do variable assignment in Fugue, it may not be necessary to write your code using anonymity. It’s all up to you.</p>
+</div>
+<p>The above space will do two BO. If you want to do grid + random then:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span>
-SELECT * 
-FROM (CREATE [[0,&quot;hello&quot;], [1,&quot;world&quot;]] SCHEMA a:int,b:str)
-WHERE a=1
-PRINT
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">Space</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
-PRINT ( SELECT *  FROM (CREATE [[0,&quot;hello&quot;], [1,&quot;world&quot;]] SCHEMA a:int,b:str)
- WHERE a=1)
-  
+<span class="nb">list</span><span class="p">(</span><span class="n">space</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>world</td>
-    </tr>
-  </tbody>
-</table>
-</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div><div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>world</td>
-    </tr>
-  </tbody>
-</table>
-</div></div><div class="output text_html"><small>schema: a:int,b:str</small></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;a&#39;: 1, &#39;b&#39;: 1, &#39;c&#39;: 0.5833217369377363},
+ {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 0.5833217369377363},
+ {&#39;a&#39;: 1, &#39;b&#39;: 1, &#39;c&#39;: 0.02517172841774562},
+ {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 0.02517172841774562},
+ {&#39;a&#39;: 1, &#39;b&#39;: 1, &#39;c&#39;: 0.709208009843012},
+ {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 0.709208009843012}]
+</pre></div>
 </div>
 </div>
-<div class="section" id="more-resources">
-<h2>More Resources<a class="headerlink" href="#more-resources" title="Permalink to this headline">¶</a></h2>
-<p>For more information please checkout the <span class="xref myst">Full SQL tutorial.</span></p>
+</div>
+<p>You must notice that, we firstly flatten all stochastic expressions based on <code class="docutils literal notranslate"><span class="pre">sample</span></code> then cross product with grid points, that is why you see 2*3=6 configurations. But there is contradicting semantic inside the above expression. <code class="docutils literal notranslate"><span class="pre">Grid</span></code> guarantees every values to present, but <code class="docutils literal notranslate"><span class="pre">sample</span></code> doesn’t. So our design choice here is to make sure <code class="docutils literal notranslate"><span class="pre">Grid</span></code> requirement is met, and we <code class="docutils literal notranslate"><span class="pre">sample</span></code> only on stochastic expressions</p>
+</div>
+<div class="section" id="space-combination">
+<h2>Space Combination<a class="headerlink" href="#space-combination" title="Permalink to this headline">¶</a></h2>
+<p>What if for a training set, you want to try different models with different searching algos? Let’s write some pseudo code first</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space1</span> <span class="o">=</span> <span class="n">Space</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;model1&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># Grid search</span>
+<span class="n">space2</span> <span class="o">=</span> <span class="n">Space</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;model2&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Random search</span>
+<span class="n">space3</span> <span class="o">=</span> <span class="n">Space</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;model3&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  <span class="c1"># Bayesian Optimization</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -1088,7 +840,7 @@ PRINT ( SELECT *  FROM (CREATE [[0,&quot;hello&quot;], [1,&quot;world&quot;]] SC
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./tutorials/legacy"
+            path: "./tutorials/tune"
         },
         predefinedOutput: true
     }
@@ -1099,7 +851,21 @@ PRINT ( SELECT *  FROM (CREATE [[0,&quot;hello&quot;], [1,&quot;world&quot;]] SC
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Fugue Tune</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../resources.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Resources</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
