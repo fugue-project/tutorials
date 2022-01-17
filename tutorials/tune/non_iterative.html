@@ -1,0 +1,1521 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Non-Iterative Problems &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/fugue_logo_trimmed.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../beginner/index.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/type_flexibility.html">
+     Type Flexibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/partitioning.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/ibis.html">
+     Ibis Integration (Experimental)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../advanced/index.html">
+   Deep Dive
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/testing.html">
+     Testing PySpark Applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/model_sweeping.html">
+     Distributed Machine Learning Model Sweeping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using Fugue on Databricks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../debugging/index.html">
+   Debugging
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../debugging/unknown_opcode.html">
+     SystemError - unknown opcode
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Fugue Tune
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="index.html">
+   Fugue Tune
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="search_space.html">
+     Search Space
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/fugue_spark_benchmark.html">
+     Benchmark of Fugue on Spark
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/fugue_not_pandas.html">
+     Why Fugue Does NOT Want To Be Another Pandas-Like Framework
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/tune/non_iterative.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/fugue-project/tutorials/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/tune/non_iterative.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/tune/non_iterative.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/tune/non_iterative.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-data">
+   Load Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-the-simplest-case-and-run">
+   Define the simplest case and run
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combine-search-algorithms">
+   Combine search algorithms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-sweeping">
+     Model Sweeping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-sweeping-grid-random">
+     Model Sweeping + Grid + Random
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-sweeping-grid-bayesian-optimization">
+     Model Sweeping + Grid + Bayesian Optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-sweeping-grid-random-bayesian-optimization">
+     Model Sweeping + Grid + Random + Bayesian Optimization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partition-and-train">
+   Partition and Train
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-with-spark-or-dask">
+   Train with Spark or Dask
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#realtime-monitoring">
+   Realtime Monitoring
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-cross-validation">
+   Use Cross Validation
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Non-Iterative Problems</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-data">
+   Load Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-the-simplest-case-and-run">
+   Define the simplest case and run
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combine-search-algorithms">
+   Combine search algorithms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-sweeping">
+     Model Sweeping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-sweeping-grid-random">
+     Model Sweeping + Grid + Random
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-sweeping-grid-bayesian-optimization">
+     Model Sweeping + Grid + Bayesian Optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-sweeping-grid-random-bayesian-optimization">
+     Model Sweeping + Grid + Random + Bayesian Optimization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partition-and-train">
+   Partition and Train
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-with-spark-or-dask">
+   Train with Spark or Dask
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#realtime-monitoring">
+   Realtime Monitoring
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-cross-validation">
+   Use Cross Validation
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="non-iterative-problems">
+<h1>Non-Iterative Problems<a class="headerlink" href="#non-iterative-problems" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_notebook</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="n">setup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+require(["codemirror/lib/codemirror"]);
+function set(str) {
+    var obj = {}, words = str.split(" ");
+    for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
+    return obj;
+  }
+var fugue_keywords = "fill hash rand even presort persist broadcast params process output outtransform rowcount concurrency prepartition zip print title save append parquet csv json single checkpoint weak strong deterministic yield connect sample seed take sub callback dataframe file";
+CodeMirror.defineMIME("text/x-fsql", {
+    name: "sql",
+    keywords: set(fugue_keywords + " add after all alter analyze and anti archive array as asc at between bucket buckets by cache cascade case cast change clear cluster clustered codegen collection column columns comment commit compact compactions compute concatenate cost create cross cube current current_date current_timestamp database databases data dbproperties defined delete delimited deny desc describe dfs directories distinct distribute drop else end escaped except exchange exists explain export extended external false fields fileformat first following for format formatted from full function functions global grant group grouping having if ignore import in index indexes inner inpath inputformat insert intersect interval into is items join keys last lateral lazy left like limit lines list load local location lock locks logical macro map minus msck natural no not null nulls of on optimize option options or order out outer outputformat over overwrite partition partitioned partitions percent preceding principals purge range recordreader recordwriter recover reduce refresh regexp rename repair replace reset restrict revoke right rlike role roles rollback rollup row rows schema schemas select semi separated serde serdeproperties set sets show skewed sort sorted start statistics stored stratify struct table tables tablesample tblproperties temp temporary terminated then to touch transaction transactions transform true truncate unarchive unbounded uncache union unlock unset use using values view when where window with"),
+    builtin: set("date datetime tinyint smallint int bigint boolean float double string binary timestamp decimal array map struct uniontype delimited serde sequencefile textfile rcfile inputformat outputformat"),
+    atoms: set("false true null"),
+    operatorChars: /^[*\/+\-%<>!=~&|^]/,
+    dateSQL: set("time"),
+    support: set("ODBCdotTable doubleQuote zerolessFloat")
+  });
+
+CodeMirror.modeInfo.push( {
+            name: "Fugue SQL",
+            mime: "text/x-fsql",
+            mode: "sql"
+          } );
+
+require(['notebook/js/codecell'], function(codecell) {
+    codecell.CodeCell.options_default.highlight_modes['magic_text/x-fsql'] = {'reg':[/%%fsql/]} ;
+    Jupyter.notebook.events.on('kernel_ready.Kernel', function(){
+    Jupyter.notebook.get_cells().map(function(cell){
+        if (cell.cell_type == 'code'){ cell.auto_highlight(); } }) ;
+    });
+  });
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tune</span> <span class="kn">import</span> <span class="n">TUNE_OBJECT_FACTORY</span>
+<span class="n">TUNE_OBJECT_FACTORY</span><span class="o">.</span><span class="n">set_temp_path</span><span class="p">(</span><span class="s2">&quot;/tmp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="load-data">
+<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://www.kaggle.com/goodwanghan/titanic-preprocessed">data</a> is from the famous <a class="reference external" href="https://www.kaggle.com/c/titanic">Titanic</a> competition. We have preprocessed the feature set and combined with label data. For convenience, a copy of the dataset is in this repo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">train_set</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../data/titanic-preprocessed/titanic.parquet&quot;</span><span class="p">)</span>
+
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fare</th>
+      <th>Age</th>
+      <th>Pclass</th>
+      <th>gender</th>
+      <th>C</th>
+      <th>Q</th>
+      <th>S</th>
+      <th>Family</th>
+      <th>Title</th>
+      <th>T_A4</th>
+      <th>...</th>
+      <th>T_SOC</th>
+      <th>T_SOPP</th>
+      <th>T_SOTONO2</th>
+      <th>T_SOTONOQ</th>
+      <th>T_STONO</th>
+      <th>T_STONO2</th>
+      <th>T_WC</th>
+      <th>T_WEP</th>
+      <th>T_X</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>105</th>
+      <td>-0.489442</td>
+      <td>-0.104637</td>
+      <td>0.827377</td>
+      <td>0.737695</td>
+      <td>-0.482043</td>
+      <td>-0.307562</td>
+      <td>0.615838</td>
+      <td>-0.811922</td>
+      <td>0.666638</td>
+      <td>-0.088986</td>
+      <td>...</td>
+      <td>-0.082339</td>
+      <td>-0.058124</td>
+      <td>-0.047431</td>
+      <td>-0.130856</td>
+      <td>-0.116841</td>
+      <td>-0.082339</td>
+      <td>-0.10654</td>
+      <td>-0.058124</td>
+      <td>0.589879</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>-0.488854</td>
+      <td>-0.949986</td>
+      <td>0.827377</td>
+      <td>-1.355574</td>
+      <td>-0.482043</td>
+      <td>-0.307562</td>
+      <td>0.615838</td>
+      <td>1.231645</td>
+      <td>-0.947423</td>
+      <td>-0.088986</td>
+      <td>...</td>
+      <td>-0.082339</td>
+      <td>-0.058124</td>
+      <td>-0.047431</td>
+      <td>-0.130856</td>
+      <td>-0.116841</td>
+      <td>-0.082339</td>
+      <td>-0.10654</td>
+      <td>-0.058124</td>
+      <td>0.589879</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>253</th>
+      <td>-0.324253</td>
+      <td>0.049062</td>
+      <td>0.827377</td>
+      <td>0.737695</td>
+      <td>-0.482043</td>
+      <td>-0.307562</td>
+      <td>0.615838</td>
+      <td>1.231645</td>
+      <td>0.666638</td>
+      <td>-0.088986</td>
+      <td>...</td>
+      <td>-0.082339</td>
+      <td>-0.058124</td>
+      <td>-0.047431</td>
+      <td>-0.130856</td>
+      <td>-0.116841</td>
+      <td>-0.082339</td>
+      <td>-0.10654</td>
+      <td>-0.058124</td>
+      <td>-1.695262</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>320</th>
+      <td>-0.502445</td>
+      <td>-0.565736</td>
+      <td>0.827377</td>
+      <td>0.737695</td>
+      <td>-0.482043</td>
+      <td>-0.307562</td>
+      <td>0.615838</td>
+      <td>-0.811922</td>
+      <td>0.666638</td>
+      <td>-0.088986</td>
+      <td>...</td>
+      <td>-0.082339</td>
+      <td>-0.058124</td>
+      <td>-0.047431</td>
+      <td>-0.130856</td>
+      <td>-0.116841</td>
+      <td>-0.082339</td>
+      <td>-0.10654</td>
+      <td>-0.058124</td>
+      <td>-1.695262</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>706</th>
+      <td>-0.376603</td>
+      <td>1.201810</td>
+      <td>-0.369365</td>
+      <td>-1.355574</td>
+      <td>-0.482043</td>
+      <td>-0.307562</td>
+      <td>0.615838</td>
+      <td>-0.811922</td>
+      <td>-0.947423</td>
+      <td>-0.088986</td>
+      <td>...</td>
+      <td>-0.082339</td>
+      <td>-0.058124</td>
+      <td>-0.047431</td>
+      <td>-0.130856</td>
+      <td>-0.116841</td>
+      <td>-0.082339</td>
+      <td>-0.10654</td>
+      <td>-0.058124</td>
+      <td>0.589879</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>835</th>
+      <td>1.025945</td>
+      <td>0.740711</td>
+      <td>-1.566107</td>
+      <td>-1.355574</td>
+      <td>2.074505</td>
+      <td>-0.307562</td>
+      <td>-1.623803</td>
+      <td>1.231645</td>
+      <td>-0.947423</td>
+      <td>-0.088986</td>
+      <td>...</td>
+      <td>-0.082339</td>
+      <td>-0.058124</td>
+      <td>-0.047431</td>
+      <td>-0.130856</td>
+      <td>-0.116841</td>
+      <td>-0.082339</td>
+      <td>-0.10654</td>
+      <td>-0.058124</td>
+      <td>-1.695262</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>-0.490280</td>
+      <td>-0.796286</td>
+      <td>0.827377</td>
+      <td>-1.355574</td>
+      <td>-0.482043</td>
+      <td>-0.307562</td>
+      <td>0.615838</td>
+      <td>1.231645</td>
+      <td>-0.947423</td>
+      <td>-0.088986</td>
+      <td>...</td>
+      <td>-0.082339</td>
+      <td>-0.058124</td>
+      <td>-0.047431</td>
+      <td>-0.130856</td>
+      <td>-0.116841</td>
+      <td>-0.082339</td>
+      <td>-0.10654</td>
+      <td>-0.058124</td>
+      <td>0.589879</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>629</th>
+      <td>-0.492714</td>
+      <td>-0.104637</td>
+      <td>0.827377</td>
+      <td>0.737695</td>
+      <td>-0.482043</td>
+      <td>3.251373</td>
+      <td>-1.623803</td>
+      <td>-0.811922</td>
+      <td>0.666638</td>
+      <td>-0.088986</td>
+      <td>...</td>
+      <td>-0.082339</td>
+      <td>-0.058124</td>
+      <td>-0.047431</td>
+      <td>-0.130856</td>
+      <td>-0.116841</td>
+      <td>-0.082339</td>
+      <td>-0.10654</td>
+      <td>-0.058124</td>
+      <td>0.589879</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>559</th>
+      <td>-0.298078</td>
+      <td>0.510161</td>
+      <td>0.827377</td>
+      <td>-1.355574</td>
+      <td>-0.482043</td>
+      <td>-0.307562</td>
+      <td>0.615838</td>
+      <td>1.231645</td>
+      <td>-0.947423</td>
+      <td>-0.088986</td>
+      <td>...</td>
+      <td>-0.082339</td>
+      <td>-0.058124</td>
+      <td>-0.047431</td>
+      <td>-0.130856</td>
+      <td>-0.116841</td>
+      <td>-0.082339</td>
+      <td>-0.10654</td>
+      <td>-0.058124</td>
+      <td>0.589879</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>684</th>
+      <td>0.136831</td>
+      <td>2.354558</td>
+      <td>-0.369365</td>
+      <td>0.737695</td>
+      <td>-0.482043</td>
+      <td>-0.307562</td>
+      <td>0.615838</td>
+      <td>1.231645</td>
+      <td>0.666638</td>
+      <td>-0.088986</td>
+      <td>...</td>
+      <td>-0.082339</td>
+      <td>-0.058124</td>
+      <td>-0.047431</td>
+      <td>-0.130856</td>
+      <td>-0.116841</td>
+      <td>-0.082339</td>
+      <td>-0.10654</td>
+      <td>-0.058124</td>
+      <td>0.589879</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>668 rows × 31 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="define-the-simplest-case-and-run">
+<h2>Define the simplest case and run<a class="headerlink" href="#define-the-simplest-case-and-run" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span><span class="p">,</span> <span class="n">GradientBoostingClassifier</span>
+<span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
+
+<span class="kn">from</span> <span class="nn">tune</span> <span class="kn">import</span> <span class="n">Space</span><span class="p">,</span> <span class="n">Grid</span><span class="p">,</span> <span class="n">Rand</span><span class="p">,</span> <span class="n">RandInt</span><span class="p">,</span> <span class="n">Choice</span>
+
+<span class="kn">from</span> <span class="nn">tune_sklearn</span> <span class="kn">import</span> <span class="n">sk_space</span><span class="p">,</span> <span class="n">suggest_sk_models</span><span class="p">,</span> <span class="n">suggest_sk_models_by_cv</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s define sklearn search space with just one model LogisticRegression without parameter and run it</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">sk_space</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">space</span><span class="p">))</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_sk_models</span><span class="p">(</span>
+    <span class="n">space</span><span class="p">,</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># The following code is just for demo purpose</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;__space__model&#39;: &#39;sklearn.linear_model._logistic.LogisticRegression&#39;}]
+0.7847533632286996 [] {&#39;__space__model&#39;: &#39;sklearn.linear_model._logistic.LogisticRegression&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="combine-search-algorithms">
+<h2>Combine search algorithms<a class="headerlink" href="#combine-search-algorithms" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="model-sweeping">
+<h3>Model Sweeping<a class="headerlink" href="#model-sweeping" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">),</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">XGBClassifier</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">eval_metric</span><span class="o">=</span><span class="s1">&#39;mlogloss&#39;</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_sk_models</span><span class="p">(</span>
+    <span class="n">space</span><span class="p">,</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.852017937219731 [] {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 10, &#39;eval_metric&#39;: &#39;mlogloss&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="model-sweeping-grid-random">
+<h3>Model Sweeping + Grid + Random<a class="headerlink" href="#model-sweeping-grid-random" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">),</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">XGBClassifier</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> 
+             <span class="n">learning_rate</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.99</span><span class="p">),</span> <span class="n">eval_metric</span><span class="o">=</span><span class="s1">&#39;mlogloss&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_sk_models</span><span class="p">(</span>
+    <span class="n">space</span><span class="p">,</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8565022421524664 [] {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 10, &#39;max_depth&#39;: 10, &#39;learning_rate&#39;: 0.306285921179203, &#39;eval_metric&#39;: &#39;mlogloss&#39;, &#39;n_jobs&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="model-sweeping-grid-bayesian-optimization">
+<h3>Model Sweeping + Grid + Bayesian Optimization<a class="headerlink" href="#model-sweeping-grid-bayesian-optimization" title="Permalink to this headline">¶</a></h3>
+<p>As you see, we simply remove sample from the previous code, and leave the Rand in the search space. And the setup() of fuggle package configured that when the framework detects random parameters, it will use HyperOpt to do Bayesian Optimization to find the best value. In you own environment, you can easily change this default behavior.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tune</span> <span class="kn">import</span> <span class="n">NonIterativeObjectiveLocalOptimizer</span>
+<span class="kn">from</span> <span class="nn">tune_hyperopt</span> <span class="kn">import</span> <span class="n">HyperoptLocalOptimizer</span>
+<span class="kn">from</span> <span class="nn">tune_optuna</span> <span class="kn">import</span> <span class="n">OptunaLocalOptimizer</span>
+<span class="kn">import</span> <span class="nn">optuna</span>
+
+<span class="n">optuna</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">disable_default_handler</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">to_optimizer</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">NonIterativeObjectiveLocalOptimizer</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">obj</span>
+    <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="s2">&quot;hyperopt&quot;</span><span class="o">==</span><span class="n">obj</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">HyperoptLocalOptimizer</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;optuna&quot;</span> <span class="o">==</span> <span class="n">obj</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">OptunaLocalOptimizer</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+<span class="c1"># make default level 2 optimizer HyperoptLocalOptimizer, so you will not need to set again</span>
+<span class="n">TUNE_OBJECT_FACTORY</span><span class="o">.</span><span class="n">set_noniterative_local_optimizer_converter</span><span class="p">(</span><span class="n">to_optimizer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">),</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">XGBClassifier</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> 
+             <span class="n">learning_rate</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.99</span><span class="p">),</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">eval_metric</span><span class="o">=</span><span class="s1">&#39;mlogloss&#39;</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_sk_models</span><span class="p">(</span>
+    <span class="n">space</span><span class="p">,</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8609865470852018 [] {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 10, &#39;max_depth&#39;: 10, &#39;learning_rate&#39;: 0.5281179072339418, &#39;n_jobs&#39;: 1, &#39;eval_metric&#39;: &#39;mlogloss&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="model-sweeping-grid-random-bayesian-optimization">
+<h3>Model Sweeping + Grid + Random + Bayesian Optimization<a class="headerlink" href="#model-sweeping-grid-random-bayesian-optimization" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">),</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">XGBClassifier</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">learning_rate</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.99</span><span class="p">),</span> 
+             <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">eval_metric</span><span class="o">=</span><span class="s1">&#39;mlogloss&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">Space</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">RandInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_sk_models</span><span class="p">(</span>
+    <span class="n">space</span><span class="p">,</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8699551569506726 [] {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 10, &#39;learning_rate&#39;: 0.5102792654901146, &#39;n_jobs&#39;: 1, &#39;eval_metric&#39;: &#39;mlogloss&#39;, &#39;max_depth&#39;: 61}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="partition-and-train">
+<h2>Partition and Train<a class="headerlink" href="#partition-and-train" title="Permalink to this headline">¶</a></h2>
+<p>In this particular dataset, we have a gender column, so we may consider partition the dataset partitioned by gender and for each gender we train and tune separately to find the best models respectively. This is an option we can’t ignore, but the outcome is not necessarily better, we just make it very easy to try - just add partition_keys:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">),</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">XGBClassifier</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> 
+             <span class="n">learning_rate</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.99</span><span class="p">),</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">eval_metric</span><span class="o">=</span><span class="s1">&#39;mlogloss&#39;</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_sk_models</span><span class="p">(</span>
+    <span class="n">space</span><span class="p">,</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+    <span class="n">partition_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;gender&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8795180722891566 [-1.3555735383351195] {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 5, &#39;max_depth&#39;: 10, &#39;learning_rate&#39;: 0.3907506509373887, &#39;n_jobs&#39;: 1, &#39;eval_metric&#39;: &#39;mlogloss&#39;}
+0.8785714285714286 [0.7376951317802901] {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 5, &#39;max_depth&#39;: 10, &#39;learning_rate&#39;: 0.3907506509373887, &#39;n_jobs&#39;: 1, &#39;eval_metric&#39;: &#39;mlogloss&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, separating by gender indeed helps.</p>
+</div>
+<div class="section" id="train-with-spark-or-dask">
+<h2>Train with Spark or Dask<a class="headerlink" href="#train-with-spark-or-dask" title="Permalink to this headline">¶</a></h2>
+<p>With the flexible space language, it’s easy to contruct a space with hundreds of configurations, and also for non-toy datasets, it could take longer time to train each model. As long as each training process can fit in one machine, we are able to fully utilize Spark or Dask to do this distributely, and you don’t even need to learn them.</p>
+<p>With the help of fuggle setup(), we let the system understand spark means a local spark cluster. For your own environment, it’s easy to configure a real Spark or Dask cluster and use a string to represent it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">),</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">XGBClassifier</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> 
+             <span class="n">learning_rate</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.99</span><span class="p">),</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">eval_metric</span><span class="o">=</span><span class="s1">&#39;mlogloss&#39;</span><span class="p">,</span>
+             <span class="n">use_label_encoder</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_sk_models</span><span class="p">(</span>
+    <span class="n">space</span><span class="p">,</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+    <span class="n">partition_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;gender&quot;</span><span class="p">],</span>
+    <span class="n">execution_engine</span><span class="o">=</span><span class="s2">&quot;spark&quot;</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using Spark&#39;s default log4j profile: org/apache/spark/log4j-defaults.properties
+Setting default log level to &quot;WARN&quot;.
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+22/01/17 00:37:00 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8795180722891566 [-1.3555735383351195] {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 5, &#39;max_depth&#39;: 10, &#39;learning_rate&#39;: 0.3907506509373887, &#39;n_jobs&#39;: 1, &#39;eval_metric&#39;: &#39;mlogloss&#39;, &#39;use_label_encoder&#39;: False}
+0.8785714285714286 [0.7376951317802901] {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 5, &#39;max_depth&#39;: 10, &#39;learning_rate&#39;: 0.3907506509373887, &#39;n_jobs&#39;: 1, &#39;eval_metric&#39;: &#39;mlogloss&#39;, &#39;use_label_encoder&#39;: False}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="realtime-monitoring">
+<h2>Realtime Monitoring<a class="headerlink" href="#realtime-monitoring" title="Permalink to this headline">¶</a></h2>
+<p>For a non-toy case, the compute can take a while, it is fun and important to get realtime progress especially when you run distributedly. To do that, we firstly need to enable callback for an execution engine. And then we need to specify what to monitor. Again, with fuggle setup(), we are able to use simple strings to represent what we want to do. There are 2 types of built in monitors for non-iterative problems:</p>
+<ol class="simple">
+<li><p>ts to monitor the up-to-date best metric collected</p></li>
+<li><p>hist to motitor the histogram of metrics collected</p></li>
+</ol>
+<p>And they will be partitioned by partition_keys</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">tune</span> <span class="kn">import</span> <span class="n">Monitor</span>
+<span class="kn">from</span> <span class="nn">tune_notebook</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">NotebookSimpleHist</span><span class="p">,</span>
+    <span class="n">NotebookSimpleRungs</span><span class="p">,</span>
+    <span class="n">NotebookSimpleTimeSeries</span><span class="p">,</span>
+    <span class="n">PrintBest</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">to_monitor</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Monitor</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Monitor</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">obj</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="o">==</span> <span class="s2">&quot;hist&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">NotebookSimpleHist</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="o">==</span> <span class="s2">&quot;rungs&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">NotebookSimpleRungs</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="o">==</span> <span class="s2">&quot;ts&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">NotebookSimpleTimeSeries</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="o">==</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PrintBest</span><span class="p">()</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+<span class="n">TUNE_OBJECT_FACTORY</span><span class="o">.</span><span class="n">set_monitor_converter</span><span class="p">(</span><span class="n">to_monitor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">),</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">XGBClassifier</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">learning_rate</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.99</span><span class="p">),</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_sk_models</span><span class="p">(</span>
+    <span class="n">space</span><span class="p">,</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+    <span class="n">partition_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;gender&quot;</span><span class="p">],</span>
+    <span class="n">execution_engine</span><span class="o">=</span><span class="s2">&quot;dask&quot;</span><span class="p">,</span>
+    <span class="n">execution_engine_conf</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;callback&quot;</span><span class="p">:</span><span class="kc">True</span><span class="p">},</span>
+    <span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;ts&quot;</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/non_iterative_25_0.png" src="../../_images/non_iterative_25_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.7376951317802901] 0.8714285714285714 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;25d80e43-563e-51c3-b5d7-4dd412a6feb8&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 5, &#39;max_depth&#39;: 10, &#39;learning_rate&#39;: 0.5478372338487782, &#39;n_jobs&#39;: 1}, &#39;metadata&#39;: {}, &#39;keys&#39;: [0.7376951317802901]}, &#39;metric&#39;: 0.8714285714285714, &#39;params&#39;: {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 5, &#39;max_depth&#39;: 10, &#39;learning_rate&#39;: 0.5478372338487782, &#39;n_jobs&#39;: 1}, &#39;metadata&#39;: {&#39;model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;}, &#39;cost&#39;: 1.0, &#39;rung&#39;: 0, &#39;sort_metric&#39;: -0.8714285714285714, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 0, 37, 38, 578177)}
+[-1.3555735383351195] 0.8795180722891566 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;fda02818-5818-5c04-8cc0-6f4530198364&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 5, &#39;max_depth&#39;: 10, &#39;learning_rate&#39;: 0.38577268844926216, &#39;n_jobs&#39;: 1}, &#39;metadata&#39;: {}, &#39;keys&#39;: [-1.3555735383351195]}, &#39;metric&#39;: 0.8795180722891566, &#39;params&#39;: {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 5, &#39;max_depth&#39;: 10, &#39;learning_rate&#39;: 0.38577268844926216, &#39;n_jobs&#39;: 1}, &#39;metadata&#39;: {&#39;model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;}, &#39;cost&#39;: 1.0, &#39;rung&#39;: 0, &#39;sort_metric&#39;: -0.8795180722891566, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 0, 37, 40, 438451)}
+0.8795180722891566 [-1.3555735383351195] {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 5, &#39;max_depth&#39;: 10, &#39;learning_rate&#39;: 0.38577268844926216, &#39;n_jobs&#39;: 1}
+0.8714285714285714 [0.7376951317802901] {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 5, &#39;max_depth&#39;: 5, &#39;learning_rate&#39;: 0.5666836698720537, &#39;n_jobs&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="use-cross-validation">
+<h2>Use Cross Validation<a class="headerlink" href="#use-cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>suggest_sk_models_by_cv should be the preferred approach to do parameter optimization, because the metric after cross validation is more robust. To use this function, we should use the entire train_set with a cv value (default 5)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">),</span>
+    <span class="n">sk_space</span><span class="p">(</span><span class="n">XGBClassifier</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">learning_rate</span><span class="o">=</span><span class="n">Rand</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.99</span><span class="p">),</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_sk_models_by_cv</span><span class="p">(</span>
+    <span class="n">space</span><span class="p">,</span>
+    <span class="n">train_set</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+    <span class="n">partition_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;gender&quot;</span><span class="p">],</span>
+    <span class="n">execution_engine</span><span class="o">=</span><span class="s2">&quot;dask&quot;</span><span class="p">,</span>
+    <span class="n">execution_engine_conf</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;callback&quot;</span><span class="p">:</span><span class="kc">True</span><span class="p">},</span>
+    <span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;ts&quot;</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/non_iterative_27_0.png" src="../../_images/non_iterative_27_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.7376951317802901] 0.8509445277361319 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;17114a57-7822-5a65-9073-f50a6f798aaf&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 10, &#39;max_depth&#39;: 5, &#39;learning_rate&#39;: 0.0796153370339292, &#39;n_jobs&#39;: 1}, &#39;metadata&#39;: {}, &#39;keys&#39;: [0.7376951317802901]}, &#39;metric&#39;: 0.8509445277361319, &#39;params&#39;: {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 10, &#39;max_depth&#39;: 5, &#39;learning_rate&#39;: 0.0796153370339292, &#39;n_jobs&#39;: 1}, &#39;metadata&#39;: {&#39;model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;cv_scores&#39;: [0.8448275862068966, 0.8620689655172413, 0.8434782608695652, 0.8608695652173913, 0.8434782608695652]}, &#39;cost&#39;: 1.0, &#39;rung&#39;: 0, &#39;sort_metric&#39;: -0.8509445277361319, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 0, 37, 43, 558896)}
+[-1.3555735383351195] 0.84715821812596 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;a9dc3ef9-bbb7-5d28-bdd0-4df9367885ae&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 10, &#39;max_depth&#39;: 5, &#39;learning_rate&#39;: 0.43883546703743864, &#39;n_jobs&#39;: 1}, &#39;metadata&#39;: {}, &#39;keys&#39;: [-1.3555735383351195]}, &#39;metric&#39;: 0.84715821812596, &#39;params&#39;: {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 10, &#39;max_depth&#39;: 5, &#39;learning_rate&#39;: 0.43883546703743864, &#39;n_jobs&#39;: 1}, &#39;metadata&#39;: {&#39;model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;cv_scores&#39;: [0.873015873015873, 0.8095238095238095, 0.8412698412698413, 0.8571428571428571, 0.8548387096774194]}, &#39;cost&#39;: 1.0, &#39;rung&#39;: 0, &#39;sort_metric&#39;: -0.84715821812596, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 0, 37, 45, 419922)}
+0.8509445277361319 [0.7376951317802901] {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 10, &#39;max_depth&#39;: 5, &#39;learning_rate&#39;: 0.0796153370339292, &#39;n_jobs&#39;: 1}
+0.84715821812596 [-1.3555735383351195] {&#39;__space__model&#39;: &#39;xgboost.sklearn.XGBClassifier&#39;, &#39;n_estimators&#39;: 10, &#39;max_depth&#39;: 5, &#39;learning_rate&#39;: 0.43883546703743864, &#39;n_jobs&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that the metrics from the two functions are not comparable.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "fugue-project/tutorials",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/tune"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Fugue Development Team<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
