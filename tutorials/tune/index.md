@@ -9,7 +9,7 @@ Tune is an abstraction layer for general parameter tuning built on top of [Fugue
 :hidden:
 
 search_space
-non-iterative
+non_iterative
 ```
 
 ## [Search Space](search_space.ipynb)
