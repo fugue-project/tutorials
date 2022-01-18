@@ -10,6 +10,7 @@ Tune is an abstraction layer for general parameter tuning built on top of [Fugue
 
 search_space
 non_iterative
+iterative
 ```
 
 ## [Search Space](search_space.ipynb)
@@ -19,3 +20,7 @@ Here we learn how to define the search space for hyperparameter tuning. We'll le
 ## [Non-iterative Problems](non_iterative.ipynb)
 
 Next we apply the search space on non-iterative problems. These are machine learning models that converge to a solution.
+
+## [Iterative Problems](iterative.ipynb)
+
+Next we apply the search space on iterative problems such as deep learning problems
