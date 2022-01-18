@@ -790,21 +790,21 @@ require(['notebook/js/codecell'], function(codecell) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-17 19:54:08.523834: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-17 20:14:13.626973: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
 To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-01-17 19:54:08.524223: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 20:14:13.628269: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
 Epoch 1/3
-404/404 [==============================] - 1s 2ms/sample - loss: 27413.4412 - mae: 160.3242 - val_loss: 15522.5603 - val_mae: 121.8566
+404/404 [==============================] - 1s 2ms/sample - loss: 43595.9143 - mae: 204.9338 - val_loss: 31703.6621 - val_mae: 175.8306
 Epoch 2/3
-404/404 [==============================] - 0s 98us/sample - loss: 10894.1324 - mae: 100.2093 - val_loss: 6229.4459 - val_mae: 74.7453
+404/404 [==============================] - 0s 106us/sample - loss: 23562.3374 - mae: 150.2194 - val_loss: 17490.9506 - val_mae: 130.1817
 Epoch 3/3
-404/404 [==============================] - 0s 96us/sample - loss: 4404.7381 - mae: 60.2880 - val_loss: 2329.2183 - val_mae: 42.2783
+404/404 [==============================] - 0s 114us/sample - loss: 12554.4363 - mae: 108.1499 - val_loss: 8439.3577 - val_mae: 89.3966
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42.27825927734375
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>89.39659118652344
 </pre></div>
 </div>
 </div>
@@ -850,17 +850,17 @@ Epoch 3/3
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
 Epoch 1/2
-404/404 [==============================] - 1s 1ms/sample - loss: 2440.3781 - mae: 42.7642 - val_loss: 520.0272 - val_mae: 18.5519
+404/404 [==============================] - 1s 2ms/sample - loss: 738.2188 - mae: 23.1714 - val_loss: 242.4906 - val_mae: 12.4173
 Epoch 2/2
-404/404 [==============================] - 0s 98us/sample - loss: 254.3057 - mae: 12.8793 - val_loss: 179.2907 - val_mae: 10.4215
+404/404 [==============================] - 0s 104us/sample - loss: 153.6241 - mae: 9.1089 - val_loss: 94.3623 - val_mae: 7.3219
 Train on 404 samples, validate on 102 samples
 Epoch 1/2
-404/404 [==============================] - 1s 2ms/sample - loss: 590.6521 - mae: 13.9741 - val_loss: 212.2144 - val_mae: 9.9724
+404/404 [==============================] - 1s 2ms/sample - loss: 270.2734 - mae: 13.0701 - val_loss: 144.0259 - val_mae: 9.4996
 Epoch 2/2
-404/404 [==============================] - 0s 133us/sample - loss: 190.8393 - mae: 9.0388 - val_loss: 106.4788 - val_mae: 7.5445
+404/404 [==============================] - 0s 101us/sample - loss: 142.3855 - mae: 9.0876 - val_loss: 99.8096 - val_mae: 7.7550
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;b0961e02-bd7c-5166-8657-254d487e0262&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 16, &#39;l2&#39;: 16}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 7.54452657699585, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 16, &#39;l2&#39;: 16}, &#39;metadata&#39;: {}, &#39;cost&#39;: 2.0, &#39;rung&#39;: 0, &#39;sort_metric&#39;: 7.54452657699585, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 54, 11, 122638)}]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;ac7e4624-96f7-5c75-b541-96931ce24f93&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 8, &#39;l2&#39;: 16}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 7.321929931640625, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 8, &#39;l2&#39;: 16}, &#39;metadata&#39;: {}, &#39;cost&#39;: 2.0, &#39;rung&#39;: 0, &#39;sort_metric&#39;: 7.321929931640625, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 20, 14, 15, 387890)}]
 </pre></div>
 </div>
 </div>
@@ -869,19 +869,6 @@ Epoch 2/2
 <div class="section" id="successive-halving">
 <h2>Successive Halving<a class="headerlink" href="#successive-halving" title="Permalink to this headline">¶</a></h2>
 <p>If you don’t have a lot of computing resource, for example you are tuning using your own machine with just 1 GPU, then, successive halving is a great choice. In this implementation, the models will be saved to disk after each rung, and will be retrived at the beginning of next rung if promoted.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">__version__</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.0.0&#39;
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -902,37 +889,37 @@ Epoch 2/2
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 1319.9363 - mae: 30.7002 - val_loss: 244.9719 - val_mae: 12.9941
+404/404 [==============================] - 1s 2ms/sample - loss: 222.8466 - mae: 11.1890 - val_loss: 112.0152 - val_mae: 8.8059
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 500.6304 - mae: 17.9309 - val_loss: 233.3478 - val_mae: 12.2873
+404/404 [==============================] - 1s 2ms/sample - loss: 9989.0720 - mae: 98.1604 - val_loss: 6710.0068 - val_mae: 80.8969
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 12419.4504 - mae: 102.1658 - val_loss: 2256.5096 - val_mae: 46.1901
+404/404 [==============================] - 1s 2ms/sample - loss: 1013.7837 - mae: 26.4647 - val_loss: 169.5791 - val_mae: 11.1495
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 8233.0814 - mae: 82.0592 - val_loss: 1704.8914 - val_mae: 37.3571
+404/404 [==============================] - 1s 1ms/sample - loss: 401.6506 - mae: 13.0272 - val_loss: 121.1484 - val_mae: 9.2976
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 3593.6414 - mae: 40.9148 - val_loss: 1249.0543 - val_mae: 25.7184
+404/404 [==============================] - 1s 2ms/sample - loss: 1530.6857 - mae: 31.0897 - val_loss: 236.4487 - val_mae: 12.2354
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 636.7570 - mae: 16.7616 - val_loss: 119.9766 - val_mae: 8.4691
+404/404 [==============================] - 1s 2ms/sample - loss: 1184.4694 - mae: 27.8627 - val_loss: 262.2075 - val_mae: 13.6149
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 415.2354 - mae: 16.4452 - val_loss: 183.2412 - val_mae: 10.8545
+404/404 [==============================] - 1s 2ms/sample - loss: 2307.2402 - mae: 34.4787 - val_loss: 502.5728 - val_mae: 17.8211
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 517.5867 - mae: 14.8204 - val_loss: 156.3005 - val_mae: 9.3106
+404/404 [==============================] - 1s 2ms/sample - loss: 396.2434 - mae: 14.3466 - val_loss: 94.6467 - val_mae: 7.4835
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 10987.0018 - mae: 90.8215 - val_loss: 710.4055 - val_mae: 24.4034
+404/404 [==============================] - 1s 2ms/sample - loss: 10797.1170 - mae: 84.4990 - val_loss: 3823.7644 - val_mae: 46.8471
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 1234.1413 - mae: 22.7520 - val_loss: 419.2104 - val_mae: 14.9936
+404/404 [==============================] - 1s 2ms/sample - loss: 174.3172 - mae: 8.9402 - val_loss: 67.0529 - val_mae: 6.1133
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 4749.5731 - mae: 63.7150 - val_loss: 1233.9628 - val_mae: 32.9337
+404/404 [==============================] - 1s 2ms/sample - loss: 4577.9229 - mae: 62.8989 - val_loss: 1344.7374 - val_mae: 34.7966
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 11247.7668 - mae: 98.5764 - val_loss: 3475.6490 - val_mae: 57.0503
+404/404 [==============================] - 1s 2ms/sample - loss: 6560.3082 - mae: 76.4061 - val_loss: 2116.2962 - val_mae: 44.6558
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 1710.5671 - mae: 34.7378 - val_loss: 430.0632 - val_mae: 17.6212
+404/404 [==============================] - 1s 2ms/sample - loss: 534.7672 - mae: 16.2389 - val_loss: 148.5417 - val_mae: 9.2515
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 1297.2226 - mae: 27.2466 - val_loss: 469.3585 - val_mae: 17.2943
+404/404 [==============================] - 1s 1ms/sample - loss: 8301.4639 - mae: 70.3609 - val_loss: 3741.6719 - val_mae: 42.5120
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 10914.0879 - mae: 92.9741 - val_loss: 4162.8103 - val_mae: 52.8484
+404/404 [==============================] - 1s 2ms/sample - loss: 6877.0804 - mae: 75.8768 - val_loss: 2219.4958 - val_mae: 42.5003
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 2ms/sample - loss: 14630.9546 - mae: 115.2435 - val_loss: 4688.5856 - val_mae: 67.8056
+404/404 [==============================] - 1s 1ms/sample - loss: 1229.9572 - mae: 25.9055 - val_loss: 202.9586 - val_mae: 11.1453
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
@@ -940,44 +927,44 @@ Train on 404 samples, validate on 102 samples
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
 Epoch 2/3
-404/404 [==============================] - 1s 2ms/sample - loss: 120.4326 - mae: 8.2631 - val_loss: 64.8577 - val_mae: 6.2104
+404/404 [==============================] - 1s 2ms/sample - loss: 109.0708 - mae: 7.3074 - val_loss: 79.0839 - val_mae: 6.2364
 Epoch 3/3
-404/404 [==============================] - 0s 100us/sample - loss: 68.8768 - mae: 6.0364 - val_loss: 79.5332 - val_mae: 7.7276
+404/404 [==============================] - 0s 108us/sample - loss: 72.0105 - mae: 6.0785 - val_loss: 61.2814 - val_mae: 5.7532
 Train on 404 samples, validate on 102 samples
 Epoch 2/3
-404/404 [==============================] - 1s 2ms/sample - loss: 169.3502 - mae: 10.0419 - val_loss: 94.6301 - val_mae: 7.5048
+404/404 [==============================] - 1s 2ms/sample - loss: 102.5736 - mae: 7.2892 - val_loss: 79.0816 - val_mae: 6.9023
 Epoch 3/3
-404/404 [==============================] - 0s 98us/sample - loss: 86.7536 - mae: 7.2502 - val_loss: 77.5732 - val_mae: 7.1749
+404/404 [==============================] - 0s 106us/sample - loss: 79.1249 - mae: 6.3079 - val_loss: 77.1768 - val_mae: 6.7798
 Train on 404 samples, validate on 102 samples
 Epoch 2/3
-404/404 [==============================] - 1s 2ms/sample - loss: 101.8134 - mae: 7.3988 - val_loss: 79.9524 - val_mae: 6.5653
+404/404 [==============================] - 1s 2ms/sample - loss: 149.6943 - mae: 9.3627 - val_loss: 92.7162 - val_mae: 7.5977
 Epoch 3/3
-404/404 [==============================] - 0s 106us/sample - loss: 79.3774 - mae: 6.3908 - val_loss: 82.5980 - val_mae: 7.5088
+404/404 [==============================] - 0s 111us/sample - loss: 106.2104 - mae: 7.7644 - val_loss: 94.0889 - val_mae: 7.2299
 Train on 404 samples, validate on 102 samples
 Epoch 2/3
-404/404 [==============================] - 1s 2ms/sample - loss: 148.0485 - mae: 8.8417 - val_loss: 109.3509 - val_mae: 8.0037
+404/404 [==============================] - 1s 2ms/sample - loss: 131.2470 - mae: 8.9093 - val_loss: 175.1610 - val_mae: 10.1505
 Epoch 3/3
-404/404 [==============================] - 0s 97us/sample - loss: 95.4225 - mae: 7.1774 - val_loss: 93.0146 - val_mae: 7.0021
+404/404 [==============================] - 0s 104us/sample - loss: 105.4369 - mae: 7.9283 - val_loss: 104.0349 - val_mae: 7.8951
 Train on 404 samples, validate on 102 samples
 Epoch 2/3
-404/404 [==============================] - 1s 2ms/sample - loss: 183.6946 - mae: 10.2948 - val_loss: 105.8235 - val_mae: 8.6973
+404/404 [==============================] - 1s 2ms/sample - loss: 99.8089 - mae: 7.4534 - val_loss: 150.5006 - val_mae: 10.9159
 Epoch 3/3
-404/404 [==============================] - 0s 171us/sample - loss: 114.6700 - mae: 8.2928 - val_loss: 85.7075 - val_mae: 7.4667
+404/404 [==============================] - 0s 102us/sample - loss: 67.4589 - mae: 5.9227 - val_loss: 71.2206 - val_mae: 6.6132
 Train on 404 samples, validate on 102 samples
 Epoch 2/3
-404/404 [==============================] - 1s 2ms/sample - loss: 183.4263 - mae: 8.8421 - val_loss: 92.5326 - val_mae: 7.4026
+404/404 [==============================] - 1s 1ms/sample - loss: 166.9106 - mae: 9.2106 - val_loss: 87.9771 - val_mae: 7.0022
 Epoch 3/3
-404/404 [==============================] - 0s 110us/sample - loss: 79.9811 - mae: 6.4508 - val_loss: 76.1583 - val_mae: 6.6871
+404/404 [==============================] - 0s 100us/sample - loss: 107.1787 - mae: 7.7246 - val_loss: 81.7703 - val_mae: 6.9779
 Train on 404 samples, validate on 102 samples
 Epoch 2/3
-404/404 [==============================] - 1s 2ms/sample - loss: 406.4939 - mae: 16.0939 - val_loss: 214.6216 - val_mae: 11.8556
+404/404 [==============================] - 1s 2ms/sample - loss: 134.8245 - mae: 9.0797 - val_loss: 87.4413 - val_mae: 6.8109
 Epoch 3/3
-404/404 [==============================] - 0s 111us/sample - loss: 240.0032 - mae: 12.1973 - val_loss: 215.2450 - val_mae: 11.7941
+404/404 [==============================] - 0s 105us/sample - loss: 84.0637 - mae: 6.5991 - val_loss: 78.7119 - val_mae: 6.9185
 Train on 404 samples, validate on 102 samples
 Epoch 2/3
-404/404 [==============================] - 1s 2ms/sample - loss: 259.9674 - mae: 12.7154 - val_loss: 119.2954 - val_mae: 8.5903
+404/404 [==============================] - 1s 2ms/sample - loss: 101.6866 - mae: 7.4164 - val_loss: 65.9363 - val_mae: 6.0129
 Epoch 3/3
-404/404 [==============================] - 0s 128us/sample - loss: 115.1173 - mae: 8.1211 - val_loss: 76.7522 - val_mae: 6.8532
+404/404 [==============================] - 0s 108us/sample - loss: 67.1361 - mae: 5.8809 - val_loss: 60.6061 - val_mae: 5.9089
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
@@ -985,40 +972,40 @@ Epoch 3/3
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
 Epoch 4/7
-404/404 [==============================] - 1s 2ms/sample - loss: 72.0936 - mae: 6.1744 - val_loss: 66.9929 - val_mae: 6.1877
+404/404 [==============================] - 1s 2ms/sample - loss: 94.2489 - mae: 7.0036 - val_loss: 59.6185 - val_mae: 5.4919
 Epoch 5/7
-404/404 [==============================] - 0s 112us/sample - loss: 62.9729 - mae: 5.6834 - val_loss: 88.0643 - val_mae: 6.9307
+404/404 [==============================] - 0s 98us/sample - loss: 73.8441 - mae: 6.2665 - val_loss: 62.5825 - val_mae: 5.4681
 Epoch 6/7
-404/404 [==============================] - 0s 115us/sample - loss: 65.6215 - mae: 5.6781 - val_loss: 65.6765 - val_mae: 6.0891
+404/404 [==============================] - 0s 105us/sample - loss: 74.8096 - mae: 6.1939 - val_loss: 91.8281 - val_mae: 6.8802
 Epoch 7/7
-404/404 [==============================] - 0s 112us/sample - loss: 60.2537 - mae: 5.5051 - val_loss: 80.3885 - val_mae: 6.5533
+404/404 [==============================] - 0s 103us/sample - loss: 65.8624 - mae: 5.7054 - val_loss: 86.8929 - val_mae: 6.6587
 Train on 404 samples, validate on 102 samples
 Epoch 4/7
-404/404 [==============================] - 1s 2ms/sample - loss: 82.5100 - mae: 6.6947 - val_loss: 79.3555 - val_mae: 7.2332
+404/404 [==============================] - 1s 2ms/sample - loss: 74.8165 - mae: 6.1639 - val_loss: 58.7839 - val_mae: 5.7485
 Epoch 5/7
-404/404 [==============================] - 0s 127us/sample - loss: 76.0593 - mae: 6.4427 - val_loss: 93.5321 - val_mae: 8.2037
+404/404 [==============================] - 0s 98us/sample - loss: 60.7689 - mae: 5.4857 - val_loss: 57.5218 - val_mae: 5.6207
 Epoch 6/7
-404/404 [==============================] - 0s 108us/sample - loss: 70.1939 - mae: 6.1561 - val_loss: 73.3954 - val_mae: 6.2125
+404/404 [==============================] - 0s 100us/sample - loss: 58.8136 - mae: 5.3922 - val_loss: 79.4196 - val_mae: 7.2567
 Epoch 7/7
-404/404 [==============================] - 0s 130us/sample - loss: 64.5558 - mae: 5.7760 - val_loss: 64.9331 - val_mae: 6.1384
+404/404 [==============================] - 0s 102us/sample - loss: 59.7249 - mae: 5.5724 - val_loss: 68.3266 - val_mae: 6.0944
 Train on 404 samples, validate on 102 samples
 Epoch 4/7
-404/404 [==============================] - 1s 2ms/sample - loss: 97.8362 - mae: 7.0518 - val_loss: 87.7088 - val_mae: 6.8388
+404/404 [==============================] - 1s 2ms/sample - loss: 95.5928 - mae: 7.1267 - val_loss: 63.9240 - val_mae: 5.9148
 Epoch 5/7
-404/404 [==============================] - 0s 115us/sample - loss: 80.2479 - mae: 6.2916 - val_loss: 105.0625 - val_mae: 7.4265
+404/404 [==============================] - 0s 97us/sample - loss: 70.6773 - mae: 6.0004 - val_loss: 63.6641 - val_mae: 6.1819
 Epoch 6/7
-404/404 [==============================] - 0s 108us/sample - loss: 82.0760 - mae: 6.1993 - val_loss: 82.2425 - val_mae: 6.8280
+404/404 [==============================] - 0s 103us/sample - loss: 64.8519 - mae: 5.9047 - val_loss: 78.0059 - val_mae: 6.3313
 Epoch 7/7
-404/404 [==============================] - 0s 117us/sample - loss: 81.4513 - mae: 6.3678 - val_loss: 80.8299 - val_mae: 6.8102
+404/404 [==============================] - 0s 102us/sample - loss: 81.2107 - mae: 6.4607 - val_loss: 60.6446 - val_mae: 5.5617
 Train on 404 samples, validate on 102 samples
 Epoch 4/7
-404/404 [==============================] - 1s 2ms/sample - loss: 109.4985 - mae: 7.6691 - val_loss: 66.1248 - val_mae: 6.2350
+404/404 [==============================] - 1s 2ms/sample - loss: 85.5458 - mae: 6.7063 - val_loss: 82.2353 - val_mae: 6.9334
 Epoch 5/7
-404/404 [==============================] - 0s 107us/sample - loss: 68.7070 - mae: 6.1294 - val_loss: 71.6808 - val_mae: 6.2339
+404/404 [==============================] - 0s 100us/sample - loss: 75.9433 - mae: 6.0527 - val_loss: 76.2981 - val_mae: 6.4629
 Epoch 6/7
-404/404 [==============================] - 0s 103us/sample - loss: 76.3914 - mae: 6.5145 - val_loss: 89.3213 - val_mae: 6.9795
+404/404 [==============================] - 0s 102us/sample - loss: 75.8841 - mae: 6.1496 - val_loss: 77.4582 - val_mae: 6.6357
 Epoch 7/7
-404/404 [==============================] - 0s 112us/sample - loss: 56.2741 - mae: 5.5234 - val_loss: 67.1027 - val_mae: 5.9790
+404/404 [==============================] - 0s 103us/sample - loss: 76.3783 - mae: 6.1970 - val_loss: 72.5362 - val_mae: 6.4215
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
@@ -1026,44 +1013,44 @@ Epoch 7/7
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
 Epoch 8/15
-404/404 [==============================] - 1s 2ms/sample - loss: 88.7617 - mae: 6.4368 - val_loss: 62.2813 - val_mae: 5.8132
+404/404 [==============================] - 1s 1ms/sample - loss: 95.0065 - mae: 6.5318 - val_loss: 70.3543 - val_mae: 6.8896
 Epoch 9/15
-404/404 [==============================] - 0s 98us/sample - loss: 67.9098 - mae: 6.2745 - val_loss: 57.2800 - val_mae: 5.8389
+404/404 [==============================] - 0s 99us/sample - loss: 62.5861 - mae: 5.7215 - val_loss: 59.2268 - val_mae: 5.4957
 Epoch 10/15
-404/404 [==============================] - 0s 97us/sample - loss: 60.1481 - mae: 5.6344 - val_loss: 59.0031 - val_mae: 5.6075
+404/404 [==============================] - 0s 101us/sample - loss: 72.4533 - mae: 6.0955 - val_loss: 57.9465 - val_mae: 5.7885
 Epoch 11/15
-404/404 [==============================] - 0s 108us/sample - loss: 61.0459 - mae: 5.9227 - val_loss: 89.7350 - val_mae: 7.0892
+404/404 [==============================] - 0s 102us/sample - loss: 56.1888 - mae: 5.3666 - val_loss: 82.5438 - val_mae: 6.6327
 Epoch 12/15
-404/404 [==============================] - 0s 99us/sample - loss: 62.9239 - mae: 5.9813 - val_loss: 69.6226 - val_mae: 6.1424
+404/404 [==============================] - 0s 99us/sample - loss: 65.8400 - mae: 5.7120 - val_loss: 53.4288 - val_mae: 5.2826
 Epoch 13/15
-404/404 [==============================] - 0s 98us/sample - loss: 61.2087 - mae: 5.7546 - val_loss: 62.4240 - val_mae: 6.2600
+404/404 [==============================] - 0s 103us/sample - loss: 64.2736 - mae: 5.7927 - val_loss: 53.7256 - val_mae: 5.4018
 Epoch 14/15
-404/404 [==============================] - 0s 97us/sample - loss: 60.2624 - mae: 5.9038 - val_loss: 55.9667 - val_mae: 5.4250
+404/404 [==============================] - 0s 98us/sample - loss: 64.7464 - mae: 5.8500 - val_loss: 69.4926 - val_mae: 6.8882
 Epoch 15/15
-404/404 [==============================] - 0s 101us/sample - loss: 53.0057 - mae: 5.3325 - val_loss: 54.0883 - val_mae: 5.3964
+404/404 [==============================] - 0s 98us/sample - loss: 53.1147 - mae: 5.3081 - val_loss: 62.2629 - val_mae: 6.2421
 Train on 404 samples, validate on 102 samples
 Epoch 8/15
-404/404 [==============================] - 1s 2ms/sample - loss: 69.8673 - mae: 5.9212 - val_loss: 61.8628 - val_mae: 5.8118
+404/404 [==============================] - 1s 1ms/sample - loss: 62.6136 - mae: 5.8689 - val_loss: 55.7373 - val_mae: 5.5580
 Epoch 9/15
-404/404 [==============================] - 0s 97us/sample - loss: 60.3063 - mae: 5.6430 - val_loss: 78.7581 - val_mae: 7.2494
+404/404 [==============================] - 0s 104us/sample - loss: 53.0064 - mae: 5.0910 - val_loss: 54.3579 - val_mae: 5.4173
 Epoch 10/15
-404/404 [==============================] - 0s 101us/sample - loss: 63.0370 - mae: 5.6963 - val_loss: 77.6056 - val_mae: 7.2605
+404/404 [==============================] - 0s 105us/sample - loss: 55.2219 - mae: 5.3011 - val_loss: 54.2386 - val_mae: 5.4190
 Epoch 11/15
-404/404 [==============================] - 0s 99us/sample - loss: 56.2638 - mae: 5.4253 - val_loss: 60.3506 - val_mae: 5.5013
+404/404 [==============================] - 0s 101us/sample - loss: 54.9532 - mae: 5.2254 - val_loss: 61.4893 - val_mae: 6.1040
 Epoch 12/15
-404/404 [==============================] - 0s 96us/sample - loss: 57.3670 - mae: 5.4140 - val_loss: 59.5253 - val_mae: 5.6786
+404/404 [==============================] - 0s 101us/sample - loss: 53.2293 - mae: 5.0438 - val_loss: 56.2200 - val_mae: 5.4832
 Epoch 13/15
-404/404 [==============================] - 0s 97us/sample - loss: 58.1436 - mae: 5.4772 - val_loss: 57.3059 - val_mae: 5.3921
+404/404 [==============================] - 0s 98us/sample - loss: 55.3434 - mae: 5.3792 - val_loss: 54.3165 - val_mae: 5.4973
 Epoch 14/15
-404/404 [==============================] - 0s 98us/sample - loss: 58.6899 - mae: 5.6257 - val_loss: 58.5365 - val_mae: 5.3753
+404/404 [==============================] - 0s 103us/sample - loss: 47.2370 - mae: 4.7986 - val_loss: 68.3576 - val_mae: 6.1569
 Epoch 15/15
-404/404 [==============================] - 0s 97us/sample - loss: 57.2729 - mae: 5.4020 - val_loss: 53.8954 - val_mae: 5.4413
-CPU times: user 26.2 s, sys: 910 ms, total: 27.1 s
-Wall time: 25.5 s
+404/404 [==============================] - 0s 100us/sample - loss: 50.2139 - mae: 5.0862 - val_loss: 53.1893 - val_mae: 5.3379
+CPU times: user 25.1 s, sys: 895 ms, total: 26 s
+Wall time: 24 s
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;fb22d339-41ac-569b-95b1-7c9c4ce8148a&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 31}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.396399974822998, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 31}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.396399974822998, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 54, 35, 701089)},
- {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;61299f88-d921-5c5c-a19e-7885e63f6add&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 8}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.441264629364014, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 8}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.441264629364014, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 54, 36, 678024)}]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;9f135e3f-83a6-5b7f-b5f3-af6637662c49&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 17, &#39;l2&#39;: 23}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.337876319885254, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 17, &#39;l2&#39;: 23}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.337876319885254, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 20, 14, 40, 212724)},
+ {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;360e486c-6d27-5abc-bb8d-c9bd388e62c3&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 25, &#39;l2&#39;: 28}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 6.242136001586914, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 25, &#39;l2&#39;: 28}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 6.242136001586914, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 20, 14, 39, 247491)}]
 </pre></div>
 </div>
 </div>
@@ -1096,7 +1083,7 @@ Wall time: 25.5 s
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using Spark&#39;s default log4j profile: org/apache/spark/log4j-defaults.properties
 Setting default log level to &quot;WARN&quot;.
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-22/01/17 19:54:48 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+22/01/17 20:14:52 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 </pre></div>
 </div>
 </div>
@@ -1119,191 +1106,208 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-17 19:55:15.734290: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-17 20:15:19.976085: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
 To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-01-17 19:55:15.739203: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
-2022-01-17 19:55:15.738501: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+2022-01-17 20:15:19.975319: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
 To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-01-17 19:55:15.741943: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+2022-01-17 20:15:19.992851: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 20:15:19.993326: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+2022-01-17 20:15:22.247629: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
 To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-01-17 19:55:15.747002: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+2022-01-17 20:15:22.252117: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
 To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-01-17 19:55:15.748183: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+2022-01-17 20:15:22.261620: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 20:15:22.268666: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 20:15:22.273279: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
 To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-01-17 19:55:15.748321: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
-2022-01-17 19:55:15.748970: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+2022-01-17 20:15:22.292436: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
 To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-01-17 19:55:15.750307: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
-2022-01-17 19:55:15.752247: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+2022-01-17 20:15:22.297228: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 20:15:22.300151: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+ 32/404 [=&gt;............................] - ETA: 27s - loss: 4676.2480 - mae: 66.7921Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 3s 7ms/sample - loss: 340.1798 - mae: 13.7698 - val_loss: 94.0060 - val_mae: 7.4925
+404/404 [==============================] - 3s 7ms/sample - loss: 1552.3031 - mae: 31.9502 - val_loss: 293.8547 - val_mae: 13.4522
+ 32/404 [=&gt;............................] - ETA: 29s - loss: 167.2086 - mae: 9.71872022-01-17 20:15:25.338086: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
 To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-01-17 19:55:15.753525: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
-2022-01-17 19:55:15.757367: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
-2022-01-17 19:55:15.760453: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
-2022-01-17 19:55:15.761519: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
-Train on 404 samples, validate on 102 samples
-Train on 404 samples, validate on 102 samples
-Train on 404 samples, validate on 102 samples
-Train on 404 samples, validate on 102 samples
-2022-01-17 19:55:16.187723: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+384/404 [===========================&gt;..] - ETA: 0s - loss: 153.2323 - mae: 8.8183 2022-01-17 20:15:25.363546: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 20:15:25.370134: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
 To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+192/404 [=============&gt;................] - ETA: 2s - loss: 155.4403 - mae: 9.6472 2022-01-17 20:15:25.376542: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+404/404 [==============================] - 3s 7ms/sample - loss: 146.9411 - mae: 8.5968 - val_loss: 86.5214 - val_mae: 6.6218
+404/404 [==============================] - 3s 7ms/sample - loss: 118.1191 - mae: 8.3546 - val_loss: 84.6783 - val_mae: 6.5059
+404/404 [==============================] - 3s 7ms/sample - loss: 1079.9114 - mae: 24.8831 - val_loss: 150.3951 - val_mae: 9.8546
 Train on 404 samples, validate on 102 samples
+192/404 [=============&gt;................] - ETA: 3s - loss: 44175.5143 - mae: 207.3689 Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 4s 9ms/sample - loss: 35045.6733 - mae: 183.4657 - val_loss: 22545.5962 - val_mae: 148.9371
 Train on 404 samples, validate on 102 samples
-Train on 404 samples, validate on 102 samples
-2022-01-17 19:55:16.200014: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
-Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 3s 6ms/sample - loss: 173.2013 - mae: 9.5698 - val_loss: 89.3675 - val_mae: 7.1400
-404/404 [==============================] - 3s 6ms/sample - loss: 3083.3485 - mae: 48.8931 - val_loss: 1090.5983 - val_mae: 26.7652
-404/404 [==============================] - 3s 7ms/sample - loss: 191.1016 - mae: 10.0670 - val_loss: 126.1737 - val_mae: 8.3870
-404/404 [==============================] - 3s 7ms/sample - loss: 169.4875 - mae: 9.2106 - val_loss: 101.3535 - val_mae: 7.4222
-404/404 [==============================] - 3s 7ms/sample - loss: 314.0382 - mae: 10.7456 - val_loss: 126.8047 - val_mae: 7.4805
-404/404 [==============================] - 3s 7ms/sample - loss: 3091.9575 - mae: 46.9695 - val_loss: 262.8983 - val_mae: 14.5257
-404/404 [==============================] - 3s 7ms/sample - loss: 619.3501 - mae: 15.1667 - val_loss: 189.3614 - val_mae: 10.2667
-404/404 [==============================] - 2s 6ms/sample - loss: 16754.8562 - mae: 117.0442 - val_loss: 3143.6652 - val_mae: 51.7394
-Train on 404 samples, validate on 102 samplesTrain on 404 samples, validate on 102 samples
-
-Train on 404 samples, validate on 102 samples
-Train on 404 samples, validate on 102 samples
-Train on 404 samples, validate on 102 samples
-Train on 404 samples, validate on 102 samples
-Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 2s 4ms/sample - loss: 12017.2980 - mae: 100.0532 - val_loss: 3740.2892 - val_mae: 56.7321
-404/404 [==============================] - 2s 5ms/sample - loss: 23268.9513 - mae: 128.1369 - val_loss: 8171.4360 - val_mae: 67.8659
-404/404 [==============================] - 2s 5ms/sample - loss: 5371.4781 - mae: 53.4353 - val_loss: 1108.8825 - val_mae: 23.8276
-404/404 [==============================] - 2s 5ms/sample - loss: 133.6543 - mae: 8.6870 - val_loss: 68.7421 - val_mae: 6.3145
-404/404 [==============================] - 2s 5ms/sample - loss: 115.5216 - mae: 7.7611 - val_loss: 77.2582 - val_mae: 6.7086
-404/404 [==============================] - 2s 6ms/sample - loss: 797.1757 - mae: 19.5017 - val_loss: 100.3240 - val_mae: 7.7334
-404/404 [==============================] - 2s 6ms/sample - loss: 967.3984 - mae: 22.6780 - val_loss: 335.0724 - val_mae: 14.2882
-2022-01-17 19:55:24.319781: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+404/404 [==============================] - 2s 6ms/sample - loss: 417.7416 - mae: 14.7083 - val_loss: 224.5273 - val_mae: 12.1856
+320/404 [======================&gt;.......] - ETA: 0s - loss: 833.7399 - mae: 23.8774 Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 4s 10ms/sample - loss: 731.1726 - mae: 22.0633 - val_loss: 392.5416 - val_mae: 16.1036
+404/404 [==============================] - 4s 10ms/sample - loss: 500.7441 - mae: 15.3740 - val_loss: 162.9564 - val_mae: 9.7072
+404/404 [==============================] - 2s 4ms/sample - loss: 1596.1780 - mae: 33.5328 - val_loss: 712.5643 - val_mae: 23.2933
+2022-01-17 20:15:32.052858: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
 To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-01-17 19:55:24.325347: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 20:15:32.059224: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 20:15:32.062204: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 20:15:32.067582: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
 Train on 404 samples, validate on 102 samples
-404/404 [==============================] - 1s 3ms/sample - loss: 416.9083 - mae: 14.4876 - val_loss: 185.1612 - val_mae: 10.8551
 Train on 404 samples, validate on 102 samples
-Epoch 2/3
-Train on 404 samples, validate on 102 samples
-Epoch 2/3
-Train on 404 samples, validate on 102 samples
-Epoch 2/3
-Train on 404 samples, validate on 102 samples
-Epoch 2/3
-Train on 404 samples, validate on 102 samples
-Epoch 2/3
-Train on 404 samples, validate on 102 samples
-Epoch 2/3
-Train on 404 samples, validate on 102 samples
-Epoch 2/3
-404/404 [==============================] - 2s 4ms/sample - loss: 97.8723 - mae: 7.0702 - val_loss: 94.8243 - val_mae: 7.9663
-Epoch 3/3
-404/404 [==============================] - 2s 4ms/sample - loss: 118.8510 - mae: 7.6408 - val_loss: 87.3539 - val_mae: 7.2623
-Epoch 3/3
+2022-01-17 20:15:33.206317: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 20:15:33.217654: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 20:15:33.225448: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 20:15:33.235287: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404/404 [==============================] - 0s 359us/sample - loss: 76.1740 - mae: 6.3161 - val_loss: 194.4426 - val_mae: 11.5665
-404/404 [==============================] - 2s 5ms/sample - loss: 108.1166 - mae: 7.6912 - val_loss: 106.0189 - val_mae: 7.6417
-Epoch 3/3
-404/404 [==============================] - 2s 4ms/sample - loss: 79.0589 - mae: 6.3961 - val_loss: 72.6850 - val_mae: 6.3838
-Epoch 3/3
-404/404 [==============================] - 2s 5ms/sample - loss: 120.2889 - mae: 8.0981 - val_loss: 100.1122 - val_mae: 7.7225
-Epoch 3/3
-404/404 [==============================] - 2s 4ms/sample - loss: 70.1822 - mae: 6.0738 - val_loss: 64.3547 - val_mae: 5.7275
-Epoch 3/3
-404/404 [==============================] - 0s 386us/sample - loss: 100.6062 - mae: 7.2877 - val_loss: 79.3854 - val_mae: 6.3384
-404/404 [==============================] - 2s 5ms/sample - loss: 89.2055 - mae: 6.7816 - val_loss: 70.8787 - val_mae: 6.2733
-Epoch 3/3
-404/404 [==============================] - 0s 393us/sample - loss: 81.3747 - mae: 6.3619 - val_loss: 78.2807 - val_mae: 6.3891
-404/404 [==============================] - 0s 413us/sample - loss: 64.8887 - mae: 5.7490 - val_loss: 118.4534 - val_mae: 8.2835
-404/404 [==============================] - 0s 439us/sample - loss: 88.3793 - mae: 7.0270 - val_loss: 88.6022 - val_mae: 7.4499
-404/404 [==============================] - 0s 440us/sample - loss: 58.7877 - mae: 5.3997 - val_loss: 62.9523 - val_mae: 5.8156
-404/404 [==============================] - 0s 503us/sample - loss: 72.3159 - mae: 5.8794 - val_loss: 72.1742 - val_mae: 6.1896
-2022-01-17 19:55:37.540533: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+2022-01-17 20:15:33.702748: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
 To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-01-17 19:55:37.546558: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 20:15:33.712510: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 2s 5ms/sample - loss: 124.2025 - mae: 8.0326 - val_loss: 89.4502 - val_mae: 7.7794
+404/404 [==============================] - 2s 5ms/sample - loss: 10704.2132 - mae: 95.8298 - val_loss: 2650.0053 - val_mae: 49.5344
+ 32/404 [=&gt;............................] - ETA: 21s - loss: 498.1444 - mae: 19.55802022-01-17 20:15:35.386821: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 20:15:35.392949: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+404/404 [==============================] - 2s 6ms/sample - loss: 161.3598 - mae: 9.2978 - val_loss: 77.9805 - val_mae: 6.7786
+404/404 [==============================] - 2s 6ms/sample - loss: 2646.1785 - mae: 38.8303 - val_loss: 165.9240 - val_mae: 10.1542
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 2s 5ms/sample - loss: 2202.6670 - mae: 44.1604 - val_loss: 921.8530 - val_mae: 27.4930
+404/404 [==============================] - 1s 3ms/sample - loss: 649.4187 - mae: 18.3541 - val_loss: 105.7603 - val_mae: 8.1020
 Train on 404 samples, validate on 102 samples
 Epoch 2/3
-404/404 [==============================] - 1s 3ms/sample - loss: 119.1461 - mae: 7.5404 - val_loss: 79.1548 - val_mae: 6.9795
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+404/404 [==============================] - 2s 6ms/sample - loss: 96.3630 - mae: 7.1133 - val_loss: 86.7123 - val_mae: 6.4099
 Epoch 3/3
-404/404 [==============================] - 0s 318us/sample - loss: 93.1741 - mae: 7.0583 - val_loss: 77.6463 - val_mae: 7.0785
-Train on 404 samples, validate on 102 samples
-Epoch 4/7
-Train on 404 samples, validate on 102 samples
-Epoch 4/7
-Train on 404 samples, validate on 102 samples
-Epoch 4/7
-404/404 [==============================] - 1s 3ms/sample - loss: 71.0895 - mae: 5.9972 - val_loss: 77.3907 - val_mae: 6.4102
-Epoch 5/7
-404/404 [==============================] - 1s 3ms/sample - loss: 119.4858 - mae: 8.0056 - val_loss: 78.6807 - val_mae: 6.6817
-Epoch 5/7
-404/404 [==============================] - 1s 3ms/sample - loss: 64.3921 - mae: 5.8579 - val_loss: 65.0424 - val_mae: 5.6956
-Epoch 5/7
-404/404 [==============================] - 0s 273us/sample - loss: 72.9252 - mae: 6.0213 - val_loss: 68.4794 - val_mae: 6.0738
-Epoch 6/7
-404/404 [==============================] - 0s 276us/sample - loss: 86.6026 - mae: 6.6973 - val_loss: 82.6199 - val_mae: 6.3693
-Epoch 6/7
-404/404 [==============================] - 0s 236us/sample - loss: 54.8795 - mae: 5.2536 - val_loss: 68.9555 - val_mae: 5.7567
-Epoch 6/7
-404/404 [==============================] - 0s 243us/sample - loss: 64.6557 - mae: 5.5482 - val_loss: 79.2492 - val_mae: 6.4793
-Epoch 7/7
-404/404 [==============================] - 0s 268us/sample - loss: 92.1981 - mae: 6.9012 - val_loss: 73.5577 - val_mae: 6.1625
-Epoch 7/7
-404/404 [==============================] - 0s 263us/sample - loss: 56.3075 - mae: 5.2032 - val_loss: 58.6425 - val_mae: 5.5413
-Epoch 7/7
-404/404 [==============================] - 0s 249us/sample - loss: 68.2542 - mae: 5.7936 - val_loss: 68.7498 - val_mae: 6.2593
-404/404 [==============================] - 0s 225us/sample - loss: 84.1873 - mae: 6.6234 - val_loss: 71.5440 - val_mae: 6.3085
-404/404 [==============================] - 0s 282us/sample - loss: 53.3678 - mae: 5.1441 - val_loss: 58.8838 - val_mae: 5.4403
-2022-01-17 19:55:48.733960: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+404/404 [==============================] - 2s 6ms/sample - loss: 77.7906 - mae: 6.3446 - val_loss: 63.2674 - val_mae: 5.8088
+Epoch 3/3
+404/404 [==============================] - 2s 6ms/sample - loss: 120.7039 - mae: 8.5010 - val_loss: 89.4613 - val_mae: 7.0364
+Epoch 3/3
+404/404 [==============================] - 2s 6ms/sample - loss: 81.8934 - mae: 6.7243 - val_loss: 67.9964 - val_mae: 6.2066
+Epoch 3/3
+404/404 [==============================] - 3s 6ms/sample - loss: 96.6596 - mae: 7.5033 - val_loss: 109.5510 - val_mae: 8.2991
+Epoch 3/3
+404/404 [==============================] - 0s 460us/sample - loss: 63.5300 - mae: 5.7175 - val_loss: 88.4708 - val_mae: 6.7695
+404/404 [==============================] - 0s 481us/sample - loss: 76.5753 - mae: 6.2638 - val_loss: 82.1614 - val_mae: 6.3239
+404/404 [==============================] - 3s 7ms/sample - loss: 88.1857 - mae: 6.7593 - val_loss: 55.6522 - val_mae: 5.2754
+Epoch 3/3
+404/404 [==============================] - 0s 607us/sample - loss: 62.7232 - mae: 5.5297 - val_loss: 66.8899 - val_mae: 6.1538
+404/404 [==============================] - 0s 643us/sample - loss: 82.6789 - mae: 6.7664 - val_loss: 71.9773 - val_mae: 6.1288
+404/404 [==============================] - 3s 7ms/sample - loss: 105.7667 - mae: 7.7023 - val_loss: 79.4545 - val_mae: 6.6914
+Epoch 3/3
+404/404 [==============================] - 0s 555us/sample - loss: 71.9645 - mae: 6.2691 - val_loss: 92.1092 - val_mae: 7.3004
+404/404 [==============================] - 0s 483us/sample - loss: 60.0886 - mae: 5.4920 - val_loss: 92.0157 - val_mae: 6.9520
+404/404 [==============================] - 0s 498us/sample - loss: 85.2209 - mae: 6.7701 - val_loss: 78.1736 - val_mae: 6.4667
+2022-01-17 20:15:51.461786: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
 To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-01-17 19:55:48.742427: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 20:15:51.467061: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+404/404 [==============================] - 1s 3ms/sample - loss: 87.1320 - mae: 7.0783 - val_loss: 64.7436 - val_mae: 6.1645
+Epoch 3/3
+404/404 [==============================] - 0s 141us/sample - loss: 70.1167 - mae: 5.9839 - val_loss: 92.4013 - val_mae: 8.2311
 Train on 404 samples, validate on 102 samples
 Epoch 4/7
-404/404 [==============================] - 1s 3ms/sample - loss: 88.2067 - mae: 6.7084 - val_loss: 97.2958 - val_mae: 7.8704
+Train on 404 samples, validate on 102 samples
+Epoch 4/7
+Train on 404 samples, validate on 102 samples
+Epoch 4/7
+404/404 [==============================] - 1s 3ms/sample - loss: 68.9716 - mae: 5.8691 - val_loss: 65.4753 - val_mae: 5.9187
 Epoch 5/7
-404/404 [==============================] - 0s 126us/sample - loss: 73.2170 - mae: 5.9256 - val_loss: 69.0587 - val_mae: 6.0672
+404/404 [==============================] - 1s 3ms/sample - loss: 87.4706 - mae: 6.9567 - val_loss: 88.7132 - val_mae: 6.8814
+Epoch 5/7
+404/404 [==============================] - 1s 3ms/sample - loss: 99.6994 - mae: 6.8227 - val_loss: 69.0279 - val_mae: 6.4795
+Epoch 5/7
+404/404 [==============================] - 0s 347us/sample - loss: 62.2751 - mae: 5.6500 - val_loss: 82.0277 - val_mae: 6.5475
 Epoch 6/7
-404/404 [==============================] - 0s 119us/sample - loss: 73.4492 - mae: 6.0680 - val_loss: 82.2365 - val_mae: 6.4606
+404/404 [==============================] - 0s 320us/sample - loss: 74.7241 - mae: 6.3082 - val_loss: 74.3547 - val_mae: 6.9067
+Epoch 6/7
+404/404 [==============================] - 0s 287us/sample - loss: 73.6867 - mae: 6.4039 - val_loss: 64.6798 - val_mae: 6.2432
+Epoch 6/7
+404/404 [==============================] - 0s 330us/sample - loss: 70.0915 - mae: 6.0928 - val_loss: 68.5346 - val_mae: 6.4581
 Epoch 7/7
-404/404 [==============================] - 0s 111us/sample - loss: 71.2436 - mae: 6.0687 - val_loss: 72.1617 - val_mae: 6.4581
+404/404 [==============================] - 0s 358us/sample - loss: 61.7143 - mae: 5.5699 - val_loss: 81.3843 - val_mae: 7.2658
+Epoch 7/7
+404/404 [==============================] - 0s 311us/sample - loss: 79.8676 - mae: 6.5244 - val_loss: 67.3844 - val_mae: 5.8493
+Epoch 7/7
+404/404 [==============================] - 0s 265us/sample - loss: 73.3285 - mae: 6.3710 - val_loss: 63.8848 - val_mae: 5.9922
+404/404 [==============================] - 0s 309us/sample - loss: 59.3020 - mae: 5.4560 - val_loss: 62.7025 - val_mae: 6.0392
+404/404 [==============================] - 0s 307us/sample - loss: 68.9727 - mae: 6.0001 - val_loss: 62.0919 - val_mae: 5.9221
+2022-01-17 20:16:03.541848: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 20:16:03.547408: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+Train on 404 samples, validate on 102 samples
+Epoch 4/7
+404/404 [==============================] - 1s 3ms/sample - loss: 82.0983 - mae: 6.2723 - val_loss: 69.0765 - val_mae: 6.3377
+Epoch 5/7
+404/404 [==============================] - 0s 163us/sample - loss: 71.0467 - mae: 6.0588 - val_loss: 70.3952 - val_mae: 5.9410
+Epoch 6/7
+404/404 [==============================] - 0s 135us/sample - loss: 69.3331 - mae: 5.8237 - val_loss: 84.0916 - val_mae: 7.5332
+Epoch 7/7
+404/404 [==============================] - 0s 128us/sample - loss: 64.1412 - mae: 5.5068 - val_loss: 65.6148 - val_mae: 6.3422
 Train on 404 samples, validate on 102 samples
 Epoch 8/15
 Train on 404 samples, validate on 102 samples
 Epoch 8/15
-404/404 [==============================] - 1s 2ms/sample - loss: 70.1900 - mae: 5.9932 - val_loss: 82.7984 - val_mae: 6.6312
+404/404 [==============================] - 1s 2ms/sample - loss: 90.5388 - mae: 6.4925 - val_loss: 96.0720 - val_mae: 7.1895
 Epoch 9/15
-404/404 [==============================] - 1s 2ms/sample - loss: 59.6985 - mae: 5.6319 - val_loss: 55.3704 - val_mae: 5.2559
+404/404 [==============================] - 1s 2ms/sample - loss: 77.9944 - mae: 6.2412 - val_loss: 63.7347 - val_mae: 5.7904
 Epoch 9/15
-404/404 [==============================] - 0s 181us/sample - loss: 63.0254 - mae: 5.4802 - val_loss: 89.3153 - val_mae: 7.5918
-Epoch 10/15
-404/404 [==============================] - 0s 182us/sample - loss: 52.4906 - mae: 5.1597 - val_loss: 55.5429 - val_mae: 5.5660
-Epoch 10/15
-404/404 [==============================] - 0s 166us/sample - loss: 52.7124 - mae: 5.3135 - val_loss: 54.0116 - val_mae: 5.4047
-Epoch 11/15
-404/404 [==============================] - 0s 170us/sample - loss: 65.6301 - mae: 5.6685 - val_loss: 75.3113 - val_mae: 6.7607
-Epoch 11/15
-404/404 [==============================] - 0s 168us/sample - loss: 66.1288 - mae: 5.7973 - val_loss: 64.7780 - val_mae: 5.9851
-Epoch 12/15
-404/404 [==============================] - 0s 170us/sample - loss: 50.2462 - mae: 5.0177 - val_loss: 54.6595 - val_mae: 5.3451
-Epoch 12/15
-404/404 [==============================] - 0s 171us/sample - loss: 63.6038 - mae: 5.5211 - val_loss: 64.1203 - val_mae: 5.9308: 0s - loss: 24.0917 - mae: 3.74
-Epoch 13/15
-404/404 [==============================] - 0s 176us/sample - loss: 51.7526 - mae: 5.1182 - val_loss: 52.3855 - val_mae: 5.3216
-Epoch 13/15
-404/404 [==============================] - 0s 176us/sample - loss: 61.1521 - mae: 5.5356 - val_loss: 67.7645 - val_mae: 6.0385
-Epoch 14/15
-404/404 [==============================] - 0s 177us/sample - loss: 49.4447 - mae: 4.9421 - val_loss: 51.8939 - val_mae: 5.2723
-Epoch 14/15
-404/404 [==============================] - 0s 171us/sample - loss: 59.1283 - mae: 5.2840 - val_loss: 80.6291 - val_mae: 7.1642
-Epoch 15/15
-404/404 [==============================] - 0s 168us/sample - loss: 50.3687 - mae: 5.0899 - val_loss: 52.2430 - val_mae: 5.0597
-Epoch 15/15
-404/404 [==============================] - 0s 173us/sample - loss: 61.9260 - mae: 5.6034 - val_loss: 62.9984 - val_mae: 5.8578
-404/404 [==============================] - 0s 175us/sample - loss: 46.9739 - mae: 4.9161 - val_loss: 73.9127 - val_mae: 6.1914
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 428 ms, sys: 132 ms, total: 560 ms
-Wall time: 1min 6s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404/404 [==============================] - 0s 145us/sample - loss: 61.0867 - mae: 5.5270 - val_loss: 64.8602 - val_mae: 5.9496
+Epoch 10/15
+404/404 [==============================] - 0s 144us/sample - loss: 69.5993 - mae: 5.9489 - val_loss: 64.3345 - val_mae: 5.6493
+Epoch 10/15
+404/404 [==============================] - 0s 140us/sample - loss: 66.8111 - mae: 5.9609 - val_loss: 67.1307 - val_mae: 6.4332
+Epoch 11/15
+404/404 [==============================] - 0s 135us/sample - loss: 68.1354 - mae: 5.9266 - val_loss: 70.3789 - val_mae: 6.7164
+Epoch 11/15
+404/404 [==============================] - 0s 135us/sample - loss: 63.4828 - mae: 5.5511 - val_loss: 58.8596 - val_mae: 5.7412
+Epoch 12/15
+404/404 [==============================] - 0s 132us/sample - loss: 60.6300 - mae: 5.7319 - val_loss: 64.1241 - val_mae: 6.0083
+Epoch 12/15
+404/404 [==============================] - 0s 138us/sample - loss: 71.7196 - mae: 6.0782 - val_loss: 153.0045 - val_mae: 10.5817
+Epoch 13/15
+404/404 [==============================] - 0s 133us/sample - loss: 63.2448 - mae: 5.6428 - val_loss: 70.0385 - val_mae: 6.7826
+Epoch 13/15
+404/404 [==============================] - 0s 136us/sample - loss: 63.4726 - mae: 5.6072 - val_loss: 65.5231 - val_mae: 6.3137
+Epoch 14/15
+404/404 [==============================] - 0s 137us/sample - loss: 64.7931 - mae: 5.8393 - val_loss: 69.3780 - val_mae: 5.8077
+Epoch 14/15
+404/404 [==============================] - 0s 131us/sample - loss: 69.3167 - mae: 5.9904 - val_loss: 90.2719 - val_mae: 6.9027
+Epoch 15/15
+404/404 [==============================] - 0s 130us/sample - loss: 60.3915 - mae: 5.5286 - val_loss: 58.7957 - val_mae: 5.6263
+Epoch 15/15
+404/404 [==============================] - 0s 138us/sample - loss: 59.7843 - mae: 5.4936 - val_loss: 60.0637 - val_mae: 5.9212
+404/404 [==============================] - 0s 129us/sample - loss: 66.4969 - mae: 5.7762 - val_loss: 64.8697 - val_mae: 5.5372
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;5679b586-e31c-5b98-84ea-2a779201a450&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 24, &#39;l2&#39;: 27}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.857834815979004, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 24, &#39;l2&#39;: 27}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.857834815979004, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 55, 57, 783590)},
- {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;90c3d0d6-d3c6-54f1-b59a-fdd7233e83b2&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 31, &#39;l2&#39;: 18}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 6.191352367401123, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 31, &#39;l2&#39;: 18}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 6.191352367401123, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 55, 57, 785641)}]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 512 ms, sys: 163 ms, total: 675 ms
+Wall time: 1min 15s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;9f135e3f-83a6-5b7f-b5f3-af6637662c49&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 17, &#39;l2&#39;: 23}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.537221431732178, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 17, &#39;l2&#39;: 23}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.537221431732178, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 20, 16, 10, 702500)},
+ {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;5679b586-e31c-5b98-84ea-2a779201a450&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 24, &#39;l2&#39;: 27}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.921214580535889, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 24, &#39;l2&#39;: 27}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.921214580535889, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 20, 16, 10, 699282)}]
 </pre></div>
 </div>
 </div>
@@ -1370,14 +1374,14 @@ Wall time: 1min 6s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/iterative_20_0.png" src="../../_images/iterative_20_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[] 5.078456878662109 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;bcf35cc2-c02e-5d5f-b501-24c66ccae969&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 29}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.078456878662109, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 29}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.078456878662109, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 56, 35, 199312)}
-CPU times: user 34.5 s, sys: 1.84 s, total: 36.4 s
-Wall time: 33.8 s
+<img alt="../../_images/iterative_19_0.png" src="../../_images/iterative_19_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[] 5.095827102661133 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;416996d0-aff1-5def-bf8a-ab44dd136c89&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 30, &#39;l2&#39;: 27}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.095827102661133, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 30, &#39;l2&#39;: 27}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.095827102661133, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 20, 16, 45, 616816)}
+CPU times: user 32.6 s, sys: 1.82 s, total: 34.5 s
+Wall time: 31.3 s
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;bcf35cc2-c02e-5d5f-b501-24c66ccae969&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 29}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.078456878662109, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 29}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.078456878662109, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 56, 35, 199312)},
- {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;1853040c-56d3-5f9d-9fb5-0b1747648f14&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 22, &#39;l2&#39;: 21}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.784449100494385, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 22, &#39;l2&#39;: 21}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.784449100494385, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 56, 36, 338849)}]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;416996d0-aff1-5def-bf8a-ab44dd136c89&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 30, &#39;l2&#39;: 27}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.095827102661133, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 30, &#39;l2&#39;: 27}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.095827102661133, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 20, 16, 45, 616816)},
+ {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;b02ea4d5-c747-5f4b-b0b0-c6f572b1869a&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 27, &#39;l2&#39;: 11}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 6.027777194976807, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 27, &#39;l2&#39;: 11}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 6.027777194976807, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 20, 16, 46, 708740)}]
 </pre></div>
 </div>
 </div>
@@ -1407,14 +1411,14 @@ Wall time: 33.8 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/iterative_22_0.png" src="../../_images/iterative_22_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[] 5.534700870513916 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;360e486c-6d27-5abc-bb8d-c9bd388e62c3&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 25, &#39;l2&#39;: 28}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.534700870513916, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 25, &#39;l2&#39;: 28}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.534700870513916, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 57, 15, 810145)}
-CPU times: user 4.08 s, sys: 452 ms, total: 4.53 s
-Wall time: 1min 38s
+<img alt="../../_images/iterative_21_0.png" src="../../_images/iterative_21_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[] 5.18780517578125 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;5b9e9b06-fc51-55eb-9bd0-e9334edbe89f&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 18, &#39;l2&#39;: 32}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.18780517578125, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 18, &#39;l2&#39;: 32}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.18780517578125, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 20, 17, 19, 6718)}
+CPU times: user 3.75 s, sys: 401 ms, total: 4.15 s
+Wall time: 1min 4s
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;360e486c-6d27-5abc-bb8d-c9bd388e62c3&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 25, &#39;l2&#39;: 28}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.534700870513916, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 25, &#39;l2&#39;: 28}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.534700870513916, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 57, 15, 810145)},
- {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;deef37ff-4cff-5de3-8320-fc5246922a74&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 18, &#39;l2&#39;: 19}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.626887321472168, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 18, &#39;l2&#39;: 19}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 1, &#39;sort_metric&#39;: 5.626887321472168, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 58, 0, 672435)}]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;5b9e9b06-fc51-55eb-9bd0-e9334edbe89f&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 18, &#39;l2&#39;: 32}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.18780517578125, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 18, &#39;l2&#39;: 32}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.18780517578125, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 20, 17, 19, 6718)},
+ {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;aa517e33-1675-5c02-851f-6f0f5fb1993f&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 32, &#39;l2&#39;: 10}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.464710712432861, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 32, &#39;l2&#39;: 10}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 2, &#39;sort_metric&#39;: 5.464710712432861, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 20, 17, 33, 663062)}]
 </pre></div>
 </div>
 </div>
@@ -1443,33 +1447,19 @@ Wall time: 1min 38s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/iterative_24_0.png" src="../../_images/iterative_24_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[] 5.175924777984619 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;f63f8520-5581-52af-b8bd-8d2d23b7e831&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 11}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.175924777984619, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 11}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.175924777984619, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 58, 28, 403762)}
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+404/404 [==============================] - 0s 151us/sample - loss: 72.1222 - mae: 6.0137 - val_loss: 72.0536 - val_mae: 6.1482
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404/404 [==============================] - 1s 3ms/sample - loss: 62.7986 - mae: 5.4580 - val_loss: 63.1626 - val_mae: 6.0242
+<img alt="../../_images/iterative_23_1.png" src="../../_images/iterative_23_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[] 5.4638991355896 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;f748e3d7-7dd1-56ed-8ef8-389c077f0f53&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 16, &#39;l2&#39;: 14}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.4638991355896, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 16, &#39;l2&#39;: 14}, &#39;metadata&#39;: {}, &#39;cost&#39;: 4.0, &#39;rung&#39;: 2, &#39;sort_metric&#39;: 5.4638991355896, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 20, 18, 1, 960888)}
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 32/404 [=&gt;............................] - ETA: 9s - loss: 107.7255 - mae: 7.6795
+404/404 [==============================] - 1s 3ms/sample - loss: 82.8418 - mae: 6.9814 - val_loss: 77.8392 - val_mae: 6.6640
 Epoch 10/16
-404/404 [==============================] - 0s 132us/sample - loss: 56.0847 - mae: 5.1227 - val_loss: 85.6432 - val_mae: 7.7297
-Epoch 11/16
-404/404 [==============================] - 0s 118us/sample - loss: 56.0394 - mae: 5.2751 - val_loss: 58.2662 - val_mae: 5.5350
-Epoch 12/16
-404/404 [==============================] - 0s 111us/sample - loss: 55.7567 - mae: 5.1046 - val_loss: 65.8581 - val_mae: 5.8243
-Epoch 13/16
-404/404 [==============================] - 0s 108us/sample - loss: 52.1970 - mae: 4.9439 - val_loss: 68.7707 - val_mae: 6.0233
-Epoch 14/16
-404/404 [==============================] - 0s 109us/sample - loss: 54.3618 - mae: 5.1161 - val_loss: 88.8879 - val_mae: 8.0009
-Epoch 15/16
-404/404 [==============================] - 0s 139us/sample - loss: 53.7091 - mae: 5.2220 - val_loss: 60.4695 - val_mae: 5.5697
-Epoch 16/16
-404/404 [==============================] - 0s 143us/sample - loss: 53.2826 - mae: 5.0622 - val_loss: 70.9657 - val_mae: 6.8227
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.42 s, sys: 191 ms, total: 1.61 s
-Wall time: 25.2 s
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;f63f8520-5581-52af-b8bd-8d2d23b7e831&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 11}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.175924777984619, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 11}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.175924777984619, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 58, 28, 403762)},
- {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;00dc3281-97eb-5e4f-a486-32d8dedc674f&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 10, &#39;l2&#39;: 22}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.658406734466553, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 10, &#39;l2&#39;: 22}, &#39;metadata&#39;: {}, &#39;cost&#39;: 4.0, &#39;rung&#39;: 2, &#39;sort_metric&#39;: 5.658406734466553, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 58, 26, 639210)}]
+
+ 32/404 [=&gt;............................] - ETA: 0s - loss: 89.2248 - mae: 6.8394
 </pre></div>
 </div>
 </div>
