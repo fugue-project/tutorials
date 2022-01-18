@@ -1,0 +1,1545 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iterative Problems &#8212; Fugue Tutorials</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/fugue_logo_trimmed.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Resources" href="../resources.html" />
+    <link rel="prev" title="Non-Iterative Problems" href="non_iterative.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo_blue.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fugue Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to the Fugue Tutorials!
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../beginner/index.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/type_flexibility.html">
+     Type Flexibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/partitioning.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/decoupling_logic_and_execution.html">
+     Decoupling Logic and Execution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/interface.html">
+     Fugue Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/joins.html">
+     Joins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_extension.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/distributed_compute.html">
+     Distributed Compute
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/beginner_sql.html">
+     FugueSQL
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../beginner/ibis.html">
+     Ibis Integration (Experimental)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/creator.html">
+     Creator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/processor.html">
+     Processor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputter.html">
+     Outputter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/cotransformer.html">
+     CoTransformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputtransformer.html">
+     Output Transformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/outputcotransformer.html">
+     Output CoTransformer (Advanced)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extensions/interfaceless.html">
+     Interfaceless
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fugue_sql/index.html">
+   FugueSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/syntax.html">
+     Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/operators.html">
+     Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/python.html">
+     Using Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/extensions.html">
+     Extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fugue_sql/dask.html">
+     FugueSQL and Dask-sql
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../advanced/index.html">
+   Deep Dive
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/dag.html">
+     Execution Graph (DAG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/useful_config.html">
+     Fugue Configurations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/execution_engine.html">
+     Execution Engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/validation.html">
+     Extension Input Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/schema_dataframes.html">
+     Data Type, Schema &amp; DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/partition.html">
+     Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/checkpoint.html">
+     Checkpoint Deep Dive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/rpc.html">
+     Callbacks From Transformers To Driver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced/x-like.html">
+     X-like Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/stock_sentiment.html">
+     Stock Sentiment Analysis (Preprocessing)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/example_covid19.html">
+     COVID19 Data Exploration with FugueSQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../applications/index.html">
+   Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/data_validation.html">
+     Data Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/testing.html">
+     Testing PySpark Applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/model_sweeping.html">
+     Distributed Machine Learning Model Sweeping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../applications/databricks_connect.html">
+     Using Fugue on Databricks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../debugging/index.html">
+   Debugging
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../debugging/unknown_opcode.html">
+     SystemError - unknown opcode
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Fugue Tune
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Fugue Tune
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="search_space.html">
+     Search Space
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="non_iterative.html">
+     Non-Iterative Problems
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Iterative Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Further Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
+     Fugue and PyArrow Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/fugue_spark_benchmark.html">
+     Benchmark of Fugue on Spark
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/fugue_not_pandas.html">
+     Why Fugue Does NOT Want To Be Another Pandas-Like Framework
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/tune/iterative.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/fugue-project/tutorials/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/tune/iterative.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/tune/iterative.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/tune/iterative.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reorganize-your-keras-model-code">
+   Reorganize Your Keras Model Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-the-simplest-case-and-run">
+   Define the simplest case and run
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#successive-halving">
+   Successive Halving
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-with-spark">
+   Run with Spark
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-with-realtime-monitoring">
+   Run with realtime monitoring
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hyperband">
+   Hyperband
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asynchronous-success-halving">
+   Asynchronous Success Halving
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Iterative Problems</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reorganize-your-keras-model-code">
+   Reorganize Your Keras Model Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-the-simplest-case-and-run">
+   Define the simplest case and run
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#successive-halving">
+   Successive Halving
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-with-spark">
+   Run with Spark
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-with-realtime-monitoring">
+   Run with realtime monitoring
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hyperband">
+   Hyperband
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asynchronous-success-halving">
+   Asynchronous Success Halving
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="iterative-problems">
+<h1>Iterative Problems<a class="headerlink" href="#iterative-problems" title="Permalink to this headline">¶</a></h1>
+<p>Iterative problems refers to the objectives that can run in multiple iterations and in each of the iteration, it can report the current metrics and may also checkpoint and resume. To optimize iterative problems, the main approach to early stop the bad trials, and move compute resource to the promising ones.</p>
+<p>Deep learning models are the most typical iterative problems in parameter optimization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue_notebook</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="n">setup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">
+require(["codemirror/lib/codemirror"]);
+function set(str) {
+    var obj = {}, words = str.split(" ");
+    for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
+    return obj;
+  }
+var fugue_keywords = "fill hash rand even presort persist broadcast params process output outtransform rowcount concurrency prepartition zip print title save append parquet csv json single checkpoint weak strong deterministic yield connect sample seed take sub callback dataframe file";
+CodeMirror.defineMIME("text/x-fsql", {
+    name: "sql",
+    keywords: set(fugue_keywords + " add after all alter analyze and anti archive array as asc at between bucket buckets by cache cascade case cast change clear cluster clustered codegen collection column columns comment commit compact compactions compute concatenate cost create cross cube current current_date current_timestamp database databases data dbproperties defined delete delimited deny desc describe dfs directories distinct distribute drop else end escaped except exchange exists explain export extended external false fields fileformat first following for format formatted from full function functions global grant group grouping having if ignore import in index indexes inner inpath inputformat insert intersect interval into is items join keys last lateral lazy left like limit lines list load local location lock locks logical macro map minus msck natural no not null nulls of on optimize option options or order out outer outputformat over overwrite partition partitioned partitions percent preceding principals purge range recordreader recordwriter recover reduce refresh regexp rename repair replace reset restrict revoke right rlike role roles rollback rollup row rows schema schemas select semi separated serde serdeproperties set sets show skewed sort sorted start statistics stored stratify struct table tables tablesample tblproperties temp temporary terminated then to touch transaction transactions transform true truncate unarchive unbounded uncache union unlock unset use using values view when where window with"),
+    builtin: set("date datetime tinyint smallint int bigint boolean float double string binary timestamp decimal array map struct uniontype delimited serde sequencefile textfile rcfile inputformat outputformat"),
+    atoms: set("false true null"),
+    operatorChars: /^[*\/+\-%<>!=~&|^]/,
+    dateSQL: set("time"),
+    support: set("ODBCdotTable doubleQuote zerolessFloat")
+  });
+
+CodeMirror.modeInfo.push( {
+            name: "Fugue SQL",
+            mime: "text/x-fsql",
+            mode: "sql"
+          } );
+
+require(['notebook/js/codecell'], function(codecell) {
+    codecell.CodeCell.options_default.highlight_modes['magic_text/x-fsql'] = {'reg':[/%%fsql/]} ;
+    Jupyter.notebook.events.on('kernel_ready.Kernel', function(){
+    Jupyter.notebook.get_cells().map(function(cell){
+        if (cell.cell_type == 'code'){ cell.auto_highlight(); } }) ;
+    });
+  });
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tune</span> <span class="kn">import</span> <span class="n">TUNE_OBJECT_FACTORY</span>
+<span class="n">TUNE_OBJECT_FACTORY</span><span class="o">.</span><span class="n">set_temp_path</span><span class="p">(</span><span class="s2">&quot;/tmp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="reorganize-your-keras-model-code">
+<h2>Reorganize Your Keras Model Code<a class="headerlink" href="#reorganize-your-keras-model-code" title="Permalink to this headline">¶</a></h2>
+<p>In this demo we are going to use Keras Model as our iterative problem example. To develop a keras model, we need to do several things such as construct the model, compile and fit. In order to use tune package for a keras problem, you need to fill out our template class KerasTrainingSpec, it doesn’t really add anything to your logic, but it keeps your code organized. Plus with the template, you can still use it in common way - to train it on local machine given epochs. You will not lose anything or add any unnecessary thing by implementing this class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span><span class="p">,</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">boston_housing</span>
+
+<span class="kn">from</span> <span class="nn">tune_tensorflow</span> <span class="kn">import</span> <span class="n">KerasTrainingSpec</span>
+
+<span class="k">class</span> <span class="nc">HousingSpec</span><span class="p">(</span><span class="n">KerasTrainingSpec</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">dfs</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="mi">0</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">dfs</span><span class="p">)</span>
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">train_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_targets</span><span class="p">),</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">test_data</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">test_targets</span><span class="p">,</span>
+        <span class="p">)</span> <span class="o">=</span> <span class="n">boston_housing</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">simple_value</span><span class="p">[</span><span class="s2">&quot;l1&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">simple_value</span><span class="p">[</span><span class="s2">&quot;l2&quot;</span><span class="p">]</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+            <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">train_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],))</span>
+        <span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">l2</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">model</span>
+
+    <span class="k">def</span> <span class="nf">get_compile_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">get_fit_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">train_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_targets</span><span class="p">],</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_targets</span><span class="p">),</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_fit_metric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">history</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">&quot;val_mae&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">generate_sort_metric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metric</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">metric</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that you can also define how to save and load the current model in the template. The default way to save is to only save the weights. The default way to load is to call get_model and then load weights.</p>
+<p>For iterative problems, we will separate the execution to several rungs, each rung for a deep learning model will contain several epochs. Save and load is on rung level, not on epoch level. So if you want to checkpoint on each epoch, you can add your own callbacks.</p>
+<p>For deep learning models, it normally uses GPU to train, and it can be expensive, so before tuning, it’s important to test with your local CPU or GPU to see if the training spec can run one rung successfully. To do that, you only need to call compute_sort_metric. It will produce the final output metric used for tuning. The metric must be smaller better. You can implement generate_sort_metric for different type of metrics. For errors they are already smaller better, but for things like precision, you should return the negative value to be smaller better.m</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spec</span> <span class="o">=</span> <span class="n">HousingSpec</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">l1</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">l2</span><span class="o">=</span><span class="mi">16</span><span class="p">),</span><span class="n">dfs</span><span class="o">=</span><span class="p">{})</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">compute_sort_metric</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-17 19:54:08.523834: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 19:54:08.524223: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
+Epoch 1/3
+404/404 [==============================] - 1s 2ms/sample - loss: 27413.4412 - mae: 160.3242 - val_loss: 15522.5603 - val_mae: 121.8566
+Epoch 2/3
+404/404 [==============================] - 0s 98us/sample - loss: 10894.1324 - mae: 100.2093 - val_loss: 6229.4459 - val_mae: 74.7453
+Epoch 3/3
+404/404 [==============================] - 0s 96us/sample - loss: 4404.7381 - mae: 60.2880 - val_loss: 2329.2183 - val_mae: 42.2783
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42.27825927734375
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="define-the-simplest-case-and-run">
+<h2>Define the simplest case and run<a class="headerlink" href="#define-the-simplest-case-and-run" title="Permalink to this headline">¶</a></h2>
+<p>After calling compute_sort_metric, we know it works fine for each run. So now let’s define the search space and start tuning.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">tune</span> <span class="kn">import</span> <span class="n">Space</span><span class="p">,</span> <span class="n">Grid</span><span class="p">,</span> <span class="n">Rand</span><span class="p">,</span> <span class="n">RandInt</span><span class="p">,</span> <span class="n">Choice</span>
+
+<span class="kn">from</span> <span class="nn">tune_tensorflow</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">keras_space</span><span class="p">,</span>
+    <span class="n">suggest_keras_models_by_continuous_asha</span><span class="p">,</span>
+    <span class="n">suggest_keras_models_by_hyperband</span><span class="p">,</span>
+    <span class="n">suggest_keras_models_by_sha</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you have read the tutorial for non-iterative problems, you will find the utility functions are highly consistent. For keras_space, just like sk_space, you specify the spec class type, followed by hyperparameters. The following space will contain only two configurations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">keras_space</span><span class="p">(</span><span class="n">HousingSpec</span><span class="p">,</span> <span class="n">l1</span><span class="o">=</span><span class="n">Grid</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">l2</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># using successive halving to search in the space</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_keras_models_by_sha</span><span class="p">(</span>
+    <span class="n">space</span><span class="p">,</span>
+    <span class="n">plan</span><span class="o">=</span><span class="p">[(</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>  <span class="c1"># for each of the two configurations, we run 2 epochs, and select 1 as the final result based on sorted_metric.</span>
+<span class="p">)</span>
+
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
+Epoch 1/2
+404/404 [==============================] - 1s 1ms/sample - loss: 2440.3781 - mae: 42.7642 - val_loss: 520.0272 - val_mae: 18.5519
+Epoch 2/2
+404/404 [==============================] - 0s 98us/sample - loss: 254.3057 - mae: 12.8793 - val_loss: 179.2907 - val_mae: 10.4215
+Train on 404 samples, validate on 102 samples
+Epoch 1/2
+404/404 [==============================] - 1s 2ms/sample - loss: 590.6521 - mae: 13.9741 - val_loss: 212.2144 - val_mae: 9.9724
+Epoch 2/2
+404/404 [==============================] - 0s 133us/sample - loss: 190.8393 - mae: 9.0388 - val_loss: 106.4788 - val_mae: 7.5445
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;b0961e02-bd7c-5166-8657-254d487e0262&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 16, &#39;l2&#39;: 16}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 7.54452657699585, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 16, &#39;l2&#39;: 16}, &#39;metadata&#39;: {}, &#39;cost&#39;: 2.0, &#39;rung&#39;: 0, &#39;sort_metric&#39;: 7.54452657699585, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 54, 11, 122638)}]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="successive-halving">
+<h2>Successive Halving<a class="headerlink" href="#successive-halving" title="Permalink to this headline">¶</a></h2>
+<p>If you don’t have a lot of computing resource, for example you are tuning using your own machine with just 1 GPU, then, successive halving is a great choice. In this implementation, the models will be saved to disk after each rung, and will be retrived at the beginning of next rung if promoted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.0.0&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">space</span> <span class="o">=</span> <span class="n">keras_space</span><span class="p">(</span><span class="n">HousingSpec</span><span class="p">,</span> <span class="n">l1</span><span class="o">=</span><span class="n">RandInt</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">32</span><span class="p">),</span> <span class="n">l2</span><span class="o">=</span><span class="n">RandInt</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">32</span><span class="p">))</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_keras_models_by_sha</span><span class="p">(</span>
+    <span class="n">space</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">plan</span><span class="o">=</span><span class="p">[(</span><span class="mf">1.0</span><span class="p">,</span><span class="mi">8</span><span class="p">),(</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mf">4.0</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mf">8.0</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span>  <span class="c1"># a traditional successive halving plan, you can invent your own plan</span>
+    <span class="n">top_n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="c1"># we only keep up to 2 best results</span>
+<span class="p">)</span>
+
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 1319.9363 - mae: 30.7002 - val_loss: 244.9719 - val_mae: 12.9941
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 500.6304 - mae: 17.9309 - val_loss: 233.3478 - val_mae: 12.2873
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 12419.4504 - mae: 102.1658 - val_loss: 2256.5096 - val_mae: 46.1901
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 8233.0814 - mae: 82.0592 - val_loss: 1704.8914 - val_mae: 37.3571
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 3593.6414 - mae: 40.9148 - val_loss: 1249.0543 - val_mae: 25.7184
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 636.7570 - mae: 16.7616 - val_loss: 119.9766 - val_mae: 8.4691
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 415.2354 - mae: 16.4452 - val_loss: 183.2412 - val_mae: 10.8545
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 517.5867 - mae: 14.8204 - val_loss: 156.3005 - val_mae: 9.3106
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 10987.0018 - mae: 90.8215 - val_loss: 710.4055 - val_mae: 24.4034
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 1234.1413 - mae: 22.7520 - val_loss: 419.2104 - val_mae: 14.9936
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 4749.5731 - mae: 63.7150 - val_loss: 1233.9628 - val_mae: 32.9337
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 11247.7668 - mae: 98.5764 - val_loss: 3475.6490 - val_mae: 57.0503
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 1710.5671 - mae: 34.7378 - val_loss: 430.0632 - val_mae: 17.6212
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 1297.2226 - mae: 27.2466 - val_loss: 469.3585 - val_mae: 17.2943
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 10914.0879 - mae: 92.9741 - val_loss: 4162.8103 - val_mae: 52.8484
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 2ms/sample - loss: 14630.9546 - mae: 115.2435 - val_loss: 4688.5856 - val_mae: 67.8056
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
+Epoch 2/3
+404/404 [==============================] - 1s 2ms/sample - loss: 120.4326 - mae: 8.2631 - val_loss: 64.8577 - val_mae: 6.2104
+Epoch 3/3
+404/404 [==============================] - 0s 100us/sample - loss: 68.8768 - mae: 6.0364 - val_loss: 79.5332 - val_mae: 7.7276
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+404/404 [==============================] - 1s 2ms/sample - loss: 169.3502 - mae: 10.0419 - val_loss: 94.6301 - val_mae: 7.5048
+Epoch 3/3
+404/404 [==============================] - 0s 98us/sample - loss: 86.7536 - mae: 7.2502 - val_loss: 77.5732 - val_mae: 7.1749
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+404/404 [==============================] - 1s 2ms/sample - loss: 101.8134 - mae: 7.3988 - val_loss: 79.9524 - val_mae: 6.5653
+Epoch 3/3
+404/404 [==============================] - 0s 106us/sample - loss: 79.3774 - mae: 6.3908 - val_loss: 82.5980 - val_mae: 7.5088
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+404/404 [==============================] - 1s 2ms/sample - loss: 148.0485 - mae: 8.8417 - val_loss: 109.3509 - val_mae: 8.0037
+Epoch 3/3
+404/404 [==============================] - 0s 97us/sample - loss: 95.4225 - mae: 7.1774 - val_loss: 93.0146 - val_mae: 7.0021
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+404/404 [==============================] - 1s 2ms/sample - loss: 183.6946 - mae: 10.2948 - val_loss: 105.8235 - val_mae: 8.6973
+Epoch 3/3
+404/404 [==============================] - 0s 171us/sample - loss: 114.6700 - mae: 8.2928 - val_loss: 85.7075 - val_mae: 7.4667
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+404/404 [==============================] - 1s 2ms/sample - loss: 183.4263 - mae: 8.8421 - val_loss: 92.5326 - val_mae: 7.4026
+Epoch 3/3
+404/404 [==============================] - 0s 110us/sample - loss: 79.9811 - mae: 6.4508 - val_loss: 76.1583 - val_mae: 6.6871
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+404/404 [==============================] - 1s 2ms/sample - loss: 406.4939 - mae: 16.0939 - val_loss: 214.6216 - val_mae: 11.8556
+Epoch 3/3
+404/404 [==============================] - 0s 111us/sample - loss: 240.0032 - mae: 12.1973 - val_loss: 215.2450 - val_mae: 11.7941
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+404/404 [==============================] - 1s 2ms/sample - loss: 259.9674 - mae: 12.7154 - val_loss: 119.2954 - val_mae: 8.5903
+Epoch 3/3
+404/404 [==============================] - 0s 128us/sample - loss: 115.1173 - mae: 8.1211 - val_loss: 76.7522 - val_mae: 6.8532
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
+Epoch 4/7
+404/404 [==============================] - 1s 2ms/sample - loss: 72.0936 - mae: 6.1744 - val_loss: 66.9929 - val_mae: 6.1877
+Epoch 5/7
+404/404 [==============================] - 0s 112us/sample - loss: 62.9729 - mae: 5.6834 - val_loss: 88.0643 - val_mae: 6.9307
+Epoch 6/7
+404/404 [==============================] - 0s 115us/sample - loss: 65.6215 - mae: 5.6781 - val_loss: 65.6765 - val_mae: 6.0891
+Epoch 7/7
+404/404 [==============================] - 0s 112us/sample - loss: 60.2537 - mae: 5.5051 - val_loss: 80.3885 - val_mae: 6.5533
+Train on 404 samples, validate on 102 samples
+Epoch 4/7
+404/404 [==============================] - 1s 2ms/sample - loss: 82.5100 - mae: 6.6947 - val_loss: 79.3555 - val_mae: 7.2332
+Epoch 5/7
+404/404 [==============================] - 0s 127us/sample - loss: 76.0593 - mae: 6.4427 - val_loss: 93.5321 - val_mae: 8.2037
+Epoch 6/7
+404/404 [==============================] - 0s 108us/sample - loss: 70.1939 - mae: 6.1561 - val_loss: 73.3954 - val_mae: 6.2125
+Epoch 7/7
+404/404 [==============================] - 0s 130us/sample - loss: 64.5558 - mae: 5.7760 - val_loss: 64.9331 - val_mae: 6.1384
+Train on 404 samples, validate on 102 samples
+Epoch 4/7
+404/404 [==============================] - 1s 2ms/sample - loss: 97.8362 - mae: 7.0518 - val_loss: 87.7088 - val_mae: 6.8388
+Epoch 5/7
+404/404 [==============================] - 0s 115us/sample - loss: 80.2479 - mae: 6.2916 - val_loss: 105.0625 - val_mae: 7.4265
+Epoch 6/7
+404/404 [==============================] - 0s 108us/sample - loss: 82.0760 - mae: 6.1993 - val_loss: 82.2425 - val_mae: 6.8280
+Epoch 7/7
+404/404 [==============================] - 0s 117us/sample - loss: 81.4513 - mae: 6.3678 - val_loss: 80.8299 - val_mae: 6.8102
+Train on 404 samples, validate on 102 samples
+Epoch 4/7
+404/404 [==============================] - 1s 2ms/sample - loss: 109.4985 - mae: 7.6691 - val_loss: 66.1248 - val_mae: 6.2350
+Epoch 5/7
+404/404 [==============================] - 0s 107us/sample - loss: 68.7070 - mae: 6.1294 - val_loss: 71.6808 - val_mae: 6.2339
+Epoch 6/7
+404/404 [==============================] - 0s 103us/sample - loss: 76.3914 - mae: 6.5145 - val_loss: 89.3213 - val_mae: 6.9795
+Epoch 7/7
+404/404 [==============================] - 0s 112us/sample - loss: 56.2741 - mae: 5.5234 - val_loss: 67.1027 - val_mae: 5.9790
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NativeExecutionEngine doesn&#39;t respect num_partitions ROWCOUNT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 404 samples, validate on 102 samples
+Epoch 8/15
+404/404 [==============================] - 1s 2ms/sample - loss: 88.7617 - mae: 6.4368 - val_loss: 62.2813 - val_mae: 5.8132
+Epoch 9/15
+404/404 [==============================] - 0s 98us/sample - loss: 67.9098 - mae: 6.2745 - val_loss: 57.2800 - val_mae: 5.8389
+Epoch 10/15
+404/404 [==============================] - 0s 97us/sample - loss: 60.1481 - mae: 5.6344 - val_loss: 59.0031 - val_mae: 5.6075
+Epoch 11/15
+404/404 [==============================] - 0s 108us/sample - loss: 61.0459 - mae: 5.9227 - val_loss: 89.7350 - val_mae: 7.0892
+Epoch 12/15
+404/404 [==============================] - 0s 99us/sample - loss: 62.9239 - mae: 5.9813 - val_loss: 69.6226 - val_mae: 6.1424
+Epoch 13/15
+404/404 [==============================] - 0s 98us/sample - loss: 61.2087 - mae: 5.7546 - val_loss: 62.4240 - val_mae: 6.2600
+Epoch 14/15
+404/404 [==============================] - 0s 97us/sample - loss: 60.2624 - mae: 5.9038 - val_loss: 55.9667 - val_mae: 5.4250
+Epoch 15/15
+404/404 [==============================] - 0s 101us/sample - loss: 53.0057 - mae: 5.3325 - val_loss: 54.0883 - val_mae: 5.3964
+Train on 404 samples, validate on 102 samples
+Epoch 8/15
+404/404 [==============================] - 1s 2ms/sample - loss: 69.8673 - mae: 5.9212 - val_loss: 61.8628 - val_mae: 5.8118
+Epoch 9/15
+404/404 [==============================] - 0s 97us/sample - loss: 60.3063 - mae: 5.6430 - val_loss: 78.7581 - val_mae: 7.2494
+Epoch 10/15
+404/404 [==============================] - 0s 101us/sample - loss: 63.0370 - mae: 5.6963 - val_loss: 77.6056 - val_mae: 7.2605
+Epoch 11/15
+404/404 [==============================] - 0s 99us/sample - loss: 56.2638 - mae: 5.4253 - val_loss: 60.3506 - val_mae: 5.5013
+Epoch 12/15
+404/404 [==============================] - 0s 96us/sample - loss: 57.3670 - mae: 5.4140 - val_loss: 59.5253 - val_mae: 5.6786
+Epoch 13/15
+404/404 [==============================] - 0s 97us/sample - loss: 58.1436 - mae: 5.4772 - val_loss: 57.3059 - val_mae: 5.3921
+Epoch 14/15
+404/404 [==============================] - 0s 98us/sample - loss: 58.6899 - mae: 5.6257 - val_loss: 58.5365 - val_mae: 5.3753
+Epoch 15/15
+404/404 [==============================] - 0s 97us/sample - loss: 57.2729 - mae: 5.4020 - val_loss: 53.8954 - val_mae: 5.4413
+CPU times: user 26.2 s, sys: 910 ms, total: 27.1 s
+Wall time: 25.5 s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;fb22d339-41ac-569b-95b1-7c9c4ce8148a&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 31}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.396399974822998, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 31}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.396399974822998, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 54, 35, 701089)},
+ {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;61299f88-d921-5c5c-a19e-7885e63f6add&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 8}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.441264629364014, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 8}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.441264629364014, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 54, 36, 678024)}]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="run-with-spark">
+<h2>Run with Spark<a class="headerlink" href="#run-with-spark" title="Permalink to this headline">¶</a></h2>
+<p>If you have a Spark/Dask cluster, you can easily scale your search by providing a different execution_engine and execution_engine_conf. But if you are training a deep learning model, nomrally you need a GPU for each worker. How to make Spark and Dask start workers with GPU is a question about infrastructure. We can’t provide a guidance here because it very environment specific.</p>
+<p>For this case we only use CPU, so we can use the local spark to utilize the 4 CPUs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkContext</span><span class="p">,</span> <span class="n">SparkConf</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.session</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+
+<span class="n">fconf</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;fugue.rpc.server&quot;</span><span class="p">:</span> <span class="s2">&quot;fugue.rpc.flask.FlaskRPCServer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fugue.rpc.flask_server.host&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fugue.rpc.flask_server.port&quot;</span><span class="p">:</span> <span class="s2">&quot;1234&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fugue.rpc.flask_server.timeout&quot;</span><span class="p">:</span> <span class="s2">&quot;2 sec&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">conf</span> <span class="o">=</span> <span class="n">SparkConf</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.ui.showConsoleProgress&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">)</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="p">(</span><span class="n">appName</span><span class="o">=</span><span class="s2">&quot;Tuning&quot;</span><span class="p">,</span> <span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">)</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkExecutionEngine</span><span class="p">(</span><span class="n">SparkSession</span><span class="p">(</span><span class="n">sc</span><span class="p">),</span> <span class="n">conf</span><span class="o">=</span><span class="n">fconf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using Spark&#39;s default log4j profile: org/apache/spark/log4j-defaults.properties
+Setting default log level to &quot;WARN&quot;.
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+22/01/17 19:54:48 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+
+<span class="n">space</span> <span class="o">=</span> <span class="n">keras_space</span><span class="p">(</span><span class="n">HousingSpec</span><span class="p">,</span> <span class="n">l1</span><span class="o">=</span><span class="n">RandInt</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">32</span><span class="p">),</span> <span class="n">l2</span><span class="o">=</span><span class="n">RandInt</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">32</span><span class="p">))</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_keras_models_by_sha</span><span class="p">(</span>
+    <span class="n">space</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">plan</span><span class="o">=</span><span class="p">[(</span><span class="mf">1.0</span><span class="p">,</span><span class="mi">8</span><span class="p">),(</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mf">4.0</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mf">8.0</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span>
+    <span class="n">execution_engine</span><span class="o">=</span><span class="s2">&quot;spark&quot;</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-17 19:55:15.734290: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 19:55:15.739203: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 19:55:15.738501: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 19:55:15.741943: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 19:55:15.747002: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 19:55:15.748183: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 19:55:15.748321: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 19:55:15.748970: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 19:55:15.750307: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 19:55:15.752247: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 19:55:15.753525: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 19:55:15.757367: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 19:55:15.760453: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+2022-01-17 19:55:15.761519: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+2022-01-17 19:55:16.187723: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+2022-01-17 19:55:16.200014: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 3s 6ms/sample - loss: 173.2013 - mae: 9.5698 - val_loss: 89.3675 - val_mae: 7.1400
+404/404 [==============================] - 3s 6ms/sample - loss: 3083.3485 - mae: 48.8931 - val_loss: 1090.5983 - val_mae: 26.7652
+404/404 [==============================] - 3s 7ms/sample - loss: 191.1016 - mae: 10.0670 - val_loss: 126.1737 - val_mae: 8.3870
+404/404 [==============================] - 3s 7ms/sample - loss: 169.4875 - mae: 9.2106 - val_loss: 101.3535 - val_mae: 7.4222
+404/404 [==============================] - 3s 7ms/sample - loss: 314.0382 - mae: 10.7456 - val_loss: 126.8047 - val_mae: 7.4805
+404/404 [==============================] - 3s 7ms/sample - loss: 3091.9575 - mae: 46.9695 - val_loss: 262.8983 - val_mae: 14.5257
+404/404 [==============================] - 3s 7ms/sample - loss: 619.3501 - mae: 15.1667 - val_loss: 189.3614 - val_mae: 10.2667
+404/404 [==============================] - 2s 6ms/sample - loss: 16754.8562 - mae: 117.0442 - val_loss: 3143.6652 - val_mae: 51.7394
+Train on 404 samples, validate on 102 samplesTrain on 404 samples, validate on 102 samples
+
+Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 2s 4ms/sample - loss: 12017.2980 - mae: 100.0532 - val_loss: 3740.2892 - val_mae: 56.7321
+404/404 [==============================] - 2s 5ms/sample - loss: 23268.9513 - mae: 128.1369 - val_loss: 8171.4360 - val_mae: 67.8659
+404/404 [==============================] - 2s 5ms/sample - loss: 5371.4781 - mae: 53.4353 - val_loss: 1108.8825 - val_mae: 23.8276
+404/404 [==============================] - 2s 5ms/sample - loss: 133.6543 - mae: 8.6870 - val_loss: 68.7421 - val_mae: 6.3145
+404/404 [==============================] - 2s 5ms/sample - loss: 115.5216 - mae: 7.7611 - val_loss: 77.2582 - val_mae: 6.7086
+404/404 [==============================] - 2s 6ms/sample - loss: 797.1757 - mae: 19.5017 - val_loss: 100.3240 - val_mae: 7.7334
+404/404 [==============================] - 2s 6ms/sample - loss: 967.3984 - mae: 22.6780 - val_loss: 335.0724 - val_mae: 14.2882
+2022-01-17 19:55:24.319781: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 19:55:24.325347: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+Train on 404 samples, validate on 102 samples
+404/404 [==============================] - 1s 3ms/sample - loss: 416.9083 - mae: 14.4876 - val_loss: 185.1612 - val_mae: 10.8551
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+404/404 [==============================] - 2s 4ms/sample - loss: 97.8723 - mae: 7.0702 - val_loss: 94.8243 - val_mae: 7.9663
+Epoch 3/3
+404/404 [==============================] - 2s 4ms/sample - loss: 118.8510 - mae: 7.6408 - val_loss: 87.3539 - val_mae: 7.2623
+Epoch 3/3
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404/404 [==============================] - 0s 359us/sample - loss: 76.1740 - mae: 6.3161 - val_loss: 194.4426 - val_mae: 11.5665
+404/404 [==============================] - 2s 5ms/sample - loss: 108.1166 - mae: 7.6912 - val_loss: 106.0189 - val_mae: 7.6417
+Epoch 3/3
+404/404 [==============================] - 2s 4ms/sample - loss: 79.0589 - mae: 6.3961 - val_loss: 72.6850 - val_mae: 6.3838
+Epoch 3/3
+404/404 [==============================] - 2s 5ms/sample - loss: 120.2889 - mae: 8.0981 - val_loss: 100.1122 - val_mae: 7.7225
+Epoch 3/3
+404/404 [==============================] - 2s 4ms/sample - loss: 70.1822 - mae: 6.0738 - val_loss: 64.3547 - val_mae: 5.7275
+Epoch 3/3
+404/404 [==============================] - 0s 386us/sample - loss: 100.6062 - mae: 7.2877 - val_loss: 79.3854 - val_mae: 6.3384
+404/404 [==============================] - 2s 5ms/sample - loss: 89.2055 - mae: 6.7816 - val_loss: 70.8787 - val_mae: 6.2733
+Epoch 3/3
+404/404 [==============================] - 0s 393us/sample - loss: 81.3747 - mae: 6.3619 - val_loss: 78.2807 - val_mae: 6.3891
+404/404 [==============================] - 0s 413us/sample - loss: 64.8887 - mae: 5.7490 - val_loss: 118.4534 - val_mae: 8.2835
+404/404 [==============================] - 0s 439us/sample - loss: 88.3793 - mae: 7.0270 - val_loss: 88.6022 - val_mae: 7.4499
+404/404 [==============================] - 0s 440us/sample - loss: 58.7877 - mae: 5.3997 - val_loss: 62.9523 - val_mae: 5.8156
+404/404 [==============================] - 0s 503us/sample - loss: 72.3159 - mae: 5.8794 - val_loss: 72.1742 - val_mae: 6.1896
+2022-01-17 19:55:37.540533: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 19:55:37.546558: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+Train on 404 samples, validate on 102 samples
+Epoch 2/3
+404/404 [==============================] - 1s 3ms/sample - loss: 119.1461 - mae: 7.5404 - val_loss: 79.1548 - val_mae: 6.9795
+Epoch 3/3
+404/404 [==============================] - 0s 318us/sample - loss: 93.1741 - mae: 7.0583 - val_loss: 77.6463 - val_mae: 7.0785
+Train on 404 samples, validate on 102 samples
+Epoch 4/7
+Train on 404 samples, validate on 102 samples
+Epoch 4/7
+Train on 404 samples, validate on 102 samples
+Epoch 4/7
+404/404 [==============================] - 1s 3ms/sample - loss: 71.0895 - mae: 5.9972 - val_loss: 77.3907 - val_mae: 6.4102
+Epoch 5/7
+404/404 [==============================] - 1s 3ms/sample - loss: 119.4858 - mae: 8.0056 - val_loss: 78.6807 - val_mae: 6.6817
+Epoch 5/7
+404/404 [==============================] - 1s 3ms/sample - loss: 64.3921 - mae: 5.8579 - val_loss: 65.0424 - val_mae: 5.6956
+Epoch 5/7
+404/404 [==============================] - 0s 273us/sample - loss: 72.9252 - mae: 6.0213 - val_loss: 68.4794 - val_mae: 6.0738
+Epoch 6/7
+404/404 [==============================] - 0s 276us/sample - loss: 86.6026 - mae: 6.6973 - val_loss: 82.6199 - val_mae: 6.3693
+Epoch 6/7
+404/404 [==============================] - 0s 236us/sample - loss: 54.8795 - mae: 5.2536 - val_loss: 68.9555 - val_mae: 5.7567
+Epoch 6/7
+404/404 [==============================] - 0s 243us/sample - loss: 64.6557 - mae: 5.5482 - val_loss: 79.2492 - val_mae: 6.4793
+Epoch 7/7
+404/404 [==============================] - 0s 268us/sample - loss: 92.1981 - mae: 6.9012 - val_loss: 73.5577 - val_mae: 6.1625
+Epoch 7/7
+404/404 [==============================] - 0s 263us/sample - loss: 56.3075 - mae: 5.2032 - val_loss: 58.6425 - val_mae: 5.5413
+Epoch 7/7
+404/404 [==============================] - 0s 249us/sample - loss: 68.2542 - mae: 5.7936 - val_loss: 68.7498 - val_mae: 6.2593
+404/404 [==============================] - 0s 225us/sample - loss: 84.1873 - mae: 6.6234 - val_loss: 71.5440 - val_mae: 6.3085
+404/404 [==============================] - 0s 282us/sample - loss: 53.3678 - mae: 5.1441 - val_loss: 58.8838 - val_mae: 5.4403
+2022-01-17 19:55:48.733960: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-17 19:55:48.742427: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+Train on 404 samples, validate on 102 samples
+Epoch 4/7
+404/404 [==============================] - 1s 3ms/sample - loss: 88.2067 - mae: 6.7084 - val_loss: 97.2958 - val_mae: 7.8704
+Epoch 5/7
+404/404 [==============================] - 0s 126us/sample - loss: 73.2170 - mae: 5.9256 - val_loss: 69.0587 - val_mae: 6.0672
+Epoch 6/7
+404/404 [==============================] - 0s 119us/sample - loss: 73.4492 - mae: 6.0680 - val_loss: 82.2365 - val_mae: 6.4606
+Epoch 7/7
+404/404 [==============================] - 0s 111us/sample - loss: 71.2436 - mae: 6.0687 - val_loss: 72.1617 - val_mae: 6.4581
+Train on 404 samples, validate on 102 samples
+Epoch 8/15
+Train on 404 samples, validate on 102 samples
+Epoch 8/15
+404/404 [==============================] - 1s 2ms/sample - loss: 70.1900 - mae: 5.9932 - val_loss: 82.7984 - val_mae: 6.6312
+Epoch 9/15
+404/404 [==============================] - 1s 2ms/sample - loss: 59.6985 - mae: 5.6319 - val_loss: 55.3704 - val_mae: 5.2559
+Epoch 9/15
+404/404 [==============================] - 0s 181us/sample - loss: 63.0254 - mae: 5.4802 - val_loss: 89.3153 - val_mae: 7.5918
+Epoch 10/15
+404/404 [==============================] - 0s 182us/sample - loss: 52.4906 - mae: 5.1597 - val_loss: 55.5429 - val_mae: 5.5660
+Epoch 10/15
+404/404 [==============================] - 0s 166us/sample - loss: 52.7124 - mae: 5.3135 - val_loss: 54.0116 - val_mae: 5.4047
+Epoch 11/15
+404/404 [==============================] - 0s 170us/sample - loss: 65.6301 - mae: 5.6685 - val_loss: 75.3113 - val_mae: 6.7607
+Epoch 11/15
+404/404 [==============================] - 0s 168us/sample - loss: 66.1288 - mae: 5.7973 - val_loss: 64.7780 - val_mae: 5.9851
+Epoch 12/15
+404/404 [==============================] - 0s 170us/sample - loss: 50.2462 - mae: 5.0177 - val_loss: 54.6595 - val_mae: 5.3451
+Epoch 12/15
+404/404 [==============================] - 0s 171us/sample - loss: 63.6038 - mae: 5.5211 - val_loss: 64.1203 - val_mae: 5.9308: 0s - loss: 24.0917 - mae: 3.74
+Epoch 13/15
+404/404 [==============================] - 0s 176us/sample - loss: 51.7526 - mae: 5.1182 - val_loss: 52.3855 - val_mae: 5.3216
+Epoch 13/15
+404/404 [==============================] - 0s 176us/sample - loss: 61.1521 - mae: 5.5356 - val_loss: 67.7645 - val_mae: 6.0385
+Epoch 14/15
+404/404 [==============================] - 0s 177us/sample - loss: 49.4447 - mae: 4.9421 - val_loss: 51.8939 - val_mae: 5.2723
+Epoch 14/15
+404/404 [==============================] - 0s 171us/sample - loss: 59.1283 - mae: 5.2840 - val_loss: 80.6291 - val_mae: 7.1642
+Epoch 15/15
+404/404 [==============================] - 0s 168us/sample - loss: 50.3687 - mae: 5.0899 - val_loss: 52.2430 - val_mae: 5.0597
+Epoch 15/15
+404/404 [==============================] - 0s 173us/sample - loss: 61.9260 - mae: 5.6034 - val_loss: 62.9984 - val_mae: 5.8578
+404/404 [==============================] - 0s 175us/sample - loss: 46.9739 - mae: 4.9161 - val_loss: 73.9127 - val_mae: 6.1914
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 428 ms, sys: 132 ms, total: 560 ms
+Wall time: 1min 6s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;5679b586-e31c-5b98-84ea-2a779201a450&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 24, &#39;l2&#39;: 27}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.857834815979004, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 24, &#39;l2&#39;: 27}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.857834815979004, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 55, 57, 783590)},
+ {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;90c3d0d6-d3c6-54f1-b59a-fdd7233e83b2&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 31, &#39;l2&#39;: 18}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 6.191352367401123, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 31, &#39;l2&#39;: 18}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 6.191352367401123, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 55, 57, 785641)}]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="run-with-realtime-monitoring">
+<h2>Run with realtime monitoring<a class="headerlink" href="#run-with-realtime-monitoring" title="Permalink to this headline">¶</a></h2>
+<p>On notebooks, it’s important and fun to track the progress in real time. In tune you can enable realtime callback with a monitor to watch the progress. There are 3 types of built in monitors for iterative problems:</p>
+<ol class="simple">
+<li><p>ts to monitor the up-to-date best metric collected</p></li>
+<li><p>hist to motitor the histogram of metrics collected</p></li>
+<li><p>rungs to monitor the trails performance at each rung</p></li>
+</ol>
+<p>Notice to enable realtime monitoring, you must enable callback in execution_engine_conf.</p>
+<p>In this example, we also added a warmup period. So the first rung will run more epochs before discarding bad ones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">tune</span> <span class="kn">import</span> <span class="n">Monitor</span>
+<span class="kn">from</span> <span class="nn">tune_notebook</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">NotebookSimpleHist</span><span class="p">,</span>
+    <span class="n">NotebookSimpleRungs</span><span class="p">,</span>
+    <span class="n">NotebookSimpleTimeSeries</span><span class="p">,</span>
+    <span class="n">PrintBest</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">to_monitor</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Monitor</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Monitor</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">obj</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="o">==</span> <span class="s2">&quot;hist&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">NotebookSimpleHist</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="o">==</span> <span class="s2">&quot;rungs&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">NotebookSimpleRungs</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="o">==</span> <span class="s2">&quot;ts&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">NotebookSimpleTimeSeries</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="o">==</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PrintBest</span><span class="p">()</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+<span class="n">TUNE_OBJECT_FACTORY</span><span class="o">.</span><span class="n">set_monitor_converter</span><span class="p">(</span><span class="n">to_monitor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">space</span> <span class="o">=</span> <span class="n">keras_space</span><span class="p">(</span><span class="n">HousingSpec</span><span class="p">,</span> <span class="n">l1</span><span class="o">=</span><span class="n">RandInt</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">32</span><span class="p">),</span> <span class="n">l2</span><span class="o">=</span><span class="n">RandInt</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">32</span><span class="p">))</span>
+<span class="n">warmup</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_keras_models_by_sha</span><span class="p">(</span>
+    <span class="n">space</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">plan</span><span class="o">=</span><span class="p">[(</span><span class="n">warmup</span><span class="o">+</span><span class="mf">1.0</span><span class="p">,</span><span class="mi">8</span><span class="p">),(</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mf">4.0</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mf">8.0</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span>
+    <span class="n">execution_engine_conf</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;callback&quot;</span><span class="p">:</span><span class="kc">True</span><span class="p">},</span>
+    <span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;rungs&quot;</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/iterative_20_0.png" src="../../_images/iterative_20_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[] 5.078456878662109 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;bcf35cc2-c02e-5d5f-b501-24c66ccae969&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 29}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.078456878662109, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 29}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.078456878662109, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 56, 35, 199312)}
+CPU times: user 34.5 s, sys: 1.84 s, total: 36.4 s
+Wall time: 33.8 s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;bcf35cc2-c02e-5d5f-b501-24c66ccae969&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 29}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.078456878662109, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 29}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.078456878662109, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 56, 35, 199312)},
+ {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;1853040c-56d3-5f9d-9fb5-0b1747648f14&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 22, &#39;l2&#39;: 21}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.784449100494385, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 22, &#39;l2&#39;: 21}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.784449100494385, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 56, 36, 338849)}]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="hyperband">
+<h2>Hyperband<a class="headerlink" href="#hyperband" title="Permalink to this headline">¶</a></h2>
+<p>Traditional Hyperband is roughly a grid search of traditional Successive Halving. In our solution, we generalized Hyperband. You can provide the plan by a two dimensional array, and you can invent your own!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_keras_models_by_hyperband</span><span class="p">(</span>
+    <span class="n">space</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">plans</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">[(</span><span class="mf">1.0</span><span class="p">,</span><span class="mi">8</span><span class="p">),(</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mf">4.0</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mf">8.0</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span>
+        <span class="p">[(</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mf">4.0</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mf">8.0</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span>
+        <span class="p">[(</span><span class="mf">4.0</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mf">8.0</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span>
+    <span class="p">],</span>
+    <span class="n">execution_engine</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span>
+    <span class="n">execution_engine_conf</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;callback&quot;</span><span class="p">:</span><span class="kc">True</span><span class="p">},</span>
+    <span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;rungs&quot;</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/iterative_22_0.png" src="../../_images/iterative_22_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[] 5.534700870513916 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;360e486c-6d27-5abc-bb8d-c9bd388e62c3&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 25, &#39;l2&#39;: 28}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.534700870513916, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 25, &#39;l2&#39;: 28}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.534700870513916, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 57, 15, 810145)}
+CPU times: user 4.08 s, sys: 452 ms, total: 4.53 s
+Wall time: 1min 38s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;360e486c-6d27-5abc-bb8d-c9bd388e62c3&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 25, &#39;l2&#39;: 28}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.534700870513916, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 25, &#39;l2&#39;: 28}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.534700870513916, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 57, 15, 810145)},
+ {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;deef37ff-4cff-5de3-8320-fc5246922a74&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 18, &#39;l2&#39;: 19}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.626887321472168, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 18, &#39;l2&#39;: 19}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 1, &#39;sort_metric&#39;: 5.626887321472168, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 58, 0, 672435)}]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="asynchronous-success-halving">
+<h2>Asynchronous Success Halving<a class="headerlink" href="#asynchronous-success-halving" title="Permalink to this headline">¶</a></h2>
+<p>ASHA is an improved version of SHA. The idea is simple but the impact is big. Although on this Kaggle CPU instance, we can’t show the full power of ASHA, but in practice, if you have a decent amount of compute resource, ASHA will out perform SHA and Hyperband on almost every aspect: searching speed, cost, output model performance.</p>
+<p>Even on this machine, you can see the time take for ASHA is a lot less than SHA with more searches done.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">warmup</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">suggest_keras_models_by_continuous_asha</span><span class="p">(</span>
+    <span class="n">space</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>  <span class="c1"># ASHA will use up to 64 samples</span>
+    <span class="n">plan</span><span class="o">=</span><span class="p">[(</span><span class="n">warmup</span><span class="o">+</span><span class="mf">1.0</span><span class="p">,</span><span class="mi">8</span><span class="p">),(</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mf">4.0</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mf">8.0</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span>
+    <span class="n">execution_engine</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span>
+    <span class="n">execution_engine_conf</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;callback&quot;</span><span class="p">:</span><span class="kc">True</span><span class="p">},</span>
+    <span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;rungs&quot;</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/iterative_24_0.png" src="../../_images/iterative_24_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[] 5.175924777984619 {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;f63f8520-5581-52af-b8bd-8d2d23b7e831&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 11}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.175924777984619, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 11}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.175924777984619, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 58, 28, 403762)}
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404/404 [==============================] - 1s 3ms/sample - loss: 62.7986 - mae: 5.4580 - val_loss: 63.1626 - val_mae: 6.0242
+Epoch 10/16
+404/404 [==============================] - 0s 132us/sample - loss: 56.0847 - mae: 5.1227 - val_loss: 85.6432 - val_mae: 7.7297
+Epoch 11/16
+404/404 [==============================] - 0s 118us/sample - loss: 56.0394 - mae: 5.2751 - val_loss: 58.2662 - val_mae: 5.5350
+Epoch 12/16
+404/404 [==============================] - 0s 111us/sample - loss: 55.7567 - mae: 5.1046 - val_loss: 65.8581 - val_mae: 5.8243
+Epoch 13/16
+404/404 [==============================] - 0s 108us/sample - loss: 52.1970 - mae: 4.9439 - val_loss: 68.7707 - val_mae: 6.0233
+Epoch 14/16
+404/404 [==============================] - 0s 109us/sample - loss: 54.3618 - mae: 5.1161 - val_loss: 88.8879 - val_mae: 8.0009
+Epoch 15/16
+404/404 [==============================] - 0s 139us/sample - loss: 53.7091 - mae: 5.2220 - val_loss: 60.4695 - val_mae: 5.5697
+Epoch 16/16
+404/404 [==============================] - 0s 143us/sample - loss: 53.2826 - mae: 5.0622 - val_loss: 70.9657 - val_mae: 6.8227
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.42 s, sys: 191 ms, total: 1.61 s
+Wall time: 25.2 s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;trial&#39;: {&#39;trial_id&#39;: &#39;f63f8520-5581-52af-b8bd-8d2d23b7e831&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 11}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.175924777984619, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 21, &#39;l2&#39;: 11}, &#39;metadata&#39;: {}, &#39;cost&#39;: 8.0, &#39;rung&#39;: 3, &#39;sort_metric&#39;: 5.175924777984619, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 58, 28, 403762)},
+ {&#39;trial&#39;: {&#39;trial_id&#39;: &#39;00dc3281-97eb-5e4f-a486-32d8dedc674f&#39;, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 10, &#39;l2&#39;: 22}, &#39;metadata&#39;: {}, &#39;keys&#39;: []}, &#39;metric&#39;: 5.658406734466553, &#39;params&#39;: {&#39;__space__model&#39;: &#39;__main__.HousingSpec&#39;, &#39;l1&#39;: 10, &#39;l2&#39;: 22}, &#39;metadata&#39;: {}, &#39;cost&#39;: 4.0, &#39;rung&#39;: 2, &#39;sort_metric&#39;: 5.658406734466553, &#39;log_time&#39;: datetime.datetime(2022, 1, 17, 19, 58, 26, 639210)}]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Successive Halving and Hyperband are great if you don’t have a lot of compute resource. ASHA is great if have sufficient compute resource.</p>
+<p>We have generalized all these algorithms so you can fully customize the tuning plan by just providing arrays. And the process is scale agnostic and platform agnostice, as long as you have a distributed framework available, you can easily scale up the search while tracking the progress in real time.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "fugue-project/tutorials",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/tune"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="non_iterative.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Non-Iterative Problems</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../resources.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Resources</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Fugue Development Team<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
