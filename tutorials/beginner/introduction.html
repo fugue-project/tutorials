@@ -665,7 +665,7 @@
 <div class="section" id="utilizing-distributed-compute">
 <h2>Utilizing Distributed Compute<a class="headerlink" href="#utilizing-distributed-compute" title="Permalink to this headline">¶</a></h2>
 <p>pandas is great for small datasets, but unfortunately does not scale well large datasets. The primary reason is that pandas is single core, and does not take advantage of all available compute resources. A lot of operations also generate <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/scale.html#scaling-to-large-datasets">intermediate copies</a> of data, utilizing more memory than necessary. To effectively handle data with pandas, users preferably need to have <a class="reference external" href="https://wesmckinney.com/blog/apache-arrow-pandas-internals/">5x to 10x times</a> as much RAM as the size of the dataset.</p>
-<p>Spark and Dask allow us to split compute jobs across multiple machines. They also can handle datasets that don’t fit into memory by spilling data over to disk in some cases. But ultimately, moving to Spark or Dask still requires significant code changes to port existing pandas code. Added to changing code, there is also a lot of knowledge required to use these frameworks effectively.</p>
+<p><a class="reference external" href="https://spark.apache.org/">Spark</a> and <a class="reference external" href="https://dask.org/">Dask</a> allow us to split compute jobs across multiple machines. They also can handle datasets that don’t fit into memory by spilling data over to disk in some cases. But ultimately, moving to Spark or Dask still requires significant code changes to port existing pandas code. Added to changing code, there is also a lot of knowledge required to use these frameworks effectively.</p>
 <p><strong>Fugue is a framework that is designed to unify the interface between pandas, Spark, and Dask, allowing one codebase to be used across all three engines.</strong></p>
 </div>
 <div class="section" id="fugue-transform">
@@ -750,8 +750,8 @@
 </table>
 </div></div></div>
 </div>
-<p>Now we bring it to Spark using Fugue using the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function. This takes in a DataFrame and applies a function to it using either of the Pandas, Spark, or Dask engines. The <code class="docutils literal notranslate"><span class="pre">transform()</span></code> inputs will be explained later, but for now, notice that we did not make modifications to the pandas-based <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function in order to use it on Spark. This function can now scale to big datasets through the Spark execution engine.</p>
-<p>Even if there is no Spark cluster available, the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> will start a local Spark instance and parallelize the jobs with all cores of the machine.</p>
+<p>Now we bring it to Spark using Fugue using the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function. This takes in a DataFrame and applies a function to it using either of the Pandas, Spark, or Dask engines. The <code class="docutils literal notranslate"><span class="pre">transform()</span></code> inputs will be explained later, but for now, notice that we did not make modifications to the pandas-based <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function in order to use it on Spark. This function can now scale to big datasets through the Spark or Dask execution engine.</p>
+<p>Even if there is no Spark cluster available, the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> will start a local Spark instance and parallelize the jobs with all cores of the machine. Note the importing <code class="docutils literal notranslate"><span class="pre">fugue_spark</span></code> registers the <code class="docutils literal notranslate"><span class="pre">&quot;spark&quot;</span></code> string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">transform</span>
@@ -779,6 +779,9 @@
 |  6|  6|     21.0|
 |  6|  6|     21.0|
 +---+---+---------+
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

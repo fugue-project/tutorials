@@ -577,11 +577,6 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cotransformer">
-   CoTransformer
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#persist-and-broadcast">
    Persist and Broadcast
   </a>
@@ -612,11 +607,6 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cotransformer">
-   CoTransformer
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#persist-and-broadcast">
    Persist and Broadcast
   </a>
@@ -632,11 +622,11 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="distributed-compute">
 <h1>Distributed Compute<a class="headerlink" href="#distributed-compute" title="Permalink to this headline">¶</a></h1>
-<p>This is a heart of Fugue. In the previous sections, we went over how to use Fugue in the form of extensions and basic data operations such as joins. In this section, we’ll talk about how those Fugue extensions scale.</p>
+<p>In the previous sections, we went over how to use Fugue in the form of extensions and basic data operations such as joins. In this section, we’ll talk about how those Fugue extensions scale to big data. These concepts are important to effectively utilizing distributed compute.</p>
 <div class="section" id="partition-and-presort">
 <h2>Partition and Presort<a class="headerlink" href="#partition-and-presort" title="Permalink to this headline">¶</a></h2>
-<p>One of the most fundamental distributed compute concepts is the partition. Our data is spread across several machines, and we often need to rearrange the way the data is spread across the machines. This is because of operations that need all of the related data in one place. For example, calculating the median value per group requires all of the data from the same group on one machine. Fugue allows users to control the paritioning scheme during execution.</p>
-<p>In the example below, <code class="docutils literal notranslate"><span class="pre">take</span></code> is an operation that extracts <code class="docutils literal notranslate"><span class="pre">n</span></code> number of rows. We apply take on each partition. We will have two partitions because <code class="docutils literal notranslate"><span class="pre">col1</span></code> is the partition key and it only has 2 values.</p>
+<p>Our data is spread across several machines, and we often need to rearrange the way the data is spread across the machines. This is because of operations that need all of the related data in one place. For example, calculating the median value per group requires all of the data from the same group on one machine. Fugue allows users to control the partitioning scheme during execution.</p>
+<p>In the example below, <code class="docutils literal notranslate"><span class="pre">take()</span></code> is an operation that extracts <code class="docutils literal notranslate"><span class="pre">n</span></code> number of rows. We apply take on each partition. We will have two partitions because <code class="docutils literal notranslate"><span class="pre">col1</span></code> is the partition key and it only has 2 values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
@@ -664,152 +654,11 @@ Total count: 2
 </div>
 </div>
 <p>We also used <code class="docutils literal notranslate"><span class="pre">presort</span></code>. The presort key here was <code class="docutils literal notranslate"><span class="pre">col2</span> <span class="pre">desc</span></code>, which means that the data is sorted in descending order after partitioning. This makes the <code class="docutils literal notranslate"><span class="pre">take</span></code> operation give us the max value. We’ll go over one more example.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># schema: *, col2_diff:int</span>
-<span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;col2_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;col2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">df</span>
-
-<span class="n">df2</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
-col1:long|col2:long|col2_diff:int
----------+---------+-------------
-1        |1        |NULL         
-1        |4        |3            
-1        |5        |1            
-2        |7        |NULL         
-2        |4        |-3           
-2        |2        |-2           
-Total count: 6
-</pre></div>
-</div>
-</div>
-</div>
-<p>In this example <code class="docutils literal notranslate"><span class="pre">fugue</span></code> once again partitions on col1, except this time applies the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> <code class="docutils literal notranslate"><span class="pre">diff</span></code> operator to calculate the difference of a Dataframe element compared with an element in the previous row. Notice that this time there are 2 NULL values because from the perspective of the first element of each partition there is no previous row to compare against! The <code class="docutils literal notranslate"><span class="pre">partition-transform</span></code> semantics are very similar to the pandas <code class="docutils literal notranslate"><span class="pre">groupby-apply</span></code> semantics. There is a deeper dive into partitions in the advanced tutorial.</p>
-</div>
-<div class="section" id="cotransformer">
-<h2>CoTransformer<a class="headerlink" href="#cotransformer" title="Permalink to this headline">¶</a></h2>
-<p>Last section, we skipped the <code class="docutils literal notranslate"><span class="pre">cotransformer</span></code> because it required knowledge about partitions. The <code class="docutils literal notranslate"><span class="pre">cotransformer</span></code> takes in multiple DataFrames that are <strong>partitioned in the same way</strong> and outputs one DataFrame. In order to use a <code class="docutils literal notranslate"><span class="pre">cotransformer</span></code>, the <code class="docutils literal notranslate"><span class="pre">zip</span></code> method has to be used first to join them by their common keys. There is also a <code class="docutils literal notranslate"><span class="pre">&#64;cotransformer</span></code> decorator can be used to define the <code class="docutils literal notranslate"><span class="pre">cotransformer</span></code>, but it will still be invoked by the <code class="docutils literal notranslate"><span class="pre">zip-transform</span></code> syntax.</p>
-<p>In the example below, we will do a merge as-of operation on different groups of data. In order to align the data with events as they get distributed across the cluster, we will partition them in the same way.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">),</span>
-                     <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2015</span><span class="p">,</span><span class="mi">2016</span><span class="p">,</span><span class="mi">2017</span><span class="p">,</span><span class="mi">2018</span><span class="p">,</span><span class="mi">2019</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">})</span>
-
-<span class="n">events</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">],</span>
-                       <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2018</span><span class="p">],</span>
-                       <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
-
-<span class="n">events</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>group</th>
-      <th>year</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>A</td>
-      <td>2014</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>A</td>
-      <td>2016</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>B</td>
-      <td>2014</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>B</td>
-      <td>2018</td>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>The pandas <code class="docutils literal notranslate"><span class="pre">merge_asof</span></code> function requires that the <code class="docutils literal notranslate"><span class="pre">on</span></code> column is sorted. To do this, we apply a <code class="docutils literal notranslate"><span class="pre">partition</span></code> strategy on Fugue by group and presort by the year. By the time it arrives in the <code class="docutils literal notranslate"><span class="pre">cotransformer</span></code>, the dataframes are sorted and grouped.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
-
-<span class="c1"># schema: group:str,year:int,value:int</span>
-<span class="k">def</span> <span class="nf">merge_asof</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">events</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">)</span>
-
-<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">events</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">events</span><span class="p">)</span>
-
-    <span class="n">data</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">events</span><span class="p">,</span> <span class="n">partition</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;by&quot;</span><span class="p">:</span> <span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;presort&quot;</span><span class="p">:</span> <span class="s2">&quot;year&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">merge_asof</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
-group:str|year:int|value:int
----------+--------+---------
-A        |2015    |1        
-A        |2016    |2        
-A        |2017    |2        
-A        |2018    |2        
-A        |2019    |2        
-B        |2015    |1        
-B        |2016    |1        
-B        |2017    |1        
-B        |2018    |2        
-B        |2019    |2        
-</pre></div>
-</div>
-</div>
-</div>
-<p>In this example, the important part to note is each group uses the pandas <code class="docutils literal notranslate"><span class="pre">merge_asof</span></code> independently. This function is very flexible, allowing users to specify forward and backward merges along with a tolerance. This is tricky to implement well in Spark, but the <code class="docutils literal notranslate"><span class="pre">cotransformer</span></code> lets us do it easily.</p>
-<p>This operation was partitioned by the column <code class="docutils literal notranslate"><span class="pre">group</span></code> before the <code class="docutils literal notranslate"><span class="pre">cotransform</span></code> was applied. This was done through the <code class="docutils literal notranslate"><span class="pre">zip</span></code> command. <code class="docutils literal notranslate"><span class="pre">CoTransform</span></code> is a more advanced operation that may take some experience to get used to.</p>
 </div>
 <div class="section" id="persist-and-broadcast">
 <h2>Persist and Broadcast<a class="headerlink" href="#persist-and-broadcast" title="Permalink to this headline">¶</a></h2>
-<p>Persist and broadcast are two other distributed compute concepts that Fugue has support for. Persist keeps a DataFrame in memory to avoid recomputation. Distributed compute frameworks often need an explicit <code class="docutils literal notranslate"><span class="pre">persist</span></code> call to know which DataFrames need to be kept, otherwise they tend to be calculated repeatedly.</p>
-<p>Broadcasting is making a smaller DataFrame available on all the workers of a cluster. Without <code class="docutils literal notranslate"><span class="pre">broadcast</span></code>, these small DataFrames would be repeatedly sent to workers whenever they are needed to perform an operation. Broadcasting caches them on the workers.</p>
+<p>Persist and broadcast are two other distributed compute concepts that Fugue has support for. Persist keeps a DataFrame in memory to avoid recomputation. Distributed compute frameworks often need an explicit <code class="docutils literal notranslate"><span class="pre">persist()</span></code> call to know which DataFrames need to be kept, otherwise they tend to be calculated repeatedly.</p>
+<p>Broadcasting is making a smaller DataFrame available on all the workers of a cluster. Without <code class="docutils literal notranslate"><span class="pre">broadcast()</span></code>, these small DataFrames would be repeatedly sent to workers whenever they are needed to perform an operation. Broadcasting caches them on the workers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>

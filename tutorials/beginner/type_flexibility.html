@@ -894,7 +894,7 @@
 </table>
 </div></div></div>
 </div>
-<p>Even if these functions are not meant to operate on pandas DataFrames, Fugue <code class="docutils literal notranslate"><span class="pre">transform()</span></code> will handle the conversion for us so we don’t need to make any changes to them to use them on Pandas, Spark or Dask.</p>
+<p>Even if these functions are not meant to operate on pandas DataFrames, Fugue <code class="docutils literal notranslate"><span class="pre">transform()</span></code> will handle the conversion for us so we don’t need to make any changes to them to use them on Pandas, Spark or Dask. We test these functions on the default pandas-based <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
@@ -1036,7 +1036,7 @@
 </div>
 <div class="section" id="bring-the-functions-to-distrbited-compute">
 <h2>Bring the Functions to Distrbited Compute<a class="headerlink" href="#bring-the-functions-to-distrbited-compute" title="Permalink to this headline">¶</a></h2>
-<p>Because they work on the <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code>, we can also use the functions on the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code></p>
+<p>Because they work on the <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code>, we can also use the functions on the <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code>. Any of the <code class="docutils literal notranslate"><span class="pre">map_to_phone_location()</span></code> variations can be used below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fugue_spark</span>
@@ -1069,8 +1069,8 @@ only showing top 2 rows
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>In this section we have shown how the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function can adapt to user’s code by accepting multiple input and output type annotations. This allows users to express their logic in whatever is best for the given problem. Fugue then uses the specified annotations and takes care of bringing these functions to Spark or Dask.</p>
-<p>In the next section, we’ll cover how the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function handles partitions.</p>
+<p>In this section, we have shown how the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function can adapt to user’s code by accepting multiple input and output type annotations. This allows users to express their logic in whatever is best for the given problem. Fugue then uses the specified annotations and takes care of bringing these functions to Spark or Dask.</p>
+<p>In the next section, we’ll cover how the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function handles partitions, a very important concept in distributed computing.</p>
 </div>
 </div>
 

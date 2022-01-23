@@ -672,19 +672,20 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="extensions">
 <h1>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h1>
-<p>The FugueWorkflow object creates a Directed Acyclic Graph (DAG) where the nodes are DataFrames that are connected by extensions. Extensions are code that creates/modifies/outputs DataFrames. The <code class="docutils literal notranslate"><span class="pre">transformer</span></code> we have been using is an example of an extension. In this section, we’ll cover the other types of extensions: <code class="docutils literal notranslate"><span class="pre">creator</span></code>, <code class="docutils literal notranslate"><span class="pre">processor</span></code>, <code class="docutils literal notranslate"><span class="pre">outputter</span></code>, and <code class="docutils literal notranslate"><span class="pre">cotransformer</span></code>. For all extensions, schema has to be defined. Below are the types of extensions.</p>
+<p>The FugueWorkflow object creates a Directed Acyclic Graph (DAG) where the nodes are DataFrames that are connected by extensions. Extensions are code that creates/modifies/outputs DataFrames. The <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> we have been using is an example of an extension. In this section, we’ll cover the other types of extensions: <code class="docutils literal notranslate"><span class="pre">Creator</span></code>, <code class="docutils literal notranslate"><span class="pre">Processor</span></code>, <code class="docutils literal notranslate"><span class="pre">Outputter</span></code>, and <code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code>. For all extensions, schema has to be defined. Below are the types of extensions.</p>
 <p><img alt="extensions" src="../../_images/extensions.svg" /></p>
-<p><code class="docutils literal notranslate"><span class="pre">outputtransformer</span></code> and <code class="docutils literal notranslate"><span class="pre">outputcotransformer</span></code> will be covered in the Deep Dive section.</p>
-<p>We have actually already seen some built-in extensions that come with Fugue. For example, <code class="docutils literal notranslate"><span class="pre">load</span></code> is a <code class="docutils literal notranslate"><span class="pre">creator</span></code> and <code class="docutils literal notranslate"><span class="pre">save</span></code> is an <code class="docutils literal notranslate"><span class="pre">outputter</span></code>. There is a difference between <code class="docutils literal notranslate"><span class="pre">Driver</span> <span class="pre">side</span></code> and <code class="docutils literal notranslate"><span class="pre">Worker</span> <span class="pre">side</span></code> extensions. This will be covered at the end of this section. For now, we’ll just see the syntax and use case for each extension.</p>
+<p><code class="docutils literal notranslate"><span class="pre">OutputTransformer</span></code> and <code class="docutils literal notranslate"><span class="pre">OutputcCotransformer</span></code> will be covered in the Deep Dive section.</p>
+<p>We have actually already seen some built-in extensions that come with Fugue. For example, <code class="docutils literal notranslate"><span class="pre">load</span></code> is a <code class="docutils literal notranslate"><span class="pre">Creator</span></code> and <code class="docutils literal notranslate"><span class="pre">save</span></code> is an <code class="docutils literal notranslate"><span class="pre">Outputter</span></code>. There is a difference between <code class="docutils literal notranslate"><span class="pre">Driver</span> <span class="pre">side</span></code> and <code class="docutils literal notranslate"><span class="pre">Worker</span> <span class="pre">side</span></code> extensions. This will be covered at the end of this section. For now, we’ll just see the syntax and use case for each extension.</p>
 <div class="section" id="creator">
 <h2>Creator<a class="headerlink" href="#creator" title="Permalink to this headline">¶</a></h2>
-<p>A creator is an extension that takes no DataFrame as input, but returns a DataFrame as output. It is used to generate DataFrames. Custom creators can be used to load data from different sources (think AWS S3 or from a Database using pyodbc). Similar to the <code class="docutils literal notranslate"><span class="pre">transformer</span></code> in the previous section, <code class="docutils literal notranslate"><span class="pre">creators</span></code> can be defined with the schema hint comment, or with the <code class="docutils literal notranslate"><span class="pre">&#64;creator</span></code> decorator. <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> is a special output type that does not require schema. For other output type hints, the schema is unknown so it needs to be defined.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Creator</span></code> is an extension that takes no DataFrame as input, but returns a DataFrame as output. It is used to generate DataFrames. Custom <code class="docutils literal notranslate"><span class="pre">Creators</span></code> can be used to load data from different sources (think AWS S3 or from a Database using pyodbc). Similar to the <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> in the previous section, <code class="docutils literal notranslate"><span class="pre">Creators</span></code> can be defined with the schema hint comment, or with the <code class="docutils literal notranslate"><span class="pre">&#64;creator</span></code> decorator. <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> is a special output type that does not require schema. For other output type hints, the schema is unknown so it needs to be defined.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
 
+<span class="c1"># no need to define schema for pd.DataFrame</span>
 <span class="k">def</span> <span class="nf">create_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]})</span>
     <span class="k">return</span> <span class="n">df</span>
@@ -715,7 +716,7 @@ Total count: 2
 </div>
 <div class="section" id="processor">
 <h2>Processor<a class="headerlink" href="#processor" title="Permalink to this headline">¶</a></h2>
-<p>A <code class="docutils literal notranslate"><span class="pre">processor</span></code> is an extension that takes in one or more DataFrames, and then outputs one DataFrame. Similar to the <code class="docutils literal notranslate"><span class="pre">creator</span></code>, schema does not need to be specified for pd.DataFrame because it is already known. Schema needs to be specified for other output types. The processor can be defined using the schema hint, or the <code class="docutils literal notranslate"><span class="pre">&#64;processor</span></code> decorator with the schema passed in.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Processor</span></code> is an extension that takes in one or more DataFrames, and then outputs one DataFrame. Similar to the <code class="docutils literal notranslate"><span class="pre">Creator</span></code>, schema does not need to be specified for pd.DataFrame because it is already known. Schema needs to be specified for other output types. The <code class="docutils literal notranslate"><span class="pre">Processor</span></code> can be defined using the schema hint, or the <code class="docutils literal notranslate"><span class="pre">&#64;processor</span></code> decorator with the schema passed in.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
@@ -723,7 +724,7 @@ Total count: 2
 <span class="k">def</span> <span class="nf">concat</span><span class="p">(</span><span class="n">df1</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">df2</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># schema: a:double, b:double</span>
+<span class="c1"># schema: a:int, b:int</span>
 <span class="k">def</span> <span class="nf">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]],</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]:</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -741,12 +742,12 @@ Total count: 2
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IterableDataFrame
-a:double|b:double
---------+--------
-1.0     |2.0     
-2.0     |3.0     
-1.0     |2.0     
-2.0     |3.0     
+a:int|b:int
+-----+-----
+1    |2    
+2    |3    
+1    |2    
+2    |3    
 Total count: 4
 </pre></div>
 </div>
@@ -776,7 +777,7 @@ Total count: 2
 </div>
 <div class="section" id="outputter">
 <h2>Outputter<a class="headerlink" href="#outputter" title="Permalink to this headline">¶</a></h2>
-<p>Outputters are extensions with one of more DataFrames as an input, and no DataFrames at the output. We mentioned earlier that <code class="docutils literal notranslate"><span class="pre">save</span></code> was an example of an outputter. <code class="docutils literal notranslate"><span class="pre">show</span></code> is actually another example. Outputters can be used to write to S3, or upload to database. The output type of Outputters must be <code class="docutils literal notranslate"><span class="pre">None</span></code>. No schema is needed since it is a terminal operation. There is an <code class="docutils literal notranslate"><span class="pre">&#64;outputter</span></code> decorator, but it doesn’t do much because the return type is already <code class="docutils literal notranslate"><span class="pre">None</span></code>. Outputters are also used for plotting functions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Outputters</span></code> are extensions with one of more DataFrames as an input, and no DataFrames at the output. We mentioned earlier that <code class="docutils literal notranslate"><span class="pre">save()</span></code> was an example of an <code class="docutils literal notranslate"><span class="pre">Outputter</span></code>. <code class="docutils literal notranslate"><span class="pre">show()</span></code> is actually another example. Outputters can be used to write to S3, or upload to database. The output type of Outputters must be <code class="docutils literal notranslate"><span class="pre">None</span></code>. No schema is needed since it is a terminal operation. There is an <code class="docutils literal notranslate"><span class="pre">&#64;outputter</span></code> decorator, but it doesn’t do much because the return type is already <code class="docutils literal notranslate"><span class="pre">None</span></code>. Outputters are also used for plotting functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">head</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -799,7 +800,7 @@ Total count: 2
 </div>
 <div class="section" id="transformer">
 <h2>Transformer<a class="headerlink" href="#transformer" title="Permalink to this headline">¶</a></h2>
-<p>Transformer is the most widely used extension. We have covered this in previous sections but more formally, a transformer is an extension that takes in a DataFrame and returns a DataFrame. Schema needs to be explicit. Most logic will go into transformers. Below is an example to create a new column.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Transformer</span></code> is the most widely used extension. We have covered this in previous sections but more formally, a <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> is an extension that takes in a DataFrame and returns a DataFrame. Schema needs to be explicit. Most logic will go into <code class="docutils literal notranslate"><span class="pre">Transformers</span></code>. Below is an example to create a new column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#schema: *, c:int</span>
@@ -828,16 +829,118 @@ Total count: 2
 </div>
 <div class="section" id="cotransformer">
 <h2>CoTransformer<a class="headerlink" href="#cotransformer" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">cotransformer</span></code> is very similar to the <code class="docutils literal notranslate"><span class="pre">transformer</span></code>, except that it is intended to execute on multiple DataFrames that are partitioned in the same way. The next section will cover CoTransformer, as it is coupled with distributed computing concepts that need to be introduced.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code> is very similar to the <code class="docutils literal notranslate"><span class="pre">Transformer</span></code>, except that it is intended to execute on multiple DataFrames that are partitioned in the same way. In order to use a <code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code>, the <code class="docutils literal notranslate"><span class="pre">zip()</span></code> method has to be used first to join them by their common keys. There is also a <code class="docutils literal notranslate"><span class="pre">&#64;cotransformer</span></code> decorator can be used to define the <code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code>, but it will still be invoked by the <code class="docutils literal notranslate"><span class="pre">zip-transform</span></code> syntax.</p>
+<p>In the example below, we will do a merge as-of operation on different groups of data. In order to align the data with events as they get distributed across the cluster, we will partition them in the same way.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">),</span>
+                     <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2015</span><span class="p">,</span><span class="mi">2016</span><span class="p">,</span><span class="mi">2017</span><span class="p">,</span><span class="mi">2018</span><span class="p">,</span><span class="mi">2019</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">})</span>
+
+<span class="n">events</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">],</span>
+                       <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2018</span><span class="p">],</span>
+                       <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+
+<span class="n">events</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>group</th>
+      <th>year</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>2014</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A</td>
+      <td>2016</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B</td>
+      <td>2014</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B</td>
+      <td>2018</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The pandas <code class="docutils literal notranslate"><span class="pre">merge_asof</span></code> function requires that the <code class="docutils literal notranslate"><span class="pre">on</span></code> column is sorted. To do this, we apply a <code class="docutils literal notranslate"><span class="pre">partition</span></code> strategy on Fugue by group and presort by the year. By the time it arrives in the <code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code>, the dataframes are sorted and grouped.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># schema: group:str,year:int,value:int</span>
+<span class="k">def</span> <span class="nf">merge_asof</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">events</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">FugueWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">events</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">events</span><span class="p">)</span>
+
+    <span class="n">data</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">events</span><span class="p">,</span> <span class="n">partition</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;by&quot;</span><span class="p">:</span> <span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;presort&quot;</span><span class="p">:</span> <span class="s2">&quot;year&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">merge_asof</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
+group:str|year:int|value:int
+---------+--------+---------
+A        |2015    |1        
+A        |2016    |2        
+A        |2017    |2        
+A        |2018    |2        
+A        |2019    |2        
+B        |2015    |1        
+B        |2016    |1        
+B        |2017    |1        
+B        |2018    |2        
+B        |2019    |2        
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, the important part to note is each group uses the pandas <code class="docutils literal notranslate"><span class="pre">merge_asof</span></code> independently. This function is very flexible, allowing users to specify forward and backward merges along with a tolerance. This is tricky to implement well in Spark, but the <code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code> lets us do it easily.</p>
+<p>This operation was partitioned by the column <code class="docutils literal notranslate"><span class="pre">group</span></code> before the <code class="docutils literal notranslate"><span class="pre">cotransform</span></code> was applied. This was done through the <code class="docutils literal notranslate"><span class="pre">zip</span></code> command. <code class="docutils literal notranslate"><span class="pre">CoTransform</span></code> is a more advanced operation that may take some experience to get used to.</p>
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>In this section we have gone over the building blocks of a FugueWorkflow in Fugue extensions. Extensions are abstractions for the different kinds of operations done on DataFrames. Fugue has the most common extensions built-in, but it will be very common for users to make their own extensions (especially transformers) to work with DataFrames.</p>
+<p>In this section we have gone over the building blocks of a <code class="docutils literal notranslate"><span class="pre">FugueWorkflow</span></code> in Fugue extensions. Extensions are abstractions for the different kinds of operations done on DataFrames. Fugue has the most common extensions built-in, but it will be very common for users to make their own extensions (especially <code class="docutils literal notranslate"><span class="pre">Transformers</span></code>) to work with DataFrames.</p>
 </div>
 <div class="section" id="optional-driver-extensions-vs-worker-extensions">
 <h2>[Optional] Driver Extensions vs Worker Extensions<a class="headerlink" href="#optional-driver-extensions-vs-worker-extensions" title="Permalink to this headline">¶</a></h2>
-<p>For those unfamiliar with distributed systems, the work is spread across multiple workers, often referred to as a cluster. The driver is the machine that orchestrates the work done by the workers. For Fugue extensions, <code class="docutils literal notranslate"><span class="pre">transformer</span></code> and <code class="docutils literal notranslate"><span class="pre">cotransformer</span></code> are extensions that happen on the worker. Actions that happen on the worker-level are already agnostic to the ExecutionEngine.</p>
-<p>On the other hand, driver side extensions are ExecutionEngine aware. This means that these extensions can use code written with Spark or Dask specifically. All we need to do is to pass a first argument with the ExecutionEngine type annotation.</p>
+<p>For those less with distributed systems, the work is spread across multiple workers, often referred to as a cluster. The driver is the machine that orchestrates the work done by the workers. For Fugue extensions, <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> and <code class="docutils literal notranslate"><span class="pre">CoTransformer</span></code> are extensions that happen on the worker. Actions that happen on the worker-level are already agnostic to the <code class="docutils literal notranslate"><span class="pre">ExecutionEngine</span></code>.</p>
+<p>On the other hand, driver side extensions are <code class="docutils literal notranslate"><span class="pre">ExecutionEngine</span></code>-aware. This means that these extensions can use code written with Spark or Dask specifically. All we need to do is to pass a first argument with the <code class="docutils literal notranslate"><span class="pre">ExecutionEngine</span></code> type annotation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">ExecutionEngine</span><span class="p">,</span> <span class="n">DataFrame</span>
@@ -854,10 +957,19 @@ Total count: 2
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SparkDataFrame
+a:int
+-----
+2    
+Total count: 1
+</pre></div>
+</div>
+</div>
 </div>
 <p>In the code above, we lose cross-platform execution, but this can be used when users need to write Spark specific code. <code class="docutils literal notranslate"><span class="pre">createDataFrame</span></code> is a Spark specific method. This approach is Fugue’s way of exposing the underlying ExecutionEngine if users want to use it. <code class="docutils literal notranslate"><span class="pre">creator</span></code>, <code class="docutils literal notranslate"><span class="pre">processor</span></code> and <code class="docutils literal notranslate"><span class="pre">outputter</span></code> are ExecutionEngine aware. For users who are not as familiar with Spark, the recommendation is to write ExecutionEngine-agnostic code. That gives the most benefit of using Fugue because of the portability it provides.</p>
-<p>Something very tempting for Fugue is using something like <code class="docutils literal notranslate"><span class="pre">sklearn.MinMaxScaler</span></code>, which normalizes a column based on the minimum and maximum values. There is different behavior if your normalizing logic happens on the driver versus on the workers. On the workers, this happens locally without access to the global dataset. The min and max obtained for scaling happen on the partition level. On the other hand, using the Spark MinMaxScaler obtains the global min and max values for scaling.</p>
-<p>Let’s think in terms of <code class="docutils literal notranslate"><span class="pre">map</span></code> operations and <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> where <code class="docutils literal notranslate"><span class="pre">map</span></code> is row-rise and <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> is column-wise. For <code class="docutils literal notranslate"><span class="pre">map</span></code> operations, the behavior of <code class="docutils literal notranslate"><span class="pre">transformer</span></code> and <code class="docutils literal notranslate"><span class="pre">processor</span></code> will be minimal. For <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> operations, you can get different values.</p>
+<p>Something very tempting for beginner Fugue users is using something like <code class="docutils literal notranslate"><span class="pre">sklearn.MinMaxScaler</span></code>, which normalizes a column based on the minimum and maximum values. There is different behavior if your normalizing logic happens on the driver versus on the workers. On the workers, this happens locally without access to the global dataset. The min and max obtained for scaling happen on the partition level. On the other hand, using the Spark MinMaxScaler obtains the global min and max values for scaling.</p>
+<p>Think in terms of <code class="docutils literal notranslate"><span class="pre">map</span></code> operations and <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> where <code class="docutils literal notranslate"><span class="pre">map</span></code> is row-wise and <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> is column-wise. For <code class="docutils literal notranslate"><span class="pre">map</span></code> operations, the behavior of <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> and <code class="docutils literal notranslate"><span class="pre">Processor</span></code> will be equivalent in most use cases. For <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> operations, you can get different values depending if the execution is driver-side or worker-side.</p>
 </div>
 </div>
 

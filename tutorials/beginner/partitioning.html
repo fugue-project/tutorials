@@ -653,7 +653,7 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="partitioning">
 <h1>Partitioning<a class="headerlink" href="#partitioning" title="Permalink to this headline">¶</a></h1>
 <p>In the last section, we showed how the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function could be applied on functions with inputs such as <code class="docutils literal notranslate"><span class="pre">List[List[Any]]</span></code> or <code class="docutils literal notranslate"><span class="pre">List[Dict[str,Any]]</span></code> besides <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>. In this section, we’ll show a feature of <code class="docutils literal notranslate"><span class="pre">transform()</span></code> we have not touched on yet, the <code class="docutils literal notranslate"><span class="pre">partition</span></code> argument.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">partition</span></code> argument allows us to control the partitoning scheme before the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> operation is applied.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">partition</span></code> argument allows us to control the partitoning scheme before the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> operation is applied. Partitions dictate the physical grouping of data within a cluster.</p>
 <div class="section" id="simple-partitioning-example">
 <h2>Simple Partitioning Example<a class="headerlink" href="#simple-partitioning-example" title="Permalink to this headline">¶</a></h2>
 <p>In the DataFrame below, we want to take the difference of the value per day. Because there are three different ids, we want to make sure that we don’t get the difference across ids.</p>
@@ -737,7 +737,7 @@
 </div>
 </div>
 </div>
-<p>But if we use this directly as seen below, we will notice that the first day of B has a value, which is invalid because it used a value from A to calculate the diff.</p>
+<p>But if we use this directly as seen below, we will notice that the first day of B has a <code class="docutils literal notranslate"><span class="pre">value</span></code>, which is invalid because it used a <code class="docutils literal notranslate"><span class="pre">value</span></code> from A to calculate the diff.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">transform</span>
@@ -890,7 +890,7 @@
 </div>
 <div class="section" id="default-partitions">
 <h2>Default Partitions<a class="headerlink" href="#default-partitions" title="Permalink to this headline">¶</a></h2>
-<p>What happens if we don’t supply partitions when we call <code class="docutils literal notranslate"><span class="pre">transform()</span></code>? For Spark and Dask, there are default partitions that are used. For some operations, row-wise for example, the default partitions should work. But when you groups of data needed to be processed together, then partitions should be specified as the grouping mechanism.</p>
+<p>What happens if we don’t supply partitions when we call <code class="docutils literal notranslate"><span class="pre">transform()</span></code>? For Spark and Dask, there are default partitions that are used. For some operations, row-wise operations for example, the default partitions should work. But when you groups of data needed to be processed together, then partitions should be specified as the grouping mechanism.</p>
 <p>To see what partitions look like, we create a <code class="docutils literal notranslate"><span class="pre">count()</span></code> function that will just count the number of elements in a given partition. If we use it naively without specifying partitions, we will see that the data is not grouped properly. There are many partitions with just one item of data in it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -908,10 +908,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21/11/29 00:57:08 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-Using Spark&#39;s default log4j profile: org/apache/spark/log4j-defaults.properties
-Setting default log level to &quot;WARN&quot;.
-To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+-----+
@@ -943,9 +940,9 @@ only showing top 5 rows
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+-----+
 | id|count|
 +---+-----+
+|  A|    3|
 |  B|    3|
 |  C|    3|
-|  A|    3|
 +---+-----+
 </pre></div>
 </div>
@@ -1018,7 +1015,7 @@ only showing top 5 rows
 </div>
 <div class="section" id="partition-specific-behavior">
 <h2>Partition-specific Behavior<a class="headerlink" href="#partition-specific-behavior" title="Permalink to this headline">¶</a></h2>
-<p>Fugue makes it also to modify the logic that is applied for each partition of data. For example, we can create a function that has a different behavior for <code class="docutils literal notranslate"><span class="pre">id==A</span></code> and a different behavior for <code class="docutils literal notranslate"><span class="pre">id==B</span> <span class="pre">or</span> <span class="pre">id==C</span></code>. In the function below, the data with <code class="docutils literal notranslate"><span class="pre">id==A</span></code> will be clipped with a minimum of 0 and maximum of 4. The other groups will have a minimum of 1 and maximum of 2.</p>
+<p>Fugue also makes it possible to modify the logic that is applied for each partition of data. For example, we can create a function that has a different behavior for <code class="docutils literal notranslate"><span class="pre">id==A</span></code> and a different behavior for <code class="docutils literal notranslate"><span class="pre">id==B</span> <span class="pre">or</span> <span class="pre">id==C</span></code>. In the function below, the data with <code class="docutils literal notranslate"><span class="pre">id==A</span></code> will be clipped with a minimum of 0 and maximum of 4. The other groups will have a minimum of 1 and maximum of 2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clip</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
@@ -1047,15 +1044,15 @@ only showing top 5 rows
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+---+-----+
 |      date| id|value|
 +----------+---+-----+
+|2021-01-01|  A|    3|
+|2021-01-02|  A|    4|
+|2021-01-03|  A|    2|
 |2021-01-01|  B|    1|
 |2021-01-02|  B|    2|
 |2021-01-03|  B|    2|
 |2021-01-01|  C|    2|
 |2021-01-02|  C|    2|
 |2021-01-03|  C|    2|
-|2021-01-01|  A|    3|
-|2021-01-02|  A|    4|
-|2021-01-03|  A|    2|
 +----------+---+-----+
 </pre></div>
 </div>
