@@ -10,17 +10,16 @@ All questions are welcome in the Slack channel.
 
 [![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue) ⬅️  Check out our source code
 
-[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ) ⬅️  Chat with us on slack
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ) ⬅️  Chat with us on Slack
 
 ## What Does Fugue Do?
 
-Fugue provides an easier interface to using distributed compute effectively and accelerates big data projects. It does this by minimizing the amount of code you need to write, in addition to taking care of tricks and optimizations that lead to more efficient execution.
+[Fugue](https://github.com/fugue-project/fugue) provides an easier interface to using distributed compute effectively and accelerates big data projects. It does this by minimizing the amount of code you need to write, in addition to taking care of tricks and optimizations that lead to more efficient execution on distrubted compute.
 
-Bringing a Python/Pandas function to Spark or Dask? check the [Fugue Transform](introduction.html#fugue-transform) section.
-
-Need a SQL interface on top of Pandas, Spark and Dask? check the [FugueSQL](tutorials/fugue_sql/index.md) section.
-
-For previous conference presentations and blog posts, check the [Resources](tutorials/resources.md) section.
+Quick Links:
+* Bringing a Python/Pandas function to Spark or Dask? Check the [Fugue Transform](introduction.html#fugue-transform) section.
+* Need a SQL interface on top of Pandas, Spark and Dask? Check the [FugueSQL](tutorials/fugue_sql/index.md) section.
+* For previous conference presentations and blog posts, Check the [Resources](tutorials/resources.md) section.
 
 ## Installation
 
