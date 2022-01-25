@@ -9,8 +9,6 @@ pytest-cov
 pytest-mock
 pytest-spark
 sphinx
-sphinx-rtd-theme
-furo
 myst-parser>=0.15
 myst-nb>=0.13.1
 
@@ -22,8 +20,10 @@ jupyter-book>=0.12.1
 
 flask
 fugue[spark]
+tune
 
 pandera
 scikit-learn
 matplotlib
 seaborn
+xgboost
