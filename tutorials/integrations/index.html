@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fugue and PyArrow Types &#8212; Fugue Tutorials</title>
+    <title>Integrations &#8212; Fugue Tutorials</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,8 +52,8 @@
     <link rel="shortcut icon" href="../../_static/fugue_logo_trimmed.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Benchmark of Fugue on Spark" href="fugue_spark_benchmark.html" />
-    <link rel="prev" title="Appendix" href="index.html" />
+    <link rel="next" title="DuckDB as Fugue Backend" href="duckdb.html" />
+    <link rel="prev" title="FugueSQL and Dask-sql" href="../fugue_sql/dask.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -102,7 +102,7 @@
   Tutorials
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../beginner/index.html">
    Getting Started
@@ -254,18 +254,18 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../integrations/index.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    Integrations
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../integrations/duckdb.html">
+    <a class="reference internal" href="duckdb.html">
      DuckDB as Fugue Backend
     </a>
    </li>
@@ -446,34 +446,34 @@
   Further Information
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../resources.html">
    Resources
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
    Appendix
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/generate_types.html">
      Fugue and PyArrow Types
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="fugue_spark_benchmark.html">
+    <a class="reference internal" href="../appendix/fugue_spark_benchmark.html">
      Benchmark of Fugue on Spark
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="fugue_not_pandas.html">
+    <a class="reference internal" href="../appendix/fugue_not_pandas.html">
      Why Fugue Does NOT Want To Be Another Pandas-Like Framework
     </a>
    </li>
@@ -520,9 +520,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tutorials/appendix/generate_types.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tutorials/integrations/index.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -540,10 +540,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/appendix/generate_types.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/integrations/index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/appendix/generate_types.ipynb"><button
+        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/integrations/index.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -558,31 +558,26 @@
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/appendix/generate_types.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#duckdb">
+   <span class="xref myst">
+    1. DuckDB
+   </span>
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -590,85 +585,43 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Fugue and PyArrow Types</h1>
+                <h1>Integrations</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#duckdb">
+   <span class="xref myst">
+    1. DuckDB
+   </span>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="fugue-and-pyarrow-types">
-<h1>Fugue and PyArrow Types<a class="headerlink" href="#fugue-and-pyarrow-types" title="Permalink to this headline">¶</a></h1>
-<p>We can use Fugue SQL to generate Fugue -&gt; PyArrow type table.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">triad</span>
-<span class="kn">from</span> <span class="nn">fugue_sql</span> <span class="kn">import</span> <span class="n">FugueSQLWorkflow</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Any</span>
-
-<span class="c1">#schema: fugue_type_expr:str, pa_type:str</span>
-<span class="k">def</span> <span class="nf">type_to_expr</span><span class="p">(</span><span class="n">primary</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">primary</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[[</span><span class="n">k</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">triad</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">pyarrow</span><span class="o">.</span><span class="n">_TYPE_EXPRESSION_MAPPING</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[[</span><span class="n">v</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">triad</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">pyarrow</span><span class="o">.</span><span class="n">_TYPE_EXPRESSION_R_MAPPING</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
-    
-<span class="k">with</span> <span class="n">FugueSQLWorkflow</span><span class="p">()</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">dag</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    f2p = CREATE USING type_to_expr</span>
-<span class="s2">    f2p_primary = CREATE USING type_to_expr(primary=true)</span>
-<span class="s2">    SELECT CASE WHEN f2p_primary.pa_type IS NOT NULL THEN &quot;YES&quot; ELSE &quot;.&quot; END AS is_primary,f2p.*</span>
-<span class="s2">        FROM f2p LEFT OUTER JOIN f2p_primary </span>
-<span class="s2">        ON f2p.fugue_type_expr=f2p_primary.fugue_type_expr</span>
-<span class="s2">        ORDER BY pa_type, is_primary DESC</span>
-<span class="s2">    </span>
-<span class="s2">    PRINT 100 ROWS</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-</pre></div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="integrations">
+<h1>Integrations<a class="headerlink" href="#integrations" title="Permalink to this headline">¶</a></h1>
+<p>All questions are welcome in the Slack channel.</p>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a> ⬅️ Launch these tutorials in Binder</p>
+<p><a class="reference external" href="https://github.com/fugue-project/fugue"><img alt="Homepage" src="https://img.shields.io/badge/fugue-source--code-red?logo=github" /></a> ⬅️ Check out our source code</p>
+<p><a class="reference external" href="https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ"><img alt="Slack Status" src="https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&amp;style=social" /></a> ⬅️ Chat with us on slack</p>
+<div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PandasDataFrame
-is_primary:str|fugue_type_expr:str|pa_type:str                                                      
---------------+-------------------+-----------------------------------------------------------------
-YES           |bytes              |binary                                                           
-.             |binary             |binary                                                           
-YES           |bool               |bool                                                             
-.             |boolean            |bool                                                             
-YES           |date               |date32[day]                                                      
-YES           |double             |double                                                           
-.             |float64            |double                                                           
-YES           |float              |float                                                            
-.             |float32            |float                                                            
-YES           |float16            |halffloat                                                        
-YES           |short              |int16                                                            
-.             |int16              |int16                                                            
-YES           |int                |int32                                                            
-.             |int32              |int32                                                            
-YES           |long               |int64                                                            
-.             |int64              |int64                                                            
-YES           |byte               |int8                                                             
-.             |int8               |int8                                                             
-YES           |null               |null                                                             
-YES           |str                |string                                                           
-.             |string             |string                                                           
-YES           |datetime           |timestamp[us]                                                    
-YES           |ushort             |uint16                                                           
-.             |uint16             |uint16                                                           
-YES           |uint               |uint32                                                           
-.             |uint32             |uint32                                                           
-YES           |ulong              |uint64                                                           
-.             |uint64             |uint64                                                           
-YES           |ubyte              |uint8                                                            
-.             |uint8              |uint8                                                            
-Total count: 30
-</pre></div>
-</div>
-</div>
+<div class="section" id="duckdb">
+<h2><a class="reference internal" href="duckdb.html"><span class="doc std std-doc">1. DuckDB</span></a><a class="headerlink" href="#duckdb" title="Permalink to this headline">¶</a></h2>
+<p>A deep integration with <a class="reference external" href="https://duckdb.org/">DuckDB</a>. It’s lightweight and fast on local machines.</p>
 </div>
 </div>
 
@@ -685,7 +638,7 @@ Total count: 30
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./tutorials/appendix"
+            path: "./tutorials/integrations"
         },
         predefinedOutput: true
     }
@@ -697,17 +650,17 @@ Total count: 30
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../fugue_sql/dask.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Appendix</p>
+            <p class="prev-next-title">FugueSQL and Dask-sql</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="fugue_spark_benchmark.html" title="next page">
+    <a class='right-next' id="next-link" href="duckdb.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Benchmark of Fugue on Spark</p>
+        <p class="prev-next-title">DuckDB as Fugue Backend</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
