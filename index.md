@@ -53,6 +53,7 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 tutorials/beginner/index
 tutorials/extensions/index
 tutorials/fugue_sql/index
+tutorials/integrations/index
 tutorials/advanced/index
 ```
 
