@@ -18,7 +18,6 @@ joins
 beginner_extension
 distributed_compute
 beginner_sql
-ibis
 ```
 
 
@@ -50,9 +49,6 @@ The heart of Fugue is distributed compute. In this section we'll show the keywor
 We'll show a bit of [FugueSQL](../fugue_sql/index.md), the SQL interface for using Fugue. This is targeted for heavy SQL users and SQL-lovers who want to use SQL on top of Spark and Dask, or even pandas. FugueSQL that is used on DataFrames in memory as opposed to data in databases.
 
 With that, you should be ready to implement data workflows using Fugue.
-
-## [Ibis Integration](ibis.ipynb) (Experimental)
-As a last note, we'll show a nice addition to Fugue. The [Ibis project](https://ibis-project.org/docs/) provides a very nice Pythonic way to express SQL logic. Plus, it is also an abstraction layer that can run on different database backends. We can make these two abstractions work together seamlessly so users can take the advantages of both.
 
 For full end-to-end examples, check out the [Stock Sentiment](../examples/stock_sentiment.ipynb) and [COVID-19](../examples/example_covid19.ipynb) examples.
 
