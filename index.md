@@ -61,9 +61,9 @@ tutorials/advanced/index
 :caption: Integrations
 :hidden:
 
-tutorials/integrations/duckdb.ipynb
-tutorials/integrations/ibis.ipynb
-tutorials/integrations/dasksql.ipynb
+DuckDB <tutorials/integrations/duckdb.ipynb>
+Ibis <tutorials/integrations/ibis.ipynb>
+Dask-sql <tutorials/integrations/dasksql.ipynb>
 ```
 
 ```{toctree}
