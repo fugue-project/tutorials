@@ -20,7 +20,6 @@ syntax
 operators
 python
 extensions
-dask
 ```
 
 ## 1. Installation
@@ -56,10 +55,6 @@ The [Transformer](../extensions/transformer.ipynb) is just one of many possible 
 
 `%%fsql` takes in the NativeExecutionEngine as a default parameter. This engine runs on Pandas. All of the SQL operations have equivalents in Pandas, but the behavior can be inconsistent sometimes. For example, Pandas will drop NULL values by default in a groupby operation. The NativeExecutionEngine was designed to mostly make operations consistent with Spark and SQL.
 
-## [7. FugueSQL with Dask](dask.ipynb)
-
-`Fugue` and [dask-sql](https://dask-sql.readthedocs.io/en/latest/index.html) are collaborating to have our solutions converge and bring the SQL interface for [Dask](https://docs.dask.org/en/latest/). Currently, `dask-sql` is faster on average, while `FugueSQL` is more complete in terms of `SQL` keywords implemented. Conveniently, our solutions can be used together to bring the best of both worlds. This is done by using `dask-sql` as the underlying [execution engine](../advanced/execution_engine.ipynb) of the `FugueSQLWorkflow` context manager. 
-
-## 8. FugueSQL with Spark
+## 7. FugueSQL with Spark
 
 `FugueSQL` also works on **Spark** by passing in the execution engine. This looks like `%%fsql spark`. The operations are mapped to **Spark** and Spark SQL operations. The difference is `FugueSQL` has added functionality for syntax compared to SparkSQL as seen in the [syntax tutorial](syntax.ipynb). Additionally with `FugueSQL`, the same code will execute on Pandas and Dask without modification. This allows for quick testing without having to spin up a cluster. Users prototype with the `NativeExecutionEngine`, and then move to the **Spark** cluster by changing the execution engine.
