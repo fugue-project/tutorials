@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DuckDB as Fugue Backend &#8212; Fugue Tutorials</title>
+    <title>DuckDB as a Fugue Backend &#8212; Fugue Tutorials</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,8 +52,8 @@
     <link rel="shortcut icon" href="../../_static/fugue_logo_trimmed.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Deep Dive" href="../advanced/index.html" />
-    <link rel="prev" title="Integrations" href="index.html" />
+    <link rel="next" title="Ibis as a Pythonic API Option (Experimental)" href="ibis.html" />
+    <link rel="prev" title="X-like Objects" href="../advanced/x-like.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -102,7 +102,7 @@
   Tutorials
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../beginner/index.html">
    Getting Started
@@ -156,11 +156,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../beginner/beginner_sql.html">
      FugueSQL
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../beginner/ibis.html">
-     Ibis Integration (Experimental)
     </a>
    </li>
   </ul>
@@ -247,36 +242,14 @@
      Extensions
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../fugue_sql/dask.html">
-     FugueSQL and Dask-sql
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
-   Integrations
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     DuckDB as Fugue Backend
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../advanced/index.html">
    Deep Dive
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -331,6 +304,28 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Integrations
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   DuckDB as a Fugue Backend
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ibis.html">
+   Ibis as a Pythonic API Option (Experimental)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dasksql.html">
+   Dask-sql as a Fugue SQL Engine
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Applications
  </span>
 </p>
@@ -339,8 +334,8 @@
   <a class="reference internal" href="../examples/index.html">
    Examples
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -361,8 +356,8 @@
   <a class="reference internal" href="../applications/index.html">
    Applications
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -393,8 +388,8 @@
   <a class="reference internal" href="../debugging/index.html">
    Debugging
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -417,8 +412,8 @@
   <a class="reference internal" href="../tune/index.html">
    Fugue Tune
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -456,8 +451,8 @@
   <a class="reference internal" href="../appendix/index.html">
    Appendix
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -615,6 +610,26 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extensions">
+   Extensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functional-api">
+   Functional API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ibis-support">
+   Ibis Support
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#duckdb-vs-pandas-as-fugue-backend">
+   DuckDB vs Pandas as Fugue Backend
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -625,7 +640,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>DuckDB as Fugue Backend</h1>
+                <h1>DuckDB as a Fugue Backend</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -662,6 +677,26 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extensions">
+   Extensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functional-api">
+   Functional API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ibis-support">
+   Ibis Support
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#duckdb-vs-pandas-as-fugue-backend">
+   DuckDB vs Pandas as Fugue Backend
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -671,15 +706,15 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="duckdb-as-fugue-backend">
-<h1>DuckDB as Fugue Backend<a class="headerlink" href="#duckdb-as-fugue-backend" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="duckdb-as-a-fugue-backend">
+<h1>DuckDB as a Fugue Backend<a class="headerlink" href="#duckdb-as-a-fugue-backend" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://duckdb.org/">DuckDB</a> is an in-process SQL OLAP database management system. The speed is very good on even gigabytes of data on local machines.
 Fugue has a deep integration with DuckDB. Fugue not only uses DuckDB as the SQL engine, but also implemented all <a class="reference internal" href="../advanced/execution_engine.html"><span class="doc std std-doc">execution engine</span></a> methods using DuckDB SQL and relations. So in most part of the workflow, the data tables are kept in DuckDB and in rare cases
 the tables will be materialized and converted to arrow dataframes. Note this <a class="reference external" href="https://duckdb.org/2021/12/03/duck-arrow.html">blog</a> explains that converting
 between DuckDB and Arrow has minimal overhead.</p>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install fugue<span class="o">[</span>duckdb<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install fugue<span class="o">[</span>duckdb,sql<span class="o">]</span>
 </pre></div>
 </div>
 </div>
@@ -1220,73 +1255,73 @@ PRINT
   <tbody>
     <tr>
       <th>0</th>
-      <td>c</td>
-      <td>0.800256</td>
-      <td>2020-01-01 14:23:24</td>
+      <td>b</td>
+      <td>0.268709</td>
+      <td>2020-01-01 14:23:23</td>
       <td>False</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>b</td>
-      <td>0.955568</td>
-      <td>2020-01-01 14:23:25</td>
+      <td>c</td>
+      <td>0.024577</td>
+      <td>2020-01-01 14:23:20</td>
       <td>None</td>
     </tr>
     <tr>
       <th>2</th>
       <td>b</td>
-      <td>0.316550</td>
-      <td>2020-01-01 14:23:26</td>
-      <td>True</td>
+      <td>0.349898</td>
+      <td>2020-01-01 14:23:18</td>
+      <td>None</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>b</td>
-      <td>0.826805</td>
-      <td>2020-01-01 14:23:27</td>
-      <td>True</td>
+      <td>c</td>
+      <td>0.276650</td>
+      <td>2020-01-01 14:23:16</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>c</td>
-      <td>0.751032</td>
-      <td>2020-01-01 14:23:30</td>
-      <td>False</td>
+      <td>b</td>
+      <td>0.683726</td>
+      <td>2020-01-01 14:23:13</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>5</th>
       <td>c</td>
-      <td>0.892707</td>
-      <td>2020-01-01 14:23:33</td>
-      <td>True</td>
+      <td>0.102446</td>
+      <td>2020-01-01 14:23:14</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>6</th>
       <td>b</td>
-      <td>0.103578</td>
-      <td>2020-01-01 14:23:34</td>
-      <td>False</td>
+      <td>0.221218</td>
+      <td>2020-01-01 14:23:12</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>7</th>
       <td>c</td>
-      <td>0.018096</td>
-      <td>2020-01-01 14:23:35</td>
+      <td>0.280859</td>
+      <td>2020-01-01 14:23:05</td>
       <td>True</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>c</td>
-      <td>0.590585</td>
-      <td>2020-01-01 14:23:36</td>
+      <td>b</td>
+      <td>0.392319</td>
+      <td>2020-01-01 14:23:11</td>
       <td>True</td>
     </tr>
     <tr>
       <th>9</th>
       <td>c</td>
-      <td>0.798689</td>
-      <td>2020-01-01 14:23:38</td>
-      <td>False</td>
+      <td>0.128021</td>
+      <td>2020-01-01 14:22:58</td>
+      <td>True</td>
     </tr>
   </tbody>
 </table>
@@ -1569,34 +1604,41 @@ PRINT
     <tr>
       <th>0</th>
       <td>b</td>
-      <td>0.357639</td>
-      <td>2020-01-01 14:24:43</td>
+      <td>0.842973</td>
+      <td>2020-01-01 14:28:39</td>
       <td>None</td>
     </tr>
     <tr>
       <th>1</th>
       <td>b</td>
-      <td>0.401688</td>
-      <td>2020-01-01 14:24:47</td>
-      <td>False</td>
+      <td>0.690785</td>
+      <td>2020-01-01 14:16:16</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>2</th>
       <td>b</td>
-      <td>0.898825</td>
-      <td>2020-01-01 14:30:34</td>
+      <td>0.923305</td>
+      <td>2020-01-01 14:18:31</td>
       <td>None</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>c</td>
-      <td>0.416934</td>
-      <td>2020-01-01 14:31:55</td>
+      <td>b</td>
+      <td>0.727547</td>
+      <td>2020-01-01 14:18:50</td>
       <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b</td>
+      <td>0.141817</td>
+      <td>2020-01-01 14:21:30</td>
+      <td>True</td>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html"><strong>total count: 8</strong></div><div class="output text_html"><small>schema: a:str,b:double,c:datetime,d:bool</small></div><div class="output text_html"><div>
+</div></div><div class="output text_html"><strong>total count: 7</strong></div><div class="output text_html"><small>schema: a:str,b:double,c:datetime,d:bool</small></div><div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1783,6 +1825,320 @@ PRINT
 </div>
 </div>
 </div>
+<div class="section" id="extensions">
+<h2>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h2>
+<p>For transformers, since DuckDB is a SQL solution, custom python code will be using NativeExecutionEngine to execute. They will not run in parallel, but they should provide consistent result when you switch to distributed execution engines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># schema: *</span>
+<span class="k">def</span> <span class="nf">get_median</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span> duck
+SELECT a,b FROM (LOAD &quot;/tmp/df1.parquet&quot;)
+TRANSFORM PREPARTITION BY a USING get_median
+PRINT
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>0.480061</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>0.531494</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c</td>
+      <td>0.507267</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: a:str,b:double</small></div></div>
+</div>
+<p>For driver side extensions such as Creator, Processor and Outputter, you can use <a class="reference external" href="https://github.com/duckdb/duckdb/blob/8a0e93080023f4d3226a2021a7697fd0299bf2b8/tools/pythonpkg/duckdb-stubs/__init__.pyi#L22">DuckDBPyConnection</a> as the engine input and <a class="reference external" href="https://github.com/duckdb/duckdb/blob/8a0e93080023f4d3226a2021a7697fd0299bf2b8/tools/pythonpkg/duckdb-stubs/__init__.pyi#L64">DuckDBPyRelation</a> as the dataframe input.</p>
+<p>The purpose is that you can write modulized code that is completely independent from Fugue, but in the end you can use Fugue to orchestrate them. But you need to understand that, by using DuckDB specific input in an extension, it can only work with DuckDB execution engine.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">duckdb</span> <span class="kn">import</span> <span class="n">DuckDBPyConnection</span><span class="p">,</span> <span class="n">DuckDBPyRelation</span>
+<span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
+
+<span class="k">def</span> <span class="nf">my_create</span><span class="p">(</span><span class="n">con</span><span class="p">:</span><span class="n">DuckDBPyConnection</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DuckDBPyRelation</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">con</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;SELECT &#39;a&#39; AS a, 0.2 AS z&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">my_process1</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">DuckDBPyRelation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="s2">&quot;*, b*2 AS c&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">df</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">my_process2</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">DuckDBPyRelation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pa</span><span class="o">.</span><span class="n">Table</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="s2">&quot;*, b*3 AS d&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">arrow</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">my_process3</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">e</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">b</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">my_output</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">DuckDBPyRelation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">df</span><span class="p">()</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span> duck
+df2 = CREATE USING my_create
+df1 = LOAD &quot;/tmp/df1.parquet&quot; COLUMNS a,b
+SELECT df1.*, z FROM df1 INNER JOIN df2 ON df1.a = df2.a
+PROCESS USING my_process1
+PROCESS USING my_process2
+PROCESS USING my_process3
+OUTPUT USING my_output
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/duckdb_24_0.png" src="../../_images/duckdb_24_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="functional-api">
+<h2>Functional API<a class="headerlink" href="#functional-api" title="Permalink to this headline">¶</a></h2>
+<p>Just like all other Fugue execution engines, you can use functional API instead of SQL. Here is the same logic as the above SQL:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">FugueWorkflow</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_create</span><span class="p">)</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/tmp/df1.parquet&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">])</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">inner_join</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="n">df3</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">my_process1</span><span class="p">)</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">my_process2</span><span class="p">)</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">my_process3</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">my_output</span><span class="p">)</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;duckdb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrames()
+</pre></div>
+</div>
+<img alt="../../_images/duckdb_26_1.png" src="../../_images/duckdb_26_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ibis-support">
+<h2>Ibis Support<a class="headerlink" href="#ibis-support" title="Permalink to this headline">¶</a></h2>
+<p>You can use Ibis interface with DuckDB, for the following code</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">fsql</span> duck
+df1 = LOAD &quot;/tmp/df1.parquet&quot;
+top2 = SELECT a, SUM(b) AS b GROUP BY a ORDER BY b DESC LIMIT 2
+top_groups = SELECT df1.* FROM df1 INNER JOIN top2 ON df1.a = top2.a
+SELECT minute(c) AS m, COUNT(*) AS ct GROUP BY 1 ORDER BY 2 DESC
+PRINT 2 ROWS
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m</th>
+      <th>ct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>24</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: m:long,ct:long</small></div></div>
+</div>
+<p>The equivalent Fugue+Ibis expression will be:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fugue_ibis</span>
+<span class="kn">import</span> <span class="nn">ibis</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">FugueWorkflow</span><span class="p">()</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/tmp/df1.parquet&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_ibis</span><span class="p">()</span>
+<span class="n">top2</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="n">ibis</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">top_groups</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">inner_join</span><span class="p">(</span><span class="n">top2</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)[</span><span class="n">df1</span><span class="p">]</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">top_groups</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">top_groups</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">minute</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="s2">&quot;m&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="s2">&quot;ct&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="n">ibis</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="s2">&quot;ct&quot;</span><span class="p">))</span>
+<span class="n">res</span><span class="o">.</span><span class="n">as_fugue</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;duck&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m</th>
+      <th>ct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>24</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><small>schema: m:short,ct:long</small></div></div>
+</div>
+</div>
+<div class="section" id="duckdb-vs-pandas-as-fugue-backend">
+<h2>DuckDB vs Pandas as Fugue Backend<a class="headerlink" href="#duckdb-vs-pandas-as-fugue-backend" title="Permalink to this headline">¶</a></h2>
+<p>If only comparing DuckDB and Pandas without considering Fugue, they both have pros and cons.</p>
+<p>The pros of Pandas:</p>
+<ul class="simple">
+<li><p>It’s feature rich.</p></li>
+<li><p>It has great documentation and large amount of online examples.</p></li>
+<li><p>It has strong community support.</p></li>
+</ul>
+<p>The cons of Pandas:</p>
+<ul class="simple">
+<li><p>It’s unnecessarily fat, see this <a class="reference external" href="https://medium.com/dunder-data/minimally-sufficient-pandas-a8e67f2a2428">blog</a>.</p></li>
+<li><p>It’s slower and it consumes more memory compared to many other alternatives.</p></li>
+<li><p>It has strong assumption that the computation happens locally in memory (e.g. implicit schema, global sort, index).</p></li>
+<li><p>The data types is a mess.</p></li>
+</ul>
+<p>The pros of DuckDB:</p>
+<ul class="simple">
+<li><p>It’s SQL based. SQL is great of scale agnostic computing. The same SQL may be used on distributed system with little or no modification.</p></li>
+<li><p>It’s extremely fast even on gigabytes of data, and the memory use is minimal too.</p></li>
+<li><p>It’s extremely lightweight, as of 0.3.1, the duckdb python package has no extra dependency.</p></li>
+</ul>
+<p>The cons of DuckDB:</p>
+<ul class="simple">
+<li><p>It’s not as feature rich as Pandas, and not as capable as Pandas for scientific computing.</p></li>
+<li><p>It’s relatively new and has less online examples.</p></li>
+<li><p>It may have more bugs and more crash (segment fault) than Pandas. (With proper usage, this isn’t obvious)</p></li>
+</ul>
+<p>In addition, Pandas and DuckDB have slightly different licences (BSD-3 vs MIT). DuckDB has very good support on Pandas dataframes.
+The data transfer is much faster than SQLite. Also compared to SQLite, DuckDB has a lot more data types, making it a more practical choice
+for python users.</p>
+<p>On the Fugue layer, the DuckDB execution engine is built majorly on DuckDB itself. Most of the methods are implemented directly using DuckDB’s
+SQL and <a class="reference external" href="https://github.com/duckdb/duckdb/blob/8a0e93080023f4d3226a2021a7697fd0299bf2b8/tools/pythonpkg/duckdb-stubs/__init__.pyi#L64">DuckDBPyRelation</a>.
+Only a few methods, such as <a class="reference external" href="https://github.com/fugue-project/fugue/blob/fa9d3d1b397af7835c0e4b78205228ae0877bcf5/fugue_duckdb/execution_engine.py#L162">map</a> are using <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code>’s implementation.</p>
+<p>This design keeps the data inside DuckDB through the workflow in most cases, so it can minimize the data transfer/conversion overhead, and it can take advantage of DuckDB’s lazy evaluation. For example in the following code:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">LOAD</span><span class="w"> </span><span class="ss">&quot;...parquet&quot;</span><span class="w"></span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">a</span><span class="w"></span>
+<span class="n">PRINT</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Only the <code class="docutils literal notranslate"><span class="pre">PRINT</span></code> will trigger the previous steps to materialize. With lazy evaluation, the workflow can push down the column filtering of parquet
+to the load step. Because <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> only requires columns <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, DuckDB actually only loaded the two columns of data from the parquet file, makeing
+the whole process faster. In addition, all data is processed inside DuckDB without any data conversion and transfer until print step needs to fetch
+a few rows from DuckDB to render. Let’s look at another example:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">LOAD</span><span class="w"> </span><span class="ss">&quot;...csv&quot;</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="k">true</span><span class="p">)</span><span class="w"></span>
+<span class="n">PRINT</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Assume the CSV file is very large, the load and print will take no time. Because <code class="docutils literal notranslate"><span class="pre">PRINT</span></code> by default only needs to get 10 rows from the
+previous step, it pushes down the limit to the loading step, so only a small portion of the CSV file was actually loaded.</p>
+<p>In contrast, if you use <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code> (Pandas) as the backend, there is no lazy execution, so the load step will always load all data, making it
+less practical for data analysis.</p>
+<p>In addition, DuckDB as a SQL engine, the SQL support (including syntax and functions) is much better than <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code>’s default SQL backend
+<a class="reference external" href="https://pypi.org/project/qpd/">QPD</a>. So again, this makes data analysis on a single machine more practical.</p>
+<p>On the other hand, since Fugue DuckDB engine is backed by <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code>, it can also take full advantage of Pandas’ rich features, in an
+appropriate way. We don’t believe Pandas interface or the mindset behind it is right for distributed computing. In Fugue, users can heavily rely on Pandas
+for <strong>local computing</strong>, meaning that the appropriate places to use Pandas in Fugue is in transformers. Since DuckDB engine fully supports transformers, you can combine the strengths of DuckDB and Pandas in this way.</p>
+<p>So what is the value that Fugue adds to DuckDB?</p>
+<ul class="simple">
+<li><p><strong>SQL end to end</strong>: Fugue treats each SQL statement as an operator and chains them together, making it intuitive to express entire workflows with SQL.</p></li>
+<li><p><strong>Pythonic expressions</strong>: for users who prefer functional APIs, Fugue enables functional API including Ibis to use DuckDB.</p></li>
+<li><p><strong>Minimal coding</strong>: it further minimizes the boilerplate code of DuckDB.</p></li>
+<li><p><strong>Seamless integration</strong>: you can easily integrate Pandas code into the workflow, so you can enjoys the pros of both DuckDB and Pandas.</p></li>
+<li><p><strong>Seamless migration</strong>: when your data size is too big for a single machine, you just need to switch to a distributed Fugue engine with no code change.</p></li>
+</ul>
+<p>To sum up, using DuckDB as your Fugue backend:</p>
+<ul class="simple">
+<li><p>It’s more practical to do data analysis on a single machine. Even with gigabyte level data, the speed can be very good.</p></li>
+<li><p>You can also use it to quickly iterate on the logic you want to ultimately run on Spark or Dask. It will be faster and more seamless than using <code class="docutils literal notranslate"><span class="pre">NativeExecutionEngine</span></code>.</p></li>
+</ul>
+<p>If you don’t mind adding duckdb as a dependency, it’s a wonderful local execution engine for Fugue.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1810,17 +2166,17 @@ PRINT
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../advanced/x-like.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Integrations</p>
+            <p class="prev-next-title">X-like Objects</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../advanced/index.html" title="next page">
+    <a class='right-next' id="next-link" href="ibis.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Deep Dive</p>
+        <p class="prev-next-title">Ibis as a Pythonic API Option (Experimental)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

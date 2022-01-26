@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Integrations &#8212; Fugue Tutorials</title>
+    <title>Dask-sql as a Fugue SQL Engine &#8212; Fugue Tutorials</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,8 +52,8 @@
     <link rel="shortcut icon" href="../../_static/fugue_logo_trimmed.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="DuckDB as Fugue Backend" href="duckdb.html" />
-    <link rel="prev" title="FugueSQL and Dask-sql" href="../fugue_sql/dask.html" />
+    <link rel="next" title="Examples" href="../examples/index.html" />
+    <link rel="prev" title="Ibis as a Pythonic API Option (Experimental)" href="ibis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -102,7 +102,7 @@
   Tutorials
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../beginner/index.html">
    Getting Started
@@ -156,11 +156,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../beginner/beginner_sql.html">
      FugueSQL
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../beginner/ibis.html">
-     Ibis Integration (Experimental)
     </a>
    </li>
   </ul>
@@ -247,36 +242,14 @@
      Extensions
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../fugue_sql/dask.html">
-     FugueSQL and Dask-sql
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   Integrations
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="duckdb.html">
-     DuckDB as Fugue Backend
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../advanced/index.html">
    Deep Dive
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -331,6 +304,28 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Integrations
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="duckdb.html">
+   DuckDB as a Fugue Backend
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ibis.html">
+   Ibis as a Pythonic API Option (Experimental)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Dask-sql as a Fugue SQL Engine
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Applications
  </span>
 </p>
@@ -339,8 +334,8 @@
   <a class="reference internal" href="../examples/index.html">
    Examples
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -361,8 +356,8 @@
   <a class="reference internal" href="../applications/index.html">
    Applications
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -393,8 +388,8 @@
   <a class="reference internal" href="../debugging/index.html">
    Debugging
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -417,8 +412,8 @@
   <a class="reference internal" href="../tune/index.html">
    Fugue Tune
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -456,8 +451,8 @@
   <a class="reference internal" href="../appendix/index.html">
    Appendix
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -520,9 +515,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tutorials/integrations/index.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tutorials/integrations/dasksql.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -540,10 +535,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/integrations/index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/fugue-project/tutorials//issues/new?title=Issue%20on%20page%20%2Ftutorials/integrations/dasksql.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/integrations/index.md"><button
+        <a class="edit-button" href="https://github.com/fugue-project/tutorials/edit/master/tutorials/integrations/dasksql.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -558,6 +553,26 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master?urlpath=tree/tutorials/integrations/dasksql.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -569,10 +584,8 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#duckdb">
-   <span class="xref myst">
-    1. DuckDB
-   </span>
+  <a class="reference internal nav-link" href="#sample-usage">
+   Sample Usage
   </a>
  </li>
 </ul>
@@ -585,7 +598,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Integrations</h1>
+                <h1>Dask-sql as a Fugue SQL Engine</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -596,10 +609,8 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#duckdb">
-   <span class="xref myst">
-    1. DuckDB
-   </span>
+  <a class="reference internal nav-link" href="#sample-usage">
+   Sample Usage
   </a>
  </li>
 </ul>
@@ -611,17 +622,52 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="integrations">
-<h1>Integrations<a class="headerlink" href="#integrations" title="Permalink to this headline">¶</a></h1>
-<p>All questions are welcome in the Slack channel.</p>
-<p><a class="reference external" href="https://mybinder.org/v2/gh/fugue-project/tutorials/master"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a> ⬅️ Launch these tutorials in Binder</p>
-<p><a class="reference external" href="https://github.com/fugue-project/fugue"><img alt="Homepage" src="https://img.shields.io/badge/fugue-source--code-red?logo=github" /></a> ⬅️ Check out our source code</p>
-<p><a class="reference external" href="https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ"><img alt="Slack Status" src="https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&amp;style=social" /></a> ⬅️ Chat with us on slack</p>
-<div class="toctree-wrapper compound">
+  <div class="tex2jax_ignore mathjax_ignore section" id="dask-sql-as-a-fugue-sql-engine">
+<h1>Dask-sql as a Fugue SQL Engine<a class="headerlink" href="#dask-sql-as-a-fugue-sql-engine" title="Permalink to this headline">¶</a></h1>
+<p><strong>Pandas</strong> and <strong>Spark</strong> already have solutions that allow users to execute SQL code to describe computation workflows. <strong>Dask</strong>, on the other hand, does not have a standard SQL interface yet. <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> provides this feature with the DaskExecutionEngine, but users should also be aware that <a class="reference external" href="https://dask-sql.readthedocs.io/en/latest/index.html">dask-sql</a> is a relatively new project and has a majority of SQL keywords implemented already. Additionally, it is also faster than FugueSql on average. However, there are still some features under development. Most notably, the SQL <code class="docutils literal notranslate"><span class="pre">WINDOW</span></code> is not yet implemented.</p>
+<p>We are collaborating to have our solutions converge to create the de facto SQL interface for Dask. In the meantime, we have unified our solutions by allowing <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> to use <a class="reference external" href="https://dask-sql.readthedocs.io/en/latest/index.html">dask-sql</a> as an <a class="reference internal" href="../advanced/execution_engine.html"><span class="doc std std-doc">execution engine</span></a>. The <a class="reference external" href="https://github.com/nils-braun/dask-sql">dask_sql</a> project has added a <code class="docutils literal notranslate"><span class="pre">DaskSQLExecutionEngine</span></code> into their code to let us import it and pass it into <code class="docutils literal notranslate"><span class="pre">FugueSQLWorkflow</span></code>. Note this is a different engine from <code class="docutils literal notranslate"><span class="pre">Fugue's</span> <span class="pre">DaskExecutionEngine</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">FugueSQLWorkflow</span></code> usage is nearly identical to the <code class="docutils literal notranslate"><span class="pre">fsql</span></code> function we saw previously. The main difference is that it takes in a SQL engine as seen in the example below.</p>
+<div class="section" id="sample-usage">
+<h2>Sample Usage<a class="headerlink" href="#sample-usage" title="Permalink to this headline">¶</a></h2>
+<p>This example below shows that when the SQL query cannot be executed in <code class="docutils literal notranslate"><span class="pre">dask-sql</span></code>, it will use the <code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code>. We are able to use the <code class="docutils literal notranslate"><span class="pre">TAKE</span></code> and <code class="docutils literal notranslate"><span class="pre">PRINT</span></code> keywords even if they don’t exist in <code class="docutils literal notranslate"><span class="pre">dask-sql</span></code>. We can also use the <code class="docutils literal notranslate"><span class="pre">TRANSFORM</span> <span class="pre">and</span> <span class="pre">PREPARTITION</span></code> even if these are <code class="docutils literal notranslate"><span class="pre">Fugue</span></code> keywords.</p>
+<p><code class="docutils literal notranslate"><span class="pre">FugueSQL</span></code> and <code class="docutils literal notranslate"><span class="pre">dask-sql</span></code> together can provide a more powerful solution. This allows us to use both solutions to get the best of both worlds in terms of speed and operation completeness. All we need to do is pass the <code class="docutils literal notranslate"><span class="pre">DaskSQLExecutionEngine</span></code> into <code class="docutils literal notranslate"><span class="pre">FugueSQLWorkflow</span></code>.</p>
+<p>NOTE: In order for the code below to run, <code class="docutils literal notranslate"><span class="pre">dask-sql</span></code> needs to be installed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask_sql.integrations.fugue</span> <span class="kn">import</span> <span class="n">DaskSQLExecutionEngine</span>
+<span class="kn">from</span> <span class="nn">fugue_sql</span> <span class="kn">import</span> <span class="n">FugueSQLWorkflow</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01-01&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01-02&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01-03&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01-01&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01-02&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01-03&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="s2">&quot;id:str,date:date,value:int&quot;</span>
+
+<span class="c1"># schema: *, cumsum:int</span>
+<span class="k">def</span> <span class="nf">cumsum</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;cumsum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="c1"># Run the DAG on the DaskSQLExecutionEngine by dask-sql</span>
+<span class="k">with</span> <span class="n">FugueSQLWorkflow</span><span class="p">(</span><span class="n">DaskSQLExecutionEngine</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span>
+    <span class="n">dag</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT *</span>
+<span class="s2">    FROM df</span>
+<span class="s2">    TRANSFORM PREPARTITION BY id PRESORT date ASC USING cumsum</span>
+<span class="s2">    TAKE 5 ROWS</span>
+<span class="s2">    PRINT</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="duckdb">
-<h2><a class="reference internal" href="duckdb.html"><span class="doc std std-doc">1. DuckDB</span></a><a class="headerlink" href="#duckdb" title="Permalink to this headline">¶</a></h2>
-<p>A deep integration with <a class="reference external" href="https://duckdb.org/">DuckDB</a>. It’s lightweight and fast on local machines.</p>
+</div>
+</div>
+<p>When a SQL keywords don’t exist in <code class="docutils literal notranslate"><span class="pre">dask-sql</span></code>, it will default to the <code class="docutils literal notranslate"><span class="pre">Fugue</span> <span class="pre">DaskExecutionEngine</span></code>. However, when the keyword is registered by <code class="docutils literal notranslate"><span class="pre">dask-sql</span></code> it will use their implementation. <code class="docutils literal notranslate"><span class="pre">OVER</span> <span class="pre">PARITION</span></code> is registered but still being developed, which will cause errors. One workaround is to use <code class="docutils literal notranslate"><span class="pre">Fugue's</span> <span class="pre">TRANSFORM</span> <span class="pre">and</span> <span class="pre">PREPARTITION</span></code> like above to avoid using <code class="docutils literal notranslate"><span class="pre">OVER</span> <span class="pre">PARTITION</span></code> for now.</p>
 </div>
 </div>
 
@@ -650,17 +696,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../fugue_sql/dask.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ibis.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">FugueSQL and Dask-sql</p>
+            <p class="prev-next-title">Ibis as a Pythonic API Option (Experimental)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="duckdb.html" title="next page">
+    <a class='right-next' id="next-link" href="../examples/index.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DuckDB as Fugue Backend</p>
+        <p class="prev-next-title">Examples</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -53,8 +53,17 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 tutorials/beginner/index
 tutorials/extensions/index
 tutorials/fugue_sql/index
-tutorials/integrations/index
 tutorials/advanced/index
+```
+
+```{toctree}
+:maxdepth: 6
+:caption: Integrations
+:hidden:
+
+tutorials/integrations/duckdb.ipynb
+tutorials/integrations/ibis.ipynb
+tutorials/integrations/dasksql.ipynb
 ```
 
 ```{toctree}
