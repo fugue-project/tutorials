@@ -8,9 +8,21 @@ This is a collection of talks given at various Meetups and conferences. All ques
 
 **Blogs**
 
-Fugue and PyCaret
+Fugue Core
+
+* [Introducing Fugue — Reducing PySpark Developer Friction](https://towardsdatascience.com/introducing-fugue-reducing-pyspark-developer-friction-a702230455de)
+
+Integrations
+
+[PyCaret](https://github.com/pycaret/pycaret)
 
 * [Scaling PyCaret with Spark (or Dask) through Fugue](https://medium.com/p/60bdc3ce133f) (Towards Data Science)
+
+[DuckDB]
+
+* [Fugue and DuckDB: Fast SQL Code in Python](https://towardsdatascience.com/fugue-and-duckdb-fast-sql-code-in-python-e2e2dfc0f8eb) (Towards Data Science by Khuyen Tran)
+
+
 
 ## 2021
 
