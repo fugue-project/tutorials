@@ -57,7 +57,7 @@ Testing Spark
 
 **Blogs**
 
-Fugue
+Fugue Core
 
 * [Fugue - Reducing Spark Developer Friction](https://jameskle.com/writes/fugue) (James Le Blog)
 * [Creating Pandas and Spark Compatible Functions with Fugue](https://towardsdatascience.com/creating-pandas-and-spark-compatible-functions-with-fugue-8617c0b3d3a8) (Towards Data Science)
