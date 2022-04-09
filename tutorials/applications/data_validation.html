@@ -832,7 +832,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fugue</span> <span class="kn">import</span> <span class="n">transform</span>
-<span class="kn">from</span> <span class="nn">fugue_spark</span> <span class="kn">import</span> <span class="n">SparkExecutionEngine</span>
+<span class="kn">import</span> <span class="nn">fugue_spark</span>
 
 <span class="n">price_check</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">DataFrameSchema</span><span class="p">({</span>
     <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="n">pa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">pa</span><span class="o">.</span><span class="n">Int</span><span class="p">,</span> <span class="n">pa</span><span class="o">.</span><span class="n">Check</span><span class="o">.</span><span class="n">in_range</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">max_value</span><span class="o">=</span><span class="mi">20</span><span class="p">)),</span>
@@ -843,7 +843,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="k">return</span> <span class="n">data</span>
 
 <span class="c1"># df is a Spark DataFrame</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">price_validation</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">SparkExecutionEngine</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">price_validation</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;spark&quot;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -864,7 +864,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>There were no code changes to bring the code to Spark. We only needed to use the fugue <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function. This function ports the Pandas based code reads this and checks to see if the schema is upheld. If users move away from Fugue, the validation function is exactly the same.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function is the only addition to bring it to Spark. We use the Fugue <code class="docutils literal notranslate"><span class="pre">transform()</span></code> method to apply the function and because we passed <code class="docutils literal notranslate"><span class="pre">SparkExecutionEngine</span></code> to the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function, this code will now run in Spark. The <code class="docutils literal notranslate"><span class="pre">transform()</span></code> call will convert the input pandas DataFrame to a Spark DataFrame.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function is the only addition to bring it to Spark. We use the Fugue <code class="docutils literal notranslate"><span class="pre">transform()</span></code> method to apply the function and because we passed <code class="docutils literal notranslate"><span class="pre">&quot;spark&quot;</span></code> as the engine to the <code class="docutils literal notranslate"><span class="pre">transform()</span></code> function, this code will now run in Spark. The <code class="docutils literal notranslate"><span class="pre">transform()</span></code> call will convert the input pandas DataFrame to a Spark DataFrame.</p>
 </div>
 <div class="section" id="validation-by-partition-with-fugue">
 <h2>Validation by Partition with Fugue<a class="headerlink" href="#validation-by-partition-with-fugue" title="Permalink to this headline">¶</a></h2>
@@ -890,7 +890,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="k">return</span> <span class="n">df</span>
 
 <span class="c1"># df is a Spark DataFrame</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">price_validation</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">SparkExecutionEngine</span><span class="p">,</span> <span class="n">partition</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;by&quot;</span><span class="p">:</span> <span class="s2">&quot;state&quot;</span><span class="p">})</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">price_validation</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;spark&quot;</span><span class="p">,</span> <span class="n">partition</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;by&quot;</span><span class="p">:</span> <span class="s2">&quot;state&quot;</span><span class="p">})</span>
 <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
