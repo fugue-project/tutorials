@@ -27,3 +27,5 @@ scikit-learn
 matplotlib
 seaborn
 xgboost
+
+setuptools<58
