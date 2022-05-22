@@ -2,7 +2,7 @@
 
 All questions are welcome in the Slack channel.
 
-[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ)
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
 
 Fugue is an abstraction layer that lets users write code in native Python or Pandas, and then port it over to Spark and Dask. This section will cover the motivation of Fugue, the benefits of using an abstraction layer, and how to get started. This section is not a complete reference, but will be sufficient enough to get started with writing full workflows in Fugue.
 
