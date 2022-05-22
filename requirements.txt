@@ -16,7 +16,6 @@ nbconvert
 nbsphinx
 pandoc
 ipython
-jupyter-book>=0.12.1
 
 flask
 fugue[spark]
@@ -27,5 +26,3 @@ scikit-learn
 matplotlib
 seaborn
 xgboost
-
-setuptools<58
