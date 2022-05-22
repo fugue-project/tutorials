@@ -7,7 +7,7 @@ All questions are welcome in the Slack channel.
 
 [![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue) ⬅️ Check out our source code
 
-[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ) ⬅️ Chat with us on slack
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai) ⬅️ Chat with us on slack
 
 `FugueSQL` is designed for heavy SQL users to extend the boundaries of traditional SQL workflows. `FugueSQL` allows the expression of logic for end-to-end distributed computing workflows. It can also be combined with Python code to use custom functions alongside the SQL commands. It provides a unified interface, allowing the same SQL code to run on Pandas, Dask, and Spark.
 

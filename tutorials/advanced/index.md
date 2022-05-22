@@ -2,7 +2,7 @@
 
 All questions are welcome in the Slack channel.
 
-[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ)
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
 
 This section is not needed to create end-to-end workflows with Fugue, but it will help give a better understanding of the features available. In some cases, applying these concepts may significantly improve performance.
 

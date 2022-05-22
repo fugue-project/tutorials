@@ -2,7 +2,7 @@
 
 This is a list of examples of common Fugue errors and the causes behind them.
 
-[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](slack.fugue.ai)
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
 
 
 ```{toctree}
