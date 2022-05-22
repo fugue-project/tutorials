@@ -9,6 +9,7 @@ pytest-cov
 pytest-mock
 pytest-spark
 sphinx
+sphinx_copybutton
 myst-parser>=0.15
 myst-nb>=0.13.1
 
