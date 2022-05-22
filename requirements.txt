@@ -9,7 +9,6 @@ pytest-cov
 pytest-mock
 pytest-spark
 sphinx
-sphinx-copybutton
 myst-parser>=0.15
 myst-nb>=0.13.1
 
@@ -17,6 +16,7 @@ nbconvert
 nbsphinx
 pandoc
 ipython
+jupyter-book
 
 flask
 fugue[spark]
