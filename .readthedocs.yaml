@@ -1,0 +1,18 @@
+version: 2
+
+# Set the version of Python and other tools you might need
+build:
+  os: ubuntu-20.04
+  tools:
+    python: "3.7"
+  jobs:
+    pre_install:
+      - pip install -U pip
+
+# Build documentation in the docs/ directory with Sphinx
+sphinx:
+   configuration: conf.py
+
+python:
+   install:
+   - requirements: requirements.txt
