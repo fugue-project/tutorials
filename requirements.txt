@@ -14,7 +14,7 @@ myst-nb>=0.13.1
 nbconvert
 nbsphinx
 pandoc
-ipython
+ipython>=7.31
 jupyter-book>=0.12.1
 
 flask
