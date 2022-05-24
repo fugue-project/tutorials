@@ -46,6 +46,10 @@ FugueSQL
 
 ## Conferences and Meetups
 
+**2022**
+
+* [Comparing the Different Ways to Scale Python and Pandas Code](https://www.youtube.com/watch?v=b3ae0m_XTys) (PyCon US)
+
 **2021**
 
 Data Validation
