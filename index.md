@@ -61,6 +61,7 @@ tutorials/advanced/index
 :caption: Integrations
 :hidden:
 
+tutorials/cloudproviders/index
 DuckDB <tutorials/integrations/duckdb.ipynb>
 Ibis <tutorials/integrations/ibis.ipynb>
 Dask-sql <tutorials/integrations/dasksql.ipynb>
@@ -71,8 +72,8 @@ Dask-sql <tutorials/integrations/dasksql.ipynb>
 :hidden:
 
 
-tutorials/examples/index
 tutorials/recipes/index
+tutorials/examples/index
 tutorials/applications/index
 tutorials/debugging/index
 ```
