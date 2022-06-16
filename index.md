@@ -71,9 +71,8 @@ Dask-sql <tutorials/integrations/dasksql.ipynb>
 :caption: Applications
 :hidden:
 
-
-tutorials/recipes/index
 tutorials/examples/index
+tutorials/recipes/index
 tutorials/applications/index
 tutorials/debugging/index
 ```
