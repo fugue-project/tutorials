@@ -11,8 +11,8 @@ sphinx
 myst-parser>=0.15
 myst-nb>=0.13.1
 
-nbconvert
-nbsphinx
+nbconvert>=6.2.0
+nbsphinx>=0.8.6
 pandoc
 ipython>=7.31
 jupyter-book>=0.12.1
