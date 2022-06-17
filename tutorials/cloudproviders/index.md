@@ -1,4 +1,4 @@
-# Getting Started
+# Fugue with Cloud Prodicers
 
 All questions are welcome in the Slack channel.
 
@@ -13,4 +13,4 @@ databricks
 ```
 
 ## [Databricks](databricks.ipynb)
-Darabticks is the most common provider for Spark clusters. Using the `databricks-connect` library, we can easily spin up an ephemeral Spark cluster. We can connect to the SparkSession on the Databricks cluster from a local machine.
+Databricks is the most common provider for Spark clusters. Using the `databricks-connect` library, we can easily spin up an ephemeral Spark cluster. We can connect to the SparkSession on the Databricks cluster from a local machine.
