@@ -1,4 +1,4 @@
-# Fugue with Cloud Prodicers
+# Fugue with Cloud Providers
 
 All questions are welcome in the Slack channel.
 
