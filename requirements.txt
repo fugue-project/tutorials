@@ -11,11 +11,11 @@ sphinx
 myst-parser>=0.15
 myst-nb>=0.13.1
 
-nbconvert>=6.2.0
+nbconvert>=6.5.0
 nbsphinx>=0.8.6
-pandoc
+pandoc>=2.0
 ipython>=7.31
-jupyter-book>=0.12.1
+jupyter-book>=0.13
 
 flask
 fugue[spark]
