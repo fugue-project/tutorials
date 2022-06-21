@@ -19,6 +19,7 @@ jupyter-book>=0.13
 
 flask
 fugue[spark]
+fugue_databricks
 tune
 
 pandera
