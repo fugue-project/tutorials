@@ -15,6 +15,8 @@ COPY tutorials ${HOME}/tutorials
 COPY data ${HOME}/data
 COPY .jupyter ${HOME}/.jupyter
 COPY images ${HOME}/images
+RUN rm ${SPARK_CONF_DIR}/spark-defaults.conf
+COPY spark-defaults.conf ${SPARK_CONF_DIR}/
 
 USER root
 RUN chown -R ${NB_UID} ${HOME}
