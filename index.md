@@ -51,7 +51,8 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 :hidden:
 
 
-Fugue in 10 Minutes<tutorials/ten_minutes.ipynb>
+Fugue in 10 Minutes<tutorials/quick_look/ten_minutes.ipynb>
+FugueSQL in 10 Minutes<tutorials/quick_look/ten_minutes_sql.ipynb>
 ```
 
 ```{toctree}
