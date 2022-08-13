@@ -17,7 +17,8 @@ All questions are welcome in the Slack channel.
 [Fugue](https://github.com/fugue-project/fugue) provides an easier interface to using distributed compute effectively and accelerates big data projects. It does this by minimizing the amount of code you need to write, in addition to taking care of tricks and optimizations that lead to more efficient execution on distrubted compute.
 
 Quick Links:
-* Bringing a Python/Pandas function to Spark or Dask? Check the [Fugue Transform](tutorials/beginner/introduction.html#fugue-transform) section.
+
+Looking for Fugue's Python interface? Start with [Fugue in 10 minutes](tutorials/ten_minutes.ipynb)
 * Need a SQL interface on top of Pandas, Spark and Dask? Check the [FugueSQL](tutorials/fugue_sql/index.md) section.
 * For previous conference presentations and blog posts, Check the [Resources](tutorials/resources.md) section.
 
@@ -42,6 +43,15 @@ Alternatively, you should get decent performance if running its docker image on 
 
 ```
 docker run -p 8888:8888 fugueproject/tutorials:latest
+```
+
+```{toctree}
+:maxdepth: 6
+:caption: Quick Look
+:hidden:
+
+
+<tutorials/ten_minutes.ipynb>
 ```
 
 ```{toctree}
