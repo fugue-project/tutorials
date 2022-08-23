@@ -18,7 +18,7 @@ All questions are welcome in the Slack channel.
 
 Quick Links:
 
-Looking for Fugue's Python interface? Start with [Fugue in 10 minutes](tutorials/ten_minutes.ipynb)
+* Looking for Fugue's Python interface? Start with [Fugue in 10 minutes](tutorials/ten_minutes.ipynb)
 * Need a SQL interface on top of Pandas, Spark and Dask? Check the [FugueSQL](tutorials/fugue_sql/index.md) section.
 * For previous conference presentations and blog posts, Check the [Resources](tutorials/resources.md) section.
 
@@ -51,7 +51,8 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 :hidden:
 
 
-<tutorials/ten_minutes.ipynb>
+Fugue in 10 Minutes<tutorials/quick_look/ten_minutes.ipynb>
+FugueSQL in 10 Minutes<tutorials/quick_look/ten_minutes_sql.ipynb>
 ```
 
 ```{toctree}
