@@ -83,10 +83,10 @@ tutorials/integrations/ecosystem/index
 :caption: Applications
 :hidden:
 
-tutorials/examples/index
-tutorials/recipes/index
-tutorials/applications/index
-tutorials/debugging/index
+tutorials/applications/use_cases/index
+tutorials/applications/examples/index
+tutorials/applications/recipes/index
+tutorials/applications/debugging/index
 ```
 
 ```{toctree}
