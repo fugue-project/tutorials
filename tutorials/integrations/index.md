@@ -3,23 +3,25 @@
 This is a list of examples of Fugue applications. Any questions are welcome in the Slack channel.
 
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
-[![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue)
+
 
 ```{toctree}
 :hidden:
 
-testing
-model_sweeping
-databricks_connect
+dask_sql
+duckdb
+ibis
+
+pandera
 ```
 
-## [Data Validation](data_validation.ipynb)
+## [Data Validation](dask_sql.ipynb)
 We'll get started with using Fugue and Pandera for data validation. Using Fugue, we can bring Pandas-based libraries into Spark, meaning we don't have to re-implement the same logic twice. Moreover, using Fugue allows us to achieve **validation by partition**, an operation missing in the current data validation frameworks.
 
-## [Testing Big Data Applications](testing.ipynb)
+## [Testing Big Data Applications](duckdb.ipynb)
 Unit testing is a significant pain point in big data applications. In this section, we examine what makes it so hard to test and how Fugue simplifies it. Through simplified testing, Fugue users often see speedup in the development of big data projects (in addition to lower compute costs).
 
-## [Model Grid Search per Partition](model_sweeping.ipynb)
+## [Model Grid Search per Partition](ibis.ipynb)
 Even if a dataset fits in one core, distributed compute can be used for parallelized model training. We can train multiple models simultaneously. In addition, Fugue provides an easy interface to train multiple models for each logical grouping of data.
 
 
@@ -27,5 +29,5 @@ Even if a dataset fits in one core, distributed compute can be used for parallel
 
 Since Fugue is a framework for distributed compute, it is often paired with a solution that manages Spark or Dask clusters. This section will cover how to use Fugue with different providers.
 
-### [Fugue and Databricks Connect](databricks_connect.ipynb)
+### [Data Validation](pandera.ipynb)
 Fugue can be used with the `databricks-connect` library to run code that uses the `SparkExecutionEngine` on a Databricks cluster. Here we'll go over some details of how to set it up.

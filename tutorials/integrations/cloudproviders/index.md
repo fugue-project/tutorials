@@ -1,5 +1,7 @@
 # Fugue with Cloud Providers
 
+Since Fugue is a framework for distributed compute, it is often paired with a solution that manages Spark or Dask clusters. This section will cover how to use Fugue with different providers.
+
 All questions are welcome in the Slack channel.
 
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)

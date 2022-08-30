@@ -4,13 +4,9 @@ hide-toc: true
 
 # Welcome to the Fugue Tutorials!
 
-All questions are welcome in the Slack channel.
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fugue-project/tutorials/master) ⬅️  Launch these tutorials in Binder
-
-[![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue) ⬅️  Check out our source code
-
-[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai) ⬅️  Chat with us on Slack
+Have questions? Chat with us on Github or Slack:
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
+[![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue)
 
 ## What Does Fugue Do?
 
@@ -18,19 +14,27 @@ All questions are welcome in the Slack channel.
 
 Quick Links:
 
-* Looking for Fugue's Python interface? Start with [Fugue in 10 minutes](tutorials/ten_minutes.ipynb)
-* Need a SQL interface on top of Pandas, Spark and Dask? Check the [FugueSQL](tutorials/fugue_sql/index.md) section.
+* Scaling Pandas code to Spark or Dask? Start with [Fugue in 10 minutes](tutorials/quick_look/ten_minutes.ipynb)
+* Need a SQL interface on top of Pandas, Spark and Dask? Check the [FugueSQL in 10 minutes](tutorials/quick_look/ten_minutes_sql.ipynb) section.
 * For previous conference presentations and blog posts, Check the [Resources](tutorials/resources.md) section.
 
 ## Installation
 
-In order to setup your own environment, you can pip install the package. This includes Fugue on native python, Spark and Dask, with Fugue SQL support.
+In order to setup your own environment, you can pip (or conda) install the package. This includes Fugue on native python, Spark and Dask, with Fugue SQL support.
 
 >- Spark requires Java to be installed separately.
 
 ```bash
-pip install fugue[all]
+pip install fugue
 ```
+
+Backend engines are installed separately through pip extras. For example, to install Spark:
+
+```bash
+pip install fugue[spark]
+```
+
+If Spark, Dask, or Ray are already installed on your machine, Fugue will be able to detect it. 
 
 ## Running the Code
 
@@ -51,8 +55,7 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 :hidden:
 
 
-Fugue in 10 Minutes<tutorials/quick_look/ten_minutes.ipynb>
-FugueSQL in 10 Minutes<tutorials/quick_look/ten_minutes_sql.ipynb>
+tutorials/quick_look/index
 ```
 
 ```{toctree}
