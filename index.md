@@ -55,8 +55,8 @@ docker run -p 8888:8888 fugueproject/tutorials:latest
 :caption: Quick Look
 :hidden:
 
-
-tutorials/quick_look/index
+tutorials/quick_look/ten_minutes
+tutorials/quick_look/ten_minutes_sql
 ```
 
 ```{toctree}
