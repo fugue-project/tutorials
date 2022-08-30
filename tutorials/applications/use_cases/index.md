@@ -13,6 +13,7 @@ data_validation
 model_sweeping
 databricks_connect
 ```
+
 ## [Testing Big Data Applications](unit_testing.ipynb)
 Unit testing is a significant pain point in big data applications. In this section, we examine what makes it so hard to test and how Fugue simplifies it. Through simplified testing, Fugue users often see speedup in the development of big data projects (in addition to lower compute costs).
 

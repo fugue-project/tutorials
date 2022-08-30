@@ -21,7 +21,8 @@ pandera
 
 ## Machine Learning
 
-**PyCaret (Coming Soon)**
+**[PyCaret](pycaret.ipynb)**
+[PyCaret](https://pycaret.readthedocs.io/en/stable/) is an open-source low-code machine learning library that allows users to train dozens of models in a few lines of code. With a native integration, Fugue users and distribute the machine learning training over Spark, Dask or Ray.
 
 **Nixtla (Coming Soon)**
 

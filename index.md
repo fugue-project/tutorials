@@ -90,7 +90,7 @@ tutorials/applications/debugging/index
 ```
 
 ```{toctree}
-:caption: Fugue Tune
+:caption: Fugue Libraries
 :hidden:
 
 tutorials/tune/index
