@@ -1,12 +1,15 @@
-# Resources
+# Content
 
-This is a collection of talks given at various Meetups and conferences. All questions are welcome in the Slack channel.
+This is a collection of blogs and talks at conferences.
 
-[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ)
+Have questions? Chat with us on Github or Slack:
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
+[![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue)
 
 ## Case Studies
 
 * Lyft - [How LyftLearn Democratizes Distributed Compute through Kubernetes Spark and Fugue](https://eng.lyft.com/how-lyftlearn-democratizes-distributed-compute-through-kubernetes-spark-and-fugue-c0875b97c3d9)
+* Lyft - [Distributed Machine Learning at Lyft](https://www.youtube.com/watch?v=_IVyIOV0LgY)
 
 ## Blogs
 
@@ -15,6 +18,8 @@ This is a collection of talks given at various Meetups and conferences. All ques
 Fugue Core
 
 * [Introducing Fugue — Reducing PySpark Developer Friction](https://towardsdatascience.com/introducing-fugue-reducing-pyspark-developer-friction-a702230455de)
+* [Why Pandas-like Interfaces are Sub-optimal for Distributed Computing](https://towardsdatascience.com/why-pandas-like-interfaces-are-sub-optimal-for-distributed-computing-322dacbce43?gi=cb919ef43b2b)
+* [https://towardsdatascience.com/why-sql-like-interfaces-are-sub-optimal-for-distributed-computing-45f62224bab4](https://towardsdatascience.com/why-sql-like-interfaces-are-sub-optimal-for-distributed-computing-45f62224bab4)
 
 Integrations
 
@@ -48,7 +53,23 @@ FugueSQL
 
 **2022**
 
+Fugue
+
 * [Comparing the Different Ways to Scale Python and Pandas Code](https://www.youtube.com/watch?v=b3ae0m_XTys) (PyCon US)
+* [Comparing the Different Ways to Scale Python and Pandas Code](https://www.youtube.com/watch?v=uyaIrVvBSW4) (SciPy)
+
+Machine Learning
+
+* [Distributed Machine Learning at Lyft](https://www.youtube.com/watch?v=_IVyIOV0LgY)
+
+Tune
+
+* [Distributed Hybrid Parameter Tuning](https://www.youtube.com/watch?v=_GBjqskD8Qk) (Databricks Summit)
+* [An Introduction to Distributed Hybrid Hyperparameter Optimization](https://www.youtube.com/watch?v=vj5Tsy_qM5g) (SciPy)
+
+FugueSQL
+
+* [FugueSQL - The Enhanced SQL Interface for Pandas and Spark DataFrames](https://www.youtube.com/watch?v=F9uzZh5dC0M) (Databricks Summit)
 
 **2021**
 
@@ -63,7 +84,6 @@ FugueSQL
 * [Dask SQL Query Engines](https://www.youtube.com/watch?v=bQDN41Bc3bw) (Dask Summit)
 * [FugueSQL: Extending SQL Interface for End-to-End Data Pipelines](https://www.dremio.com/subsurface/fugue-sql-extending-sql-interface-for-end-to-end-data-pipelines/) (Dremio Subsurface)
 * [FugueSQL - The Enhanced SQL Interface for Pandas, Spark, and Dask DataFrames](https://www.youtube.com/watch?v=OBpnGYjNBBI) (PyData Global)
-* [Distributed Computing Workflows with Fugue-sql](https://www.youtube.com/watch?v=iROWlAVa2Kk) (Orlando Python Meetup)
 
 Machine Learning
 
@@ -79,7 +99,6 @@ Tune
 Testing Spark
 
 * [Simplifying Testing of Spark Applications](https://www.youtube.com/watch?v=_ieqg_soB3U) (PyData Global)
-* [Simplifying Testing of Spark Applications](https://www.youtube.com/watch?v=GYmk4x2NS3M) (DataOps DC Meetup)
 
 **2020**
 
