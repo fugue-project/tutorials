@@ -19,14 +19,14 @@ ibis
 **This is in addition to Spark, Dask, and Ray**
 
 ## [Ibis](ibis.ipynb)
-Even if a dataset fits in one core, distributed compute can be used for parallelized model training. We can train multiple models simultaneously. In addition, Fugue provides an easy interface to train multiple models for each logical grouping of data.
+[Ibis](https://github.com/ibis-project/ibis) is a Python framework to write analytical workloads on top of data warehouses (along with DataFrames). Ibis can be used in conjuction with Fugue to query from data warehouses.
 
 ## SQL Backends
 
 **This is in addition to SparkSQL**
 
 ## [Dask SQL](dask_sql.ipynb)
-We'll get started with using Fugue and Pandera for data validation. Using Fugue, we can bring Pandas-based libraries into Spark, meaning we don't have to re-implement the same logic twice. Moreover, using Fugue allows us to achieve **validation by partition**, an operation missing in the current data validation frameworks.
+[Dask-sql](https://github.com/dask-contrib/dask-sql) is a Dask project that provides a SQL interface on top of Dask DataFrames (including Dask on GPU). FugueSQL can use the Dask-SQL backend to run Dask-SQL and Dask code together.
 
-## [Testing Big Data Applications](duckdb.ipynb)
-Unit testing is a significant pain point in big data applications. In this section, we examine what makes it so hard to test and how Fugue simplifies it. Through simplified testing, Fugue users often see speedup in the development of big data projects (in addition to lower compute costs).
+## [DuckDB](duckdb.ipynb)
+[DuckDB](https://duckdb.org/) is an in-process SQL OLAP database management system. It is similar to SQLite but optimized for analytical workloads. DuckDB performs optimizations of queries, allowing it to be 10x - 100x more performant than Pandas in some cases. Good use cases are testing locally, and then moving to SparkSQL when running on big data, or using DuckDB to query initial data before working with local Pandas for more complicated transformations.
