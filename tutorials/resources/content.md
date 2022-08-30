@@ -1,4 +1,4 @@
-# Resources
+# Content
 
 This is a collection of talks given at various Meetups and conferences. All questions are welcome in the Slack channel.
 
