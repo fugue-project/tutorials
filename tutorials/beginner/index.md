@@ -50,6 +50,6 @@ We'll show a bit of [FugueSQL](../fugue_sql/index.md), the SQL interface for usi
 
 With that, you should be ready to implement data workflows using Fugue.
 
-For full end-to-end examples, check out the [Stock Sentiment](../examples/stock_sentiment.ipynb) and [COVID-19](../examples/example_covid19.ipynb) examples.
+For full end-to-end examples, check out the [Stock Sentiment](../applications/examples/stock_sentiment.ipynb) and [COVID-19](../applications/examples/example_covid19.ipynb) examples.
 
 For any questions, feel free to join the [Slack channel](http://slack.fugue.ai).
