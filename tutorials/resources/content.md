@@ -24,13 +24,10 @@ Fugue Core
 
 Integrations
 
-[PyCaret](https://github.com/pycaret/pycaret)
-
-* [Scaling PyCaret with Spark (or Dask) through Fugue](https://medium.com/p/60bdc3ce133f) (Towards Data Science)
-
-[DuckDB](https://duckdb.org/)
-
-* [Fugue and DuckDB: Fast SQL Code in Python](https://towardsdatascience.com/fugue-and-duckdb-fast-sql-code-in-python-e2e2dfc0f8eb) (Towards Data Science by Khuyen Tran)
+* [PyCaret](https://github.com/pycaret/pycaret)
+  * [Scaling PyCaret with Spark (or Dask) through Fugue](https://medium.com/p/60bdc3ce133f) (Towards Data Science)
+* [DuckDB](https://duckdb.org/)
+  * [Fugue and DuckDB: Fast SQL Code in Python](https://towardsdatascience.com/fugue-and-duckdb-fast-sql-code-in-python-e2e2dfc0f8eb) (Towards Data Science by Khuyen Tran)
 
 **2021**
 
