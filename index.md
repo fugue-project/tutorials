@@ -63,7 +63,6 @@ tutorials/quick_look/index
 :caption: Tutorials
 :hidden:
 
-
 tutorials/beginner/index
 tutorials/extensions/index
 tutorials/fugue_sql/index
@@ -75,10 +74,9 @@ tutorials/advanced/index
 :caption: Integrations
 :hidden:
 
-tutorials/cloudproviders/index
-DuckDB <tutorials/integrations/duckdb.ipynb>
-Ibis <tutorials/integrations/ibis.ipynb>
-Dask-sql <tutorials/integrations/dasksql.ipynb>
+tutorials/integrations/backends/index
+tutorials/integrations/cloudproviders/index
+tutorials/integrations/ecosystem/index
 ```
 
 ```{toctree}
@@ -95,7 +93,6 @@ tutorials/debugging/index
 :caption: Fugue Tune
 :hidden:
 
-
 tutorials/tune/index
 ```
 
@@ -103,7 +100,6 @@ tutorials/tune/index
 ```{toctree}
 :caption: Further Information
 :hidden:
-
 
 tutorials/resources
 tutorials/appendix/index
