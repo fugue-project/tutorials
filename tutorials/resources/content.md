@@ -1,8 +1,10 @@
 # Content
 
-This is a collection of talks given at various Meetups and conferences. All questions are welcome in the Slack channel.
+This is a collection of blogs and talks at conferences.
 
-[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://join.slack.com/t/fugue-project/shared_invite/zt-jl0pcahu-KdlSOgi~fP50TZWmNxdWYQ)
+Have questions? Chat with us on Github or Slack:
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
+[![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue)
 
 ## Case Studies
 
