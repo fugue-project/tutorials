@@ -15,9 +15,9 @@ Have questions? Chat with us on Github or Slack:
 
 Quick Links:
 
-* Scaling Pandas code to Spark, Dask, or Ray? Start with [Fugue in 10 minutes](tutorials/quick_look/ten_minutes.ipynb)
-* Need a SQL interface on top of Pandas, Spark and Dask? Check the [FugueSQL in 10 minutes](tutorials/quick_look/ten_minutes_sql.ipynb) section.
-* For previous conference presentations and blog posts, Check the [Resources](tutorials/resources.md) section.
+* Scaling Pandas code to Spark, Dask, or Ray? Start with [Fugue in 10 minutes](tutorials/quick_look/ten_minutes.ipynb).
+* Need a SQL interface on top of Pandas, Spark and Dask? Check [FugueSQL in 10 minutes](tutorials/quick_look/ten_minutes_sql.ipynb).
+* For previous conference presentations and blog posts, Check the [Resources](tutorials/resources/content.md).
 
 ## Installation
 

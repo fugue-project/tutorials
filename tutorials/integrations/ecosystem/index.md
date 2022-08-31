@@ -11,6 +11,8 @@ Have questions? Chat with us on Github or Slack:
 :hidden:
 
 pandera
+pycaret
+prefect
 ```
 
 ## Data Validation
