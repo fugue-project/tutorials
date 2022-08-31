@@ -28,6 +28,7 @@ pandera
 
 ## Orchestration
 
-**Prefect (Coming Soon)**
+**[Prefect](prefect.ipynb)**
+[Prefect] is an open-source workflow orchestration framework used for scheduling and monitoring tasks. The `prefect-fugue` collection allows users to iterate locally, and then bring the code to Databricks or Coiled for execution when production ready.
 
 **Ploomber (Coming Soon)**
