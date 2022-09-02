@@ -14,6 +14,7 @@ Have questions? Chat with us on Github or Slack:
 
 databricks
 coiled
+anyscale
 ```
 
 ## Spark
@@ -27,3 +28,9 @@ coiled
 **[Coiled](coiled.ipynb)**
 
 [Coiled](https://coiled.io/) is the easiest way to host Dask clusters on the cloud. Using the [coiled](https://pypi.org/project/coiled/) library, we can easily spin up an ephemeral Dask cluster or connect to an existing Dask cluster on Coiled.
+
+## Ray
+
+**[Anyscale](anyscale.ipynb)**
+
+[Anyscale](https://www.anyscale.com/) is the Ray platform on the cloud. Using the [anyscale](https://pypi.org/project/anyscale/) library, we can easily spin up an ephemeral Ray cluster or connect to an existing Ray cluster on Anyscale.
