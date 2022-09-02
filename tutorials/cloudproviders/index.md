@@ -11,6 +11,7 @@ This section will cover using Fugue on top of cloud providers such as Databricks
 
 databricks
 coiled
+anyscale
 ```
 
 ## [Databricks](databricks.ipynb)
