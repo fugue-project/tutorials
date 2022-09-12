@@ -23,7 +23,7 @@ We'll get started with using Fugue and Pandera for data validation. Using Fugue,
 ## [Distributed Model Sweeping](model_sweeping.ipynb)
 Even if a dataset fits in one core, distributed compute can be used for parallelized model training. We can train multiple models simultaneously. In addition, Fugue provides an easy interface to train multiple models for each logical grouping of data.
 
-## [Natural Lanugage Processing](nlp.ipynb)
+## [Natural Language Processing](nlp.ipynb)
 Fugue helps parallelize Natural Language Processing (NLP), especially during pre-processing steps which tend to be executed for each row of data. This page shows an example of how to use the `transform()` function to do some pre-processing.
 
 
