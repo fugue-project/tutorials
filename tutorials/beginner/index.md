@@ -12,10 +12,12 @@ Fugue is an abstraction layer that lets users write code in native Python or Pan
 :hidden:
 
 introduction
-type_flexibility
+type_hinting
+schema
 partitioning
 execution_engine
-interface
+schema
+workflows
 joins
 beginner_extension
 distributed_compute
@@ -26,7 +28,10 @@ beginner_sql
 ## [Introduction](introduction.ipynb)
 We'll get started by introducing Fugue and the simplest way to use it with the `transform()` function. The `transform()` function can take in a Python or Pandas function and scale it out in Spark or Dask without having to modify it. This provides a very simple interface to parallelize Python and Pandas code on distributed computing engines.
 
-## [Type Flexibility](type_flexibility.ipynb)
+## [Type Hinting](type_hinting.ipynb)
+After seeing an example of the `transform()` function, we look into the further flexibility Fugue provides by accepting functions with different input and output types. This allows users to define their logic in whatever expression makes the most sense and bring native Python functions to Spark or Dask.
+
+## [Schema](schema.ipynb)
 After seeing an example of the `transform()` function, we look into the further flexibility Fugue provides by accepting functions with different input and output types. This allows users to define their logic in whatever expression makes the most sense and bring native Python functions to Spark or Dask.
 
 ## [Partitioning](partitioning.ipynb)
@@ -35,7 +40,7 @@ Now that we have seen how functions can be written for Fugue to bring them to Sp
 ## [Execution Engine](execution_engine.ipynb)
 After seeing how the `transform` function enables the use of Python and Pandas code on Spark, we'll see all of the possible values we can pass as the engine. We can pass strings, cluster addresses, or clients to interact with clusters.
 
-## [Fugue Interface](interface.ipynb)
+## [Workflows](workflows.ipynb)
 This section will cover some concepts like the Directed Acyclic Graph (DAG) and the need for explicit schema in a distributed computing environment. We'll show how to pass parameters to `Transformers`, as well as load and save data. With these, users will be able to start some basic work on data through Fugue.
 
 ## [Joining Data](joins.ipynb)
