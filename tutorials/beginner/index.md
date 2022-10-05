@@ -14,7 +14,7 @@ Fugue is an abstraction layer that lets users write code in native Python or Pan
 introduction
 type_flexibility
 partitioning
-decoupling_logic_and_execution
+execution_engine
 interface
 joins
 beginner_extension
@@ -32,8 +32,8 @@ After seeing an example of the `transform()` function, we look into the further 
 ## [Partitioning](partitioning.ipynb)
 Now that we have seen how functions can be written for Fugue to bring them to Spark or Dask, we look at how the `transform()` function can be applied with partitioning. In Pandas semantics, this would be the equivalent of a `groupby-apply()`. The difference is partitioning is a core concept in distributed computing as it controls both logical and physical grouping of data.
 
-## [Decoupling Logic and Execution](decoupling_logic_and_execution.ipynb)
-After seeing how the `transform` function enables the use of Python and Pandas code on Spark, we'll see how we can apply this same principle to entire computing workflows using `FugueWorkflow`. We'll show how Fugue allows users to decouple logic from execution, and introduce some of the benefits this provides. We'll go one step further in showing how we use native Python to make our code truly independent of any framework.
+## [Execution Engine](execution_engine.ipynb)
+After seeing how the `transform` function enables the use of Python and Pandas code on Spark, we'll see all of the possible values we can pass as the engine. We can pass strings, cluster addresses, or clients to interact with clusters.
 
 ## [Fugue Interface](interface.ipynb)
 This section will cover some concepts like the Directed Acyclic Graph (DAG) and the need for explicit schema in a distributed computing environment. We'll show how to pass parameters to `Transformers`, as well as load and save data. With these, users will be able to start some basic work on data through Fugue.
