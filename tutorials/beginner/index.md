@@ -15,7 +15,6 @@ introduction
 type_flexibility
 partitioning
 execution_engine
-schema
 interface
 joins
 beginner_extension
