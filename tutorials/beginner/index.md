@@ -29,7 +29,7 @@ beginner_sql
 We'll get started by introducing Fugue and the simplest way to use it with the `transform()` function. The `transform()` function can take in a Python or Pandas function and scale it out in Spark or Dask without having to modify it. This provides a very simple interface to parallelize Python and Pandas code on distributed computing engines.
 
 ## [Type Hinting](type_hinting.ipynb)
-After seeing an example of the `transform()` function, we look into the further flexibility Fugue provides by accepting functions with different input and output types. This allows users to define their logic in whatever expression makes the most sense and bring native Python functions to Spark or Dask.
+After seeing an example of the `transform()` function, we look into the further flexibility Fugue provides by accepting functions with different input and output types. This allows users to define their logic in whatever expression makes the most sense and bring native Python functions to Spark, Dask or Ray. Having flexibility is important because distributed computing often goes beyond the scope of processing Pandas-like DataFrames. Think of aggregating API calls or processing image data.
 
 ## [Schema](schema.ipynb)
 After seeing an example of the `transform()` function, we look into the further flexibility Fugue provides by accepting functions with different input and output types. This allows users to define their logic in whatever expression makes the most sense and bring native Python functions to Spark or Dask.
