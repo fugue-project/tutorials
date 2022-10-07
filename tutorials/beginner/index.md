@@ -5,29 +5,32 @@ Have questions? Chat with us on Github or Slack:
 [![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue)
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
 
-Fugue is an abstraction layer that lets users write code in native Python or Pandas and then port it over to Spark and Dask. This section will cover the motivation of Fugue, the benefits of using an abstraction layer, and how to get started. This section is not a complete reference but will be sufficient to get started with writing full workflows in Fugue.
+Fugue is an abstraction layer that lets users write code in native Python or Pandas and then port it over to Spark, Dask, and Ray. This section will cover the motivation of Fugue, the benefits of using an abstraction layer, and how to get started. This section is not a complete reference but will be sufficient to get started with writing full workflows in Fugue.
 
 
 ```{toctree}
 :hidden:
 
-introduction
-type_flexibility
+transform
+type_hinting
+schema
 partitioning
 execution_engine
-interface
+workflows
 joins
-beginner_extension
+extensions
 distributed_compute
 beginner_sql
 ```
 
+## [transform() Function](transform.ipynb)
+We'll get started by introducing Fugue and show some motivating uses cases. The `transform()` function can take in a Python or Pandas function and scale it out in Spark or Dask without having to modify it. This provides a very simple interface to parallelize Python and Pandas code on distributed computing engines.
 
-## [Introduction](introduction.ipynb)
-We'll get started by introducing Fugue and the simplest way to use it with the `transform()` function. The `transform()` function can take in a Python or Pandas function and scale it out in Spark or Dask without having to modify it. This provides a very simple interface to parallelize Python and Pandas code on distributed computing engines.
+## [Type Hinting](type_hinting.ipynb)
+After diving into the `transform()` function, we look into the further flexibility Fugue provides by accepting functions with different input and output types. This allows users to define their logic in whatever expression makes the most sense and bring native Python functions to Spark, Dask or Ray. Having flexibility is important because distributed computing often goes beyond the scope of processing Pandas-like DataFrames. Think of aggregating API calls or processing image data.
 
-## [Type Flexibility](type_flexibility.ipynb)
-After seeing an example of the `transform()` function, we look into the further flexibility Fugue provides by accepting functions with different input and output types. This allows users to define their logic in whatever expression makes the most sense and bring native Python functions to Spark or Dask.
+## [Schema](schema.ipynb)
+Schema is an important part of distributed computing. Some frameworks even require it because schema inference can be especially expensive or inaccurate. Fugue has it's own schema implementation that is a simplified in syntax. This section will look into Fugue's schema expression.
 
 ## [Partitioning](partitioning.ipynb)
 Now that we have seen how functions can be written for Fugue to bring them to Spark or Dask, we look at how the `transform()` function can be applied with partitioning. In Pandas semantics, this would be the equivalent of a `groupby-apply()`. The difference is partitioning is a core concept in distributed computing as it controls both logical and physical grouping of data.
@@ -35,10 +38,10 @@ Now that we have seen how functions can be written for Fugue to bring them to Sp
 ## [Execution Engine](execution_engine.ipynb)
 After seeing how the `transform` function enables the use of Python and Pandas code on Spark, we'll see all of the possible values we can pass as the engine. We can pass strings, cluster addresses, or clients to interact with clusters.
 
-## [Fugue Interface](interface.ipynb)
+## [Workflows](workflows.ipynb)
 This section will cover some concepts like the Directed Acyclic Graph (DAG) and the need for explicit schema in a distributed computing environment. We'll show how to pass parameters to `Transformers`, as well as load and save data. With these, users will be able to start some basic work on data through Fugue.
 
-## [Joining Data](joins.ipynb)
+## [Joins](joins.ipynb)
 Here we'll show the different ways to join DataFrames in Fugue along with union, intersect, and except. SQL and Pandas also have some inconsistencies that users should be aware of when joining. Fugue maintains consistency with SQL (and Spark).
 
 ## [Extensions](beginner_extension.ipynb)
