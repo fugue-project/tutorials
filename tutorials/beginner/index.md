@@ -18,7 +18,7 @@ partitioning
 execution_engine
 workflows
 joins
-beginner_extension
+extensions
 distributed_compute
 beginner_sql
 ```
