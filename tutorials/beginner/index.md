@@ -16,7 +16,6 @@ type_hinting
 schema
 partitioning
 execution_engine
-schema
 workflows
 joins
 beginner_extension
