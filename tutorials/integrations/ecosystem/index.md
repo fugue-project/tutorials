@@ -10,9 +10,10 @@ Have questions? Chat with us on Github or Slack:
 ```{toctree}
 :hidden:
 
+nixtla
 pandera
-pycaret
 prefect
+pycaret
 ```
 
 ## Data Validation
@@ -24,13 +25,17 @@ prefect
 ## Machine Learning
 
 **[PyCaret](pycaret.ipynb)**
+
 [PyCaret](https://pycaret.readthedocs.io/en/stable/) is an open-source low-code machine learning library that allows users to train dozens of models in a few lines of code. With a native integration, Fugue users and distribute the machine learning training over Spark, Dask or Ray.
 
-**Nixtla (Coming Soon)**
+**[Nixtla](nixtla.ipynb)**
+
+[Nixtla](https://github.com/Nixtla/nixtla) is a project focused on state-of-the-art time series modelling. The current Fugue integration is around their statistical forecasting packages named [statsforecast](https://github.com/Nixtla/statsforecast). Fugue lets users apply `AutoARIMA` and `ETS` models to forecast millions of independent timeseries on top of distributed compute.
 
 ## Orchestration
 
 **[Prefect](prefect.ipynb)**
+
 [Prefect] is an open-source workflow orchestration framework used for scheduling and monitoring tasks. The `prefect-fugue` collection allows users to iterate locally, and then bring the code to Databricks or Coiled for execution when production ready.
 
 **Ploomber (Coming Soon)**

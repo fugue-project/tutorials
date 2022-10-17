@@ -12,6 +12,7 @@ unit_testing
 model_sweeping
 databricks_connect
 nlp
+distributed_image_classification
 ```
 
 ## [Testing Big Data Applications](unit_testing.ipynb)
@@ -25,6 +26,9 @@ Even if a dataset fits in one core, distributed compute can be used for parallel
 
 ## [Natural Language Processing](nlp.ipynb)
 Fugue helps parallelize Natural Language Processing (NLP), especially during pre-processing steps which tend to be executed for each row of data. This page shows an example of how to use the `transform()` function to do some pre-processing.
+
+## [Image Classification](image_classification.ipynb)
+When dealing with images, it's more common to train the model with one GPU, but then use multiple GPUs for inference because inference is the more expensive part. Multiple GPUs can also be used for pre-processing on top of Spark or Dask, but pre-processing tends to be during training as batches are fed to the model. For the training specifically, a tool like [Horovod](https://github.com/horovod/horovod) could help. Fugue is more helpful on the inference side. 
 
 
 ## Using Fugue with Providers
