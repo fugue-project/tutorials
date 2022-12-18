@@ -2,7 +2,7 @@ title: Fugue Tutorials
 author: The Fugue Development Team
 logo: images/logo_blue.svg
 execute:
-  timeout: 1200
+  timeout: 600
   execute_notebooks: off
   allow_errors: false
 
