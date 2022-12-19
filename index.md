@@ -9,7 +9,6 @@ Have questions? Chat with us on Github or Slack:
 [![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue)
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
 
-## What Does Fugue Do?
 
 [Fugue](https://github.com/fugue-project/fugue) provides an easier interface to using distributed compute effectively and accelerates big data projects. It does this by minimizing the amount of code you need to write, in addition to taking care of tricks and optimizations that lead to more efficient execution on distrubted compute. Fugue ports Python, Pandas, and SQL code to Spark, Dask, and Ray.
 
@@ -19,13 +18,11 @@ Quick Links:
 
 * Scaling Pandas code to Spark, Dask, or Ray? Start with [Fugue in 10 minutes](tutorials/quick_look/ten_minutes.ipynb).
 * Need a SQL interface on top of Pandas, Spark and Dask? Check [FugueSQL in 10 minutes](tutorials/quick_look/ten_minutes_sql.ipynb).
-* For previous conference presentations and blog posts, Check the [Resources](tutorials/resources/content.md).
+* For previous conference presentations and blog posts, check the [Content page](tutorials/resources/content.md).
 
 ## Installation
 
-In order to setup your own environment, you can pip (or conda) install the package. This includes Fugue on native python, Spark and Dask, with Fugue SQL support.
-
->- Spark requires Java to be installed separately.
+In order to setup your own environment, you can pip (or conda) install the package. Fugue can then
 
 ```bash
 pip install fugue
@@ -37,7 +34,7 @@ Backend engines are installed separately through pip extras. For example, to ins
 pip install fugue[spark]
 ```
 
-If Spark, Dask, or Ray are already installed on your machine, Fugue will be able to detect it. 
+If Spark, Dask, or Ray are already installed on your machine, Fugue will be able to detect it. Spark requires Java to be installed separately.
 
 ## Running the Code
 
@@ -46,7 +43,7 @@ The simplest way to run the tutorial interactively is to use [mybinder](https://
 >- **Some code snippets run slow on binder** as the machine on binder isn't powerful enough for a distributed framework such as Spark.
 >- Parallel executions can become sequential, so some of the performance comparison examples will not give you the correct numbers.
 
-Alternatively, you should get decent performance if running its docker image on your own machine:
+Alternatively, you should get decent performance if running the Docker image on your own machine:
 
 ```
 docker run -p 8888:8888 fugueproject/tutorials:latest
