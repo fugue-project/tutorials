@@ -1,4 +1,4 @@
-# <img src="./images/logo.svg" width="200">
+# <img src="./images/logo_blue.svg" width="200">
 
 [![PyPI version](https://badge.fury.io/py/fugue.svg)](https://pypi.python.org/pypi/fugue/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/fugue.svg)](https://pypi.python.org/pypi/fugue/)
