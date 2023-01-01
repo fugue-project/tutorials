@@ -11,7 +11,6 @@ Since you already have experience in Spark or distributed computing in general, 
 ```{toctree}
 :hidden:
 
-dag
 useful_config
 execution_engine
 validation
@@ -25,11 +24,6 @@ x-like
 ## Architecture
 
 ![](../../images/architecture.svg)
-
-## [Execution Graph (DAG)](dag.ipynb)
-
-Here we discuss the execution graph behind Fugue workflows.
-
 
 ## [Fugue Configurations](useful_config.ipynb) (MUST READ)
 These configurations can have significant impact on building and running the Fugue workflows.
