@@ -16,8 +16,8 @@ type_hinting
 schema
 partitioning
 execution_engine
-workflows
 joins
+workflows
 extensions
 distributed_compute
 beginner_sql
@@ -38,11 +38,11 @@ Now that we have seen how functions can be written for Fugue to bring them to Sp
 ## [Execution Engine](execution_engine.ipynb)
 After seeing how the `transform` function enables the use of Python and Pandas code on Spark, we'll see all of the possible values we can pass as the engine. We can pass strings, cluster addresses, or clients to interact with clusters.
 
-## [Workflows](workflows.ipynb)
-This section will cover some concepts like the Directed Acyclic Graph (DAG) and the need for explicit schema in a distributed computing environment. We'll show how to pass parameters to `Transformers`, as well as load and save data. With these, users will be able to start some basic work on data through Fugue.
-
 ## [Joins](joins.ipynb)
 Here we'll show the different ways to join DataFrames in Fugue along with union, intersect, and except. SQL and Pandas also have some inconsistencies that users should be aware of when joining. Fugue maintains consistency with SQL (and Spark).
+
+## [Workflows](workflows.ipynb)
+This section will cover some concepts like the Directed Acyclic Graph (DAG) and the need for explicit schema in a distributed computing environment. We'll show how to pass parameters to `Transformers`, as well as load and save data. With these, users will be able to start some basic work on data through Fugue.
 
 ## [Extensions](beginner_extension.ipynb)
 We already covered the `transformer`, the most commonly used Fugue extension. Extensions are Fugue operations on `DataFrames` that are used inside the DAG. Here we will cover the `creator`, `processor`, `cotransformer`, and `outputter`.
