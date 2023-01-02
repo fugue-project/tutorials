@@ -42,11 +42,11 @@ After seeing how the `transform` function enables the use of Python and Pandas c
 ## [Saving and Loading](io.ipynb)
 Similar to the `transform()` function, the Fugue API also has saving and loading functions compatible with Pandas, Spark, Dask, and Ray. These help in constructing end-to-end workflows that can then be ran on top of any backend.
 
+## [Engine Context](engine_context.ipynb)
+Often, we will have multiple operations that use the same execution engine. Instead of having to pass in the engine each time, we can use the `engine_context()` of the Fugue API. This will set the default execution engine for all Fugue API function calls.
+
 ## [Joins](joins.ipynb)
 Here we'll show the different ways to join DataFrames in Fugue along with union, intersect, and except. SQL and Pandas also have some inconsistencies that users should be aware of when joining. Fugue maintains consistency with SQL (and Spark).
-
-## [Engine Context](engine_context.ipynb)
-This section will cover some concepts like the Directed Acyclic Graph (DAG) and the need for explicit schema in a distributed computing environment. We'll show how to pass parameters to `Transformers`, as well as load and save data. With these, users will be able to start some basic work on data through Fugue.
 
 ## [Extensions](beginner_extension.ipynb)
 We already covered the `transformer`, the most commonly used Fugue extension. Extensions are Fugue operations on `DataFrames` that are used inside the DAG. Here we will cover the `creator`, `processor`, `cotransformer`, and `outputter`.
