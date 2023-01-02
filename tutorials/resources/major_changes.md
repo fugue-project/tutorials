@@ -26,7 +26,15 @@ As such, two complementary pieces are now available in place of `FugueWorkflow()
 
 For the list of functions, see [Transformations](../beginner/transformations.ipynb)
 
-Previously, Fugue had two programmatic ways of being used with `transform()` and `FugueWorkflow()`. The `transform()` function proved to be easy to use for users bringing one function to distributed computing. The problem was the overhead to transition to `FugueWorkflow()` for end-to-end data workflows. In a lot of cases, Fugue users just wanted to use one function of the Fugue API. To simplify the experience, the Fugue API now offers all of its functions as standalone functions that are compatible with any execution engine.
+Previously, Fugue had two programmatic ways of being used with `transform()` and `FugueWorkflow()`. 
+The `transform()` function proved to be easy to use for users bringing one function to distributed 
+computing. The problem was the overhead to transition to `FugueWorkflow()` for end-to-end data 
+workflows. In a lot of cases, Fugue users just wanted to use one function of the Fugue API. To 
+simplify the experience, the Fugue API now offers all of its functions as standalone functions 
+that are compatible with any execution engine.
+
+`FugueWorkflow()` is still currently supported. This is not a breaking change, and FugueSQL users
+still use `FugueWorkflow()` under the hood.s
 
 Before:
 
