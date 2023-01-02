@@ -104,4 +104,5 @@ tutorials/tune/index
 tutorials/resources/appendix/index
 tutorials/resources/best_practices/index
 tutorials/resources/content
+tutorials/resources/changelog
 ```
