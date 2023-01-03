@@ -19,7 +19,7 @@ execution_engine
 io
 engine_context
 joins
-extensions
+transformations
 distributed_compute
 beginner_sql
 ```
