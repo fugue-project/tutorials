@@ -64,9 +64,9 @@ tutorials/quick_look/ten_minutes_sql
 :hidden:
 
 tutorials/beginner/index
-tutorials/extensions/index
-tutorials/fugue_sql/index
 tutorials/advanced/index
+tutorials/fugue_sql/index
+tutorials/extensions/index
 ```
 
 ```{toctree}
