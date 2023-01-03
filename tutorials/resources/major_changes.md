@@ -22,6 +22,8 @@ Ultimately, the code cost outweighed the benefits for a lot of users. There were
 
 As such, two complementary pieces are now available in place of `FugueWorkflow()`. These are the Fugue API and the `engine_context()`. Tutorials for them have been added in the [Getting Started](../beginner/index.md) section, but we will also show them here.
 
+There are also changes regarding FugueSQL with two new exposed functions in `fugue_sql()` and `fugue_sql_flow()`. `fugue_sql_flow()` matches the previous `fsql`, including the `.run()` method while the new `fugue_sql()` will return the latest DataFrame in a query automatically. There is also `fugue.api.raw_sql`, which matches the behavior of the previous `FugueWorkflow().df(...).select()`. These changes are to cater to SQL users who expected `fsql()` to return a DataFrame. The new setup will be more convenient.
+
 ### Fugue API
 
 For the list of functions, see [Transformations](../beginner/transformations.ipynb)
@@ -60,6 +62,8 @@ that Fugue supports. The full list of functions can be found in the
 [top-level reference](https://fugue.readthedocs.io/en/latest/top_api.html#transformation) and some
 examples can be found in the [Transformations section](../beginner/transformations.ipynb).
 
+**All joins are also available as standalone functions now**
+
 ### Engine Context
 
 In the code snippet above, it can be redundant to type out `engine="spark"` multiple times. In this
@@ -88,6 +92,76 @@ transform(spark_df, fn, ...)    # runs on Spark
 transform(dask_df, fn, ...)     # runs on Dask
 transform(ray_df, fn, ...)      # runs on Ray
 ```
+
+### FugueSQL Changes
+
+Users that are new to Fugue often expect that `fsql()` automatically returns a DataFrame. Because the
+expectation of SQL users is the `SELECT` returns something, a `fugue_sql()` function will now return
+the last DataFrame. For example:
+
+```python
+from fugue.api import fugue_sql 
+
+result = fugue_sql("""
+LOAD "/tmp/df.parquet"
+
+SELECT col1, MAX(col2) AS max_val
+ GROUP BY col1
+""", engine=None)
+
+result.head()
+```
+
+It can also return a DataFrame associated with the engine. For example,
+using Spark as the engine will return a Spark DataFrame.
+
+The previous `fsql()` is now renamed to `fugue_sql_flow()` and behaves the same.
+
+```python
+from fugue.api import fugue_sql_flow
+
+fugue_sql_flow("""
+LOAD "/tmp/df.parquet"
+
+SELECT col1, MAX(col2) AS max_val
+ GROUP BY col1
+ PRINT
+""").run(engine="spark");
+```
+
+### Raw SQL
+
+`FugueWorkflow` DataFrames had a method `.select()` that could be used as follows:
+
+```python
+from fugue import FugueWorkflow
+
+with FugueWorkflow() as dag:
+    df = dag.load("../../data/stock_sentiment_data.csv", header=True)
+    df.show()
+    dag.select("Sentiment, COUNT(*) AS ct FROM",df, "GROUP BY Sentiment").show()
+```
+
+This has now been changed to `fugue.api.raw_sql`
+
+```python
+import fugue.api as fa
+
+df = fa.load("../../data/stock_sentiment_data.csv", header=True)
+fa.raw_sql("Sentiment, COUNT(*) AS ct FROM",df, "GROUP BY Sentiment")
+```
+
+### Utility Functions
+
+The Fugue API now has utility functions that can be used to get information of the DataFrame.
+
+* `fa.get_schema()`
+* `fa.get_column_names()`
+* `fa.is_local()`
+* `fa.peek_dict()` - returns first row as dict
+* `fa.peek_array()` - returns first row as array
+
+The full list can be found in the [top-level API Information](https://fugue.readthedocs.io/en/latest/top_api.html#information) section. 
 
 ## 0.7.1
 
