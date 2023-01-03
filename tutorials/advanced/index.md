@@ -16,7 +16,6 @@ execution_engine
 validation
 schema_dataframes
 partition
-checkpoint
 rpc
 x-like
 ```
@@ -39,9 +38,6 @@ Fugue data types and schema are strictly based on [Apache Arrow](https://arrow.a
 
 ## [Partition](partition.ipynb) (MUST READ)
 This tutorial is more focused on explaining the basic ideas of data partitioning. It's less related with Fugue. To have a good understanding of partition is the key for writing high performance code.
-
-## [Checkpoint](checkpoint.ipynb)
-Checkpoint is important for advanced users to keep the executions robust and stateful. This section gives you a bigger picture of the checkpoint concept and compared the implementation difference between Fugue and Spark.
 
 ## [Callbacks From Transformers To Driver](rpc.ipynb)
 You can provide a callback function to any transformer, to communicate with driver while running
