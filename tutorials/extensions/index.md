@@ -4,7 +4,7 @@ All questions are welcome in the Slack channel.
 
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
 
-We have previously introduced extensions in the [Getting Started section](../beginner/beginner_extension.ipynb). This section is a more comprehensive guide to extensions in Fugue. Extensions are user-created functions that perform operations on DataFrames. By converting these functions to the approriate extension, they can be brought into Fugue workflows. 
+We have previously introduced extensions in the [FugueSQL section](../fugue_sql/extensions.ipynb). This section is a more comprehensive guide to extensions in Fugue. Extensions are user-created functions that perform operations on DataFrames. By converting these functions to the approriate extension, they can be brought into FugueSQL.
 
 ![](../../images/extensions.svg)
 
@@ -65,6 +65,16 @@ These approaches that leave the code in native Python are called the [interfacel
 There is a distinction when it comes to `driver`-side and `worker`-side extensions. The driver-side extensions (Creator, Processor, Outputter) have access to the schema, so there is no need to infer or guess it. This is why Fugue does not require the schema to be specified if the output annotation is one of `LocalDataFrame`, `DataFrame`, or `pd.DataFrame` for the `Creator`, `Processor`, and `Outputter`. 
 
 For the `worker`-side extensions, things need to be a bit more explicit. Normally distributed computing frameworks can infer output schema, however, it is neither reliable nor efficient. To infer the schema, it has to go through at least one partition of data and figure out the possible schema. However, `transformers` can produce inconsistent schemas on different partitions. The inference can also take a long time or directly fail. So to avoid potential correctness and performance issues, `Transformer` and `CoTransformer` output schemas are required in Fugue.
+
+## Summary
+
+| . | Creator | Processor | Outputter | Transformer | CoTransformer | OutputTransformer | OutputCoTransformer
+|---|---|---|---|---|---|---|---
+|Input | 0    | 1+        | 1+        | 1           | 1+            | 1                 | 1+
+|Output| 1    | 1         | 0         | 1           | 1             | 0                 | 0
+|Side  |Driver|Driver     | Driver    | Worker      | Worker        | Worker            | Worker
+|Engine Aware | Yes | Yes | Yes       | No          | No            | No                | No
+
 
 ```{toctree}
 :hidden:

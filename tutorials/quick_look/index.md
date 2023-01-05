@@ -17,8 +17,8 @@ ten_minutes
 ten_minutes_sql
 ```
 
-## [Fugue in 10 Minutes](ten_minutes.ipynb)
-Learn the basic Python interface of Fugue by starting with the `transform()` function. This function takes existing Python and Pandas code, and brings it to Spark, Dask, or Ray with minimal re-writes. The `transform()` function alone already allows users to write framework-agnostic code will all its features. It's incrementally adoptable, and users can use it for as little as a single step in their Spark or Dask pipelines.
+## [Fugue API in 10 Minutes](ten_minutes.ipynb)
+Learn the basic Python interface of Fugue by starting with the `transform()` function. This function takes existing Python and Pandas code, and brings it to Spark, Dask, or Ray with minimal re-writes. The `transform()` function alone already allows users to write framework-agnostic code will all its features. It's incrementally adoptable, and users can use it for as little as a single step in their Spark, Dask or Ray pipelines. For end-to-end agnostic workflows, we take a quick look at the functions of the Fugue API.
 
 ## [FugueSQL in 10 Minutes](ten_minutes_sql.ipynb)
 For users that prefer SQL over Python, Fugue also has a first-class SQL interface to use on top of Pandas, Spark, and Dask DataFrames. FugueSQL is an enhanced version of SQL that has added keywords and syntax intended for end-to-end computing workflows. FugueSQL is parsed, and then ran on the specified backend. For example, FugueSQL using Spark will run on SparkSQL and PySpark.

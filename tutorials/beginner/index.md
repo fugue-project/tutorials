@@ -16,9 +16,10 @@ type_hinting
 schema
 partitioning
 execution_engine
-workflows
+io
+engine_context
 joins
-extensions
+transformations
 distributed_compute
 beginner_sql
 ```
@@ -38,14 +39,17 @@ Now that we have seen how functions can be written for Fugue to bring them to Sp
 ## [Execution Engine](execution_engine.ipynb)
 After seeing how the `transform` function enables the use of Python and Pandas code on Spark, we'll see all of the possible values we can pass as the engine. We can pass strings, cluster addresses, or clients to interact with clusters.
 
-## [Workflows](workflows.ipynb)
-This section will cover some concepts like the Directed Acyclic Graph (DAG) and the need for explicit schema in a distributed computing environment. We'll show how to pass parameters to `Transformers`, as well as load and save data. With these, users will be able to start some basic work on data through Fugue.
+## [Saving and Loading](io.ipynb)
+Similar to the `transform()` function, the Fugue API also has saving and loading functions compatible with Pandas, Spark, Dask, and Ray. These help in constructing end-to-end workflows that can then be ran on top of any backend.
+
+## [Engine Context](engine_context.ipynb)
+Often, we will have multiple operations that use the same execution engine. Instead of having to pass in the engine each time, we can use the `engine_context()` of the Fugue API. This will set the default execution engine for all Fugue API function calls.
 
 ## [Joins](joins.ipynb)
 Here we'll show the different ways to join DataFrames in Fugue along with union, intersect, and except. SQL and Pandas also have some inconsistencies that users should be aware of when joining. Fugue maintains consistency with SQL (and Spark).
 
-## [Extensions](beginner_extension.ipynb)
-We already covered the `transformer`, the most commonly used Fugue extension. Extensions are Fugue operations on `DataFrames` that are used inside the DAG. Here we will cover the `creator`, `processor`, `cotransformer`, and `outputter`.
+## [Transformations](transformations.ipynb)
+Here we'll show the different ways to join DataFrames in Fugue along with union, intersect, and except. SQL and Pandas also have some inconsistencies that users should be aware of when joining. Fugue maintains consistency with SQL (and Spark).
 
 ## [Distributed Computing](distributed_compute.ipynb)
 The heart of Fugue is distributed computing. In this section, we'll show the keywords and concepts that allow Fugue to fully utilize the power of distributed computing. This includes `partitions`, `persisting`, and `broadcasting`.
