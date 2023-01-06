@@ -129,6 +129,19 @@ SELECT col1, MAX(col2) AS max_val
 """).run(engine="spark");
 ```
 
+### Special Column Names
+
+Fugue previously did not support column names with spaces. The ` character can now be used to specify
+a column name with spaces. This will work across all backends. The schema expression will look like:
+
+``a b`:int,b:str`
+
+or to escape:
+
+``a``b`:int,b:str`
+
+where the column names will be a`b and b.
+
 ### Raw SQL
 
 `FugueWorkflow` DataFrames had a method `.select()` that could be used as follows:
