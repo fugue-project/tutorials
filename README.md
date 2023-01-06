@@ -9,7 +9,7 @@
 
 | Tutorials | API Documentation | Chat with us on slack! |
 | --- | --- | --- |
-| [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://fugue-tutorials.readthedocs.io/) | [![Doc](https://readthedocs.org/projects/fugue/badge)](https://fugue.readthedocs.io/en/latest/top_api.html)  | [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai) |
+| [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://fugue-tutorials.readthedocs.io/) | [![Doc](https://readthedocs.org/projects/fugue/badge)](https://fugue.readthedocs.io/en/latest/)  | [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai) |
 
 **Fugue is a unified interface for distributed computing that lets users execute Python, pandas, and SQL code on Spark, Dask, and Ray with minimal rewrites**.
 
