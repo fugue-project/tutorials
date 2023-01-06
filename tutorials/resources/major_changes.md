@@ -134,11 +134,15 @@ SELECT col1, MAX(col2) AS max_val
 Fugue previously did not support column names with spaces. The ` character can now be used to specify
 a column name with spaces. This will work across all backends. The schema expression will look like:
 
-``a b`:int,b:str`
+````    
+`a b`:int,b:str
+````
 
-or to escape:
+or to escape, use the double backtick:
 
-``a``b`:int,b:str`
+````
+a``b`:int,b:str
+````
 
 where the column names will be a`b and b.
 
