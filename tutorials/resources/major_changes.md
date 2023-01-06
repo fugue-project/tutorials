@@ -141,7 +141,7 @@ a column name with spaces. This will work across all backends. The schema expres
 or to escape, use the double backtick:
 
 ````
-a``b`:int,b:str
+`a``b`:int,b:str
 ````
 
 where the column names will be a`b and b.
