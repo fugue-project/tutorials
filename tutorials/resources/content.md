@@ -21,7 +21,6 @@ Fugue Core
 
 * [Introducing Fugue — Reducing PySpark Developer Friction](https://towardsdatascience.com/introducing-fugue-reducing-pyspark-developer-friction-a702230455de)
 * [Why Pandas-like Interfaces are Sub-optimal for Distributed Computing](https://towardsdatascience.com/why-pandas-like-interfaces-are-sub-optimal-for-distributed-computing-322dacbce43?gi=cb919ef43b2b)
-* [Why Pandas-like Interfaces are Sub-optimal for Distributed Computing](https://towardsdatascience.com/why-sql-like-interfaces-are-sub-optimal-for-distributed-computing-45f62224bab4)
 
 Fugue SQL
 * [Why SQL-Like Interfaces are Sub-optimal for Distributed Computing](https://towardsdatascience.com/why-sql-like-interfaces-are-sub-optimal-for-distributed-computing-45f62224bab4)
