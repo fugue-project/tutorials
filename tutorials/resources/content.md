@@ -11,6 +11,7 @@ Have questions? Chat with us on Github or Slack:
 
 * Lyft - [How LyftLearn Democratizes Distributed Compute through Kubernetes Spark and Fugue](https://eng.lyft.com/how-lyftlearn-democratizes-distributed-compute-through-kubernetes-spark-and-fugue-c0875b97c3d9)
 * Lyft - [Distributed Machine Learning at Lyft](https://www.youtube.com/watch?v=_IVyIOV0LgY)
+* Clobotics - [Large Scale Image Processing with Spark through Fugue](https://medium.com/fugue-project/large-scale-image-processing-with-spark-through-fugue-e510b9813da8)
 
 ## Blogs
 
@@ -20,7 +21,9 @@ Fugue Core
 
 * [Introducing Fugue — Reducing PySpark Developer Friction](https://towardsdatascience.com/introducing-fugue-reducing-pyspark-developer-friction-a702230455de)
 * [Why Pandas-like Interfaces are Sub-optimal for Distributed Computing](https://towardsdatascience.com/why-pandas-like-interfaces-are-sub-optimal-for-distributed-computing-322dacbce43?gi=cb919ef43b2b)
-* [https://towardsdatascience.com/why-sql-like-interfaces-are-sub-optimal-for-distributed-computing-45f62224bab4](https://towardsdatascience.com/why-sql-like-interfaces-are-sub-optimal-for-distributed-computing-45f62224bab4)
+
+Fugue SQL
+* [Why SQL-Like Interfaces are Sub-optimal for Distributed Computing](https://towardsdatascience.com/why-sql-like-interfaces-are-sub-optimal-for-distributed-computing-45f62224bab4)
 
 Integrations
 
@@ -28,6 +31,8 @@ Integrations
   * [Scaling PyCaret with Spark (or Dask) through Fugue](https://medium.com/p/60bdc3ce133f) (Towards Data Science)
 * [DuckDB](https://duckdb.org/)
   * [Fugue and DuckDB: Fast SQL Code in Python](https://towardsdatascience.com/fugue-and-duckdb-fast-sql-code-in-python-e2e2dfc0f8eb) (Towards Data Science by Khuyen Tran)
+* [WhyLogs](https://github.com/whylabs/whylogs)
+  * [Large Scale Data Profiling with whylogs and Fugue on Spark, Ray or Dask](https://kdykho.medium.com/large-scale-data-profiling-with-whylogs-and-fugue-on-spark-ray-or-dask-e6917f6e1621?source=user_profile---------1----------------------------)
 
 **2021**
 
@@ -55,6 +60,7 @@ Fugue
 
 * [Comparing the Different Ways to Scale Python and Pandas Code](https://www.youtube.com/watch?v=b3ae0m_XTys) (PyCon US)
 * [Comparing the Different Ways to Scale Python and Pandas Code](https://www.youtube.com/watch?v=uyaIrVvBSW4) (SciPy)
+* [Testing Big Data Applications (Spark, Dask, and Ray)](https://www.youtube.com/watch?v=yQHksEh1GCs&list=PLGVZCDnMOq0opPc5-dp6ZDCFvOqDBlUuv&index=37) (PyData NYC)
 
 Machine Learning
 
