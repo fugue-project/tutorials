@@ -33,6 +33,8 @@ Integrations
   * [Fugue and DuckDB: Fast SQL Code in Python](https://towardsdatascience.com/fugue-and-duckdb-fast-sql-code-in-python-e2e2dfc0f8eb) (Towards Data Science by Khuyen Tran)
 * [WhyLogs](https://github.com/whylabs/whylogs)
   * [Large Scale Data Profiling with whylogs and Fugue on Spark, Ray or Dask](https://kdykho.medium.com/large-scale-data-profiling-with-whylogs-and-fugue-on-spark-ray-or-dask-e6917f6e1621?source=user_profile---------1----------------------------)
+* [Nixtla](https://github.com/Nixtla/statsforecast/)
+  * [Distributed Forecast of 1M Time Series in Under 15 Minutes with Spark, Nixtla, and Fugue](https://towardsdatascience.com/distributed-forecast-of-1m-time-series-in-under-15-minutes-with-spark-nixtla-and-fugue-e9892da6fd5c)
 
 **2021**
 
