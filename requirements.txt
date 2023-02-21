@@ -18,7 +18,7 @@ ipython>=7.31
 jupyter-book>=0.13
 
 flask
-fugue[spark]
+fugue[spark]>=0.8.1
 fugue_cloudprovider
 tune
 
