@@ -76,6 +76,7 @@ tutorials/extensions/index
 
 tutorials/integrations/backends/index
 tutorials/integrations/cloudproviders/index
+tutorials/integrations/warehouses/index
 tutorials/integrations/ecosystem/index
 ```
 
