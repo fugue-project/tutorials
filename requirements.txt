@@ -19,7 +19,8 @@ jupyter-book>=0.13
 
 flask
 fugue[spark]>=0.8.1
-fugue_cloudprovider
+fugue-cloudprovider
+fugue-warehouses[bigquery]
 tune
 
 pandera

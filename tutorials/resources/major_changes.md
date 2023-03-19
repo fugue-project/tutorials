@@ -7,6 +7,50 @@ Have questions? Chat with us on Github or Slack:
 [![Homepage](https://img.shields.io/badge/fugue-source--code-red?logo=github)](https://github.com/fugue-project/fugue)
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
 
+## 0.8.1
+
+Fugue 0.8.1 has changes to enhance FugueSQL further.
+
+* Not directly tied to FugueSQL, there is a new repo and library [fugue-warehouses](https://github.com/fugue-project/fugue-warehouses) that contains code for using FugueSQL syntax on top of data warehouses. The first release is FugueSQL on top of BigQuery.
+* The extension model has been brought to FugueSQL has well. This allows users to invoke Python libraries on top of SQL DataFrames with one line of code. For people interested in contributing, this is a good place to start. As an example, see the [seaborn integration](https://github.com/fugue-project/fugue/blob/master/fugue_contrib/seaborn/__init__.py).
+
+### Fugue BigQuery
+
+The roadmap of the Fugue project includes supporting data warehouses more. BigQuery is the first one to be released. The full documentation can be found under the [warehouses section](../integrations/warehouses/) of the tutorials. With this, Fugue users can use the FugueSQL syntax on top of BigQuery tables. 
+
+FugueSQL improves the developer experience by minimizing the boilerplate code that users have to write. It also helps in breaking up the logic so that users can iterate and test their SQL queries more quickly.
+
+For example in a Jupyter notebook cell:
+
+```
+%%fsql bq
+SELECT col1, SUM(col2) AS col2
+  FROM df
+ GROUP BY col1
+
+TAKE 5 ROWS PRESORT col2 DESC
+YIELD DATAFRAME
+```
+
+For more information about the syntax, check the [10 mins to FugueSQL](../quick_look/ten_minutes_sql.ipynb)
+
+If Python transformations are invoked using `TRANSFORM` or `OUTPUT`, then the data can be brought down to Pandas or a Python distributed backend like Spark, Dask, or Ray. It is suggested to try to pre-aggregate as much as possible on the SQL table to minimize data transfer.
+
+
+### SQL Extensions
+
+The introduction of extensions allows users to invoke Python code on any backend. This can be particularly useful and working on warehouses. For example:
+
+```sql
+SELECT name, year, SUM(number) AS ct
+  FROM `table_name`
+ GROUP BY 1, 2
+ ORDER BY 2
+ OUTPUT USING sns:lineplot(x="year",y="ct",hue="name")
+```
+
+would give a seaborn lineplot. The list of extensions can be found in [fugue-contrib](https://github.com/fugue-project/fugue/tree/master/fugue_contrib) but they will be added to the documentation in the future as well.
+
 ## 0.8.0
 
 Fugue 0.8.0 has significant changes to the standard ways to use Fugue. Having users write code with the `FugueWorkflow` had some painpoints including:
