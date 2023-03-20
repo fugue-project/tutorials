@@ -16,7 +16,7 @@ Fugue 0.8.1 has changes to enhance FugueSQL further.
 
 ### Fugue BigQuery
 
-The roadmap of the Fugue project includes supporting data warehouses more. BigQuery is the first one to be released. The full documentation can be found under the [warehouses section](../integrations/warehouses/) of the tutorials. With this, Fugue users can use the FugueSQL syntax on top of BigQuery tables. 
+The roadmap of the Fugue project includes supporting data warehouses more. BigQuery is the first one to be released. The full documentation can be found under the [warehouses section](../integrations/warehouses/bigquery.ipynb) of the tutorials. With this, Fugue users can use the FugueSQL syntax on top of BigQuery tables. 
 
 FugueSQL improves the developer experience by minimizing the boilerplate code that users have to write. It also helps in breaking up the logic so that users can iterate and test their SQL queries more quickly.
 
@@ -36,6 +36,23 @@ For more information about the syntax, check the [10 mins to FugueSQL](../quick_
 
 If Python transformations are invoked using `TRANSFORM` or `OUTPUT`, then the data can be brought down to Pandas or a Python distributed backend like Spark, Dask, or Ray. It is suggested to try to pre-aggregate as much as possible on the SQL table to minimize data transfer.
 
+The Python Fugue BigQuery API is also availabe for Python users who want to pre-aggregate BigQuery data before doing further analysis or modelling in Python. For example, to load a sample of a table:
+
+```python
+import fugue_bigquery.api as fbqa
+fbqa.load_table("bigquery-public-data.usa_names.usa_1910_2013", sample=0.0001, engine="pandas")
+```
+
+Or to load in a query into Pandas:
+
+```python
+import fugue_bigquery.api as fbqa
+fbqa.load_sql("""
+SELECT COUNT(*) AS ct
+FROM `bigquery-public-data.usa_names.usa_1910_2013` TABLESAMPLE SYSTEM (1 PERCENT)
+WHERE state='CA'
+""", engine="pandas")
+```
 
 ### SQL Extensions
 
