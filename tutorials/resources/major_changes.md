@@ -36,6 +36,23 @@ For more information about the syntax, check the [10 mins to FugueSQL](../quick_
 
 If Python transformations are invoked using `TRANSFORM` or `OUTPUT`, then the data can be brought down to Pandas or a Python distributed backend like Spark, Dask, or Ray. It is suggested to try to pre-aggregate as much as possible on the SQL table to minimize data transfer.
 
+The Python Fugue BigQuery API is also availabe for Python users who want to pre-aggregate BigQuery data before doing further analysis or modelling in Python. For example, to load a sample of a table:
+
+```python
+import fugue_bigquery.api as fbqa
+fbqa.load_table("bigquery-public-data.usa_names.usa_1910_2013", sample=0.0001, engine="pandas")
+```
+
+Or to load in a query into Pandas:
+
+```python
+import fugue_bigquery.api as fbqa
+fbqa.load_sql("""
+SELECT COUNT(*) AS ct
+FROM `bigquery-public-data.usa_names.usa_1910_2013` TABLESAMPLE SYSTEM (1 PERCENT)
+WHERE state='CA'
+""", engine="pandas")
+```
 
 ### SQL Extensions
 
