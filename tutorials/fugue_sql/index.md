@@ -22,6 +22,8 @@ python
 extensions
 ```
 
+FugueSQL has a [10 minute tutorial here](../quick_look/ten_minutes_sql.ipynb). This page is a more in-depth look at FugueSQL. 
+
 ## 1. Installation
 
 In order to use `FugueSQL`, you first need to make sure you have installed the `sql` extra
@@ -33,6 +35,18 @@ To run on Spark or Dask execution engines, install the appropriate extras. Alter
 pip install fugue[sql, spark] 
 pip install fugue[sql, dask]
 pip install fugue[all]
+```
+
+FugueSQL has a notebook extension for both Jupyter Notebooks and JupyterLab. This extension provides syntax highlighting and registers the `%%fql` cell magic. To install the extension, use pip:
+
+```
+pip install fugue-jupyter
+```
+
+and then to register the startup script:
+
+```
+fugue-jupyter install startup
 ```
 
 ## [2. FugueSQL Syntax](syntax.ipynb)
