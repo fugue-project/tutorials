@@ -20,6 +20,7 @@ syntax
 operators
 python
 extensions
+builtin
 ```
 
 FugueSQL has a [10 minute tutorial here](../quick_look/ten_minutes_sql.ipynb). This page is a more in-depth look at FugueSQL. 
@@ -61,14 +62,18 @@ Go over the implemented operations that `Fugue` has on top of the ones provided 
 
 Explore [Jinja templating](https://jinja.palletsprojects.com/) for variable passing, and using a Python functions as a [Transformer](../extensions/transformer.ipynb) in a `%%fsql` cell.
 
-## [5. Using Other Fugue Extensions](extensions.ipynb)
+## [5. Using Custom Fugue Extensions](extensions.ipynb)
 
 The [Transformer](../extensions/transformer.ipynb) is just one of many possible [Fugue extensions](../extensions/index.md). In this section we'll explore the syntax of all the other Fugue extensions: [Creator](../extensions/creator.ipynb), [Processor](../extensions/processor.ipynb), [Outputter](../extensions/outputter.ipynb), and [CoTransformer](../extensions/cotransformer.ipynb).
 
-## 6. FugueSQL with Pandas
+## [6. Using Built-in Extensions](builtin.ipynb)
+
+Commonly used extensions are also provided as built-in extensions. These are also a good way to contribute to Fugue to enchance the FugueSQL experience.
+
+## 7. FugueSQL with Pandas
 
 `%%fsql` takes in the NativeExecutionEngine as a default parameter. This engine runs on Pandas. All of the SQL operations have equivalents in Pandas, but the behavior can be inconsistent sometimes. For example, Pandas will drop NULL values by default in a groupby operation. The NativeExecutionEngine was designed to mostly make operations consistent with Spark and SQL.
 
-## 7. FugueSQL with Spark
+## 8. FugueSQL with Spark
 
 `FugueSQL` also works on **Spark** by passing in the execution engine. This looks like `%%fsql spark`. The operations are mapped to **Spark** and Spark SQL operations. The difference is `FugueSQL` has added functionality for syntax compared to SparkSQL as seen in the [syntax tutorial](syntax.ipynb). Additionally with `FugueSQL`, the same code will execute on Pandas and Dask without modification. This allows for quick testing without having to spin up a cluster. Users prototype with the `NativeExecutionEngine`, and then move to the **Spark** cluster by changing the execution engine.
