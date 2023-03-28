@@ -22,7 +22,7 @@ FugueSQL improves the developer experience by minimizing the boilerplate code th
 
 For example in a Jupyter notebook cell:
 
-```
+```sql
 %%fsql bq
 SELECT col1, SUM(col2) AS col2
   FROM df
