@@ -11,6 +11,7 @@ Have questions? Chat with us on Github or Slack:
 :hidden:
 
 ibis
+polars
 dask_sql
 duckdb
 ```
@@ -22,8 +23,8 @@ duckdb
 ## [Ibis](ibis.ipynb)
 [Ibis](https://github.com/ibis-project/ibis) is a Python framework to write analytical workloads on top of data warehouses (along with DataFrames). Ibis can be used in conjuction with Fugue to query from data warehouses.
 
-## [Polars - UNDER DEVELOPMENT]
-[Polars](https://github.com/pola-rs/polars) is a DataFrame library written in Rust (with a Python API) that supports multi-threaded and out-of-core operations. Polars already parallelizes operations well on a local machine. Fugue's integration is focused on allowing Polars code to run on top of a cluster with Spark, Dask, or Ray.
+## [Polars](polars.ipynb)
+[Polars](https://github.com/pola-rs/polars) is a DataFrame library written in Rust (with a Python API) that supports multi-threaded and out-of-core operations. Polars already parallelizes operations well on a local machine. Fugue's integration is focused on allowing Polars code to run on top of a cluster with Spark, Dask, or Ray. There are certain use cases where this will increase the performance of distributed applications.
 
 ## SQL Backends
 
