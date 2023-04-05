@@ -1,0 +1,21 @@
+version: 2
+
+# Set the version of Python and other tools you might need
+build:
+  os: ubuntu-20.04
+  tools:
+    python: "3.8"
+  jobs:
+    pre_install:
+      - pip install -U pip
+    pre_build:
+      # Generate the Sphinx configuration for this Jupyter Book so it builds.
+      - "jupyter-book config sphinx docs/"
+
+# Build documentation in the docs/ directory with Sphinx
+sphinx:
+   configuration: conf.py
+
+python:
+   install:
+   - requirements: requirements.txt
