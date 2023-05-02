@@ -31,7 +31,7 @@ pip install fugue
 Backend engines are installed separately through pip extras. For example, to install Spark:
 
 ```bash
-pip install fugue[spark]
+pip install "fugue[spark]"
 ```
 
 If Spark, Dask, or Ray are already installed on your machine, Fugue will be able to detect it. Spark requires Java to be installed separately.
