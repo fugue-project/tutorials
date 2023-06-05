@@ -11,14 +11,10 @@ Have questions? Chat with us on Github or Slack:
 :hidden:
 
 nixtla
-<<<<<<< Updated upstream
 pandera
 prefect
 pycaret
-=======
-pycaret
 datacompy
->>>>>>> Stashed changes
 ```
 
 ## Data Validation
