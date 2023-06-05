@@ -10,14 +10,19 @@ Have questions? Chat with us on Github or Slack:
 ```{toctree}
 :hidden:
 
-nixtla
 pandera
-prefect
+whylogs
+nixtla
 pycaret
 datacompy
+prefect
 ```
 
 ## Data Validation
+
+**[Whylogs](whylogs.ipynb)**
+
+[Whylogs](https://github.com/whylabs/whylogs) is a data logging library that scalably profiles data for use cases like data validation or anomaly detection.
 
 **[Pandera](pandera.ipynb)**
 
@@ -42,5 +47,3 @@ datacompy
 **[Prefect](prefect.ipynb)**
 
 [Prefect] is an open-source workflow orchestration framework used for scheduling and monitoring tasks. The `prefect-fugue` collection allows users to iterate locally, and then bring the code to Databricks or Coiled for execution when production ready.
-
-**Ploomber (Coming Soon)**
