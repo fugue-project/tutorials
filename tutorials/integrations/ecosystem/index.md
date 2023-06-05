@@ -14,6 +14,7 @@ pandera
 whylogs
 nixtla
 pycaret
+datacompy
 prefect
 ```
 
@@ -26,6 +27,10 @@ prefect
 **[Pandera](pandera.ipynb)**
 
 [Pandera](https://pandera.readthedocs.io/en/stable/) is a lightweight data validation framework originally designed to provide a minimal interface in validating Pandas DataFrames. Pandera has seen expanded to Spark and Dask libraries through Koalas and Modin, but it can also be used pretty seamlessly with Fugue. Fugue also supports validation by partition.
+
+**[Datacompy](datacompy.ipynb)**
+
+[Datacompy](https://github.com/capitalone/datacompy) is a package to compare two DataFrames of any type. It originally allowed users to compare two Pandas DataFrames or two Spark DataFrames. By adding Fugue as a backend, it can now compare all DataFrames Fugue supports (Pandas, DuckDB, Polars, Arrow, Spark, Dask, Ray, and more).
 
 ## Machine Learning
 
