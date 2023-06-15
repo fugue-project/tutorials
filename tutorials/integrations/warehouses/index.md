@@ -11,7 +11,12 @@ Have questions? Chat with us on Github or Slack:
 :hidden:
 
 bigquery.ipynb
+trino.ipynb
 ```
 
 ## [BigQuery](bigquery.ipynb)
 Google BigQuery is is Google Cloud's Enterprise Data Warehouse offering. It is serverless and cost-effective.
+
+## [Trino](trino.ipynb)
+Trino (formerly known as Presto) is an open-source project that lets users query across different data sources distributedly. For example,
+users can query Google BigQuery and combine it with data on Google Cloud Storage.
