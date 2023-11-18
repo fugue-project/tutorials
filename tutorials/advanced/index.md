@@ -12,6 +12,7 @@ Since you already have experience in Spark or distributed computing in general, 
 :hidden:
 
 useful_config
+checkpoint
 execution_engine
 validation
 schema_dataframes
@@ -30,8 +31,11 @@ These configurations can have significant impact on building and running the Fug
 ## [Execution Engine](execution_engine.ipynb)
 The heart of Fugue. It is the layer that unifies many of the core concepts of distributed computing, and separates the underlying computing frameworks from user level logic. Normally you don't directly interact with execution engines. But it's good to understand some basics.
 
+## [Checkpoint](checkpoint.ipynb)
+These are the operations to avoid duplicate computation when working with larger datasets. Fugue has more granular checkpoint operations than Spark.
+
 ## [Validation](validation.ipynb)
-Fugue applies input validation.
+Fugue applies input validation to make sure the data has the expected format before a transformation is applied.
 
 ## [Data Type, Schema & DataFrames](schema_dataframes.ipynb)
 Fugue data types and schema are strictly based on [Apache Arrow](https://arrow.apache.org/docs/index.html). Dataframe is an abstract concept with several built-in implementations to adapt to different dataframes. In this tutorial, we will go through the basic APIs and focus on the most common use cases.
