@@ -1,6 +1,6 @@
 # Appendix
 
-The appendix is for miscellanous content. Any questions are welcome in the Slack channel.
+The appendix is for miscellaneous content. Any questions are welcome in the Slack channel.
 
 Have questions? Chat with us on Github or Slack:
 

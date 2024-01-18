@@ -1,6 +1,6 @@
 # Ecosystem
 
-[Fugue](https://github.com/fugue-project/fugue) can be used in conjuction with a lot of other Python libraries. Some of these integrations are native where Fugue can be used as a backend. For the others, there is no native integration but they can be used together with minimal lines of code, normally through the `transform()` function.
+[Fugue](https://github.com/fugue-project/fugue) can be used in conjunction with a lot of other Python libraries. Some of these integrations are native where Fugue can be used as a backend. For the others, there is no native integration but they can be used together with minimal lines of code, normally through the `transform()` function.
 
 Have questions? Chat with us on Github or Slack:
 

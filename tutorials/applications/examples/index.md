@@ -17,4 +17,4 @@ example_covid19
 Using Fugue to analyze stock sentiment
 
 ## [COVID-19 Exploration with FugueSQL](example_covid19.ipynb)
-Analyzing COVID-19 data with FugueSQL. In this example, we show how to extend FugueSQL with Python and show some operations important for distrubted computing such as `PERSIST` and `PREPARTITION`. This example includes tips on working with big data such as testing and persisting intermediate files as parquet.
+Analyzing COVID-19 data with FugueSQL. In this example, we show how to extend FugueSQL with Python and show some operations important for distributed computing such as `PERSIST` and `PREPARTITION`. This example includes tips on working with big data such as testing and persisting intermediate files as parquet.
