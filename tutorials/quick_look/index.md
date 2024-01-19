@@ -1,6 +1,6 @@
 # Quick Look
 
-The [Fugue](https://github.com/fugue-project/fugue) project aims to make distributed computing effortless. It ports Python, [Pandas](https://pandas.pydata.org/docs/), and SQL code to [Spark](https://spark.apache.org/docs/latest/api/python/), [Dask](https://docs.dask.org/en/stable/), [Ray](https://docs.ray.io/en/latest/index.html), and [DuckDB](https://duckdb.org/docs/). Through Fugue, users only have to worry about defining thier logic in the most intuitive way. Production-ready code can then be scaled out to a distributed computing backend just by adding a few lines of code.
+The [Fugue](https://github.com/fugue-project/fugue) project aims to make distributed computing effortless. It ports Python, [Pandas](https://pandas.pydata.org/docs/), and SQL code to [Spark](https://spark.apache.org/docs/latest/api/python/), [Dask](https://docs.dask.org/en/stable/), [Ray](https://docs.ray.io/en/latest/index.html), and [DuckDB](https://duckdb.org/docs/). Through Fugue, users only have to worry about defining their logic in the most intuitive way. Production-ready code can then be scaled out to a distributed computing backend just by adding a few lines of code.
 
 This section contains 10-minute introductions to Fugue and FugueSQL. 
 

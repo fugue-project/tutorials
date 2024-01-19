@@ -36,7 +36,7 @@ For more information about the syntax, check the [10 mins to FugueSQL](../quick_
 
 If Python transformations are invoked using `TRANSFORM` or `OUTPUT`, then the data can be brought down to Pandas or a Python distributed backend like Spark, Dask, or Ray. It is suggested to try to pre-aggregate as much as possible on the SQL table to minimize data transfer.
 
-The Python Fugue BigQuery API is also availabe for Python users who want to pre-aggregate BigQuery data before doing further analysis or modelling in Python. For example, to load a sample of a table:
+The Python Fugue BigQuery API is also available for Python users who want to pre-aggregate BigQuery data before doing further analysis or modelling in Python. For example, to load a sample of a table:
 
 ```python
 import fugue_bigquery.api as fbqa
@@ -77,7 +77,7 @@ Fugue 0.8.0 has significant changes to the standard ways to use Fugue. Having us
 * FugueWorkflow was needed to use any engine-agnostic functions Fugue provided like `load()`, `save()` and `fillna()`
 * difficulty in getting the schema after an operation
 
-As such, Fugue is moving away from the `FugueWorkflow()` (DAG) model and allowing users to use as litle of Fugue as they want. The result is a collection of standalone engine-agnostic functions that users can invoke in their code. The DAG model gave some benefits in terms because it allowed for compilation time checks before code was executed on a cluster. Users could immediately be notified is there was a schema mismatch. Another feature that was enabled by the DAG was the auto-persist feature to prevent recomputation of DataFrames used mutliple times.
+As such, Fugue is moving away from the `FugueWorkflow()` (DAG) model and allowing users to use as little of Fugue as they want. The result is a collection of standalone engine-agnostic functions that users can invoke in their code. The DAG model gave some benefits in terms because it allowed for compilation time checks before code was executed on a cluster. Users could immediately be notified is there was a schema mismatch. Another feature that was enabled by the DAG was the auto-persist feature to prevent recomputation of DataFrames used multiple times.
 
 Ultimately, the code cost outweighed the benefits for a lot of users. There were several occasions were users had to adjust too much code to bring it to `FugueWorkflow()`. The heaviness of the API was less natural for users bringing existing code to distributed computing.
 

@@ -4,7 +4,7 @@ All questions are welcome in the Slack channel.
 
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
 
-We have previously introduced extensions in the [FugueSQL section](../fugue_sql/extensions.ipynb). This section is a more comprehensive guide to extensions in Fugue. Extensions are user-created functions that perform operations on DataFrames. By converting these functions to the approriate extension, they can be brought into FugueSQL.
+We have previously introduced extensions in the [FugueSQL section](../fugue_sql/extensions.ipynb). This section is a more comprehensive guide to extensions in Fugue. Extensions are user-created functions that perform operations on DataFrames. By converting these functions to the appropriate extension, they can be brought into FugueSQL.
 
 ![](../../images/extensions.svg)
 
@@ -14,7 +14,7 @@ To fully understand extensions, it is important to understand the basic distribu
 
 Because of this distinction in distributed computing, there will be code written that is specifically meant to be run on the `driver` machine. These are things like loading and saving a dataframe, or maybe the logic to divide the data into different partitions. On the other hand, code that runs on `workers` will be agnostic to what is happening on other workers.
 
-Note that this means using a function to get the maximum value of a column behaves differently dependending if it is a client-side or worker-side extension. The client-side extension will give a global maximum, while the worker-side extension will give a local maximum.
+Note that this means using a function to get the maximum value of a column behaves differently depending if it is a client-side or worker-side extension. The client-side extension will give a global maximum, while the worker-side extension will give a local maximum.
 
 ## Extension Types
 

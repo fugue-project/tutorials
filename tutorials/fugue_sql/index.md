@@ -68,7 +68,7 @@ The [Transformer](../extensions/transformer.ipynb) is just one of many possible 
 
 ## [6. Using Built-in Extensions](builtin.ipynb)
 
-Commonly used extensions are also provided as built-in extensions. These are also a good way to contribute to Fugue to enchance the FugueSQL experience.
+Commonly used extensions are also provided as built-in extensions. These are also a good way to contribute to Fugue to enhance the FugueSQL experience.
 
 ## 7. FugueSQL with Pandas
 

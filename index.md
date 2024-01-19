@@ -10,7 +10,7 @@ Have questions? Chat with us on Github or Slack:
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](http://slack.fugue.ai)
 
 
-[Fugue](https://github.com/fugue-project/fugue) provides an easier interface to using distributed compute effectively and accelerates big data projects. It does this by minimizing the amount of code you need to write, in addition to taking care of tricks and optimizations that lead to more efficient execution on distrubted compute. Fugue ports Python, Pandas, and SQL code to Spark, Dask, and Ray.
+[Fugue](https://github.com/fugue-project/fugue) provides an easier interface to using distributed compute effectively and accelerates big data projects. It does this by minimizing the amount of code you need to write, in addition to taking care of tricks and optimizations that lead to more efficient execution on distributed compute. Fugue ports Python, Pandas, and SQL code to Spark, Dask, and Ray.
 
 ![img](images/fugue_backends.png)
 
