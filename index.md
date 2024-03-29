@@ -32,7 +32,7 @@ Like Fugue, PySpark Pandas and Modin aim to simplify the experience of working w
 
 ### dbt
 
-dbt is a programming interface that pushes down the code to backends (Snowflake, Spark). Fugue alsohas FugueSQL, which is a SQL-like interface for pushing down to backends (DuckDB, Spark, Dask). FugueSQL is also extending to the data warehouse side with integrations like BigQuery and Trino. The main difference between dbt and Fugue is that Fugue does not confine users to SQL. It also supports Python (and encourages a mix of SQL and Python). dbt supports Python, but it's not a first-class citizen and not scalable.
+dbt is a programming interface that pushes down the code to backends (Snowflake, Spark). Fugue also has FugueSQL, which is a SQL-like interface for pushing down to backends (DuckDB, Spark, Dask). FugueSQL is also extending to the data warehouse side with integrations like BigQuery and Trino. The main difference between dbt and Fugue is that Fugue does not confine users to SQL. It also supports Python (and encourages a mix of SQL and Python). dbt supports Python, but it's not a first-class citizen and not scalable.
 
 ### DuckDB
 
