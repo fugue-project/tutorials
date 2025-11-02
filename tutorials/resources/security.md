@@ -33,7 +33,7 @@ Distributed computing frameworks are designed for **trusted cluster environments
 
 ## Threat Model & Risk Scenarios
 
-### ✅ Safe Deployments (Recommended)
+### Safe Deployments (Recommended)
 
 **Cloud-Managed Clusters:**
 - AWS EMR, GCP Dataproc, Azure HDInsight: Clusters in private VPCs with security groups restricting traffic to cluster nodes only
@@ -45,7 +45,7 @@ Distributed computing frameworks are designed for **trusted cluster environments
 **On-Premise:**
 - Private clusters with network segmentation (VLANs, firewalls)
 
-### ❌ Risky Deployments (Not Recommended)
+### Risky Deployments (Not Recommended)
 
 - Multi-tenant shared clusters (long-running Databricks clusters, EMR clusters with multiple teams)
 - Clusters without security groups or firewall rules
