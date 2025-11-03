@@ -140,6 +140,7 @@ tutorials/tune/index
 
 tutorials/resources/appendix/index
 tutorials/resources/best_practices/index
+tutorials/resources/security
 tutorials/resources/content
 tutorials/resources/major_changes
 ```
