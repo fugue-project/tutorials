@@ -12,6 +12,7 @@ myst-parser>=0.15
 myst-nb~=0.13.1
 
 nbconvert>=6.5.0
+lxml_html_clean
 nbsphinx>=0.8.6
 pandoc>=2.0
 ipython>=7.31
